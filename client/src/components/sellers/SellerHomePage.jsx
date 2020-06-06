@@ -8,15 +8,7 @@ class SellerHomePage extends Component {
   render() {
     return (
       <div>
-        <h5>
-          <a href="/uploadProduct">upload to your store</a>
-        </h5>
-        <h5>
-          <a href="/manageStore">manage store</a>
-        </h5>
-        <h5>
-          <a href="shopdetails">Shop and profile info</a>
-        </h5>
+        <h5>Sign In With Facebook(Instagram)</h5>
       </div>
     );
   }
