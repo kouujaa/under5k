@@ -55,7 +55,7 @@ class SellerSignInPage extends Component {
           <h3>Sign In Your Shop</h3>
           <br></br>
           <FormGroup>
-            <Label for="exampleEmail">shopName</Label>
+            <Label for="shopName">shopName</Label>
             <Input
               name="shopName"
               bsSize="lg"

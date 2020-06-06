@@ -4,7 +4,7 @@ import { Navbar } from "reactstrap";
 const Footer = props => {
   return (
     <div className="navb bottom down mt-5 " id="navb">
-      <Navbar color="dark" dark expand="sm" style={{ height: "19em" }}>
+      <Navbar color="dark" dark expand="sm" style={{ height: "30em" }}>
         <div className="ml-3">
           <h5 className="fw-title">Address</h5>
           <ul>

@@ -101,6 +101,7 @@ import SellerSignUp from "./components/sellers/SellerSignUpPage";
 import SellerSignInPage from "./components/sellers/SellerSignInPage";
 import SellerHomePage from "./components/sellers/SellerHomePage";
 import PayStackPortal from "./components/store/PayStackPortal";
+import SellerDasboard from "./components/sellers/SellerDashboard";
 
 class App extends Component {
   state = {};
@@ -133,6 +134,7 @@ class App extends Component {
           <Route path="/sellerSignUp" component={SellerSignUp}></Route>
           <Route path="/sellerSignIn" component={SellerSignInPage}></Route>
           <Route path="/sellerHomePage" component={SellerHomePage}></Route>
+          <Route path="/sellerDashBoard" component={SellerDasboard}></Route>
           <Route path="/payStackRDR" component={PayStackPortal}></Route>
           <Route path="/">
             <Home />
