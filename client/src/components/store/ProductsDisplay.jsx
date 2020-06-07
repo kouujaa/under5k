@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import Product from "./Product";
-import Paginate from "./../all/Pagination";
-import { pages } from "../../utils/pages";
 
 class ProductDisplay extends Component {
-  state = {
-    pageSize: 0
-  };
-  // const showproducts
-
   displayall = () => {
     const { products, addToCart } = this.props;
 

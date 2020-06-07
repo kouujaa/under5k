@@ -1,10 +1,8 @@
 import _ from "lodash";
 
-export function pages(items, pageNumber, pageSize) {
-    console.log(items,pageNumber,pageSize)
+export function pages(productsArray, pageNumber, pageSize) {
   const startIndex = (pageNumber - 1) * pageSize;
-  return _(items)
-    .slice(items, startIndex)
-    .take(pageSize)
-    .value();
+  const sliced = _.slice(productsArray, startIndex);
+  const products = _.take(sliced, pageSize);
+  return products;
 }

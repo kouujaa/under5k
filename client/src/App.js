@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+// import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwtDecoder from "jwt-decode";
 import AppNavBar from "./components/all/mainNavBar/AppNavBar";
@@ -104,7 +105,13 @@ import PayStackPortal from "./components/store/PayStackPortal";
 import SellerDasboard from "./components/sellers/SellerDashboard";
 
 class App extends Component {
-  state = {};
+  state = {
+    cart: [],
+    products: [],
+    sendProducts: [],
+    currentPage: 1,
+    pageSize: 9
+  };
 
   clearState = () => {
     localStorage.clear();
@@ -117,15 +124,28 @@ class App extends Component {
       // console.log(user);
       this.setState({ user });
     } catch (err) {}
+
+    // this.populateState();
   }
 
+  // async populateState() {
+  //   try {
+  //     const products = await axios.get("/api/product/");
+
+  //     this.setState({ products: products.data });
+  //   } catch (err) {
+  //     // this.populateState();
+  //   }
+  // }
   render() {
     return (
       <React.Fragment>
         {/* <Provider store={myStore}> */}
         <AppNavBar user={this.state.user} clearState={this.clearState} />
         <Switch>
-          <Route path="/shop" component={ProductPage}></Route>
+          <Route path="/shop">
+            <ProductPage />
+          </Route>
           <Route path="/signUp" component={SignUpForm}></Route>
           <Route path="/signIn" component={SignInForm}></Route>
           <Route path="/contact" component={ContactPage}></Route>
