@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, CustomInput, Button } from "reactstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class SignUpForm extends Component {
   state = {
@@ -68,6 +69,16 @@ class SignUpForm extends Component {
   render() {
     return (
       <div className="signUp">
+        <div className="container">
+          <Link className="btn btn-danger" to="/google">
+            Sign Up With Google
+          </Link>
+          <hr />
+          <Link className="btn btn-primary" to="/google">
+            Sign Up With Facebook
+          </Link>
+        </div>
+
         <Form
           className="container mt-5 sigupform"
           onSubmit={this.onSubmitHandler}

@@ -3,7 +3,7 @@ import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 
 class UploadProduct extends Component {
   class = {
-    PictureBuffer: [],
+    pictureBuffer: ["hey"],
     itemDescription: "",
     sizes: [],
     colors: [],
@@ -21,12 +21,14 @@ class UploadProduct extends Component {
 
   onArrayChangeHandler = input => e => {
     const userInfo = { ...this.state };
-    userInfo[e.target.name] = e.target.value;
+
+    // userInfo[e.target.name].push(e.target.value);
     this.setState(userInfo);
   };
 
   onSubmitHandler = e => {
     e.preventDefault();
+    console.log(this.state);
     // const { fullName, email, subject, message } = this.state;
     // //send message and clear screen
   };
@@ -39,8 +41,22 @@ class UploadProduct extends Component {
         <div className="container">
           <Form onSubmit={this.onSubmitHandler}>
             <FormGroup>
-              <Label for="exampleCustomFileBrowser">Select images</Label>
+              <Label for="pictureBuffer">Select images</Label>
               <CustomInput
+                type="file"
+                id="pictureBuffer"
+                name="pictureBuffer"
+                label="Select"
+                onChange={this.onArrayChangeHandler("pictureBuffer")}
+              />
+              {/* <CustomInput
+                type="file"
+                id="image"
+                name="image"
+                label="Select"
+                onChange={this.onArrayChangeHandler("numberInStock")}
+              /> */}
+              {/* <CustomInput
                 type="file"
                 id="image"
                 name="image"
@@ -53,25 +69,7 @@ class UploadProduct extends Component {
                 name="image"
                 label="Select"
                 onChange={this.onArrayChangeHandler("numberInStock")}
-              />
-              <CustomInput
-                type="file"
-                id="image"
-                name="image"
-                label="Select"
-                onChange={this.onArrayChangeHandler("numberInStock")}
-              />
-              <CustomInput
-                type="file"
-                id="image"
-                name="image"
-                label="Select"
-                onChange={this.onArrayChangeHandler("numberInStock")}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="imageupload">Upload Picture</Label>
-              <Input type="textarea" name="imageupload" id="imageupload" />
+              /> */}
             </FormGroup>
             <FormGroup>
               <Label for="itemDescription">Item Description</Label>
@@ -82,13 +80,63 @@ class UploadProduct extends Component {
                 onChange={this.onChangeHandler("itemDescription")}
               ></Input>
             </FormGroup>
-            <FormGroup>
-              <Label for="">Sizes</Label>
-              <Input name="" bsSize="lg" required></Input>
+
+            <FormGroup check>
+              <Label for="sizes">Sizes</Label>
+              <div>
+                <CustomInput type="checkbox" id="S" label="S" inline />
+                <CustomInput type="checkbox" id="XS" label="XS" inline />
+                <CustomInput type="checkbox" id="M" label="M" inline />
+                <CustomInput type="checkbox" id="L" label="L" inline />
+                <CustomInput type="checkbox" id="XL" label="XL" inline />
+              </div>
             </FormGroup>
             <FormGroup>
-              <Label for="">Colors</Label>
-              <Input name="" bsSize="lg" required></Input>
+              <Label for="colors">Colors</Label>
+              <FormGroup check>
+                <div>
+                  <CustomInput
+                    type="checkbox"
+                    id="Black"
+                    label="Black"
+                    inline
+                  />
+                  <CustomInput
+                    type="checkbox"
+                    id="White"
+                    label="White"
+                    inline
+                  />
+                  <CustomInput type="checkbox" id="Blue" label="Blue" inline />
+                  <CustomInput type="checkbox" id="Red" label="Red" inline />
+                  <CustomInput
+                    type="checkbox"
+                    id="Green"
+                    label="Green"
+                    inline
+                  />
+                  <CustomInput
+                    type="checkbox"
+                    id="Brown"
+                    label="Brown"
+                    inline
+                  />
+                  <CustomInput
+                    type="checkbox"
+                    id="Purple"
+                    label="Purple"
+                    inline
+                  />
+                  <CustomInput type="checkbox" id="Pink" label="Pink" inline />
+                  <CustomInput type="checkbox" id="Grey" label="Grey" inline />
+                  <CustomInput
+                    type="checkbox"
+                    id="Beige"
+                    label="Beige"
+                    inline
+                  />
+                </div>
+              </FormGroup>
             </FormGroup>
             <FormGroup>
               <Label for="numberInStock">Number Of Item In stock</Label>
@@ -162,6 +210,9 @@ class UploadProduct extends Component {
                 <option>Tops</option>
               </Input>
             </FormGroup>
+            <Button className="mt-4" type="submit">
+              Upload pic
+            </Button>
           </Form>
         </div>
       </div>
