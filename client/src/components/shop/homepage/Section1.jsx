@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Card, CardText } from "reactstrap";
+import _ from "lodash";
 
-class Section1 extends Component {
-  state = {
-    items: []
-  };
-
-  getitems = () => {
-    const ht = this.state.items.map(item => (
+class NewArrivals extends Component {
+  getproducts = () => {
+    const products = _.slice(this.props.products, 0, 6);
+    const ht = products.map(item => (
       <div key={item.productCode}>
         <CardText>{item.description.slice(0, 12) + "..."}</CardText>
         <Card>
@@ -18,19 +16,16 @@ class Section1 extends Component {
     return ht;
   };
 
-  componentDidMount() {
-    this.setState({ items: this.props.items });
-  }
   render() {
     return (
       <React.Fragment>
         <div className="mt-5 mb-5">
-          <h4>Trending Items</h4>
-          <div className="sec1 m-1">{this.getitems()}</div>
+          <h4>New Arrivals</h4>
+          <div className="sec1 m-1">{this.getproducts()}</div>
         </div>
       </React.Fragment>
     );
   }
 }
 
-export default Section1;
+export default NewArrivals;
