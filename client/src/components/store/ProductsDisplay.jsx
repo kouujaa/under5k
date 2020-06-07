@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import Product from "./Product";
+import Paginate from "./../all/Pagination";
+import { pages } from "../../utils/pages";
 
 class ProductDisplay extends Component {
+  state = {
+    pageSize: 0
+  };
   // const showproducts
+
   displayall = () => {
     const { products, addToCart } = this.props;
 
@@ -12,12 +18,13 @@ class ProductDisplay extends Component {
     return prod;
   };
 
-  componentDidMount() {
-    this.displayall();
-  }
-
   render() {
-    return <div className="allProducts container">{this.displayall()}</div>;
+    return (
+      <div>
+        <div className="allProducts container">{this.displayall()}</div>
+        <div className="container"></div>
+      </div>
+    );
   }
 }
 

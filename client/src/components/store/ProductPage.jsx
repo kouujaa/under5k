@@ -3,12 +3,15 @@ import axios from "axios";
 // import Options from "./Options";
 import ProductDisplay from "./ProductsDisplay";
 import Cart from "./Cart";
-import * as _ from "lodash";
+import _ from "lodash";
+import Paginate from "./../all/Pagination";
 
 class ProductPage extends Component {
   state = {
     cart: [],
-    products: []
+    products: [],
+    pageSize: 9,
+    currentPage: 1
   };
 
   //handler for increasing quantity of given product
@@ -62,11 +65,15 @@ class ProductPage extends Component {
       // this.populateState();
     }
   }
-
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
+  };
   componentDidMount() {
     this.populateState();
   }
   render() {
+    const { pageSize, currentPage } = this.state;
+    console.log(this.state.products);
     return (
       <React.Fragment>
         {/* { this.props.location.state?: <} */}
@@ -86,6 +93,12 @@ class ProductPage extends Component {
             addToCart={this.addToCart}
           />
         </div>
+        <Paginate
+          onPageChange={this.handlePageChange}
+          itemsCount={this.state.products.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+        />
       </React.Fragment>
     );
   }
