@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Product from "./Product";
+import Filters from "./sort/filteringcomponenets/Filters";
+import Sorts from "./sort/Sorts";
 
 class ProductDisplay extends Component {
   displayall = () => {
@@ -14,6 +16,13 @@ class ProductDisplay extends Component {
   render() {
     return (
       <div>
+        <Filters
+          products={this.props.products}
+          handleFilter={this.props.handleSelect}
+          selectedSize={this.props.selectedSize}
+        />
+        <Sorts handleSort={this.props.handleSort} />
+
         <div className="allProducts container">{this.displayall()}</div>
         <div className="container"></div>
       </div>

@@ -26,10 +26,11 @@ class PayStackPortal extends Component {
       }
     };
     console.log(this.props);
+    const { FirstName, lastName } = this.props.location.state.details;
     return (
       <Card className="container center mt-5 mb-5">
         <CardBody className="container center">
-          TOTAL CHARGE TO {this.props.location.state.config.email}: ₦
+          TOTAL CHARGE TO {lastName.toUpperCase()} {FirstName}: ₦
           {this.props.location.state.config.amount / 100}
         </CardBody>
         <CardFooter>

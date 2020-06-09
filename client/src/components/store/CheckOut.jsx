@@ -17,6 +17,7 @@ class CheckOut extends Component {
         search: "",
         hash: "",
         state: {
+          details: this.state.user,
           email: this.state.user.email,
           charge: this.getTotal() * 100,
           config: this.state.config
