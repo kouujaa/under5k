@@ -7,11 +7,13 @@ const customer = require("./routes/shopAPIs/customer/customer");
 const seller = require("./routes/shopAPIs/seller/seller");
 const path = require("path");
 const express = require("express");
+const authRoute = require("./routes/auths/auth");
 const app = express();
 const morgan = require("morgan");
 const helmet = require("helmet");
 const graphqlHTTP = require("express-graphql");
 const GraphSchema = require("./graphQLSchema/graphQLSchema");
+const passportSetup = require("./configureauth/passport-setup");
 
 if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwt private key undefined");
@@ -37,6 +39,7 @@ app.use(helmet());
 app.use("/api/product", product);
 app.use("/api/customers", customer);
 app.use("/api/seller", seller);
+app.use("/auth", authRoute);
 app.use(
   "/graphapi",
   graphqlHTTP({

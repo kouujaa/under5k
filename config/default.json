@@ -1,3 +1,7 @@
 {
-  "jwtPrivateKey": ""
+  "jwtPrivateKey": "",
+  "googleClientID": "",
+  "googleClientSecret": "",
+  "facebookClientID": "",
+  "facebookClientSecret": ""
 }

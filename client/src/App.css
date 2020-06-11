@@ -10,7 +10,12 @@ variables :root {
 }
 
 */
+* {
+  font-family: "Raleway", sans-serif;
+}
 body {
+  font-family: "Dancing Script", cursive;
+
   /* overflow: scroll;
    overflow-x: hidden; */
   background: var(--secondary);

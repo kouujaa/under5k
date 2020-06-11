@@ -9,9 +9,9 @@ class Home extends Component {
     return (
       <React.Fragment>
         <Jumbo />
-        <NewArrivals products={this.props.products} />
+        {/* <NewArrivals products={this.props.products} />
         <TopCategories products={this.props.products} />
-        <TopSellers products={this.props.products} />
+        <TopSellers products={this.props.products} /> */}
       </React.Fragment>
     );
   }

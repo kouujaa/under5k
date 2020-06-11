@@ -72,8 +72,7 @@ const productSchema = new mongoose.Schema({
       "SweatShirts",
       "Suits",
       "Jeans",
-      "Skirt",
-      "Dress",
+      "Skirts",
       "Pants",
       "Capris",
       "Swimsuit",
@@ -87,7 +86,8 @@ const productSchema = new mongoose.Schema({
       "Coats",
       "Bottoms",
       "Tops",
-      "Rompers",
+      "Playsuits",
+      "Jumpsuits",
       "Lingerie"
     ],
     required: true

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody, CardFooter } from "reactstrap";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SideOptions = () => {
   return (

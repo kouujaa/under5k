@@ -15,9 +15,10 @@ const customerSchema = new mongoose.Schema({
     maxlength: 200,
     required: true
   },
+  googleID: { type: String },
+  facebookID: { type: String },
   password: {
     type: String,
-    required: true,
     minlength: 2,
     maxlength: 1020
   },
@@ -38,29 +39,24 @@ const customerSchema = new mongoose.Schema({
   gender: {
     type: String,
     enum: ["Male", "Female"],
-    required: true,
     minlength: 3,
     maxlength: 10
   },
   dob: {
-    type: String,
-    required: true
+    type: String
   },
   state: {
     type: String,
-    required: true,
     minlength: 2,
     maxlength: 500
   },
   address: {
     type: String,
-    required: true,
     minlength: 2,
     maxlength: 500
   },
   phoneNumber: {
     type: Number,
-    required: true,
     min: 2,
     max: 999999999999
   },
@@ -154,8 +150,7 @@ const validateCustomer = Joi.object({
     .required(),
   password: Joi.string()
     .min(3)
-    .max(50)
-    .required(),
+    .max(50),
   userName: Joi.string()
     .min(3)
     .max(50)
@@ -167,20 +162,21 @@ const validateCustomer = Joi.object({
     .required(),
   address: Joi.string()
     .min(3)
-    .max(500)
-    .required(),
-  phoneNumber: Joi.number()
-    .min(8)
-    .required(),
+    .max(500),
+  googleID: Joi.string()
+    .min(15)
+    .max(500),
+  facebookID: Joi.string()
+    .min(15)
+    .max(500),
+  phoneNumber: Joi.number().min(8),
   gender: Joi.string()
     .min(3)
-    .max(10)
-    .required(),
-  dob: Joi.string().required(),
+    .max(10),
+  dob: Joi.string(),
   state: Joi.string()
     .min(3)
     .max(20)
-    .required()
 });
 
 exports.customerSchema = customerSchema;

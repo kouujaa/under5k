@@ -27,7 +27,7 @@ router.post("/login", async (req, res) => {
 
   //RETRIEVE USER INFO EXCEPT PASSWORD
   customer = await Customer.findOne({ userName }).select(
-    "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id"
+    "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id state gender dob dateJoined"
   );
   const token = jwt.sign(
     {
@@ -39,12 +39,16 @@ router.post("/login", async (req, res) => {
       phoneNumber: customer.phoneNumber,
       state: customer.state,
       gender: customer.gender,
-      datejoined: customer.datejoined,
+      datejoined: customer.dateJoined,
       purchasePriceTotal: customer.purchasePriceTotal,
-      meta: customer.meta
+      meta: customer.meta,
+      cart: customer.cart,
+      dob: customer.dob,
+      address: customer.address
     },
     config.get("jwtPrivateKey")
   );
+  console.log(token);
   return res.send(token);
   // res.header("x-authentication-token", token).send(`login successful`);
 });
@@ -129,7 +133,25 @@ router.get("/info", authenticate, async (req, res) => {
 
 //Update profile info	 authenticate
 router.post("/updateProfile", authenticate, async (req, res) => {
-  const customer = await Customer.findById(req.user._id);
+  const {
+    userName,
+    firstName,
+    lastName,
+    address,
+    email,
+    phoneNumber
+  } = req.body;
+
+  try {
+    const saveditem = await Customer.findOneAndUpdate(
+      { email: email },
+      { $set: { userName, firstName, lastName, address, email, phoneNumber } }
+    );
+
+    return res.send("update successfull");
+  } catch (err) {
+    return res.status(500).send(`update failed: ${err.message}`);
+  }
 });
 
 //Change customer password authenticate

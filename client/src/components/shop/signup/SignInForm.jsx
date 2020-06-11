@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 // import { awaitExpression } from "@babel/types";
 
 class SignInForm extends Component {
@@ -24,6 +25,7 @@ class SignInForm extends Component {
         userName,
         password
       });
+
       localStorage.setItem("token", token.data);
 
       window.location = "/";
@@ -41,7 +43,9 @@ class SignInForm extends Component {
     e.preventDefault();
     this.getInfo();
   };
-
+  onGoogleSIgn = e => {
+    window.open("http://localhost:3001/auth/google", "_self");
+  };
   // showStatus = () => {
   //   return "enter login details";
   // };
@@ -49,6 +53,9 @@ class SignInForm extends Component {
   render() {
     return (
       <div className="signIn">
+        <div className="btn btn-primary" onClick={this.onGoogleSIgn}>
+          Sign in with Google
+        </div>
         <Form
           className="container mt-5 siginform"
           onSubmit={this.onSubmitHandler}

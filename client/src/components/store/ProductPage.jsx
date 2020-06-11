@@ -6,14 +6,25 @@ import Cart from "./Cart";
 import _ from "lodash";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
+import { selectedSortFunc } from "./sort&filters/sorts/sorting";
+import {
+  SelectedSizeFilterFunction,
+  SelectedSellerFilterFunction,
+  SelectedCategoryFilterFunction
+} from "./sort&filters/filters/filteringcomponenets/filtering";
 
 class ProductPage extends Component {
   state = {
     selectedSize: "",
+    selectedSeller: "",
+    selectedCategory: "",
     selectedSort: "",
     cart: [],
     pageSize: 6,
-    currentPage: 2
+    currentPage: 2,
+    currentSize: "",
+    currentCategory: "",
+    currentSeller: ""
   };
 
   //handler for increasing quantity of given product
@@ -74,41 +85,48 @@ class ProductPage extends Component {
   componentDidMount() {
     // this.populateState();
   }
-  handleFilter = size => {
+  handleSizeFilter = size => {
     this.setState({ selectedSize: size, currentPage: 1 });
+    this.setState({ currentSize: size });
   };
+  handleSellerFilter = seller => {
+    this.setState({ selectedSeller: seller, currentPage: 1 });
+    this.setState({ currentSeller: seller });
+  };
+  handleCategoryFilter = category => {
+    this.setState({ selectedCategory: category, currentPage: 1 });
+    this.setState({ currentCategory: category });
+  };
+
   handleSort = sort => {
     console.log(sort);
     this.setState({ selectedSort: sort });
   };
 
   render() {
-    const { pageSize, currentPage, selectedSize } = this.state;
+    const {
+      pageSize,
+      currentPage,
+      selectedSize,
+      selectedSeller,
+      selectedCategory,
+      currentCategory,
+      currentSeller,
+      currentSize
+    } = this.state;
     const { products } = this.props;
-    let filtered = selectedSize
-      ? products.filter(product => product.sizes === selectedSize)
-      : products;
+
+    let filtered = SelectedSizeFilterFunction(selectedSize, products);
+
+    filtered = SelectedCategoryFilterFunction(selectedCategory, products);
+
+    filtered = SelectedSellerFilterFunction(selectedSeller, products);
+
     if (selectedSize === "All") {
       filtered = [...products];
     }
-    if (this.state.selectedSort === "priceLowToHigh") {
-      let sortedfilter = _.sortBy(filtered, function(o) {
-        return o.price;
-      });
-      filtered = sortedfilter;
-    }
-    if (this.state.selectedSort === "NewArrivals") {
-      let sortedfilter = _.sortBy(filtered, function(o) {
-        return o.dateAdded;
-      });
-      filtered = sortedfilter;
-    }
-    if (this.state.selectedSort === "priceHighToLow") {
-      let sortedfilter = _.sortBy(filtered, function(o) {
-        return o.price;
-      });
-      filtered = sortedfilter;
-    }
+    filtered = selectedSortFunc(this.state.selectedSort, filtered);
+
     const sendDown = pages(filtered, currentPage, pageSize);
 
     return (
@@ -130,9 +148,14 @@ class ProductPage extends Component {
             itemsCount={products.length}
             pageSize={pageSize}
             currentPage={currentPage}
-            handleSelect={this.handleFilter}
+            handleSizeSelect={this.handleSizeFilter}
+            handleCategorySelect={this.handleCategoryFilter}
+            handleSellerSelect={this.handleSellerFilter}
             selectedSize={this.state.selectedSize}
             handleSort={this.handleSort}
+            currentCategory={currentCategory}
+            currentSeller={currentSeller}
+            currentSize={currentSize}
           />
         </div>
         <Paginate

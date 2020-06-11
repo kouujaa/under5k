@@ -6,16 +6,11 @@ import ShopDetails from "./ShopDetails";
 import SideOptions from "./SideOptions";
 
 class SellerDasboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   render() {
     return (
       <div>
         <h2 className="left">Welcome seller name</h2>
         <div className="productPage">
-          {" "}
           <div>
             <SideOptions />
           </div>

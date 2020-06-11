@@ -15,7 +15,15 @@ class Product extends Component {
   //   URI
   // } = this.props.item;
   render() {
-    const { productID, price, fitting, productTitle, URI } = this.props.item;
+    const {
+      productID,
+      price,
+      sizes,
+      productTitle,
+      URI,
+      seller
+    } = this.props.item;
+    console.log(this.props.item);
     const { cartHandler } = this.props;
 
     return (
@@ -30,13 +38,14 @@ class Product extends Component {
           </CardBody>
           <CardFooter>
             <h6>{productTitle}</h6>
-            <h6>Price: ₦{price}</h6>
-            <h6>size: {fitting}</h6>
+            <h6>₦{price}</h6>
+            <h6>Size: {sizes}</h6>
+            <h6>Store: {seller}</h6>
             {/* <h5>Rating: {rating}</h5> */}
             <Button
               className="btn btn-danger btn-sm"
               onClick={() => {
-                cartHandler(productID, productTitle, fitting, price, URI);
+                cartHandler(productID, productTitle, sizes, price, URI);
               }}
             >
               add to cart

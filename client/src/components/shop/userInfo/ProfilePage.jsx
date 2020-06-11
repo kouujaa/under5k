@@ -7,19 +7,17 @@ class ProfilePage extends Component {
 
   // async getInfo() {}
 
-  populateState = () => {
+  componentDidMount() {
     try {
       const jwt = localStorage.getItem("token");
       const userInfo = jwtDecoder(jwt);
       this.setState({ userInfo });
     } catch (error) {}
-  };
-  componentDidMount() {
-    this.populateState();
   }
 
   render() {
-    return <Profile profileInfo={this.state.userInfo} />;
+    const { userInfo } = this.state;
+    return <Profile profileInfo={userInfo} />;
   }
 }
 

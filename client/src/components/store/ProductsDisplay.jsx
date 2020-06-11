@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Product from "./Product";
-import Filters from "./sort/filteringcomponenets/Filters";
-import Sorts from "./sort/Sorts";
+import Filters from "./sort&filters/filters/filteringcomponenets/Filters";
+import Sorts from "./sort&filters/sorts/Sorts";
 
 class ProductDisplay extends Component {
   displayall = () => {
@@ -18,8 +18,13 @@ class ProductDisplay extends Component {
       <div>
         <Filters
           products={this.props.products}
-          handleFilter={this.props.handleSelect}
+          handleSizeFilter={this.props.handleSizeSelect}
+          handleCategoryFilter={this.props.handleCategorySelect}
+          handleSellerFilter={this.props.handleSellerSelect}
           selectedSize={this.props.selectedSize}
+          currentCategory={this.props.currentCategory}
+          currentSeller={this.props.currentSeller}
+          currentSize={this.props.currentSize}
         />
         <Sorts handleSort={this.props.handleSort} />
 

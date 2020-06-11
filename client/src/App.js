@@ -103,6 +103,7 @@ import SellerSignInPage from "./components/sellers/SellerSignInPage";
 import SellerHomePage from "./components/sellers/SellerHomePage";
 import PayStackPortal from "./components/store/PayStackPortal";
 import SellerDasboard from "./components/sellers/SellerDashboard";
+import EditProfile from "./components/shop/userInfo/EditProfile";
 
 class App extends Component {
   state = {
@@ -117,10 +118,10 @@ class App extends Component {
         sizes: "L",
         description: "low cut miniskirt with slit",
         materials: ["cotton"],
-        category: "top",
+        category: "Dresses",
         seller: "shalom",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90087653_155090732623218_4909097977760666215_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=6TcX_6ME5xwAX-ZL-Nd&oh=b89b1a0c67d6911dc64777b73ca80f37&oe=5ED5D1BD"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s480x480/90955382_823442644817804_1768660103671081696_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=CQOU00yMEd8AX8Fscam&oh=1ad08efc00fe56c671c3a12b5a48cf42&oe=5F0A93E7"
         ]
       },
       {
@@ -132,10 +133,10 @@ class App extends Component {
         sizes: "L",
         description: "starry jeans",
         materials: ["denim"],
-        category: "jeans",
+        category: "Dresses",
         seller: "omare",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/91084754_216018266383112_7200314527193148546_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=ciRwqSLzVUMAX9DZXz5&oh=1618145295e3fb7a4ea5de45280da0da&oe=5ED7A05B"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s480x480/91084754_216018266383112_7200314527193148546_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=xcJBBNTmjfgAX-7P-Xk&oh=6edbb68c55408ce10cf45422d6562caa&oe=5F0D5A81"
         ]
       },
       {
@@ -147,10 +148,10 @@ class App extends Component {
         sizes: "L",
         description: "multi colored romper",
         materials: ["polyester"],
-        category: "jeans",
-        seller: "omare",
+        category: "Dresses",
+        seller: "shalom",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89733134_141233014066873_2975602050831648831_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=xKPJGP6smYgAX-aVeAl&oh=44d85534a0a3bbf66d09737ae8cf7292&oe=5ED71F66"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s480x480/91223237_2924803864268059_8935380029980255900_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=-sf0KzlAi_gAX-jUk_I&oh=e327c0d52b6d24004057fb0b5ad9c316&oe=5F0B2C42"
         ]
       },
       {
@@ -162,10 +163,10 @@ class App extends Component {
         sizes: "M",
         description: " see through beach wear",
         materials: ["linen"],
-        category: "gown",
+        category: "Jumpsuits",
         seller: "juliet",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90021266_586079645316681_3381606526350380255_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=yFkwTJapL8YAX_GfU5n&oh=45fdd74b44587024c61fa7d400dbe34f&oe=5ED7731E"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s480x480/90722565_1657119107770538_4954832755052740232_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=H25D0gLSy7AAX-pMzlT&oh=0865ac03bcc4387f8503bdf5f027394e&oe=5F0B44E5"
         ]
       },
       {
@@ -177,10 +178,10 @@ class App extends Component {
         sizes: "M",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "dress",
-        seller: "omare",
+        category: "Jumpsuits",
+        seller: "juliet",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.82.661.661a/s320x320/90086117_619505202223561_867198532102346738_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=fcbs-8tPGCgAX8Q5e2Y&oh=aa212cc581107eea0e8d377603ef6b80&oe=5ED641FE"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s480x480/90809236_213692506510398_2046760244130446093_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=W2Cx0pc1LEQAX9AinAA&oh=7e828038e48a54ca13f71017c223d258&oe=5F0B2E8C"
         ]
       },
       {
@@ -190,12 +191,12 @@ class App extends Component {
         price: 6000,
         colors: ["black"],
         sizes: "M",
-        description: "tight fit gown",
+        description: "tight fit go",
         materials: ["linen"],
-        category: "skirt",
-        seller: "omare",
+        category: "Jumpsuits",
+        seller: "juliet",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90087653_666262364202482_8127632928219732007_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=5m-GR6uPBSwAX_r-XlI&oh=76f1dc3546b23be45594a83fb99f1555&oe=5ED84D0D"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s480x480/90396312_140123414108773_3484098825815952962_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=3bzWPXStjjMAX-Ii1w-&oh=81471bf6a457610c4f0fe04c656cb06a&oe=5F0CA675"
         ]
       },
       {
@@ -207,10 +208,10 @@ class App extends Component {
         sizes: "S",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "skirt",
-        seller: "omare",
+        category: "Bottoms",
+        seller: "juliet",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.2.719.719a/s320x320/89848754_647360749411774_4946683316704267871_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=amkvxXp2JyMAX86syzO&oh=462d9b20b176e30fb5e04351a0fad118&oe=5ED5FFAC"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s480x480/90676402_203425110954322_7157628800644820252_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=lF5T74srknAAX8WCnWC&oh=4e9341c1b62b2ba52364d0274c2a0256&oe=5F0C013B"
         ]
       },
       {
@@ -222,10 +223,10 @@ class App extends Component {
         sizes: "S",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "jeans",
-        seller: "omare",
+        category: "Bottoms",
+        seller: "juliet",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89853602_300071184290426_4273885749160331035_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=k2ULCVqX8LYAX-_k8Yu&oh=427a4dd467bfa9a41e3a0d9fe856efd0&oe=5ED76AAF"
+          "https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/s320x320/89967520_147668693168543_643852003387361141_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=111&_nc_ohc=4M0mjIjGljEAX_ZZMgs&oh=671e00825b6f714def801be7c2e08d9e&oe=5F0B48BB"
         ]
       },
       {
@@ -237,10 +238,10 @@ class App extends Component {
         sizes: "S",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "jeans",
-        seller: "omare",
+        category: "Bottoms",
+        seller: "juliet",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.2.720.720a/s320x320/90087698_539420096683907_6744294665906325407_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=-E5PPeOT13wAX8tdR8H&oh=f704cdd21774afb75c5a6b6e0b561924&oe=5ED8D65E"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/c1.0.717.717a/s240x240/89846304_563889231000248_298120404055117627_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=XbhwmygjihkAX-7tQpL&oh=a5f02f0efb688cd402b29f2b0907360c&oe=5F0D296F"
         ]
       },
       {
@@ -252,10 +253,10 @@ class App extends Component {
         sizes: "One size",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "tanktop",
+        category: "Blouses",
         seller: "omare",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.90.720.720a/s320x320/90086854_2530007643878420_5491336721729133427_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=CTe2HKDGLRMAX9aA0vl&oh=e83de7696ffef4f9138ba5174b5fbdd3&oe=5ED5F082"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s240x240/90033658_213835039987218_6215093301308257259_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=cP2oJncJ8kQAX_8ntFL&oh=ca3ed6557975f30d89700b16df95512b&oe=5F0C0D51"
         ]
       },
       {
@@ -267,10 +268,10 @@ class App extends Component {
         sizes: "One size",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "tanktop",
+        category: "Blouses",
         seller: "omare",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89852604_655634368521569_2331432557634546236_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=BooF2XULiYEAX9hqtmi&oh=db2ac8984eab0f53517ab5191e70f13d&oe=5ED733BB"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s480x480/90676402_203425110954322_7157628800644820252_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=lF5T74srknAAX8WCnWC&oh=4e9341c1b62b2ba52364d0274c2a0256&oe=5F0C013B"
         ]
       },
       {
@@ -282,10 +283,10 @@ class App extends Component {
         sizes: "One size",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "bumshort",
+        category: "Blouses",
         seller: "omare",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89853352_104508647772364_3534803772972359521_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=4W67dmaJV3wAX-H-8fT&oh=b17cde36a519d8861bf0cb2824de15ad&oe=5ED8483A"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s240x240/89853602_300071184290426_4273885749160331035_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=NhMjBvt-32gAX9Vobp9&oh=c0e2ca2eddf20f6fd26e51203cf68549&oe=5F0BD695"
         ]
       },
       {
@@ -297,10 +298,10 @@ class App extends Component {
         sizes: "XS",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "bumshirt",
+        category: "Jumpsuits",
         seller: "omare",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90090259_116816989933140_1302035151542800016_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=kKqJKPaGNZ8AX9_9kkl&oh=df9a535196ff5d27d0a3d9dc0cc4f34a&oe=5ED6DCD4"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s240x240/90087653_155090732623218_4909097977760666215_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=zQpd0mlZ1FoAX_6jbcQ&oh=9f9a84ee617c7976377300d9cab9f3ab&oe=5F0CEA07"
         ]
       },
       {
@@ -312,10 +313,10 @@ class App extends Component {
         sizes: "XS",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "jacket",
+        category: "Jumpsuits",
         seller: "omare",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90025630_739432903256421_8576011492743774757_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=u_1V7vffuv4AX_xyych&oh=a67623237acb098b106757ca4f20a8e3&oe=5ED67C9B"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/c10.0.699.699a/s240x240/89749958_248771989618959_7175017422310611091_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=103&_nc_ohc=OjJCY0z9-D8AX8q85Cv&oh=d06df4fd87450db921229acd12f8328b&oe=5F0B33F8"
         ]
       },
       {
@@ -327,10 +328,10 @@ class App extends Component {
         sizes: "XS",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "jacket",
+        category: "Jumpsuits",
         seller: "omare",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90416722_3163653506980920_2237475317615290862_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=cVbW9y9zNqMAX8wLn1r&oh=fa2f5c8855f271a75a82153a88670c70&oe=5ED80DDE"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.2.719.719a/s240x240/89848754_647360749411774_4946683316704267871_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=5wlgGTUKwCAAX-OvVu-&oh=b9f8f33bb75f2e8390361c32a5ffd47a&oe=5F0AB212"
         ]
       },
       {
@@ -342,10 +343,10 @@ class App extends Component {
         sizes: "XL",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "sweater",
-        seller: "omare",
+        category: "Bodysuits",
+        seller: "shalom",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89859944_3629974960377892_1453523459746156164_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=SRqtyq_1bqEAX94vxUt&oh=b4fe1ccf1acc8be6a3d1191006cd17fc&oe=5ED734FF"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.82.661.661a/s240x240/90086117_619505202223561_867198532102346738_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=uJ25dg5LeNsAX_r5pSh&oh=e25044ec609f40599866a65545da6f00&oe=5F0E0AC6"
         ]
       },
       {
@@ -357,10 +358,10 @@ class App extends Component {
         sizes: "XL",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "sweater",
-        seller: "omare",
+        category: "Bodysuits",
+        seller: "shalom",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89836576_1386632248190546_3744129423301634869_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=DKj_wnfadw0AX8dACv0&oh=e8d588049a09b7bd0069b0870d35c093&oe=5ED7063D"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s240x240/89836162_227400221648868_8862286543398755325_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=uoukylhAGH4AX8bG9WT&oh=72428f15d05ea16e2657a23c0b76c08a&oe=5F0CE1FB"
         ]
       },
       {
@@ -372,10 +373,10 @@ class App extends Component {
         sizes: "XL",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "jeggings",
-        seller: "omare",
+        category: "Bodysuits",
+        seller: "shalom",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89836576_1386632248190546_3744129423301634869_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=DKj_wnfadw0AX8dACv0&oh=e8d588049a09b7bd0069b0870d35c093&oe=5ED7063D"
+          "https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/s240x240/89697815_229067988458387_5218522095876946160_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=111&_nc_ohc=60k11N8s47IAX82VQDP&oh=644d67c68de4388a876324d9665706b6&oe=5F0AEC51"
         ]
       },
       {
@@ -387,10 +388,10 @@ class App extends Component {
         sizes: "L",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "jeggings",
-        seller: "omare",
+        category: "Shirts",
+        seller: "shalom",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89836576_1386632248190546_3744129423301634869_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=DKj_wnfadw0AX8dACv0&oh=e8d588049a09b7bd0069b0870d35c093&oe=5ED7063D"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.90.720.720a/s240x240/90180321_602977430255455_8489897774199484142_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=lUGtIC35hmwAX_afDFm&oh=dcb96e10d428593e9a549abef92a7f8f&oe=5F0AA630"
         ]
       },
       {
@@ -402,10 +403,10 @@ class App extends Component {
         sizes: "L",
         description: "tight fit gown",
         materials: ["linen"],
-        category: "jeggings",
-        seller: "omare",
+        category: "Shirts",
+        seller: "shalom",
         URI: [
-          "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/89836576_1386632248190546_3744129423301634869_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=DKj_wnfadw0AX8dACv0&oh=e8d588049a09b7bd0069b0870d35c093&oe=5ED7063D"
+          "https://instagram.fbni1-1.fna.fbcdn.net/v/t51.2885-15/e35/s240x240/89834117_549633759016354_7522059460441410163_n.jpg?_nc_ht=instagram.fbni1-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=1tajYpjJhfsAX8w0w7I&oh=2549e94480c8dc56571b705a95dfaf4a&oe=5F0B1BE3"
         ]
       }
     ],
@@ -457,6 +458,7 @@ class App extends Component {
           <Route path="/sellerHomePage" component={SellerHomePage}></Route>
           <Route path="/sellerDashBoard" component={SellerDasboard}></Route>
           <Route path="/payStackRDR" component={PayStackPortal}></Route>
+
           <Route path="/">
             <Home products={this.state.products} />
           </Route>

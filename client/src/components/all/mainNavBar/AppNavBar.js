@@ -7,7 +7,7 @@ import {
   Nav,
   NavItem
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
@@ -44,27 +44,27 @@ const AppNavBar = ({ user, clearState }) => {
         <Collapse isOpen={!collapsed} navbar className="collapse">
           <Nav className="ml-auto" navbar>
             <NavItem className="left">
-              <Link to="/home" onClick={toggleNavbar}>
+              <NavLink to="/home" onClick={toggleNavbar}>
                 HOME
-              </Link>
+              </NavLink>
             </NavItem>
             <NavItem className="left">
-              <Link to="/shop" onClick={toggleNavbar}>
+              <NavLink to="/shop" onClick={toggleNavbar}>
                 SHOP
-              </Link>
+              </NavLink>
             </NavItem>
             {!user && <SignedOut toggle={toggleNavbar} />}
             {user && <SignedIn toggle={toggleNavbar} signOut={clearState} />}
 
             <NavItem className="left">
-              <Link to="/contact" onClick={toggleNavbar}>
+              <NavLink to="/contact" onClick={toggleNavbar}>
                 CONTACT
-              </Link>
+              </NavLink>
             </NavItem>
             <NavItem className="left">
-              <Link to="/sellerHomePage" onClick={toggleNavbar}>
+              <NavLink to="/sellerHomePage" onClick={toggleNavbar}>
                 SELLER PORTAL
-              </Link>
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

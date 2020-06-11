@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SortListGroup from "../sort/SortlistGroup";
+import SortListGroup from "./SortListGroup";
 
 class Sorts extends Component {
   state = {
