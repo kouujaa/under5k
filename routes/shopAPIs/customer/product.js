@@ -16,6 +16,12 @@ router.get("/", async (req, res) => {
   res.send(products);
 });
 
-//update stock
+//add a product
+router.post("/addProduct", async (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
+
+  // const product = new Product({});
+});
 
 module.exports = router;

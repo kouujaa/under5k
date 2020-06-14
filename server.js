@@ -3,6 +3,7 @@ const Joi = require("@hapi/joi");
 Joi.objectId = require("joi-objectid")(Joi); //returns a function accepts the Joi class
 const mongoose = require("mongoose");
 const product = require("./routes/shopAPIs/customer/product");
+const images = require("./routes/shopAPIs/customer/upload");
 const customer = require("./routes/shopAPIs/customer/customer");
 const seller = require("./routes/shopAPIs/seller/seller");
 const path = require("path");
@@ -37,6 +38,7 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(helmet());
 app.use("/api/product", product);
+app.use("/api/images", images);
 app.use("/api/customers", customer);
 app.use("/api/seller", seller);
 app.use("/auth", authRoute);

@@ -5,7 +5,6 @@ var uniqueValidator = require("mongoose-unique-validator");
 const productSchema = new mongoose.Schema({
   productID: {
     type: String,
-    required: true,
     min: 0,
     max: 40,
     unique: true
@@ -28,7 +27,23 @@ const productSchema = new mongoose.Schema({
     min: 0,
     max: 200000
   },
-  colors: [String],
+
+  colors: {
+    type: String,
+    enum: [
+      "White",
+      "Black",
+      "Blue",
+      "Red",
+      "Green",
+      "Brown",
+      "Purple",
+      "Pink",
+      "Grey",
+      "Beige",
+      "Multi-Color"
+    ]
+  },
   fitting: {
     type: String,
     enum: [
@@ -47,7 +62,7 @@ const productSchema = new mongoose.Schema({
   },
   producTitle: { type: String, required: true },
   material: {
-    type: [String],
+    type: String,
     enum: [
       "Polyester",
       "Silk",
@@ -157,21 +172,7 @@ async function putproduct(item) {
     console.log(err.message);
   }
 }
-const enterthis = {
-  productID: "A00003",
-  price: 6500,
-  colors: ["red", "yellow", "multicolor"],
-  fitting: ["XXS", "XS", "S", "M", "L", "XL"],
-  producTitle: "sexy flower pattern double slit gown",
-  material: ["Cotton"],
-  category: ["Dress"],
-  URI: [
-    "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90087653_155090732623218_4909097977760666215_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=6TcX_6ME5xwAX-ZL-Nd&oh=b89b1a0c67d6911dc64777b73ca80f37&oe=5ED5D1BD"
-  ],
-  sellerName: {
-    name: "eleanor"
-  }
-};
+
 // const logit = putproduct(enterthis);
 // console.log(logit);
 
@@ -179,8 +180,7 @@ const enterthis = {
 const validateProduct = Joi.object({
   productID: Joi.string()
     .min(3)
-    .max(50)
-    .required(),
+    .max(50),
   price: Joi.number()
     .min(1)
     .max(200000)

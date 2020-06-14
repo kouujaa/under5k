@@ -22,11 +22,23 @@ const Footer = props => {
         </div>
         <div className="ml-3 mr-5 ulinks">
           <h5>Follow us</h5>
-          <ul>
+          {/* <ul>
             <li>
               <a href="mailto:omare@gmail.com">instagram</a>
             </li>
             <li>facebook</li>
+          </ul> */}
+          <ul>
+            <li>
+              <a href="https://www.instagram.com/thriftnhub/">Instagram</a>
+            </li>
+            <li>Instagram</li>
+          </ul>
+          <ul>
+            <li>
+              <a href="https://web.facebook.com/thriftnhub">Facebook</a>
+            </li>
+            <li>Facebook</li>
           </ul>
         </div>
       </Navbar>

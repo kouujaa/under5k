@@ -22,7 +22,7 @@ const SideOptions = () => {
       <Card>
         <CardBody></CardBody>
         <CardFooter>
-          <Link to="/sellerDashBoard/manageStore">Manage Store</Link>
+          <Link to="/sellerDashBoard/manageStore">Remove Product</Link>
         </CardFooter>
       </Card>
     </div>

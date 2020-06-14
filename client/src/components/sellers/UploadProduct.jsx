@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
+import { Link, Route } from "react-router-dom";
+import UploadProductImage from "./UploadProductImage";
 
 class UploadProduct extends Component {
-  class = {
-    pictureBuffer: ["hey"],
+  state = {
     itemDescription: "",
-    sizes: [],
+    sizes: "",
     colors: [],
     numberInStock: 1,
     price: 0,
-    Marerial: "",
-    Category: ""
+    material: "",
+    category: ""
   };
 
   onChangeHandler = input => e => {
@@ -19,11 +20,30 @@ class UploadProduct extends Component {
     this.setState(userInfo);
   };
 
-  onArrayChangeHandler = input => e => {
-    const userInfo = { ...this.state };
+  // onColorChangeHandler = input => e => {
+  //   if (e.target.checked === true) {
+  //     const colors = [...this.state.colors];
+  //     console.log(e.target.id);
+  //     colors.push(e.target.id);
+  //     this.setState(colors);
+  //   }
+  //   if (e.target.checked === false) {
+  //     var colors = [...this.state.colors];
+  //     colors = colors.filter(v => v !== e.target.id);
+  //     this.setState(colors);
+  //   }
+  //   console.log(this.state.colors);
+  //   // userInfo[e.target.name] = e.target.value;
+  //   // this.setState(userInfo);
+  // };
 
-    // userInfo[e.target.name].push(e.target.value);
-    this.setState(userInfo);
+  onArrayChangeHandler = e => {
+    // const userInfo = { ...this.state };
+    const selectedFile1 = e.target.files[0];
+    // // userInfo[e.target.name].push(e.target.value);
+    this.setState({ selectedFile1 });
+    console.log(e.target.files[0]);
+    console.log(this.state.selectedFile1);
   };
 
   onSubmitHandler = e => {
@@ -41,37 +61,6 @@ class UploadProduct extends Component {
         <div className="container">
           <Form onSubmit={this.onSubmitHandler}>
             <FormGroup>
-              <Label for="pictureBuffer">Select images</Label>
-              <CustomInput
-                type="file"
-                id="pictureBuffer"
-                name="pictureBuffer"
-                label="Select"
-                onChange={this.onArrayChangeHandler("pictureBuffer")}
-              />
-              {/* <CustomInput
-                type="file"
-                id="image"
-                name="image"
-                label="Select"
-                onChange={this.onArrayChangeHandler("numberInStock")}
-              /> */}
-              {/* <CustomInput
-                type="file"
-                id="image"
-                name="image"
-                label="Select"
-                onChange={this.onArrayChangeHandler("numberInStock")}
-              />
-              <CustomInput
-                type="file"
-                id="image"
-                name="image"
-                label="Select"
-                onChange={this.onArrayChangeHandler("numberInStock")}
-              /> */}
-            </FormGroup>
-            <FormGroup>
               <Label for="itemDescription">Item Description</Label>
               <Input
                 name="itemDescription"
@@ -81,62 +70,44 @@ class UploadProduct extends Component {
               ></Input>
             </FormGroup>
 
-            <FormGroup check>
-              <Label for="sizes">Sizes</Label>
-              <div>
-                <CustomInput type="checkbox" id="S" label="S" inline />
-                <CustomInput type="checkbox" id="XS" label="XS" inline />
-                <CustomInput type="checkbox" id="M" label="M" inline />
-                <CustomInput type="checkbox" id="L" label="L" inline />
-                <CustomInput type="checkbox" id="XL" label="XL" inline />
-              </div>
+            <FormGroup>
+              <Label for="sizes">size</Label>
+              <Input
+                type="select"
+                name="sizes"
+                id="sizes"
+                required
+                onChange={this.onChangeHandler("sizes")}
+              >
+                <option>Select size</option>
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+              </Input>
             </FormGroup>
             <FormGroup>
-              <Label for="colors">Colors</Label>
-              <FormGroup check>
-                <div>
-                  <CustomInput
-                    type="checkbox"
-                    id="Black"
-                    label="Black"
-                    inline
-                  />
-                  <CustomInput
-                    type="checkbox"
-                    id="White"
-                    label="White"
-                    inline
-                  />
-                  <CustomInput type="checkbox" id="Blue" label="Blue" inline />
-                  <CustomInput type="checkbox" id="Red" label="Red" inline />
-                  <CustomInput
-                    type="checkbox"
-                    id="Green"
-                    label="Green"
-                    inline
-                  />
-                  <CustomInput
-                    type="checkbox"
-                    id="Brown"
-                    label="Brown"
-                    inline
-                  />
-                  <CustomInput
-                    type="checkbox"
-                    id="Purple"
-                    label="Purple"
-                    inline
-                  />
-                  <CustomInput type="checkbox" id="Pink" label="Pink" inline />
-                  <CustomInput type="checkbox" id="Grey" label="Grey" inline />
-                  <CustomInput
-                    type="checkbox"
-                    id="Beige"
-                    label="Beige"
-                    inline
-                  />
-                </div>
-              </FormGroup>
+              <Label for="colors">`Select Main Color</Label>
+              <Input
+                type="select"
+                name="colors"
+                id="colors"
+                required
+                onChange={this.onChangeHandler("colors")}
+              >
+                <option>Select Color</option>
+                <option>White</option>
+                <option>Black</option>
+                <option>Blue</option>
+                <option>Red</option>
+                <option>Green</option>
+                <option>Brown</option>
+                <option>Purple</option>
+                <option>Pink</option>
+                <option>Grey</option>
+                <option>Beige</option>
+              </Input>
             </FormGroup>
             <FormGroup>
               <Label for="numberInStock">Number Of Item In stock</Label>
@@ -184,7 +155,13 @@ class UploadProduct extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="category">Category</Label>
-              <Input type="select" name="category" id="category" required>
+              <Input
+                type="select"
+                name="category"
+                id="category"
+                required
+                onChange={this.onChangeHandler("category")}
+              >
                 <option>Select Category</option>
                 <option>Blouses</option>
                 <option>Bodysuits</option>
@@ -211,9 +188,17 @@ class UploadProduct extends Component {
               </Input>
             </FormGroup>
             <Button className="mt-4" type="submit">
-              Upload pic
+              Proceed to image upload
             </Button>
           </Form>
+
+          <Link to="/sellerDashBoard/uploadProduct/uploadProductImage">
+            proceed to image upload
+          </Link>
+
+          <Route path="/sellerDashBoard/uploadProduct/uploadProductImage">
+            <UploadProductImage uploadinfo={this.state} />
+          </Route>
         </div>
       </div>
     );
@@ -221,3 +206,23 @@ class UploadProduct extends Component {
 }
 
 export default UploadProduct;
+
+{
+  /* <FormGroup>
+        <Label for="colors">Select Colors</Label>
+        <div>
+          <CustomInput type="checkbox" id="Checkbox" label="" />
+          <CustomInput type="checkbox" id="Checkbox2" label="" />
+          <CustomInput type="checkbox" id="Checkbox3" label=""  />
+          <CustomInput type="checkbox" id="Checkbox4" label=""  />
+          <CustomInput type="checkbox" id="Checkbox" label="" />
+          <CustomInput type="checkbox" id="Checkbox2" label="" />
+          <CustomInput type="checkbox" id="Checkbox3" label=""  />
+          <CustomInput type="checkbox" id="Checkbox4" label=""  />
+          <CustomInput type="checkbox" id="Checkbox" label="" />
+          <CustomInput type="checkbox" id="Checkbox2" label="" />
+          <CustomInput type="checkbox" id="Checkbox3" label=""  />
+          <CustomInput type="checkbox" id="Checkbox4" label=""  />
+        </div>
+      </FormGroup> */
+}
