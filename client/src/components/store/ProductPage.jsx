@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import ProductDisplay from "./ProductsDisplay";
 import Cart from "./Cart";
 import _ from "lodash";
+import Sorts from "./sort&filters/sorts/Sorts";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import { selectedSortFunc } from "./sort&filters/sorts/sorting";
@@ -139,7 +140,7 @@ class ProductPage extends Component {
             dec={this.decrementCart}
             rem={this.removeFromCart}
           />
-
+          <Sorts handleSort={this.handleSort} />
           <ProductDisplay
             className="container ml-4"
             products={sendDown}

@@ -3,7 +3,7 @@ import { Navbar } from "reactstrap";
 
 const Footer = props => {
   return (
-    <div className="navb bottom down mt-5" id="navb">
+    <div className="bottom down mt-5">
       <Navbar color="dark" dark expand="sm" style={{ height: "30em" }}>
         <div className="ml-3">
           <h6 className="fw-title">

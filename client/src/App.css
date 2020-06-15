@@ -25,6 +25,9 @@ bottom {
 }
 .navb {
   background-color: #0a0b5b;
+  position: sticky;
+  top: 0;
+  z-index: 7;
 }
 li {
   list-style-type: none;
