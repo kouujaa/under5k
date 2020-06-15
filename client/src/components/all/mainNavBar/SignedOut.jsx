@@ -22,7 +22,7 @@ const SignedOut = props => {
             props.toggle();
           }}
         >
-          SIGN UP
+          LOGIN
         </Link>
       </NavItem>
     </React.Fragment>

@@ -10,8 +10,11 @@ const Paginate = props => {
   const pages = _.range(1, pagesCount + 1);
 
   return (
-    <div>
-      <Pagination aria-label="Page navigation example">
+    <div style={{ backgroundColor: "white" }}>
+      <Pagination
+        style={{ backgroundColor: "white" }}
+        aria-label="Page navigation example"
+      >
         {pages.map(page => (
           <PaginationItem
             className={page === currentPage ? "active" : ""}

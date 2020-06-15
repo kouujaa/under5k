@@ -14,7 +14,7 @@ const SignedIn = ({ signOut, user, toggle }) => {
           }}
           to=""
         >
-          SIGN OUT
+          LOGOUT
         </Link>
       </NavItem>
       <NavItem className="left">

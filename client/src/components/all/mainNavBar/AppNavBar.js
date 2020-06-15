@@ -25,13 +25,8 @@ const AppNavBar = ({ user, clearState }) => {
       animate={{ y: 0 }}
       transition={{ duration: 1, type: "spring", stiffness: 500 }}
     >
-      <Navbar color="dark" dark expand="sm" className="">
+      <Navbar color="dark" dark expand="sm" className="navbrands">
         <NavbarBrand className="navbrands" href="/">
-          {/* <img
-                className="mlogo mr-2"
-                alt="shopimg"
-                src="https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-19/s150x150/89968990_957204811341726_4384545590646669312_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_ohc=_yDoTJAiMLcAX_3Pkfy&oh=dbc6832c838585e55d115f270ba2218e&oe=5ED7C28A"
-              /> */}
           THIRFTNHUB
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
@@ -63,7 +58,7 @@ const AppNavBar = ({ user, clearState }) => {
             </NavItem>
             <NavItem className="left">
               <NavLink to="/sellerHomePage" onClick={toggleNavbar}>
-                SELLER PORTAL
+                SELLER
               </NavLink>
             </NavItem>
           </Nav>
