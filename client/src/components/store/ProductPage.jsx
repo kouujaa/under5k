@@ -7,6 +7,7 @@ import _ from "lodash";
 import Sorts from "./sort&filters/sorts/Sorts";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
+import Filters from "./sort&filters/filters/filteringcomponenets/Filters";
 import { selectedSortFunc } from "./sort&filters/sorts/sorting";
 import {
   SelectedSizeFilterFunction,
@@ -139,6 +140,16 @@ class ProductPage extends Component {
             inc={this.incrementCart}
             dec={this.decrementCart}
             rem={this.removeFromCart}
+          />
+          <Filters
+            products={sendDown}
+            handleSizeFilter={this.handleSizeFilter}
+            handleCategoryFilter={this.handleCategoryFilter}
+            handleSellerFilter={this.handleSellerFilter}
+            selectedSize={this.state.selectedSize}
+            currentCategory={currentCategory}
+            currentSeller={currentSeller}
+            currentSize={currentSize}
           />
           <Sorts handleSort={this.handleSort} />
           <ProductDisplay

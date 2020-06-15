@@ -16,7 +16,7 @@ class ProductDisplay extends Component {
   render() {
     return (
       <div>
-        <Filters
+        {/* <Filters
           products={this.props.products}
           handleSizeFilter={this.props.handleSizeSelect}
           handleCategoryFilter={this.props.handleCategorySelect}
@@ -25,8 +25,8 @@ class ProductDisplay extends Component {
           currentCategory={this.props.currentCategory}
           currentSeller={this.props.currentSeller}
           currentSize={this.props.currentSize}
-        />
-        <Sorts handleSort={this.props.handleSort} />
+        /> */}
+        {/* <Sorts handleSort={this.props.handleSort} /> */}
 
         <div className="allProducts container">{this.displayall()}</div>
         <div className="container"></div>
