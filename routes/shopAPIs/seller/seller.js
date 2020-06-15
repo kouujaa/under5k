@@ -9,7 +9,9 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const { shopName } = req.body;
-  const seller = await Seller.findOne({ shopName });
+  const seller = await Seller.findOne({ shopName }).select(
+    "meta purchasePriceTotal firstName lastName address phoneNumber shopName email cart _id"
+  );
   res.send(seller);
 });
 

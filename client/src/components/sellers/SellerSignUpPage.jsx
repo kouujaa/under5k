@@ -271,11 +271,11 @@ class SellerSignUp extends Component {
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label for="exampleCheckbox">Switches</Label>
+            <Label for="userCheckbox">Switches</Label>
             <div>
               <CustomInput
                 type="switch"
-                id="exampleCustomSwitch2"
+                id="userCustomSwitch"
                 name="agreement"
                 required
                 label="agree to seller agreement"
@@ -286,6 +286,7 @@ class SellerSignUp extends Component {
           <Button className="mt-4" type="submit">
             Submit
           </Button>
+          <Link to="/sellerAgreement">seller Agreement</Link>
         </Form>
         <span></span>
         <br></br>

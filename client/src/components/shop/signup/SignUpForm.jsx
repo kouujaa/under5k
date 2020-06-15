@@ -245,6 +245,7 @@ class SignUpForm extends Component {
                 label="agree to customer agreement"
                 onChange={this.onChangeHandler("agreement")}
               />
+              <Link to="/userAgreement">user Agreement</Link>
             </div>
           </FormGroup>
           <Button className="mt-4" type="submit">

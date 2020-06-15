@@ -159,66 +159,12 @@ sellerSchema.plugin(uniqueValidator);
 
 const Seller = mongoose.model("seller", sellerSchema);
 
-async function putSeller(item) {
-  const {
-    shopName,
-    password,
-    firstName,
-    lastName,
-    address,
-    accountName,
-    accountNumber,
-    bank,
-    email,
-    phoneNumber,
-    dob,
-    gender,
-    state
-  } = item;
-
-  const seller = new Seller({
-    shopName,
-    password,
-    firstName,
-    lastName,
-    address,
-    accountName,
-    accountNumber,
-    bank,
-    email,
-    phoneNumber,
-    dob,
-    gender,
-    state
-  });
-  try {
-    const saveditem = await seller.save();
-
-    return saveditem;
-  } catch (err) {
-    console.log(err.message);
-  }
-}
-const enterthis = {
-  firstName: "omare",
-  lastName: "iloba",
-  password: "123455",
-  shopName: "omathrift",
-  phoneNumber: 08023410634,
-  email: "oma@gmail.com",
-  address: "somewhere here"
-};
-// const logit = putSeller(enterthis);
-// console.log(logit);
-
 const validateSeller = Joi.object({
   accountName: Joi.string()
     .min(3)
     .max(50)
     .required(),
-  accountNumber: Joi.number()
-    .min(9)
-    .required(),
+  accountNumber: Joi.number().required(),
   bank: Joi.string()
     .min(3)
     .max(25)
@@ -239,9 +185,7 @@ const validateSeller = Joi.object({
     .min(2)
     .max(50)
     .required(),
-  phoneNumber: Joi.number()
-    .min(8)
-    .required(),
+  phoneNumber: Joi.number().required(),
   email: Joi.string()
     .min(8)
     .max(500)
