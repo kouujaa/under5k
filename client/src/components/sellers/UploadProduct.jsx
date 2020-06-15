@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 import { Link, Route } from "react-router-dom";
 import UploadProductImage from "./UploadProductImage";
 
@@ -19,39 +19,6 @@ class UploadProduct extends Component {
     userInfo[input] = e.target.value;
     this.setState(userInfo);
   };
-
-  // onColorChangeHandler = input => e => {
-  //   if (e.target.checked === true) {
-  //     const colors = [...this.state.colors];
-  //     console.log(e.target.id);
-  //     colors.push(e.target.id);
-  //     this.setState(colors);
-  //   }
-  //   if (e.target.checked === false) {
-  //     var colors = [...this.state.colors];
-  //     colors = colors.filter(v => v !== e.target.id);
-  //     this.setState(colors);
-  //   }
-  //   console.log(this.state.colors);
-  //   // userInfo[e.target.name] = e.target.value;
-  //   // this.setState(userInfo);
-  // };
-
-  // onArrayChangeHandler = e => {
-  //   // const userInfo = { ...this.state };
-  //   const selectedFile1 = e.target.files[0];
-  //   // // userInfo[e.target.name].push(e.target.value);
-  //   this.setState({ selectedFile1 });
-  //   console.log(e.target.files[0]);
-  //   console.log(this.state.selectedFile1);
-  // };
-
-  // onSubmitHandler = e => {
-  //   e.preventDefault();
-  //   console.log(this.state);
-  //   // const { fullName, email, subject, message } = this.state;
-  //   // //send message and clear screen
-  // };
 
   render() {
     return (
@@ -204,23 +171,3 @@ class UploadProduct extends Component {
 }
 
 export default UploadProduct;
-
-{
-  /* <FormGroup>
-        <Label for="colors">Select Colors</Label>
-        <div>
-          <CustomInput type="checkbox" id="Checkbox" label="" />
-          <CustomInput type="checkbox" id="Checkbox2" label="" />
-          <CustomInput type="checkbox" id="Checkbox3" label=""  />
-          <CustomInput type="checkbox" id="Checkbox4" label=""  />
-          <CustomInput type="checkbox" id="Checkbox" label="" />
-          <CustomInput type="checkbox" id="Checkbox2" label="" />
-          <CustomInput type="checkbox" id="Checkbox3" label=""  />
-          <CustomInput type="checkbox" id="Checkbox4" label=""  />
-          <CustomInput type="checkbox" id="Checkbox" label="" />
-          <CustomInput type="checkbox" id="Checkbox2" label="" />
-          <CustomInput type="checkbox" id="Checkbox3" label=""  />
-          <CustomInput type="checkbox" id="Checkbox4" label=""  />
-        </div>
-      </FormGroup> */
-}

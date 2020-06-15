@@ -140,43 +140,6 @@ productSchema.plugin(uniqueValidator);
 
 const Product = mongoose.model("product", productSchema);
 
-async function putproduct(item) {
-  const {
-    productID,
-    price,
-    colors,
-    fitting,
-    producTitle,
-    material,
-    category,
-    URI,
-    sellerName
-  } = item;
-
-  const product = new Product({
-    productID,
-    price,
-    colors,
-    fitting,
-    producTitle,
-    material,
-    category,
-    URI,
-    sellerName
-  });
-  try {
-    const saveditem = await product.save();
-
-    return saveditem;
-  } catch (err) {
-    console.log(err.message);
-  }
-}
-
-// const logit = putproduct(enterthis);
-// console.log(logit);
-
-// function validateProduct(product) {
 const validateProduct = Joi.object({
   productID: Joi.string()
     .min(3)
@@ -205,4 +168,3 @@ const validateProduct = Joi.object({
 exports.productSchema = productSchema;
 exports.Product = Product;
 exports.validateProduct = validateProduct;
-exports.putproduct = putproduct;

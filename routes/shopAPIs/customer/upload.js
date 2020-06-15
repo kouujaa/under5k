@@ -86,7 +86,6 @@ router.post(
     }
   },
   (req, res) => {
-    console.log(req);
     return res.send("received");
   }
 );

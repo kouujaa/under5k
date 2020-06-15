@@ -208,4 +208,3 @@ const validateSeller = Joi.object({
 exports.sellerSchema = sellerSchema;
 exports.Seller = Seller;
 exports.validateSeller = validateSeller;
-exports.putSeller = putSeller;

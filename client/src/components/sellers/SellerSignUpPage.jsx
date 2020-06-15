@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
+import { Link } from "react-router-dom";
 class SellerSignUp extends Component {
   state = {
     shopName: "",

@@ -48,7 +48,7 @@ router.post("/login", async (req, res) => {
     },
     config.get("jwtPrivateKey")
   );
-  console.log(token);
+
   return res.send(token);
   // res.header("x-authentication-token", token).send(`login successful`);
 });

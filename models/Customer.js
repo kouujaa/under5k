@@ -88,57 +88,6 @@ customerSchema.plugin(uniqueValidator);
 
 const Customer = mongoose.model("customer", customerSchema);
 
-async function putCustomer(item) {
-  const {
-    userName,
-    password,
-    firstName,
-    lastName,
-    address,
-    email,
-    phoneNumber,
-    dob,
-    gender,
-    state
-  } = item;
-
-  const customer = new Customer({
-    userName,
-    password,
-    firstName,
-    lastName,
-    address,
-    email,
-    phoneNumber,
-    dob,
-    gender,
-    state
-  });
-
-  try {
-    const saveditem = await customer.save();
-
-    return saveditem;
-  } catch (err) {
-    console.log(err.message);
-  }
-}
-
-const enterthis = {
-  userName: "omalita",
-  password: "1234",
-  firstName: "omare",
-  lastName: "iloba",
-  address: "no 2 emessiri",
-  email: "omare@gmail.com",
-  phoneNumber: 8023410665,
-  dob: 23 - 04 - 1989,
-  gender: "male",
-  state: "abia"
-};
-// const logit = putCustomer(enterthis);
-// console.log(logit);
-
 const validateCustomer = Joi.object({
   firstName: Joi.string()
     .min(3)
@@ -182,4 +131,3 @@ const validateCustomer = Joi.object({
 exports.customerSchema = customerSchema;
 exports.Customer = Customer;
 exports.validateCustomer = validateCustomer;
-exports.putCustomer = putCustomer;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { UncontrolledCarousel } from "reactstrap";
 import firstPick from "../../shop/firstpic.jpg";
@@ -65,8 +65,7 @@ export default Jumbo;
 
 // export default Jumbo;
 
-{
-  /* <div className="jumbotron jumb">
+/* <div className="jumbotron jumb">
 <div className="mt-5">
   <h1 className="display-4">TOP SELLER!!!</h1>
   <p className="lead jumbotxt">Discount offers</p>
@@ -82,4 +81,3 @@ export default Jumbo;
   </p>
 </div>
 </div> */
-}
