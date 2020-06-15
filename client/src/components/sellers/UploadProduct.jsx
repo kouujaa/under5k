@@ -16,7 +16,7 @@ class UploadProduct extends Component {
 
   onChangeHandler = input => e => {
     const userInfo = { ...this.state };
-    userInfo[e.target.name] = e.target.value;
+    userInfo[input] = e.target.value;
     this.setState(userInfo);
   };
 
@@ -37,21 +37,21 @@ class UploadProduct extends Component {
   //   // this.setState(userInfo);
   // };
 
-  onArrayChangeHandler = e => {
-    // const userInfo = { ...this.state };
-    const selectedFile1 = e.target.files[0];
-    // // userInfo[e.target.name].push(e.target.value);
-    this.setState({ selectedFile1 });
-    console.log(e.target.files[0]);
-    console.log(this.state.selectedFile1);
-  };
+  // onArrayChangeHandler = e => {
+  //   // const userInfo = { ...this.state };
+  //   const selectedFile1 = e.target.files[0];
+  //   // // userInfo[e.target.name].push(e.target.value);
+  //   this.setState({ selectedFile1 });
+  //   console.log(e.target.files[0]);
+  //   console.log(this.state.selectedFile1);
+  // };
 
-  onSubmitHandler = e => {
-    e.preventDefault();
-    console.log(this.state);
-    // const { fullName, email, subject, message } = this.state;
-    // //send message and clear screen
-  };
+  // onSubmitHandler = e => {
+  //   e.preventDefault();
+  //   console.log(this.state);
+  //   // const { fullName, email, subject, message } = this.state;
+  //   // //send message and clear screen
+  // };
 
   render() {
     return (
@@ -139,7 +139,7 @@ class UploadProduct extends Component {
                 onChange={this.onChangeHandler("material")}
               >
                 <option>Select Material</option>
-                <option>Cotton"</option>
+                <option>Cotton</option>
                 <option>FauxFur</option>
                 <option>Fur</option>
                 <option>Leather</option>
@@ -187,18 +187,16 @@ class UploadProduct extends Component {
                 <option>Tops</option>
               </Input>
             </FormGroup>
-            <Button className="mt-4" type="submit">
-              Proceed to image upload
-            </Button>
+            <span className="btn mt-4">
+              <Link to="/sellerDashBoard/uploadProduct/uploadProductImage">
+                proceed to image upload
+              </Link>
+            </span>
+
+            <Route path="/sellerDashBoard/uploadProduct/uploadProductImage">
+              <UploadProductImage uploadinfo={this.state} />
+            </Route>
           </Form>
-
-          <Link to="/sellerDashBoard/uploadProduct/uploadProductImage">
-            proceed to image upload
-          </Link>
-
-          <Route path="/sellerDashBoard/uploadProduct/uploadProductImage">
-            <UploadProductImage uploadinfo={this.state} />
-          </Route>
         </div>
       </div>
     );

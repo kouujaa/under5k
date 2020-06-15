@@ -1,4 +1,4 @@
-import storage from "@google-cloud/storage";
+import firebase from "firebase";
 
 const config = {
   apiKey: "AIzaSyA1eU2m11vTeedCwP1akTFyM3bdYp5fTUg",
@@ -9,3 +9,6 @@ const config = {
   messagingSenderId: "409534904306",
   appId: "1:409534904306:web:8ac0daeaf5946dd1879d6b"
 };
+
+firebase.initializeApp(config);
+export default firebase;

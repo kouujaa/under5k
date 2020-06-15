@@ -89,7 +89,6 @@ class SellerSignUp extends Component {
               onChange={this.onChangeHandler("shopName")}
               name="shopName"
               required
-              onFocus
             />
           </FormGroup>
           <FormGroup>
@@ -279,7 +278,7 @@ class SellerSignUp extends Component {
                 id="exampleCustomSwitch2"
                 name="agreement"
                 required
-                label="agree to customer agreement"
+                label="agree to seller agreement"
                 onChange={this.onChangeHandler("agreement")}
               />
             </div>

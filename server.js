@@ -10,6 +10,7 @@ const path = require("path");
 const express = require("express");
 const authRoute = require("./routes/auths/auth");
 const app = express();
+const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const graphqlHTTP = require("express-graphql");
@@ -37,11 +38,13 @@ mongoose
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(helmet());
+app.use(cors());
 app.use("/api/product", product);
 app.use("/api/images", images);
 app.use("/api/customers", customer);
 app.use("/api/seller", seller);
 app.use("/auth", authRoute);
+
 app.use(
   "/graphapi",
   graphqlHTTP({

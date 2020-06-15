@@ -18,8 +18,20 @@ router.get("/", async (req, res) => {
 
 //add a product
 router.post("/addProduct", async (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
+  const { picInfo, picURL } = req.body;
+
+  console.log(
+    `itemDescription:${picInfo.uploadinfo.itemDescription},
+    sizes: ${picInfo.uploadinfo.sizes},
+    colors: ${picInfo.uploadinfo.colors},
+    numberInStock: ${picInfo.uploadinfo.numberInStock},
+    price: ${picInfo.uploadinfo.price},
+    material: ${picInfo.uploadinfo.material},
+    category: ${picInfo.uploadinfo.category},
+    URL: ${picURL}`
+  );
+
+  const product = new Product({});
 
   // const product = new Product({});
 });

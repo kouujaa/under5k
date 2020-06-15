@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Link } from "react-router-dom";
 import axios from "axios";
 // import { awaitExpression } from "@babel/types";
 
@@ -27,12 +28,12 @@ class SellerSignInPage extends Component {
       localStorage.setItem("token", token.data);
       window.location = "/";
     } catch (err) {
-      this.props.history.push({
-        pathname: "/sellerSignIn",
-        search: "",
-        hash: "",
-        state: { message: "invalid login credentials!" }
-      });
+      // this.props.history.push({
+      //   pathname: "/sellerSignIn",
+      //   search: "",
+      //   hash: "",
+      //   state: { message: "invalid login credentials!" }
+      // });
     }
   }
 
@@ -73,9 +74,9 @@ class SellerSignInPage extends Component {
               onChange={this.onChangeHandler("password")}
             />
           </FormGroup>{" "}
-          {this.props.location.state ? (
+          {/* {this.props.location.state ? (
             <p className="text-danger">{this.props.location.state.message}</p>
-          ) : null}
+          ) : null} */}
           <Button className="mt-4" type="submit">
             Sign In
           </Button>

@@ -1,15 +1,16 @@
 import React from "react";
 import { NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 
-const SignedIn = props => {
+const SignedIn = ({ signOut, user, toggle }) => {
   return (
     <React.Fragment>
       <NavItem className="left">
         <Link
           onClick={() => {
-            props.toggle();
-            props.signOut();
+            toggle();
+            signOut();
           }}
           to=""
         >
@@ -20,10 +21,11 @@ const SignedIn = props => {
         <Link
           to="/profilePage"
           onClick={() => {
-            props.toggle();
+            toggle();
           }}
         >
-          PROFILE
+          {user.lastName.charAt(0).toUpperCase()}
+          {user.FirtName.charAt(0).toUpperCase()}
         </Link>
       </NavItem>
     </React.Fragment>
@@ -37,8 +39,8 @@ const SignedIn = props => {
 //         <NavItem className="left">
 //           <Link
 //             onClick={() => {
-//               this.props.toggle();
-//               this.props.signOut();
+//               this.toggle();
+//               this.signOut();
 //             }}
 //             to=""
 //           >
@@ -49,7 +51,7 @@ const SignedIn = props => {
 //           <Link
 //             to="/profilePage"
 //             onClick={() => {
-//               this.props.toggle();
+//               this.toggle();
 //             }}
 //           >
 //             PROFILE

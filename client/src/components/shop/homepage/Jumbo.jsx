@@ -2,24 +2,25 @@ import React, { Component } from "react";
 import { motion } from "framer-motion";
 import { UncontrolledCarousel } from "reactstrap";
 import firstPick from "../../shop/firstpic.jpg";
+import secondPick from "../../shop/2.jpg";
 
 const items = [
   {
     src: firstPick,
     altText: "Slide 1",
-    caption: "Slide 1",
-    header: "Slide 1 Header",
+    caption: "Customer favorites selections",
+    header: "TOP SELLER!!!",
     key: "1"
   },
   {
-    src: "../../shop/firstpic.jpg",
+    src: secondPick,
     altText: "Slide 2",
     caption: "Slide 2",
-    header: "Slide 2 Header",
+    header: "Dame of the week",
     key: "2"
   },
   {
-    src: "../../shop/firstpic.jpg",
+    src: firstPick,
     altText: "Slide 3",
     caption: "Slide 3",
     header: "Slide 3 Header",
@@ -30,6 +31,7 @@ const Jumbo = () => {
   return (
     <React.Fragment>
       <motion.div
+        className="display-4 lead jumbotxt"
         initial={{ x: 300 }}
         animate={{ x: 0 }}
         transition={{ duration: 1 }}

@@ -14,16 +14,21 @@ variables :root {
   font-family: "Raleway", sans-serif;
 }
 body {
-  font-family: "Dancing Script", cursive;
-
+  /* font-family: "Dancing Script", cursive; */
+  font-family: "Raleway", sans-serif;
   /* overflow: scroll;
    overflow-x: hidden; */
   background: var(--secondary);
 }
+bottom {
+  position: sticky;
+}
 li {
   list-style-type: none;
 }
-
+html {
+  min-height: 100%;
+}
 .collapse {
   z-index: 5;
   background-color: #0a0b5b;
@@ -129,9 +134,14 @@ textarea {
   color: white;
   font-size: 50px;
 }
-
+.navbrands {
+  font-family: "Amita", cursive;
+}
 /*small tablets*/
 @media (min-width: 500px) {
+  html {
+    min-height: 100%;
+  }
   .sec1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -180,6 +190,9 @@ textarea {
 
 /*large tablets and laptop*/
 @media (min-width: 920px) {
+  html {
+    min-height: 100%;
+  }
   .contact-page {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -222,6 +235,9 @@ textarea {
 
 /*desktop*/
 @media (min-width: 1200px) {
+  html {
+    min-height: 100%;
+  }
   .contact-page {
   }
 
