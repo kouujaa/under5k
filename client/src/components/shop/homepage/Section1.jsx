@@ -9,7 +9,7 @@ class NewArrivals extends Component {
       <div key={item.productCode}>
         <CardText>{item.description.slice(0, 12) + "..."}</CardText>
         <Card>
-          <img src={item.url} alt="cat"></img>
+          <img src={item.URI[0]} alt="cat"></img>
         </Card>
       </div>
     ));

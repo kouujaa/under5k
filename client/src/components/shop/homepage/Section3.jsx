@@ -9,7 +9,7 @@ class TopSellers extends Component {
       <div key={product.productCode}>
         <CardText>{product.seller}</CardText>
         <Card>
-          <img src={product.url} alt="imagine"></img>
+          <img src={product.URI[0]} alt="imagine"></img>
         </Card>
       </div>
     ));

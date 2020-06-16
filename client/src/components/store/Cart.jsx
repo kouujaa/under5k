@@ -2,13 +2,8 @@ import React, { Component } from "react";
 import { Table } from "reactstrap";
 import CartItem from "./CartItem";
 import { Link, withRouter } from "react-router-dom";
-
+import { motion } from "framer-motion";
 class Cart extends Component {
-  // showCArt=()=>{
-  //    const { cart } = this.props;
-
-  // }
-
   displayall = () => {
     const { cart } = this.props;
 
@@ -37,7 +32,12 @@ class Cart extends Component {
   render() {
     // console.log(this.props.cart);
     return (
-      <div className="mb-5">
+      <motion.div
+        className="mb-5"
+        initial={{ y: -300 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <Table>
           <thead className="container mr-3">
             <tr>
@@ -62,7 +62,7 @@ class Cart extends Component {
         >
           <button className="btn btn-sm btn-success">Check Out</button>
         </Link>
-      </div>
+      </motion.div>
     );
   }
 }

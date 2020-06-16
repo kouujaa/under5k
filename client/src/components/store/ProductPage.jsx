@@ -4,10 +4,8 @@ import React, { Component } from "react";
 import ProductDisplay from "./ProductsDisplay";
 import Cart from "./Cart";
 import _ from "lodash";
-import Sorts from "./sort&filters/sorts/Sorts";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
-import Filters from "./sort&filters/filters/filteringcomponenets/Filters";
 import { selectedSortFunc } from "./sort&filters/sorts/sorting";
 import {
   SelectedSizeFilterFunction,
@@ -71,16 +69,6 @@ class ProductPage extends Component {
     this.setState({ cart });
   };
 
-  // async populateState() {
-  //   try {
-  //     const products = await axios.get("/api/product/");
-
-  //     this.setState({ products: products.data });
-  //   } catch (err) {
-  //     // this.populateState();
-  //   }
-  // }
-
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
@@ -141,17 +129,7 @@ class ProductPage extends Component {
             dec={this.decrementCart}
             rem={this.removeFromCart}
           />
-          {/* <Filters
-            products={sendDown}
-            handleSizeFilter={this.handleSizeFilter}
-            handleCategoryFilter={this.handleCategoryFilter}
-            handleSellerFilter={this.handleSellerFilter}
-             selectedSize={this.state.selectedSize}
-            currentCategory={currentCategory}
-            currentSeller={currentSeller}
-            currentSize={currentSize}
-          />
-          <Sorts handleSort={this.handleSort} /> */}
+
           <ProductDisplay
             className="container ml-4"
             products={sendDown}

@@ -1,35 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { UncontrolledCarousel } from "reactstrap";
-import firstPick from "../../shop/firstpic.jpg";
-import secondPick from "../../shop/2.jpg";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 
-const items = [
-  {
-    src: firstPick,
-    altText: "Slide 1",
-    caption: "Customer favorites selections",
-    header: "TOP SELLER!!!",
-    key: "1"
-  },
-  {
-    src: secondPick,
-    altText: "Slide 2",
-    caption: "Slide 2",
-    header: "Dame of the week",
-    key: "2"
-  },
-  {
-    src: firstPick,
-    altText: "Slide 3",
-    caption: "Slide 3",
-    header: "Slide 3 Header",
-    key: "3"
-  }
-];
 const Jumbo = () => {
   return (
     <React.Fragment>

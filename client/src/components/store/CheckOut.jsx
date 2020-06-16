@@ -69,10 +69,11 @@ class CheckOut extends Component {
     ));
   };
   render() {
+    console.log(this.props);
     const { phoneNumber, address, firstName, lastName } = this.state.user;
     return (
       <div className="checkOut-page m-5 container">
-        <div>
+        <div className="mb-5">
           <div className="m-4">
             <h5>
               Name: {lastName} {firstName}
@@ -87,8 +88,10 @@ class CheckOut extends Component {
           <div className="m-4">
             <h5>Total Delivery fee: ₦ {this.getTotal()}</h5>
           </div>
-
-          <Button className="mt-5" onClick={this.checkout}>
+          <Button
+            className="btn btn-sm btn-success container"
+            onClick={this.checkout}
+          >
             Proceed to payment
           </Button>
         </div>
