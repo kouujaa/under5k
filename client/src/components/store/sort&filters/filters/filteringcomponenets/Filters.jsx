@@ -47,8 +47,8 @@ class Filters extends Component {
       currentSize
     } = this.props;
     return (
-      <div>
-        <SizeListGroup 
+      <div className="sandf">
+        <SizeListGroup
           handleSizeFilter={handleSizeFilter}
           sizes={this.state.sizes}
           selectedSize={selectedSize}

@@ -37,7 +37,7 @@ class Cart extends Component {
   render() {
     // console.log(this.props.cart);
     return (
-      <div>
+      <div className="mb-5">
         <Table>
           <thead className="container mr-3">
             <tr>
@@ -60,7 +60,7 @@ class Cart extends Component {
             state: { cart: this.props.cart }
           }}
         >
-          <button>Check Out</button>
+          <button className="btn btn-sm btn-success">Check Out</button>
         </Link>
       </div>
     );

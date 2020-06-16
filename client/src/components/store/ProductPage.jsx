@@ -141,17 +141,17 @@ class ProductPage extends Component {
             dec={this.decrementCart}
             rem={this.removeFromCart}
           />
-          <Filters
+          {/* <Filters
             products={sendDown}
             handleSizeFilter={this.handleSizeFilter}
             handleCategoryFilter={this.handleCategoryFilter}
             handleSellerFilter={this.handleSellerFilter}
-            selectedSize={this.state.selectedSize}
+             selectedSize={this.state.selectedSize}
             currentCategory={currentCategory}
             currentSeller={currentSeller}
             currentSize={currentSize}
           />
-          <Sorts handleSort={this.handleSort} />
+          <Sorts handleSort={this.handleSort} /> */}
           <ProductDisplay
             className="container ml-4"
             products={sendDown}

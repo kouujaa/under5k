@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 const SizeListGroup = ({ sizes, handleSizeFilter }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
   return (
-    <div>
-      <h1>Size</h1>
-      <ListGroup>
+    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+      <DropdownToggle caret>SIZE</DropdownToggle>
+      <DropdownMenu>
+        <DropdownItem header>Select Size</DropdownItem>
+        <DropdownItem divider />
         {sizes.map(size => (
-          <ListGroupItem
+          <DropdownItem
             className="btn"
             onClick={() => {
               handleSizeFilter(size);
@@ -15,11 +26,30 @@ const SizeListGroup = ({ sizes, handleSizeFilter }) => {
             key={size}
           >
             {size}
-          </ListGroupItem>
+          </DropdownItem>
         ))}
-      </ListGroup>
-    </div>
+      </DropdownMenu>
+    </Dropdown>
   );
 };
 
 export default SizeListGroup;
+
+{
+  /* <div>
+  <h1>Size</h1>
+  <ListGroup>
+    {sizes.map(size => (
+      <ListGroupItem
+        className="btn"
+        onClick={() => {
+          handleSizeFilter(size);
+        }}
+        key={size}
+      >
+        {size}
+      </ListGroupItem>
+    ))}
+  </ListGroup>
+</div>; */
+}

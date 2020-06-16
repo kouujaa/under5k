@@ -23,6 +23,31 @@ body {
 bottom {
   position: sticky;
 }
+.prodCard {
+  width: 14em;
+  height: 19em;
+}
+.prodCardBody {
+  width: 14em;
+  height: 15em;
+}
+.prodCardFooter {
+  width: 14em;
+  height: 6.9em;
+}
+.prodCardImg {
+  width: 11.6em;
+  height: 10em;
+}
+
+.sandf {
+  display: inline-flex;
+}
+.prodInfo {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
 .navb {
   background-color: #0a0b5b;
   position: sticky;
@@ -87,8 +112,8 @@ textarea {
 }
 .allProducts {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7em;
 }
 
 .UPS {
@@ -142,6 +167,8 @@ textarea {
 }
 .navbrands {
   font-family: "Amita", cursive;
+  font-size: 60px;
+  text-emphasis-color: green;
 }
 nav {
   background-color: white;
@@ -151,15 +178,32 @@ nav {
   html {
     min-height: 100%;
   }
+  .prodCard {
+    width: 14em;
+    height: 19em;
+  }
+  .prodCardBody {
+    width: 14em;
+    height: 15em;
+  }
+  .prodCardFooter {
+    width: 13em;
+    height: 6.5em;
+  }
+  .prodCardImg {
+    width: 11.6em;
+    height: 10em;
+  }
   .sec1 {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   .allProducts {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7em;
   }
+
   .signUp {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -207,6 +251,23 @@ nav {
     grid-template-columns: 2fr 1fr;
     gap: 15px;
   }
+  .prodCard {
+    width: 14em;
+    height: 19em;
+  }
+  .prodCardBody {
+    width: 14em;
+    height: 15em;
+  }
+  .prodCardFooter {
+    width: 13.5em;
+    height: 9em;
+  }
+  .prodCardImg {
+    width: 11.6em;
+    height: 10em;
+  }
+
   .productPage {
     width: 100%;
     display: grid;
@@ -247,6 +308,23 @@ nav {
   html {
     min-height: 100%;
   }
+  .prodCard {
+    width: 18em;
+    height: 21em;
+  }
+  .prodCardBody {
+    width: 18em;
+    height: 19em;
+  }
+  .prodCardFooter {
+    width: 17.8em;
+    height: 10em;
+  }
+  .prodCardImg {
+    width: 15em;
+    height: 11em;
+  }
+
   .contact-page {
   }
 

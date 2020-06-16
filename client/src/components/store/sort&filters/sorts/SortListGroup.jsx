@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 const SortListGroup = ({ handleSort }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
   return (
-    <div>
-      <h1>Sort</h1>
-      <ListGroup>
-        <ListGroupItem
+    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+      <DropdownToggle caret>Sort By</DropdownToggle>
+      <DropdownMenu>
+        <DropdownItem
           className="btn"
           onClick={() => {
             handleSort("priceLowToHigh");
@@ -14,8 +24,8 @@ const SortListGroup = ({ handleSort }) => {
           key={"priceLowToHigh"}
         >
           Price: low to high
-        </ListGroupItem>
-        <ListGroupItem
+        </DropdownItem>
+        <DropdownItem
           className="btn"
           onClick={() => {
             handleSort("priceHighToLow");
@@ -23,8 +33,8 @@ const SortListGroup = ({ handleSort }) => {
           key={"priceHighToLow"}
         >
           Price: high to low
-        </ListGroupItem>
-        <ListGroupItem
+        </DropdownItem>
+        <DropdownItem
           className="btn"
           onClick={() => {
             handleSort("NewArrivals");
@@ -32,10 +42,43 @@ const SortListGroup = ({ handleSort }) => {
           key={"NewArrivals"}
         >
           New arrivals
-        </ListGroupItem>
-      </ListGroup>
-    </div>
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
   );
 };
 
 export default SortListGroup;
+
+//  <div>
+//     <h1>Sort</h1>
+//     <ListGroup>
+//       <DropdownItem
+//         className="btn"
+//         onClick={() => {
+//           handleSort("priceLowToHigh");
+//         }}
+//         key={"priceLowToHigh"}
+//       >
+//         Price: low to high
+//       </DropdownItem>
+//       <DropdownItem
+//         className="btn"
+//         onClick={() => {
+//           handleSort("priceHighToLow");
+//         }}
+//         key={"priceHighToLow"}
+//       >
+//         Price: high to low
+//       </DropdownItem>
+//       <DropdownItem
+//         className="btn"
+//         onClick={() => {
+//           handleSort("NewArrivals");
+//         }}
+//         key={"NewArrivals"}
+//       >
+//         New arrivals
+//       </DropdownItem>
+//     </ListGroup>
+//   </div>

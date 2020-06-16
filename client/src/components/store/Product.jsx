@@ -8,7 +8,7 @@ class Product extends Component {
   //   price,
   //   colors,
   //   size,
-  //   productTitle,
+  //   description,
   //   materials,
   //   category,
   //   seller,
@@ -19,7 +19,7 @@ class Product extends Component {
       productID,
       price,
       sizes,
-      productTitle,
+      description,
       URI,
       seller
     } = this.props.item;
@@ -27,29 +27,26 @@ class Product extends Component {
     const { cartHandler } = this.props;
 
     return (
-      <div>
-        <Card style={{ width: "21em", height: "23em" }}>
-          <CardBody style={{ width: "18em", height: "19em" }}>
-            <img
-              src={URI}
-              alt={productID}
-              style={{ width: "18.5em", height: "11.5em" }}
-            ></img>
+      <div className="mb-2">
+        <Card className="prodCard">
+          <CardBody className="prodCardBody">
+            <img className="prodCardImg" src={URI} alt={productID}></img>
           </CardBody>
-          <CardFooter>
-            <h6>{productTitle}</h6>
+          <CardFooter className="prodCardFooter">
+            <h6>{description}</h6>
             <h6>₦{price}</h6>
-            <h6>Size: {sizes}</h6>
+            <h6>
+              Size: {sizes}
+              <Button
+                className="btn btn-danger btn-sm right "
+                onClick={() => {
+                  cartHandler(productID, description, sizes, price, URI);
+                }}
+              >
+                bag it
+              </Button>
+            </h6>
             <h6>Store: {seller}</h6>
-            {/* <h5>Rating: {rating}</h5> */}
-            <Button
-              className="btn btn-danger btn-sm"
-              onClick={() => {
-                cartHandler(productID, productTitle, sizes, price, URI);
-              }}
-            >
-              add to cart
-            </Button>
           </CardFooter>
         </Card>
       </div>

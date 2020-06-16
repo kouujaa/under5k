@@ -16,17 +16,19 @@ class ProductDisplay extends Component {
   render() {
     return (
       <div>
-        {/* <Filters
-          products={this.props.products}
-          handleSizeFilter={this.props.handleSizeSelect}
-          handleCategoryFilter={this.props.handleCategorySelect}
-          handleSellerFilter={this.props.handleSellerSelect}
-          selectedSize={this.props.selectedSize}
-          currentCategory={this.props.currentCategory}
-          currentSeller={this.props.currentSeller}
-          currentSize={this.props.currentSize}
-        /> */}
-        {/* <Sorts handleSort={this.props.handleSort} /> */}
+        <div className="sandf mb-2">
+          <Filters
+            products={this.props.products}
+            handleSizeFilter={this.props.handleSizeSelect}
+            handleCategoryFilter={this.props.handleCategorySelect}
+            handleSellerFilter={this.props.handleSellerSelect}
+            selectedSize={this.props.selectedSize}
+            currentCategory={this.props.currentCategory}
+            currentSeller={this.props.currentSeller}
+            currentSize={this.props.currentSize}
+          />
+          <Sorts handleSort={this.props.handleSort} />
+        </div>
 
         <div className="allProducts container">{this.displayall()}</div>
         <div className="container"></div>

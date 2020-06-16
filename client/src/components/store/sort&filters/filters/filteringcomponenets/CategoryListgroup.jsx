@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 const CategoryListGroup = ({ categories, handleCategoryFilter }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
   return (
-    <div>
-      <h1>Category</h1>
-      <ListGroup>
+    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+      <DropdownToggle caret>Category</DropdownToggle>
+      <DropdownMenu>
+        <DropdownItem divider />
+        <DropdownItem header>Select Category</DropdownItem>
         {categories.map(category => (
-          <ListGroupItem
+          <DropdownItem
             className="btn"
             onClick={() => {
               handleCategoryFilter(category);
@@ -15,10 +27,10 @@ const CategoryListGroup = ({ categories, handleCategoryFilter }) => {
             key={category}
           >
             {category}
-          </ListGroupItem>
+          </DropdownItem>
         ))}
-      </ListGroup>
-    </div>
+      </DropdownMenu>
+    </Dropdown>
   );
 };
 
