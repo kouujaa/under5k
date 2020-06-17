@@ -60,7 +60,7 @@ const productSchema = new mongoose.Schema({
       "All"
     ]
   },
-  producTitle: { type: String, required: true },
+  productTitle: { type: String, required: true },
   material: {
     type: String,
     enum: [
@@ -109,10 +109,12 @@ const productSchema = new mongoose.Schema({
   },
   dateAdded: { type: Date, default: Date.now },
   URI: { type: [String], required: true },
-  seller: {
-    sellerID: { type: mongoose.Schema.Types.ObjectId, ref: "Seller" },
-    name: { type: String, required: true, minlength: 1, maxlength: 25 }
-  },
+  // seller: {
+  //   sellerID: { type: mongoose.Schema.Types.ObjectId, ref: "Seller" },
+  //   name: { type: String, required: true, minlength: 1, maxlength: 25 }
+  // },
+  seller: { type: String, required: true, minlength: 1, maxlength: 25 },
+
   meta: {
     purchasedCount: { type: Number, default: 0 },
     likedCount: { type: Number, default: 0 },

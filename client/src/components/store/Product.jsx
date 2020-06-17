@@ -25,7 +25,26 @@ class Product extends Component {
       >
         <Card className="prodCard">
           <CardBody className="prodCardBody">
-            <img className="prodCardImg" src={URI} alt={productID}></img>
+            <motion.div
+              className="display-4 lead jumbotxt"
+              initial={{ x: 300 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <Carousel
+                showStatus={false}
+                infiniteLoop
+                autoPlay
+                showThumbs={false}
+              >
+                <div>
+                  <img className="prodCardImg" src={URI} alt={productID}></img>{" "}
+                </div>
+                <div>
+                  <img className="prodCardImg" src={URI} alt={productID}></img>
+                </div>
+              </Carousel>
+            </motion.div>
           </CardBody>
           <CardFooter className="prodCardFooter">
             <h6>{description}</h6>
@@ -61,15 +80,9 @@ export default Product;
   >
     <Carousel showStatus={false} infiniteLoop autoPlay showThumbs={false}>
       <div>
-        <img src="https://firebasestorage.googleapis.com/v0/b/thriftgallery-ab5c9.appspot.com/o/images%2Ffirstpic.jpg?alt=media&token=09314e43-62c7-4395-a1ce-85d784d19211" />
-        <Link to="/shop" className="legend">
-          TOP SELLER!!!
-        </Link>
-      </div>
+      <img className="prodCardImg" src={URI} alt={productID}></img> </div>
       <div>
-        <img src="https://firebasestorage.googleapis.com/v0/b/thriftgallery-ab5c9.appspot.com/o/images%2F2.jpg?alt=media&token=75fb0c37-f9aa-4ac4-89cc-9f1a852836d0" />
-        <p className="legend">Dame of the week</p>
-      </div>
+      <img className="prodCardImg" src={URI} alt={productID}></img></div>
     </Carousel>
   </motion.div>
 </React.Fragment>; */

@@ -20,9 +20,27 @@ router.get("/", async (req, res) => {
 router.post("/addProduct", async (req, res) => {
   const { picInfo, picURL } = req.body;
 
-  const product = new Product({});
+  // console.log(parseInt(picInfo.price));
 
-  // const product = new Product({});
+  const product = new Product({
+    instock: parseInt(picInfo.numberInStock),
+    price: parseInt(picInfo.price),
+    colors: picInfo.colors,
+    fitting: picInfo.sizes,
+    productTitle: picInfo.itemDescription,
+    category: picInfo.category,
+    URI: picURL,
+    seller: "testSeller"
+  });
+
+  try {
+    var data = await product.save();
+    console.log(data);
+    return res.send("item saved");
+  } catch (err) {
+    console.log(err);
+    return res.status(404).send("internal error");
+  }
 });
 
 module.exports = router;

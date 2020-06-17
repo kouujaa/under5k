@@ -1,6 +1,6 @@
 variables :root {
   --primary: #ffc636;
-  --secondary: #c2cad0;
+  --secondary: #ffffff;
 }
 @font-face {
   font-family: "CooperFiveOpti";
@@ -174,7 +174,7 @@ textarea {
 .navbrands {
   font-family: "CooperFiveOpti";
   /* font-family: "Amita", cursive; */
-  font-size: 40px;
+  font-size: 25px;
 }
 nav {
   background-color: white;

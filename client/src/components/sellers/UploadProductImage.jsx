@@ -32,6 +32,7 @@ class UploadProductImage extends Component {
         const durl = await storageRef.getDownloadURL();
 
         this.setState({ picURL: durl });
+        console.log(this.state.picURL);
       } catch (err) {}
     });
     if (this.state.picURL !== "") {
@@ -43,11 +44,12 @@ class UploadProductImage extends Component {
   };
 
   componentDidMount() {
-    const picInfo = this.props;
-    this.setState({ picInfo: picInfo });
+    const { uploadinfo } = this.props;
+    this.setState({ picInfo: uploadinfo });
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Form>
