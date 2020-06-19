@@ -27,7 +27,7 @@ const Footer = props => {
           </ul> */}
           <ul>
             <li>
-              <i class="fab fa-facebook"></i>
+              <i className="fab fa-facebook"></i>
               <a href="https://www.instagram.com/thriftnhub/">Instagram</a>
             </li>
           </ul>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
 import {
   Dropdown,
   DropdownToggle,

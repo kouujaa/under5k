@@ -26,16 +26,18 @@ class Product extends Component {
         <Card className="prodCard">
           <CardBody className="prodCardBody">
             <motion.div
-              className="display-4 lead jumbotxt"
+              className="display-4 lead productcar"
               initial={{ x: 300 }}
               animate={{ x: 0 }}
               transition={{ duration: 1 }}
             >
               <Carousel
+                className="productcar"
                 showStatus={false}
                 infiniteLoop
                 autoPlay
                 showThumbs={false}
+                showIndicators={false}
               >
                 <div>
                   <img className="prodCardImg" src={URI} alt={productID}></img>{" "}
@@ -70,8 +72,7 @@ class Product extends Component {
 
 export default Product;
 
-{
-  /* <React.Fragment>
+/* <React.Fragment>
   <motion.div
     className="display-4 lead jumbotxt"
     initial={{ x: 300 }}
@@ -86,4 +87,3 @@ export default Product;
     </Carousel>
   </motion.div>
 </React.Fragment>; */
-}

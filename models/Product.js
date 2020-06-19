@@ -5,9 +5,8 @@ var uniqueValidator = require("mongoose-unique-validator");
 const productSchema = new mongoose.Schema({
   productID: {
     type: String,
-    min: 0,
-    max: 40,
-    unique: true
+    min: 0
+    // unique: true
   },
   instock: {
     type: Number,
@@ -113,7 +112,7 @@ const productSchema = new mongoose.Schema({
   //   sellerID: { type: mongoose.Schema.Types.ObjectId, ref: "Seller" },
   //   name: { type: String, required: true, minlength: 1, maxlength: 25 }
   // },
-  seller: { type: String, required: true, minlength: 1, maxlength: 25 },
+  seller: { type: String, required: true },
 
   meta: {
     purchasedCount: { type: Number, default: 0 },
@@ -143,9 +142,7 @@ productSchema.plugin(uniqueValidator);
 const Product = mongoose.model("product", productSchema);
 
 const validateProduct = Joi.object({
-  productID: Joi.string()
-    .min(3)
-    .max(50),
+  productID: Joi.string().min(3),
   price: Joi.number()
     .min(1)
     .max(200000)

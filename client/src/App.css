@@ -1,7 +1,8 @@
 variables :root {
   --primary: #ffc636;
-  --secondary: #ffffff;
+  --secondary: #f3e5f5;
 }
+
 @font-face {
   font-family: "CooperFiveOpti";
   src: url("CooperFiveOpti-Black.otf") format("truetype");
@@ -16,16 +17,25 @@ variables :root {
 }
 
 */
-* {
-  font-family: "Raleway", sans-serif;
-}
 body {
   /* font-family: "Dancing Script", cursive; */
   font-family: "Raleway", sans-serif;
+
   /* overflow: scroll;
    overflow-x: hidden; */
   background: var(--secondary);
 }
+.slick-list {
+  width: 1em;
+  height: 10em;
+}
+
+* {
+  /* font-family: "Raleway", sans-serif; */
+  font-family: "Gotu", sans-serif;
+  /* font-family: 'MuseoModerno', cursive; */
+}
+
 bottom {
   position: sticky;
 }
@@ -43,11 +53,15 @@ bottom {
 }
 .prodCardImg {
   width: 11.6em;
-  height: 10em;
+  height: 3em;
 }
 
 .sandf {
   display: inline-flex;
+}
+.sellerdash {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 .prodInfo {
   padding: 0;
@@ -88,7 +102,7 @@ html {
 
 input,
 textarea {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.699);
   padding: 10px 16px;
   border-radius: 20px;
   border: 2px solid #9893d8;
@@ -113,8 +127,7 @@ textarea {
 }
 .sec1 {
   width: 100vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: inline-flex;
 }
 .allProducts {
   display: grid;
@@ -179,6 +192,30 @@ textarea {
 nav {
   background-color: white;
 }
+div.productcar > div.carousel > div.slider-wrapper > ul.slider > li.slide {
+}
+div.productcar
+  > div.carousel-slider
+  > div.slider-wrapper
+  > ul.slider
+  > li.slide {
+  height: 3em;
+}
+div.productcar > div.carousel > div.slider-wrapper > ul.slider {
+}
+div.productcar > div.carousel-slider > div.slider-wrapper > ul.slider {
+}
+
+div.productcar > div.carousel {
+}
+div.productcar > div.carousel-slider {
+  width: 2em;
+  height: 3em;
+}
+div.mb-2 > div > div > div > div > div > div {
+  height: 3em;
+}
+
 /*small tablets*/
 @media (min-width: 500px) {
   html {
@@ -193,12 +230,12 @@ nav {
     height: 15em;
   }
   .prodCardFooter {
-    width: 13em;
-    height: 6.5em;
+    width: 14em;
+    height: 7em;
   }
   .prodCardImg {
     width: 11.6em;
-    height: 10em;
+    height: 3em;
   }
   .sec1 {
     display: grid;
@@ -261,9 +298,15 @@ nav {
     width: 14em;
     height: 19em;
   }
+
+  div.productcar > div.carousel-slider {
+    width: 2em;
+    height: 2.4em;
+  }
+
   .prodCardBody {
     width: 14em;
-    height: 15em;
+    height: 14em;
   }
   .prodCardFooter {
     width: 13.5em;
@@ -271,7 +314,7 @@ nav {
   }
   .prodCardImg {
     width: 11.6em;
-    height: 10em;
+    height: 2.5em;
   }
 
   .productPage {
@@ -318,6 +361,11 @@ nav {
     width: 18em;
     height: 21em;
   }
+  div.productcar > div.carousel-slider {
+    width: 2em;
+    height: 3em;
+  }
+
   .prodCardBody {
     width: 18em;
     height: 19em;
@@ -328,7 +376,7 @@ nav {
   }
   .prodCardImg {
     width: 15em;
-    height: 11em;
+    height: 3em;
   }
 
   .contact-page {

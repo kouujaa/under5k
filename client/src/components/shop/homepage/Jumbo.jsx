@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+import firstpic from "../firstpic.jpg";
+import secondpic from "../2.jpg";
 
 const Jumbo = () => {
   return (
@@ -15,13 +17,13 @@ const Jumbo = () => {
       >
         <Carousel showStatus={false} infiniteLoop autoPlay showThumbs={false}>
           <div>
-            <img src="https://firebasestorage.googleapis.com/v0/b/thriftgallery-ab5c9.appspot.com/o/images%2Ffirstpic.jpg?alt=media&token=09314e43-62c7-4395-a1ce-85d784d19211" />
+            <img alt="clothing item" src={firstpic} />
             <Link to="/shop" className="legend">
               TOP SELLER!!!
             </Link>
           </div>
           <div>
-            <img src="https://firebasestorage.googleapis.com/v0/b/thriftgallery-ab5c9.appspot.com/o/images%2F2.jpg?alt=media&token=75fb0c37-f9aa-4ac4-89cc-9f1a852836d0" />
+            <img alt="clothing item" src={secondpic} />
             <p className="legend">Dame of the week</p>
           </div>
         </Carousel>
@@ -31,16 +33,3 @@ const Jumbo = () => {
 };
 
 export default Jumbo;
-
-//  <UncontrolledCarousel items={items} />
-{
-  /* <div>
-<img src="https://firebasestorage.googleapis.com/v0/b/thriftgallery-ab5c9.appspot.com/o/images%2F2.jpg?alt=media&token=75fb0c37-f9aa-4ac4-89cc-9f1a852836d0"></img>
-</div>
-<div>
-<img src="https://firebasestorage.googleapis.com/v0/b/thriftgallery-ab5c9.appspot.com/o/images%2Ffirstpic.jpg?alt=media&token=09314e43-62c7-4395-a1ce-85d784d19211"></img>
-</div>
-<div>
-<img src="https://firebasestorage.googleapis.com/v0/b/thriftgallery-ab5c9.appspot.com/o/images%2Ffirstpic.jpg?alt=media&token=09314e43-62c7-4395-a1ce-85d784d19211"></img>
-</div> */
-}

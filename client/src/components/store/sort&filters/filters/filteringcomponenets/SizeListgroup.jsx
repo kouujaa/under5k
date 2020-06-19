@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
+
 import {
   Dropdown,
   DropdownToggle,
@@ -35,8 +35,7 @@ const SizeListGroup = ({ sizes, handleSizeFilter }) => {
 
 export default SizeListGroup;
 
-{
-  /* <div>
+/* <div>
   <h1>Size</h1>
   <ListGroup>
     {sizes.map(size => (
@@ -52,4 +51,3 @@ export default SizeListGroup;
     ))}
   </ListGroup>
 </div>; */
-}

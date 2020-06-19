@@ -35,8 +35,7 @@ const SellerListGroup = ({ handleSellerFilter, sellers }) => {
 
 export default SellerListGroup;
 
-{
-  /* <div>
+/* <div>
 <h1>Sellers</h1>
 <ListGroup>
   {sellers.map(seller => (
@@ -52,4 +51,3 @@ export default SellerListGroup;
   ))}
 </ListGroup>
 </div> */
-}

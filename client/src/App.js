@@ -105,6 +105,7 @@ import PayStackPortal from "./components/store/PayStackPortal";
 import SellerDasboard from "./components/sellers/SellerDashboard";
 import UserAgreement from "./components/resourceStore/UserAgreement";
 import SellerAgreement from "./components/resourceStore/SellerAgreement";
+import StoreFront from "./components/store/sellerFront/StoreFront";
 
 class App extends Component {
   state = {
@@ -160,7 +161,7 @@ class App extends Component {
           <Route path="/payStackRDR" component={PayStackPortal}></Route>
           <Route path="/userAgreement" component={UserAgreement}></Route>
           <Route path="/sellerAgreement" component={SellerAgreement}></Route>
-
+          <Route path="/store:sellerName" component={StoreFront}></Route>
           <Route path="/">
             <Home products={this.state.products} />
           </Route>

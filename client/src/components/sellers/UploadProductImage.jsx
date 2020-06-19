@@ -35,12 +35,12 @@ class UploadProductImage extends Component {
         console.log(this.state.picURL);
       } catch (err) {}
     });
-    if (this.state.picURL !== "") {
+    // if (this.state.picURL !== "") {
       const answer = await axios.post("/api/product/addProduct", {
         picInfo: this.state.picInfo,
         picURL: this.state.picURL
       });
-    }
+    // }
   };
 
   componentDidMount() {

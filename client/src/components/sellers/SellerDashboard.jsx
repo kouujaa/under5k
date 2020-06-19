@@ -8,7 +8,7 @@ import SideOptions from "./SideOptions";
 class SellerDasboard extends Component {
   render() {
     return (
-      <div>
+      <div className="sellerdash">
         <h2 className="left">Welcome seller name</h2>
         <div className="productPage">
           <div>
