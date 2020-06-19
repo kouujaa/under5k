@@ -19,11 +19,12 @@ variables :root {
 */
 body {
   /* font-family: "Dancing Script", cursive; */
-  font-family: "Raleway", sans-serif;
+  font-family: "Gotu", sans-serif;
 
   /* overflow: scroll;
    overflow-x: hidden; */
   background: var(--secondary);
+  background-color: var(--secondary);
 }
 .slick-list {
   width: 1em;
