@@ -12,8 +12,17 @@ const CategoryListGroup = ({ categories, handleCategoryFilter }) => {
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
   return (
-    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>Category</DropdownToggle>
+    <Dropdown
+      style={{ backgroundColor: "white" }}
+      isOpen={dropdownOpen}
+      toggle={toggle}
+    >
+      <DropdownToggle
+        style={{ backgroundColor: "white", color: "black" }}
+        caret
+      >
+        Category
+      </DropdownToggle>
       <DropdownMenu>
         <DropdownItem divider />
         <DropdownItem header>Select Category</DropdownItem>

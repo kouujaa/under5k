@@ -4,7 +4,7 @@ var uniqueValidator = require("mongoose-unique-validator");
 
 const productSchema = new mongoose.Schema({
   productID: {
-    type: String,
+    type: Number,
     min: 0
     // unique: true
   },
@@ -14,12 +14,6 @@ const productSchema = new mongoose.Schema({
     min: 0,
     max: 40
   },
-  rating: {
-    type: Number,
-    default: 0,
-    min: 0,
-    max: 5
-  },
   price: {
     type: Number,
     required: true,
@@ -27,7 +21,7 @@ const productSchema = new mongoose.Schema({
     max: 200000
   },
 
-  colors: {
+  color: {
     type: String,
     enum: [
       "White",
@@ -40,10 +34,14 @@ const productSchema = new mongoose.Schema({
       "Pink",
       "Grey",
       "Beige",
-      "Multi-Color"
+      "Multi-Color",
+      "Orange",
+      "Yellow",
+      "Indigo",
+      "Violet"
     ]
   },
-  fitting: {
+  size: {
     type: String,
     enum: [
       "XXS",
@@ -59,7 +57,7 @@ const productSchema = new mongoose.Schema({
       "All"
     ]
   },
-  productTitle: { type: String, required: true },
+  description: { type: String, required: true },
   material: {
     type: String,
     enum: [
@@ -68,13 +66,13 @@ const productSchema = new mongoose.Schema({
       "Wool",
       "Rayon",
       "Cotton",
-      "FauxFur",
+      "Faux Fur",
       "Fur",
       "Leather",
       "Linen",
       "Spandex",
       "NYLON",
-      "SyntheticLeather"
+      "Synthetic Leather"
     ]
   },
   category: {
@@ -100,6 +98,7 @@ const productSchema = new mongoose.Schema({
       "Coats",
       "Bottoms",
       "Tops",
+      "Jeggings",
       "Playsuits",
       "Jumpsuits",
       "Lingerie"
@@ -142,7 +141,7 @@ productSchema.plugin(uniqueValidator);
 const Product = mongoose.model("product", productSchema);
 
 const validateProduct = Joi.object({
-  productID: Joi.string().min(3),
+  productID: Joi.number().min(3),
   price: Joi.number()
     .min(1)
     .max(200000)

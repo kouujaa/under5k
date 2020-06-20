@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardFooter, Button } from "reactstrap";
+import { Button } from "reactstrap";
 import { Carousel } from "react-responsive-carousel";
 import { motion } from "framer-motion";
 
@@ -8,63 +8,67 @@ class Product extends Component {
     const {
       productID,
       price,
-      sizes,
+      size,
       description,
       URI,
       seller
     } = this.props.item;
-    console.log(this.props.item);
+    console.log(this.props);
     const { cartHandler } = this.props;
 
     return (
       <motion.div
-        className="mb-2"
+        className="mb-2 prdiv"
         initial={{ x: 300 }}
         animate={{ x: 0 }}
         transition={{ duration: 1 }}
       >
-        <Card className="prodCard">
-          <CardBody className="prodCardBody">
-            <motion.div
-              className="display-4 lead productcar"
-              initial={{ x: 300 }}
-              animate={{ x: 0 }}
-              transition={{ duration: 1 }}
+        <motion.div
+          className="display-4 lead productcar"
+          initial={{ x: 300 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Carousel
+            className="productcar"
+            showStatus={false}
+            infiniteLoop
+            autoPlay
+            showThumbs={false}
+            showIndicators={false}
+          >
+            {URI.map(url => {
+              return (
+                <div>
+                  <img
+                    className="prodCardImg"
+                    key={url}
+                    src={url}
+                    alt={productID}
+                  ></img>
+                </div>
+              );
+            })}
+          </Carousel>
+        </motion.div>
+        {/* </CardBody> */}
+        <div className="prodCardFooter mt-3">
+          <h6>{description}</h6>
+          <h6>₦{price}</h6>
+          <h6>
+            Size: {size}
+            <Button
+              className="btn btn-danger btn-sm right "
+              onClick={() => {
+                cartHandler(productID, description, size, price, URI);
+              }}
             >
-              <Carousel
-                className="productcar"
-                showStatus={false}
-                infiniteLoop
-                autoPlay
-                showThumbs={false}
-                showIndicators={false}
-              >
-                <div>
-                  <img className="prodCardImg" src={URI} alt={productID}></img>{" "}
-                </div>
-                <div>
-                  <img className="prodCardImg" src={URI} alt={productID}></img>
-                </div>
-              </Carousel>
-            </motion.div>
-          </CardBody>
-          <CardFooter className="prodCardFooter">
-            <h6>{description}</h6>
-            <h6>₦{price}</h6>
-            <h6>
-              Size: {sizes}
-              <Button
-                className="btn btn-danger btn-sm right "
-                onClick={() => {
-                  cartHandler(productID, description, sizes, price, URI);
-                }}
-              >
-                bag it
-              </Button>
-            </h6>
-            <h6>Store: {seller}</h6>
-          </CardFooter>
-        </Card>
+              bag it
+            </Button>
+          </h6>
+          <h6>Store: {seller}</h6>
+        </div>
+        {/* </Card> */}
       </motion.div>
     );
   }

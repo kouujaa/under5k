@@ -13,7 +13,12 @@ const SellerListGroup = ({ handleSellerFilter, sellers }) => {
 
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>SHOP</DropdownToggle>
+      <DropdownToggle
+        style={{ backgroundColor: "white", color: "black" }}
+        caret
+      >
+        SHOP
+      </DropdownToggle>
       <DropdownMenu>
         <DropdownItem divider />
         <DropdownItem header>Select Shop</DropdownItem>

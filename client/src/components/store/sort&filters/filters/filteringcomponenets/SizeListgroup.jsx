@@ -13,7 +13,12 @@ const SizeListGroup = ({ sizes, handleSizeFilter }) => {
 
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>SIZE</DropdownToggle>
+      <DropdownToggle
+        style={{ backgroundColor: "white", color: "black" }}
+        caret
+      >
+        SIZE
+      </DropdownToggle>
       <DropdownMenu>
         <DropdownItem header>Select Size</DropdownItem>
         <DropdownItem divider />

@@ -47,7 +47,7 @@ class Filters extends Component {
       currentSize
     } = this.props;
     return (
-      <div className="sandf">
+      <div className="sandf" style={{ backgroundColor: "white" }}>
         <SizeListGroup
           handleSizeFilter={handleSizeFilter}
           sizes={this.state.sizes}

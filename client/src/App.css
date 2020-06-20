@@ -1,6 +1,6 @@
 variables :root {
   --primary: #ffc636;
-  --secondary: #f3e5f5;
+  --secondary: white;
 }
 
 @font-face {
@@ -40,22 +40,6 @@ body {
 bottom {
   position: sticky;
 }
-.prodCard {
-  width: 14em;
-  height: 19em;
-}
-.prodCardBody {
-  width: 14em;
-  height: 15em;
-}
-.prodCardFooter {
-  width: 14em;
-  height: 6.9em;
-}
-.prodCardImg {
-  width: 11.6em;
-  height: 3em;
-}
 
 .sandf {
   display: inline-flex;
@@ -83,7 +67,7 @@ html {
 }
 .collapse {
   z-index: 5;
-  background-color: #0a0b5b;
+  background-color: #1d1e77;
 }
 .button {
   background: none;
@@ -95,7 +79,9 @@ html {
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
   display: inline-block;
 }
-
+li.na-list > a :hover {
+  text-decoration: none;
+}
 .button:hover {
   color: #222;
   background: var(--primary);
@@ -193,28 +179,38 @@ textarea {
 nav {
   background-color: white;
 }
-div.productcar > div.carousel > div.slider-wrapper > ul.slider > li.slide {
+.prodCard {
+  width: 18em;
+  height: 21em;
 }
-div.productcar
+
+div.productcar > div.carousel-slider {
+  width: 2em;
+  height: 5em;
+}
+
+.prodCardFooter {
+  background-color: white;
+  width: 14em;
+  height: 8.1em;
+}
+.prodCardImg {
+  width: 11.6em;
+  height: 4em;
+}
+
+div.productcar {
+  height: 5em;
+}
+div.display-4
+  > div.carousel-root
   > div.carousel-slider
   > div.slider-wrapper
   > ul.slider
-  > li.slide {
-  height: 3em;
-}
-div.productcar > div.carousel > div.slider-wrapper > ul.slider {
-}
-div.productcar > div.carousel-slider > div.slider-wrapper > ul.slider {
-}
-
-div.productcar > div.carousel {
-}
-div.productcar > div.carousel-slider {
-  width: 2em;
-  height: 3em;
-}
-div.mb-2 > div > div > div > div > div > div {
-  height: 3em;
+  > li.slide
+  > div
+  > img.prodCardImg {
+  height: 6em;
 }
 
 /*small tablets*/
@@ -272,6 +268,16 @@ div.mb-2 > div > div > div > div > div > div {
     grid-template-columns: 1fr 7fr;
     grid-auto-columns: minmax(150px, 250px);
     gap: 30px;
+  }
+  div.display-4
+    > div.carousel-root
+    > div.carousel-slider
+    > div.slider-wrapper
+    > ul.slider
+    > li.slide
+    > div
+    > img.prodCardImg {
+    height: 5em;
   }
 
   .sec1 > div {
@@ -341,6 +347,26 @@ div.mb-2 > div > div > div > div > div > div {
   .sigupform {
     grid-column: 2/5;
   }
+  .prodCard {
+    width: 18em;
+    height: 21em;
+  }
+
+  div.productcar > div.carousel-slider {
+    width: 2em;
+    height: 5em;
+  }
+
+  div.display-4
+    > div.carousel-root
+    > div.carousel-slider
+    > div.slider-wrapper
+    > ul.slider
+    > li.slide
+    > div
+    > img.prodCardImg {
+    height: 5em;
+  }
 
   .sec1 > div {
     margin: 3px;
@@ -364,7 +390,7 @@ div.mb-2 > div > div > div > div > div > div {
   }
   div.productcar > div.carousel-slider {
     width: 2em;
-    height: 3em;
+    height: 5em;
   }
 
   .prodCardBody {
@@ -412,4 +438,31 @@ div.mb-2 > div > div > div > div > div > div {
   .sigupform {
     grid-column: 2/5;
   }
+}
+div.display-4
+  > div.carousel-root
+  > div.carousel
+  > div.slider-wrapper
+  > ul.slider
+  > li.slide
+  > div
+  > img.prodCardImg {
+}
+div.display-4
+  > div.carousel-root
+  > div.carousel-slider
+  > div.slider-wrapper
+  > ul.slider
+  > li.slide
+  > div
+  > img.prodCardImg {
+  height: 5em;
+}
+
+div.display-4
+  > div.carousel-root
+  > div.carousel-slider
+  > div.slider-wrapper
+  > ul.slider
+  > li.slide {
 }

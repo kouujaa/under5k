@@ -59,7 +59,7 @@ class ProductPage extends Component {
       description,
       size,
       price,
-      URI
+      URI: URI[0]
     };
     const found = _.find(cart, { productID });
     if (found) {
@@ -121,7 +121,7 @@ class ProductPage extends Component {
 
     return (
       <React.Fragment>
-        <div className="productPage mt-5 ml-3">
+        <div className="productPage mt-5 ml-1">
           <Cart
             className="mr-3"
             cart={this.state.cart}
@@ -131,7 +131,6 @@ class ProductPage extends Component {
           />
 
           <ProductDisplay
-            className="container ml-4"
             products={sendDown}
             addToCart={this.addToCart}
             onPageChange={this.handlePageChange}

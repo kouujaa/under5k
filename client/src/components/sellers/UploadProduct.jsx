@@ -64,16 +64,21 @@ class UploadProduct extends Component {
                 onChange={this.onChangeHandler("colors")}
               >
                 <option>Select Color</option>
-                <option>White</option>
+                <option>Beige</option>
                 <option>Black</option>
                 <option>Blue</option>
-                <option>Red</option>
-                <option>Green</option>
                 <option>Brown</option>
-                <option>Purple</option>
-                <option>Pink</option>
+                <option>Green</option>
                 <option>Grey</option>
-                <option>Beige</option>
+                <option>Indigo</option>
+                <option>Orange</option>
+                <option>Pink</option>
+                <option>Purple</option>
+                <option>Red</option>
+                <option>Violet</option>
+                <option>White</option>
+                <option>Yellow</option>
+                <option>Multi-Color</option>
               </Input>
             </FormGroup>
             <FormGroup>
@@ -107,7 +112,7 @@ class UploadProduct extends Component {
               >
                 <option>Select Material</option>
                 <option>Cotton</option>
-                <option>FauxFur</option>
+                <option>Faux Fur</option>
                 <option>Fur</option>
                 <option>Leather</option>
                 <option>Linen</option>
@@ -116,7 +121,7 @@ class UploadProduct extends Component {
                 <option>Rayon</option>
                 <option>Silk</option>
                 <option>Spandex</option>
-                <option>SyntheticLeather</option>
+                <option>Synthetic Leather</option>
                 <option>Wool</option>
               </Input>
             </FormGroup>
@@ -139,13 +144,15 @@ class UploadProduct extends Component {
                 <option>Hoodies</option>
                 <option>Jackets</option>
                 <option>Jeans</option>
+                <option>Jeggings</option>
                 <option>Jumpsuits</option>
                 <option>Lingerie</option>
                 <option>Pants</option>
+                <option>Playsuits</option>
                 <option>Rompers</option>
                 <option>Sets</option>
                 <option>Shirts</option>
-                <option>Skirt</option>
+                <option>Skirts</option>
                 <option>Suits</option>
                 <option>Sweaters</option>
                 <option>SweatShirts</option>
@@ -154,7 +161,7 @@ class UploadProduct extends Component {
                 <option>Tops</option>
               </Input>
             </FormGroup>
-            <span className="btn mt-4">
+            <span className="btn mt-4 mb-4">
               <Link to="/sellerDashBoard/uploadProduct/uploadProductImage">
                 proceed to image upload
               </Link>

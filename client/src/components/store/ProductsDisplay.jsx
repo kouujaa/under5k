@@ -30,7 +30,7 @@ class ProductDisplay extends Component {
           <Sorts handleSort={this.props.handleSort} />
         </div>
 
-        <div className="allProducts container">{this.displayall()}</div>
+        <div className="allProducts mt-5">{this.displayall()}</div>
         <div className="container"></div>
       </div>
     );

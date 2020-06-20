@@ -1,6 +1,9 @@
 const express = require("express");
 const { Product } = require("../../../models/Product");
 const router = express.Router();
+const {
+  provideId
+} = require("../../../helperUserValidators/productIDProvider");
 
 //find all by shop name
 router.get("/:shopName", async (req, res) => {
@@ -16,38 +19,40 @@ router.get("/", async (req, res) => {
   res.send(products);
 });
 
-//add a product
+//add a products
 router.post("/addProduct", async (req, res) => {
   console.log("reached");
-  try {
-    console.log("reached tryblock");
-    const { picInfo, picURL } = req.body;
+  console.log(req.body);
+  // try {
+  //   console.log("reached tryblock");
+  //   const { picInfo, picURL } = req.body;
 
-    // console.log(parseInt(picInfo.price));
+  //   console.log(parseInt(req.body));
 
-    const product = new Product({
-      productID: picURL,
-      instock: parseInt(picInfo.numberInStock),
-      price: parseInt(picInfo.price),
-      colors: picInfo.colors,
-      fitting: picInfo.sizes,
-      productTitle: picInfo.itemDescription,
-      category: picInfo.category,
-      URI: picURL,
-      seller: "testSeller"
-    });
+  //   const product = new Product({
+  //     productID: provideId(),
+  //     instock: parseInt(picInfo.numberInStock),
+  //     price: parseInt(picInfo.price),
+  //     colors: picInfo.colors,
+  //     fitting: picInfo.sizes,
+  //     productTitle: picInfo.itemDescription,
+  //     category: picInfo.category,
+  //     URI: picURL,
+  //     seller: "testSeller"
+  //   });
 
-    console.log("reachedschema");
+  //   console.log("reachedschema");
 
-    var data = await product.save();
-    console.log("reached save");
-    console.log(data);
-    return res.send("item saved");
-  } catch (err) {
-    console.log("reached err");
-    console.log(err);
-    return res.status(404).send("internal error");
-  }
+  //   var data = await product.save();
+  //   console.log("reached save");
+  //   console.log(data);
+  //   return res.send("item saved");
+  // } catch (err) {
+  //   console.log("reached err");
+  //   console.log(err);
+  //   return res.status(404).send("internal error");
+  // }
+  return res.send("done");
 });
 
 module.exports = router;

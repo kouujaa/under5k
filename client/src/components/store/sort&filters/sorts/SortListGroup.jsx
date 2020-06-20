@@ -14,7 +14,12 @@ const SortListGroup = ({ handleSort }) => {
 
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>Sort By</DropdownToggle>
+      <DropdownToggle
+        style={{ backgroundColor: "white", color: "black" }}
+        caret
+      >
+        Sort By
+      </DropdownToggle>
       <DropdownMenu>
         <DropdownItem
           className="btn"
