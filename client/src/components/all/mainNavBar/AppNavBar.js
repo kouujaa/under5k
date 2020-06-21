@@ -26,9 +26,15 @@ const AppNavBar = ({ user, clearState }) => {
       transition={{ duration: 1, type: "spring", stiffness: 500 }}
     >
       <Navbar color="dark" dark expand="sm" className="navbrands">
-        <NavbarBrand className="navbrands" href="/">
+        <NavLink className="navbrands" id="top" to="/">
           THIRFTNHUB
-        </NavbarBrand>
+        </NavLink>
+        {/* <motion.div
+        className="display-4 lead jumbotxt"
+        initial={{ x: 300 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 1 }}
+      > */}
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar className="collapse">
           <Nav className="ml-auto" navbar>
