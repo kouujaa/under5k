@@ -167,7 +167,7 @@ textarea {
   font-size: 40px;
 }
 li.active {
-  background-color: grey !important;
+  background-color: #ff006c !important;
 }
 .navbrands {
   color: #ff006c;

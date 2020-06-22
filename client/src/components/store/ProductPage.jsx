@@ -21,7 +21,7 @@ class ProductPage extends Component {
     selectedSort: "",
     cart: [],
     pageSize: 6,
-    currentPage: 2,
+    currentPage: 1,
     currentSize: "",
     currentCategory: "",
     currentSeller: ""
