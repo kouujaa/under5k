@@ -27,12 +27,11 @@ class TopCategories extends Component {
         <div className="mt-5 mb-5">
           <h4>Top Sellers</h4>
           <Carousel
-            autoPlay={2000}
+            autoPlay={3500}
             animationSpeed={1000}
             infinite
             slidesPerScroll={1}
             slidesPerPage={4}
-            infinite
           >
             {products.map(item => (
               <img

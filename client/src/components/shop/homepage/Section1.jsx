@@ -19,19 +19,18 @@ class NewArrivals extends Component {
   // };
 
   render() {
-    const products = _.slice(this.props.products, 0, 6);
+    const products = _.slice(this.props.products, 0, 6).reverse();
 
     return (
       <React.Fragment>
         <div className="mt-5 mb-5">
           <h4>New Arrivals</h4>
           <Carousel
-            autoPlay={2000}
+            autoPlay={3500}
             animationSpeed={1000}
             infinite
             slidesPerScroll={1}
             slidesPerPage={4}
-            infinite
           >
             {products.map(item => (
               <img
