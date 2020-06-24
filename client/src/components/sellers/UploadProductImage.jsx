@@ -17,11 +17,10 @@ class UploadProductImage extends Component {
     const allFiles = [...this.state.selectedFile];
 
     allFiles.push(e.target.files);
-    console.log(allFiles);
+
     this.setState({ selectedFile: e.target.files });
   };
-  doTheWork = async (file, i) => {
-    console.log(`gotten file  = ${file}`);
+  doTheWork = async file => {
     try {
       let storageRef = firebase
         .storage()
@@ -42,7 +41,6 @@ class UploadProductImage extends Component {
             let tempURl = [...this.state.picURL];
             tempURl.push(durl);
             this.setState({ picURL: tempURl });
-            console.log(this.state);
           } catch (err) {}
         },
         error => {
@@ -71,19 +69,17 @@ class UploadProductImage extends Component {
 
   fileUploadHandler = async () => {
     for (var i = 0; i < this.state.selectedFile.length; i++) {
-      this.doTheWork(this.state.selectedFile[i], i);
-    }
-
-    try {
-      const answer = await axios.post("/api/product/addProduct", {
-        picInfo: this.state.picInfo,
-        picURL: this.state.picURL
-      });
-    } catch (err) {
-      console.log(err);
+      this.doTheWork(this.state.selectedFile[i]);
     }
   };
-
+  axioscall = async () => {
+    try {
+      const answer = await axios.post("/api/product/addProduct", {
+        picInfo: this.props,
+        picURL: this.state.picURL
+      });
+    } catch (err) {}
+  };
   componentDidMount() {
     const { uploadinfo } = this.props;
     this.setState({ picInfo: uploadinfo });
@@ -109,7 +105,11 @@ class UploadProductImage extends Component {
             <Button onClick={this.fileUploadHandler}>Upload Image</Button>
 
             {msg && <p className="mt-3">{msg}</p>}
-            {status && <Button className="btn-success">upload complete</Button>}
+            {status && (
+              <span className="btn-success" onClick={this.axioscall}>
+                upload complete
+              </span>
+            )}
           </FormGroup>
         </Form>
       </div>

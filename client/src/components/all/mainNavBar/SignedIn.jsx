@@ -25,7 +25,7 @@ const SignedIn = ({ signOut, user, toggle }) => {
           }}
         >
           {user.lastName.charAt(0).toUpperCase()}
-          {user.FirtName.charAt(0).toUpperCase()}
+          {user.firstName.charAt(0).toUpperCase()}
         </Link>
       </NavItem>
     </React.Fragment>

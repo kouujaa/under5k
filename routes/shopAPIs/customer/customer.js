@@ -30,11 +30,11 @@ router.post("/login", async (req, res) => {
     "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id state gender dob dateJoined"
   );
   const token = jwt.sign(
-    {
+    {status:"user",
       _id: customer._id,
       userName: customer.userName,
       email: customer.email,
-      FirtName: customer.firstName,
+      firstName: customer.firstName,
       lastName: customer.lastName,
       phoneNumber: customer.phoneNumber,
       state: customer.state,
@@ -100,11 +100,11 @@ router.post("/signUp", async (req, res) => {
   try {
     const saveditem = await customer.save();
     const token = jwt.sign(
-      {
+      {status:"user",
         _id: saveditem._id,
         userName: saveditem.userName,
         email: saveditem.email,
-        FirtName: saveditem.firstName,
+        firstName: saveditem.firstName,
         lastName: saveditem.lastName,
         phoneNumber: saveditem.phoneNumber,
         state: saveditem.state,

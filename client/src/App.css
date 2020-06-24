@@ -208,6 +208,10 @@ div.productcar > div.carousel-slider {
   width: 11.6em;
   height: 4em;
 }
+.BrainhubCarouselItem {
+  width: 15em;
+  height: 14em;
+}
 
 div.productcar {
   height: 5em;
@@ -263,6 +267,10 @@ div.display-4
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(8, 1fr);
+  }
+  li.BrainhubCarouselItem > img.sec_img {
+    width: 15em;
+    height: 14em;
   }
   .sigupform {
     grid-column: 2/5;
@@ -337,6 +345,10 @@ div.display-4
 
   .prodCardBody {
     width: 14em;
+    height: 14em;
+  }
+  li.BrainhubCarouselItem > img.sec_img {
+    width: 15em;
     height: 14em;
   }
   .prodCardFooter {
@@ -437,6 +449,10 @@ div.display-4
   .prodCardImg {
     width: 15em;
     height: 3em;
+  }
+  li.BrainhubCarouselItem > img.sec_img {
+    width: 15em;
+    height: 14em;
   }
 
   .contact-page {

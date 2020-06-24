@@ -25,7 +25,7 @@ class SellerSignInPage extends Component {
         password
       });
       localStorage.setItem("token", token.data);
-      window.location = "/";
+      window.location = "/sellerDashBoard";
     } catch (err) {
       // this.props.history.push({
       //   pathname: "/sellerSignIn",

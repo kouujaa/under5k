@@ -10,7 +10,7 @@ class Profile extends Component {
     const {
       // userName,
       email,
-      FirtName,
+      firstName,
       lastName,
       phoneNumber,
       purchasePriceTotal,
@@ -31,7 +31,7 @@ class Profile extends Component {
             <CardBody>
               <h4>
                 <span>
-                  Full Name: {FirtName} {lastName}
+                  Full Name: {firstName} {lastName}
                 </span>
               </h4>
               <h4>

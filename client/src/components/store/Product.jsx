@@ -13,7 +13,7 @@ class Product extends Component {
       URI,
       seller
     } = this.props.item;
-    console.log(this.props);
+
     const { cartHandler } = this.props;
 
     return (

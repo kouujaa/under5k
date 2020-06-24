@@ -1,34 +1,48 @@
 import React, { Component } from "react";
 import { Card, CardText } from "reactstrap";
+import Carousel from "@brainhubeu/react-carousel";
+import "@brainhubeu/react-carousel/lib/style.css";
 import _ from "lodash";
 
 class TopSellers extends Component {
-  getproducts = () => {
-    const products = _.slice(this.props.products, 0, 6);
-    const ht = products.map(product => (
-      <div key={product.productCode}>
-        <CardText>{product.seller}</CardText>
-        <Card>
-          <img src={product.URI[0]} alt="imagine"></img>
-        </Card>
-      </div>
-    ));
+  // getproducts = () => {
+  //   const products = _.slice(this.props.products, 0, 6);
+  //   const ht = products.map(product => (
+  //     <div key={product.productCode}>
+  //       <CardText>{product.seller}</CardText>
+  //       <Card>
+  //         <img src={product.URI[0]} alt="imagine"></img>
+  //       </Card>
+  //     </div>
+  //   ));
 
-    return ht;
-  };
+  //   return ht;
+  // };
 
-  componentDidMount() {
-    this.setState({ products: this.props.products });
-  }
   render() {
+    const products = _.slice(this.props.products, 0, 6);
+
     return (
       <React.Fragment>
-        <div>
-          <div className="mt-5 mb-5">
-            <h4>Top Sellers</h4>
-            <div className="sec1 m-1">{this.getproducts()}</div>
-          </div>
-          <hr />
+        <div className="mt-5 mb-5">
+          <h4>Shop By Category</h4>
+          <Carousel
+            autoPlay={2000}
+            animationSpeed={1000}
+            infinite
+            slidesPerScroll={1}
+            slidesPerPage={4}
+            infinite
+          >
+            {products.map(item => (
+              <img
+                key={item.productCode}
+                src={item.URI[0]}
+                className="sec_img"
+                alt="cat"
+              />
+            ))}
+          </Carousel>
         </div>
       </React.Fragment>
     );

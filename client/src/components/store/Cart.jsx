@@ -30,7 +30,8 @@ class Cart extends Component {
   // componentDidUpdate() {}
 
   render() {
-    // console.log(this.props.cart);
+    console.log(this.props.cart);
+
     return (
       <motion.div
         className="mb-5"
@@ -52,16 +53,24 @@ class Cart extends Component {
           </thead>
           <tbody>{this.displayall()}</tbody>
         </Table>
-        <Link
-          to={{
-            pathname: "/checkOut",
-            search: "",
-            hash: "",
-            state: { cart: this.props.cart }
-          }}
-        >
-          <button className="btn btn-sm btn-success">Check Out</button>
-        </Link>
+        {this.props.cart.length > 0 ? (
+          <motion.div
+            initial={{ x: -300 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <Link
+              to={{
+                pathname: "/checkOut",
+                search: "",
+                hash: "",
+                state: { cart: this.props.cart }
+              }}
+            >
+              <button className="btn btn-sm btn-success">Check Out</button>
+            </Link>
+          </motion.div>
+        ) : null}
       </motion.div>
     );
   }

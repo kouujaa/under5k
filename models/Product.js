@@ -71,7 +71,7 @@ const productSchema = new mongoose.Schema({
       "Leather",
       "Linen",
       "Spandex",
-      "NYLON",
+      "Nylon",
       "Synthetic Leather"
     ]
   },

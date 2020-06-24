@@ -55,7 +55,7 @@ class UploadProduct extends Component {
               </Input>
             </FormGroup>
             <FormGroup>
-              <Label for="colors">`Select Main Color</Label>
+              <Label for="colors">Select Main Color</Label>
               <Input
                 type="select"
                 name="colors"
@@ -116,7 +116,7 @@ class UploadProduct extends Component {
                 <option>Fur</option>
                 <option>Leather</option>
                 <option>Linen</option>
-                <option>NYLON</option>
+                <option>Nylon</option>
                 <option>Polyester</option>
                 <option>Rayon</option>
                 <option>Silk</option>

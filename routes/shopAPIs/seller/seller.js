@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const { shopName } = req.body;
   const seller = await Seller.findOne({ shopName }).select(
-    "meta purchasePriceTotal firstName lastName address phoneNumber shopName email cart _id"
+    "shopName email firstName lastName address accountName accountNumber bank phoneNumber dob gender state meta"
   );
   res.send(seller);
 });
@@ -46,39 +46,42 @@ router.post("/signUp", async (req, res) => {
   req.body.password = hashedpass;
 
   //save to database
-  const seller = new Seller({
-    shopName: req.body.shopName,
-    password: req.body.password,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    address: req.body.address,
-    email: req.body.email,
-    phoneNumber: req.body.phoneNumber,
-    dob: req.body.dob,
-    gender: req.body.gender,
-    state: req.body.state,
-    accountName: req.body.accountName,
-    accountNumber: req.body.accountNumber,
-    bank: req.body.bank
-  });
 
   try {
-    const seller = await seller.save();
+    const seller = new Seller({
+      shopName: req.body.shopName,
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      address: req.body.address,
+      email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
+      dob: req.body.dob,
+      gender: req.body.gender,
+      state: req.body.state,
+      accountName: req.body.accountName,
+      accountNumber: req.body.accountNumber,
+      bank: req.body.bank
+    });
+
+    const data = await seller.save();
     const token = jwt.sign(
       {
-        _id: seller._id,
-        shopName: seller.shopName,
-        email: seller.email,
-        firstName: seller.firstName,
-        lastName: seller.lastName,
-        address: seller.address,
-        accountName: seller.accountName,
-        accountNumber: seller.accountNumber,
-        bank: seller.bank,
-        phoneNumber: seller.phoneNumber,
-        dob: seller.dob,
-        gender: seller.gender,
-        state: seller.state
+        status: "seller",
+        _id: data._id,
+        shopName: data.shopName,
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        address: data.address,
+        accountName: data.accountName,
+        accountNumber: data.accountNumber,
+        bank: data.bank,
+        phoneNumber: data.phoneNumber,
+        dob: data.dob,
+        gender: data.gender,
+        state: data.state,
+        meta: data.meta
       },
       config.get("jwtPrivateKey")
     );
@@ -102,25 +105,28 @@ router.post("/login", async (req, res) => {
   if (!validPassword) return res.status(400).send("invalid login credentials");
 
   //RETRIEVE USER INFO EXCEPT PASSWORD
-  seller = await Seller.findOne({ shopName }).select(
-    "meta purchasePriceTotal firstName lastName address phoneNumber shopName email cart _id"
+  const data = await Seller.findOne({ shopName }).select(
+    "shopName email firstName lastName address accountName accountNumber bank phoneNumber dob gender state meta"
   );
   const token = jwt.sign(
     {
-      _id: seller._id,
-      shopName: seller.shopName,
-      email: seller.email,
-      firstName: seller.firstName,
-      lastName: seller.lastName,
-      address: seller.address,
-      accountName: seller.accountName,
-      accountNumber: seller.accountNumber,
-      bank: seller.bank,
-      phoneNumber: seller.phoneNumber,
-      dob: seller.dob,
-      gender: seller.gender,
-      state: seller.state
+      status: "seller",
+      _id: data._id,
+      shopName: data.shopName,
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      address: data.address,
+      accountName: data.accountName,
+      accountNumber: data.accountNumber,
+      bank: data.bank,
+      phoneNumber: data.phoneNumber,
+      dob: data.dob,
+      gender: data.gender,
+      state: data.state,
+      meta: data.meta
     },
+
     config.get("jwtPrivateKey")
   );
   return res.send(token);
