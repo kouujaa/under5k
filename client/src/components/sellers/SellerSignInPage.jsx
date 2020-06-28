@@ -2,23 +2,32 @@ import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import axios from "axios";
 // import { awaitExpression } from "@babel/types";
+import Joi from "joi-browser";
+import UseForm from "./../common/UseForm";
 
-class SellerSignInPage extends Component {
+class SellerSignInPage extends UseForm {
   state = {
     status: null,
-    cred: { shopName: "", password: "" }
+    data: { shopName: "", password: "" },
+    errors: {}
   };
 
-  //populate state from input
-  onChangeHandler = input => e => {
-    const sellerInfo = { ...this.state.cred };
-    sellerInfo[e.target.name] = e.target.value;
-    this.setState({ cred: sellerInfo });
+  schema = {
+    shopName: Joi.string()
+      .required()
+      .label("Shop Name"),
+    password: Joi.string()
+      .required()
+      .label("Password")
+  };
+
+  doSubmit = () => {
+    this.getInfo();
   };
 
   //async axios call
   async getInfo() {
-    const { shopName, password } = this.state.cred;
+    const { shopName, password } = this.state.data;
     try {
       const token = await axios.post("/api/seller/login", {
         shopName,
@@ -31,21 +40,13 @@ class SellerSignInPage extends Component {
       //   pathname: "/sellerSignIn",
       //   search: "",
       //   hash: "",
-      //   state: { message: "invalid login credentials!" }
+      //   state: { message: "invalid login dataentials!" }
       // });
     }
   }
 
-  onSubmitHandler = e => {
-    e.preventDefault();
-    this.getInfo();
-  };
-
-  // showStatus = () => {
-  //   return "enter login details";
-  // };
-
   render() {
+    console.log(this.props);
     return (
       <div className="signIn">
         <Form
@@ -54,31 +55,13 @@ class SellerSignInPage extends Component {
         >
           <h3>Sign In Your Shop</h3>
           <br></br>
-          <FormGroup>
-            <Label for="shopName">shopName</Label>
-            <Input
-              name="shopName"
-              bsSize="lg"
-              required
-              onChange={this.onChangeHandler("shopName")}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="Password">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="Password"
-              required
-              onChange={this.onChangeHandler("password")}
-            />
-          </FormGroup>{" "}
+
+          {this.renderInput("shopName", "Shop Name", "text")}
+          {this.renderInput("password", "Password", "password")}
           {/* {this.props.location.state ? (
             <p className="text-danger">{this.props.location.state.message}</p>
           ) : null} */}
-          <Button className="mt-4" type="submit">
-            Sign In
-          </Button>
+          {this.renderButton("SIGN IN")}
         </Form>
 
         <br></br>

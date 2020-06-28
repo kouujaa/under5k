@@ -2,26 +2,121 @@ import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, CustomInput, Button } from "reactstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import UseForm from "./../../common/UseForm";
+import Joi from "joi-browser";
 
 class SignUpForm extends Component {
   state = {
-    userName: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    address: "",
-    email: "",
-    phoneNumber: 0,
-    dob: "",
-    gender: "",
-    state: ""
+    data: {
+      userName: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      address: "",
+      email: "",
+      phoneNumber: 0,
+      dob: "",
+      gender: "",
+      state: ""
+    },
+    errors: {}
   };
 
-  onChangeHandler = input => e => {
-    const userInfo = { ...this.state.userInfo };
-    userInfo[e.target.name] = e.target.value;
-    this.setState(userInfo);
+  schema = {
+    userName: Joi.string()
+      .required()
+      .label("Username"),
+    password: Joi.string()
+      .required()
+      .label("Password"),
+    firstName: Joi.string()
+      .required()
+      .label("First Name"),
+    lastName: Joi.string()
+      .required()
+      .label("Last Name"),
+    address: Joi.string()
+      .required()
+      .label("Address"),
+    email: Joi.string()
+      .required()
+      .label("Email Address"),
+    phoneNumber: Joi.number()
+      .required()
+      .label("Phone Number"),
+    dob: Joi.string()
+      .required()
+      .label("Birthday"),
+    gender: Joi.string()
+      .required()
+      .label("Gender"),
+    state: Joi.string()
+      .required()
+      .label("State")
   };
+
+  validate = () => {
+    const { error } = Joi.validate(this.state.data, this.schema, {
+      abortEarly: false
+    });
+
+    if (!error) return null;
+
+    const errors = {};
+    for (let item of error.details) errors[item.path[0]] = item.message;
+    return errors;
+  };
+
+  validateProperty = ({ name, value }) => {
+    const obj = { [name]: value };
+    const schema = { [name]: this.schema[name] };
+    const { error } = Joi.validate(obj, schema);
+    return error ? error.details[0].message : null;
+  };
+
+  onSubmitHandler = e => {
+    e.preventDefault();
+    const errors = this.validate();
+
+    this.setState({ errors: errors || {} });
+    if (errors) {
+      return;
+    }
+    this.doSubmit();
+  };
+
+  onChangeHandler = ({ currentTarget: input }) => {
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(input);
+    if (errorMessage) {
+      errors[input.name] = errorMessage;
+    } else delete errors[input.name];
+
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
+    this.setState({ data, errors });
+  };
+  // onChangeHandler = input => e => {
+  //   const userInfo = { ...this.state.userInfo };
+  //   userInfo[e.target.name] = e.target.value;
+  //   this.setState(userInfo);
+  // };
+
+  // onSubmitHandler = e => {
+  //   e.preventDefault();
+  //   this.getInfo();
+  // };
+
+  doSubmit = () => {
+    this.getInfo();
+  };
+  renderButton(label) {
+    return (
+      <Button disabled={this.validate()} className="mt-4" type="submit">
+        {label}
+      </Button>
+    );
+  }
   async getInfo() {
     try {
       const {
@@ -35,7 +130,7 @@ class SignUpForm extends Component {
         dob,
         gender,
         state
-      } = this.state;
+      } = this.state.data;
 
       const token = await axios.post("/api/customers/signUp", {
         userName,
@@ -61,12 +156,9 @@ class SignUpForm extends Component {
     }
   }
 
-  onSubmitHandler = e => {
-    e.preventDefault();
-    this.getInfo();
-  };
-
   render() {
+    const { data, errors } = this.state;
+
     return (
       <div className="signUp">
         <div className="container">
@@ -89,11 +181,14 @@ class SignUpForm extends Component {
             <Label for="exampleEmail">UserName</Label>
             <Input
               bsSize="lg"
-              onChange={this.onChangeHandler("userName")}
+              onChange={this.onChangeHandler}
               name="userName"
               required
               onFocus
             />
+            {errors["userName"] && (
+              <div className="alert alert-danger">{errors["userName"]}</div>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="Password">Password</Label>
@@ -102,35 +197,47 @@ class SignUpForm extends Component {
               name="password"
               id="Password"
               required
-              onChange={this.onChangeHandler("password")}
+              onChange={this.onChangeHandler}
             />
+            {errors["password"] && (
+              <div className="alert alert-danger">{errors["password"]}</div>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="firstName">First Name</Label>
             <Input
               bsSize="lg"
-              onChange={this.onChangeHandler("userName")}
+              onChange={this.onChangeHandler}
               name="firstName"
               required
             />
+            {errors["firstName"] && (
+              <div className="alert alert-danger">{errors["firstName"]}</div>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="lastName">Last Name</Label>
             <Input
               bsSize="lg"
-              onChange={this.onChangeHandler("lastName")}
+              onChange={this.onChangeHandler}
               name="lastName"
               required
             />
+            {errors["lastName"] && (
+              <div className="alert alert-danger">{errors["lastName"]}</div>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="address">Address</Label>
             <Input
               bsSize="lg"
-              onChange={this.onChangeHandler("address")}
+              onChange={this.onChangeHandler}
               name="address"
               required
             />
+            {errors["address"] && (
+              <div className="alert alert-danger">{errors["address"]}</div>
+            )}
           </FormGroup>
 
           <FormGroup>
@@ -140,8 +247,11 @@ class SignUpForm extends Component {
               name="email"
               id="Email"
               required
-              onChange={this.onChangeHandler("email")}
+              onChange={this.onChangeHandler}
             />
+            {errors["email"] && (
+              <div className="alert alert-danger">{errors["email"]}</div>
+            )}
           </FormGroup>
 
           <FormGroup>
@@ -151,8 +261,11 @@ class SignUpForm extends Component {
               name="phoneNumber"
               id="phoneNumberr"
               required
-              onChange={this.onChangeHandler("phoneNumber")}
+              onChange={this.onChangeHandlerber}
             />
+            {errors["phoneNumber"] && (
+              <div className="alert alert-danger">{errors["phoneNumber"]}</div>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="dob">Birthday</Label>
@@ -161,8 +274,11 @@ class SignUpForm extends Component {
               name="dob"
               id="dob"
               required
-              onChange={this.onChangeHandler("dob")}
+              onChange={this.onChangeHandler}
             />
+            {errors["dob"] && (
+              <div className="alert alert-danger">{errors["dob"]}</div>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="sexSelect">Gender</Label>
@@ -171,12 +287,15 @@ class SignUpForm extends Component {
               name="gender"
               id="sexSelect"
               required
-              onChange={this.onChangeHandler("gender")}
+              onChange={this.onChangeHandler}
             >
               <option>Select Gender</option>
               <option>Male</option>
               <option>Female</option>
             </Input>
+            {errors["gender"] && (
+              <div className="alert alert-danger">{errors["gender"]}</div>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="StateSelect">State</Label>
@@ -185,7 +304,7 @@ class SignUpForm extends Component {
               name="state"
               id="StateSelect"
               required
-              onChange={this.onChangeHandler("state")}
+              onChange={this.onChangeHandler}
             >
               <option>Abia</option>
               <option>Adamawa</option>
@@ -225,6 +344,9 @@ class SignUpForm extends Component {
               <option>Zamfara</option>
               <option>FCT</option>
             </Input>
+            {errors["state"] && (
+              <div className="alert alert-danger">{errors["state"]}</div>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="exampleCheckbox">Switches</Label>
@@ -235,7 +357,7 @@ class SignUpForm extends Component {
                 name="notifications"
                 label="Turn on noification"
                 required
-                onChange={this.onChangeHandler("notifications")}
+                onChange={this.onChangeHandlertions}
               />
               <CustomInput
                 type="switch"
@@ -243,14 +365,12 @@ class SignUpForm extends Component {
                 name="agreement"
                 required
                 label="agree to customer agreement"
-                onChange={this.onChangeHandler("agreement")}
+                onChange={this.onChangeHandlert}
               />
               <Link to="/userAgreement">user Agreement</Link>
             </div>
           </FormGroup>
-          <Button className="mt-4" type="submit">
-            Submit
-          </Button>
+          {this.renderButton("SUBMIT")}
         </Form>
         <span></span>
         <br></br>
@@ -259,3 +379,36 @@ class SignUpForm extends Component {
   }
 }
 export default SignUpForm;
+
+// schema = {
+//   userName: Joi.string()
+//     .required()
+//     .label("Username"),
+//   password: Joi.string()
+//     .required()
+//     .label("Password"),
+//   firstName: Joi.string()
+//     .required()
+//     .label("First Name"),
+//   lastName: Joi.string()
+//     .required()
+//     .label("Last Name"),
+//   address: Joi.string()
+//     .required()
+//     .label("Address"),
+//   email: Joi.string()
+//     .required()
+//     .label("Email Address"),
+//   phoneNumber: Joi.number()
+//     .required()
+//     .label("Phone Number"),
+//   dob: Joi.string()
+//     .required()
+//     .label("Birthday"),
+//   gender: Joi.string()
+//     .required()
+//     .label("Gender"),
+//   state: Joi.string()
+//     .required()
+//     .label("State")
+// };

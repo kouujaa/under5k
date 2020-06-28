@@ -31,10 +31,10 @@ class SellerDasboard extends Component {
   }
   render() {
     const { user, products } = this.state;
-    console.log(user);
+    console.log(this.state);
     return (
       <div className="sellerdash">
-        <h2 className="left">Welcome seller name</h2>
+  <h2 className="left">Welcome {user.firstName}{user.lastName}</h2>
         <div className="productPage">
           <div>
             <SideOptions />

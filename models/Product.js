@@ -5,8 +5,8 @@ var uniqueValidator = require("mongoose-unique-validator");
 const productSchema = new mongoose.Schema({
   productID: {
     type: Number,
-    min: 0
-    // unique: true
+    min: 0,
+    unique: true
   },
   instock: {
     type: Number,
@@ -100,7 +100,6 @@ const productSchema = new mongoose.Schema({
       "Tops",
       "Jeggings",
       "Playsuits",
-      "Jumpsuits",
       "Lingerie"
     ],
     required: true

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import firebase from "./../../firebase";
+import jwtDecoder from "jwt-decode";
 
 import { Form, FormGroup, Label, Button, CustomInput } from "reactstrap";
 
@@ -9,8 +10,9 @@ class UploadProductImage extends Component {
     picInfo: "",
     picURL: [],
     selectedFile: [],
-    msg: null,
-    status: null
+    msg: "",
+    status: "",
+    userInfo: ""
   };
 
   fileSelectHandler = async e => {
@@ -76,17 +78,24 @@ class UploadProductImage extends Component {
     try {
       const answer = await axios.post("/api/product/addProduct", {
         picInfo: this.props,
-        picURL: this.state.picURL
+        picURL: this.state.picURL,
+        userInfo: this.state.userInfo
       });
     } catch (err) {}
   };
   componentDidMount() {
     const { uploadinfo } = this.props;
     this.setState({ picInfo: uploadinfo });
+    try {
+      const jwt = localStorage.getItem("token");
+      const userInfo = jwtDecoder(jwt);
+      this.setState({ userInfo });
+    } catch (error) {}
   }
 
   render() {
     const { msg, status } = this.state;
+
     return (
       <div>
         <Form>
@@ -106,9 +115,12 @@ class UploadProductImage extends Component {
 
             {msg && <p className="mt-3">{msg}</p>}
             {status && (
-              <span className="btn-success" onClick={this.axioscall}>
-                upload complete
-              </span>
+              <div>
+                <span className="success">upload complete</span>
+                <Button className="btn-success" onClick={this.axioscall}>
+                  Click To Continue
+                </Button>
+              </div>
             )}
           </FormGroup>
         </Form>

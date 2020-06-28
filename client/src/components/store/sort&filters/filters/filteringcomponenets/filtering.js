@@ -1,24 +1,38 @@
+import _ from "lodash";
+
 export function SelectedSizeFilterFunction(selectedSize, products) {
-  let filter = selectedSize
-    ? products.filter(product => product.sizes === selectedSize)
-    : products;
-  return filter;
+  if (selectedSize !== "All") {
+    let filter = selectedSize
+      ? products.filter(product => product.size === selectedSize)
+      : products;
+    return filter;
+  } else {
+    return products;
+  }
 }
 
 export function SelectedSellerFilterFunction(selectedSeller, products) {
-  let filter = selectedSeller
-    ? products.filter(product => product.seller === selectedSeller)
-    : products;
+  if (selectedSeller !== "all shops") {
+    let filter = selectedSeller
+      ? products.filter(product => product.seller === selectedSeller)
+      : products;
 
-  return filter;
+    return filter;
+  } else {
+    return products;
+  }
 }
 
 export function SelectedCategoryFilterFunction(selectedCategory, products) {
-  let filter = selectedCategory
-    ? products.filter(product => product.category === selectedCategory)
-    : products;
+  if (selectedCategory !== "All") {
+    let filter = selectedCategory
+      ? products.filter(product => product.category === selectedCategory)
+      : products;
 
-  return filter;
+    return filter;
+  } else {
+    return products;
+  }
 }
 
 export function FilterControl(selected, products) {
@@ -35,12 +49,29 @@ export function FilterControl(selected, products) {
     filter = SelectedSizeFilterFunction(selected, products);
   }
 
-  // if(selected==="XS"||selected==="S"||selected==="M"||selected==="L"||selected==="XL"||selected==="One Size"){
-  // }
-
   if (selected === "omare" || selected === "shalom" || selected === "juliet") {
     filter = SelectedSellerFilterFunction(selected, products);
   }
 
   return filter;
 }
+
+// export function selectedFilterFunc(filters, filtered) {
+//   if (filters === "size") {
+//     let sortedfilter = _.orderBy(filtered, ["price"], ["asc"]);
+//     filtered = sortedfilter;
+//     return filtered;
+//   }
+//   if (filters === "seller") {
+//     let sortedfilter = _.orderBy(filtered, ["dateAdded"], ["asc"]);
+//     filtered = sortedfilter;
+//     return filtered;
+//   }
+//   if (filters === "category") {
+//     let sortedfilter = _.orderBy(filtered, ["price"], ["desc"]);
+//     filtered = sortedfilter;
+//     return filtered;
+//   } else {
+//     return filtered;
+//   }
+// }

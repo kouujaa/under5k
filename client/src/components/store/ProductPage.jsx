@@ -105,12 +105,11 @@ class ProductPage extends Component {
       currentSize
     } = this.state;
     const { products } = this.props;
+    let filtered = products;
 
-    let filtered = SelectedSizeFilterFunction(selectedSize, products);
+    filtered = SelectedSizeFilterFunction(selectedSize, filtered);
 
-    filtered = SelectedCategoryFilterFunction(selectedCategory, products);
-
-    filtered = SelectedSellerFilterFunction(selectedSeller, products);
+    filtered = SelectedCategoryFilterFunction(selectedCategory, filtered);
 
     if (selectedSize === "All") {
       filtered = [...products];

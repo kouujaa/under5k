@@ -1,25 +1,35 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import axios from "axios";
+import SInput from "../../common/SInput";
+import Joi from "joi-browser";
+import UseForm from "./../../common/UseForm";
 
 // import { awaitExpression } from "@babel/types";
 
-class SignInForm extends Component {
+class SignInForm extends UseForm {
   state = {
     status: null,
-    cred: { userName: "", password: "" }
+    data: { userName: "", password: "" },
+    errors: {}
   };
 
-  //populate state from input
-  onChangeHandler = input => e => {
-    const userInfo = { ...this.state.cred };
-    userInfo[e.target.name] = e.target.value;
-    this.setState({ cred: userInfo });
+  schema = {
+    userName: Joi.string()
+      .required()
+      .label("Username"),
+    password: Joi.string()
+      .required()
+      .label("Password")
+  };
+
+  doSubmit = () => {
+    this.getInfo();
   };
 
   //async axios call
   async getInfo() {
-    const { userName, password } = this.state.cred;
+    const { userName, password } = this.state.data;
     try {
       const token = await axios.post("/api/customers/login", {
         userName,
@@ -34,15 +44,11 @@ class SignInForm extends Component {
         pathname: "/signIn",
         search: "",
         hash: "",
-        state: { message: "invalid login credentials!" }
+        state: { message: "invalid login dataentials!" }
       });
     }
   }
 
-  onSubmitHandler = e => {
-    e.preventDefault();
-    this.getInfo();
-  };
   onGoogleSIgn = e => {
     window.open("http://localhost:3001/auth/google", "_self");
   };
@@ -62,31 +68,15 @@ class SignInForm extends Component {
         >
           <h3>Sign In</h3>
           <br></br>
-          <FormGroup>
-            <Label for="exampleEmail">UserName</Label>
-            <Input
-              name="userName"
-              bsSize="lg"
-              required
-              onChange={this.onChangeHandler("userName")}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="Password">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="Password"
-              required
-              onChange={this.onChangeHandler("password")}
-            />
-          </FormGroup>{" "}
+
+          {this.renderInput("userName", "Username", "text")}
+
+          {this.renderInput("password", "Password", "password")}
+
           {this.props.location.state ? (
             <p className="text-danger">{this.props.location.state.message}</p>
           ) : null}
-          <Button className="mt-4" type="submit">
-            Sign In
-          </Button>
+          {this.renderButton("SIGN IN")}
         </Form>
 
         <br></br>

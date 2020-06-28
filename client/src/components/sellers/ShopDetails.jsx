@@ -5,9 +5,11 @@ import EditSellerProfile from "./EditSellerProfile";
 import axios from "axios";
 
 class ShopDetails extends Component {
-  state = {};
+  state = { meta: {} };
 
   async componentDidMount() {
+    console.log(this.props);
+    this.setState({ meta: this.props });
     try {
       const products = await axios.get("/api/product/");
 
@@ -17,6 +19,7 @@ class ShopDetails extends Component {
     }
   }
   render() {
+    console.log(this.state);
     const {
       accountName,
       accountNumber,
@@ -29,9 +32,8 @@ class ShopDetails extends Component {
       lastName,
       phoneNumber,
       shopName,
-      state,
-      meta
-    } = this.props.details;
+      state
+    } = this.props.user;
 
     return (
       <div className="container mt-5">
@@ -75,15 +77,17 @@ class ShopDetails extends Component {
               <h4>
                 <span>Account Name:{accountName}</span>
               </h4>
+
               <h4>
                 <span>Account Number:{accountNumber} </span>
               </h4>
-              <h4>
-                <span>Monthly Visits:{meta.monthlyVisits} </span>
+
+              {/* <h4>
+                <span>Monthly Visits:{monthlyVisit} </span>
               </h4>
               <h4>
-                <span>Total Monthly Sales:{meta.totalMonthlySales} </span>
-              </h4>
+                <span>Total Monthly Sales:{totalMonthlySale}</span>
+              </h4> */}
             </CardBody>
           </Card>
           <Link

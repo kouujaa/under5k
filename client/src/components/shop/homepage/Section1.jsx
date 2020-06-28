@@ -30,7 +30,8 @@ class NewArrivals extends Component {
             animationSpeed={1000}
             infinite
             slidesPerScroll={1}
-            slidesPerPage={4}
+            slidesPerPage={5}
+            offset={9}
           >
             {products.map(item => (
               <img

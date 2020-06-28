@@ -21,10 +21,10 @@ router.get("/", async (req, res) => {
 //add a products
 router.post("/addProduct", async (req, res) => {
   try {
-    const { picInfo, picURL } = req.body;
+    const { picInfo, picURL, userInfo } = req.body;
 
     const product = new Product({
-      productID: provideId++,
+      productID: Date.now(),
       instock: parseInt(picInfo.uploadinfo.numberInStock),
       price: parseInt(picInfo.uploadinfo.price),
       colors: picInfo.uploadinfo.colors,
@@ -32,7 +32,7 @@ router.post("/addProduct", async (req, res) => {
       description: picInfo.uploadinfo.itemDescription,
       category: picInfo.uploadinfo.category,
       URI: picURL,
-      seller: "testSeller"
+      seller: userInfo.shopName
     });
 
     var data = await product.save();

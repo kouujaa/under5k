@@ -39,20 +39,3 @@ const SizeListGroup = ({ sizes, handleSizeFilter }) => {
 };
 
 export default SizeListGroup;
-
-/* <div>
-  <h1>Size</h1>
-  <ListGroup>
-    {sizes.map(size => (
-      <ListGroupItem
-        className="btn"
-        onClick={() => {
-          handleSizeFilter(size);
-        }}
-        key={size}
-      >
-        {size}
-      </ListGroupItem>
-    ))}
-  </ListGroup>
-</div>; */
