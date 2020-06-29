@@ -20,7 +20,7 @@ const passportSetup = require("./configureauth/passport-setup");
 if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwt private key undefined");
   process.exit(1);
-}
+} 
 //
 //mongodb://localhost/leanorcouture
 mongoose

@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem
-} from "reactstrap";
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
+import { ReactComponent as Shop } from "../../svgs/shop.svg";
+import { ReactComponent as Home } from "../../svgs/house-door.svg";
+import { ReactComponent as Box } from "../../svgs/box-seam.svg";
 
 const AppNavBar = ({ user, clearState }) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -40,12 +36,12 @@ const AppNavBar = ({ user, clearState }) => {
           <Nav className="ml-auto" navbar>
             <NavItem className="left">
               <NavLink to="/home" onClick={toggleNavbar}>
-                HOME
+                <Home className="mr-1" /> HOME
               </NavLink>
             </NavItem>
             <NavItem className="left">
               <NavLink to="/shop" onClick={toggleNavbar}>
-                SHOP
+                <Shop className="mr-1" /> SHOP
               </NavLink>
             </NavItem>
             {!user && <SignedOut toggle={toggleNavbar} />}
@@ -56,15 +52,9 @@ const AppNavBar = ({ user, clearState }) => {
                 signOut={clearState}
               />
             )}
-
-            <NavItem className="left">
-              <NavLink to="/contact" onClick={toggleNavbar}>
-                CONTACT
-              </NavLink>
-            </NavItem>
             <NavItem className="left">
               <NavLink to="/sellerHomePage" onClick={toggleNavbar}>
-                SELLER
+                <Box className="mr-1" /> SELLER
               </NavLink>
             </NavItem>
           </Nav>

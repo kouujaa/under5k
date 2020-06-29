@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { FormGroup, Label, Input } from "reactstrap";
 
 const SInput = ({ name, label, value, change, type, error }) => {
   return (

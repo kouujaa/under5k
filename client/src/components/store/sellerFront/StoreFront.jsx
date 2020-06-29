@@ -88,7 +88,6 @@ class StoreFront extends Component {
   };
 
   handleSort = sort => {
-    console.log(sort);
     this.setState({ selectedSort: sort });
   };
   async componentDidMount() {

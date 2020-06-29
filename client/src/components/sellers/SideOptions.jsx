@@ -1,30 +1,41 @@
 import React from "react";
-import { Card, CardBody, CardFooter } from "reactstrap";
+import { Card } from "reactstrap";
 import { Link } from "react-router-dom";
+import { ReactComponent as Upload } from "../svgs/upload.svg";
 
 const SideOptions = () => {
   return (
-    <div>
+    <div className="ml-1">
       <Card>
-        <CardBody></CardBody>
-        <CardFooter>
-          <Link to="/sellerDashBoard/uploadProduct">Upload To Your Store</Link>
-        </CardFooter>
+        <Link
+          style={{ color: "#ff006c" }}
+          className="container"
+          to="/sellerDashBoard/viewOwnStore"
+        >
+          View Store
+        </Link>
       </Card>
       <hr />
       <Card>
-        <CardBody></CardBody>
-        <CardFooter>
-          <Link to="/sellerDashBoard/shopdetails">Shop And Profile Info</Link>
-        </CardFooter>
-      </Card>{" "}
+        <Link
+          style={{ color: "#ff006c" }}
+          className="container"
+          to="/sellerDashBoard/uploadProduct"
+        >
+          <Upload /> Upload Item
+        </Link>
+      </Card>
       <hr />
       <Card>
-        <CardBody></CardBody>
-        <CardFooter>
-          <Link to="/sellerDashBoard/manageStore">Remove Product</Link>
-        </CardFooter>
+        <Link
+          style={{ color: "#ff006c" }}
+          className="container"
+          to="/sellerDashBoard/shopdetails"
+        >
+          Shop And Profile Info
+        </Link>
       </Card>
+      <hr />
     </div>
   );
 };

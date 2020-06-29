@@ -1,5 +1,12 @@
 import React from "react";
-import { Navbar } from "reactstrap";
+import { ReactComponent as Call } from "../../svgs/telephone-outbound.svg";
+import { ReactComponent as Maps } from "../../svgs/map.svg";
+import { ReactComponent as Mail } from "../../svgs/envelope-open.svg";
+import { ReactComponent as MailB } from "../../svgs/mailbox.svg";
+import { ReactComponent as Face } from "../../svgs/facebook.svg";
+import { ReactComponent as Insta } from "../../svgs/instagram.svg";
+
+import { NavLink } from "react-router-dom";
 
 const Footer = props => {
   return (
@@ -9,11 +16,19 @@ const Footer = props => {
         <div className="ml-3 mr-5 mt-2 ">
           <h6>FOLLOW US</h6>
           <div>
-            <a href="https://www.instagram.com/thriftnhub/">Instagram</a>
-          </div>
-
-          <div>
-            <a href="https://web.facebook.com/thriftnhub">Facebook</a>
+            <a
+              style={{ color: "#ff006c" }}
+              href="https://www.instagram.com/thriftnhub/"
+            >
+              <Insta height="1.8em" width="1.8em" />
+            </a>
+            <a
+              className="ml-3"
+              style={{ color: "#ff006c" }}
+              href="https://web.facebook.com/thriftnhub"
+            >
+              <Face height="1.8em" width="1.8em" />
+            </a>
           </div>
         </div>
         <div className="ml-3 mt-2">
@@ -21,16 +36,22 @@ const Footer = props => {
         </div>
         <div className="ml-3 mr-5 mt-2 mb-3">
           <h6>CONTACT</h6>
-
           <h6>
-            Email: <span>triftnhub@gmail.com</span>
+            <MailB className="mr-1" />
+            <NavLink style={{ color: "#ff006c" }} to="/contact">
+              Send Direct Message
+            </NavLink>
+          </h6>
+          <h6>
+            <Mail /> <span>thriftnhub@gmail.com</span>
           </h6>
 
           <h6>
-            Phone Number: <span>08023410662</span>
+            <Call />
+            <span> 08023410662</span>
           </h6>
           <h6>
-            Address: <span>eden garden ajah, Lagos, Nigeria</span>
+            <Maps /> <span>eden garden ajah, Lagos, Nigeria</span>
           </h6>
         </div>
       </div>

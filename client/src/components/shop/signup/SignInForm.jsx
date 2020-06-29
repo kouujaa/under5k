@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import React from "react";
+import { Form } from "reactstrap";
 import axios from "axios";
-import SInput from "../../common/SInput";
 import Joi from "joi-browser";
 import UseForm from "./../../common/UseForm";
 

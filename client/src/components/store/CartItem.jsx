@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { ReactComponent as Trash } from "../svgs/trash.svg";
+import { ReactComponent as CartP } from "../svgs/plus.svg";
+import { ReactComponent as CartD } from "../svgs/dash.svg";
 
 class CartItem extends Component {
   state = {};
@@ -27,7 +30,7 @@ class CartItem extends Component {
             }}
             className="btn btn-sm btn-primary"
           >
-            +
+            <CartP />
           </span>
         </td>
         <td>
@@ -37,7 +40,7 @@ class CartItem extends Component {
             }}
             className="btn btn-sm btn-primary"
           >
-            -
+            <CartD />
           </span>
         </td>
         <td>
@@ -47,7 +50,7 @@ class CartItem extends Component {
             }}
             className="btn btn-sm btn-primary"
           >
-            Out
+            <Trash />
           </span>
         </td>
       </tr>

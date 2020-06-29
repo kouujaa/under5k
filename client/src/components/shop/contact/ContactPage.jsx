@@ -8,6 +8,7 @@ class ContactPage extends Component {
     subject: "",
     message: ""
   };
+
   onChangeHandler = input => e => {
     const userInfo = { ...this.state };
     userInfo[e.target.name] = e.target.value;
@@ -84,9 +85,9 @@ class ContactPage extends Component {
           </div>
           <div className="contact-text">
             <ul>
-              <li>Main Str, no 23, New York</li>
-              <li>+546 990221 123</li>
-              <li>fashion@contact.com</li>
+              <li>eden garden ajah, Lagos, Nigeria</li>
+              <li>+2347068481078</li>
+              <li>Thriftnhub@gmail.com</li>
             </ul>
           </div>
         </div>

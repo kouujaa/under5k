@@ -5,14 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import jwtDecoder from "jwt-decode";
 import AppNavBar from "./components/all/mainNavBar/AppNavBar";
 import Footer from "./components/all/footer/Footer";
-import { Route, Switch } from "react-router-dom";
-// import Section1 from "./components/shop/homepage/Section1";
-// import Section2 from "./components/shop/homepage/Section2";
+import { Route, Switch, Redirect } from "react-router-dom";
+
 // import reducer from "./store/reducers/reducer";
 // import { Provider } from "react-redux";
 // import * as actio from "./store/actionCreator/actionCreators";
 // import { configureStore } from "@reduxjs/toolkit";
-// import Jumbo from "./components/shop/homepage/Jumbo";
 // const myStore = configureStore({ reducer });
 // const item1 = {
 //   productCode: 53186,
@@ -48,46 +46,10 @@ import { Route, Switch } from "react-router-dom";
 //     "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90997707_619481025564891_1242875913331758935_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=103&_nc_ohc=jR1iW8RbYMoAX9V0DDP&oh=ba4440e9f32e5945a4dc13f33e95ed94&oe=5ED6F80D"
 // };
 
-// const item4 = {
-//   productCode: 5653,
-//   name: "open back gown",
-//   materials: ["cotton", "polyester"],
-//   colors: ["red", "maroon"],
-//   style: "open sidesllit",
-//   description: "see through",
-//   category: "lingerie",
-//   url:
-//     "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90323981_900933913684257_3698075662973847508_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=ecywxbX6DesAX88ou00&oh=ad7e98df999920b5a16a4c914997823c&oe=5ED5982B"
-// };
-// const item5 = {
-//   productCode: 98563,
-//   name: "morning brunch",
-//   materials: ["satin"],
-//   colors: ["white", "grey"],
-//   style: "asymetric gown",
-//   description: "sexy coperate",
-//   category: "brunch wear",
-//   url:
-//     "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90396312_140123414108773_3484098825815952962_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=wgR4LN5S2qwAX92F1be&oh=616a6a6000af5794d6e59071c958fe58&oe=5ED889AF"
-// };
-// const item6 = {
-//   productCode: 98525,
-//   name: "sleeptight",
-//   materials: ["wool"],
-//   colors: ["white"],
-//   style: "pjs",
-//   description: "comfy robe",
-//   category: "sleepwear",
-//   url:
-//     "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/e35/s320x320/90858843_861041334368901_3822460967506326527_n.jpg?_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=YpICzfi3GGIAX-UIT5k&oh=f32421f40538884e83dbe6fe5aec145f&oe=5ED86254"
-// };
-
 // myStore.dispatch(actio.itemAdded(item1));
 // myStore.dispatch(actio.itemAdded(item2));
 // myStore.dispatch(actio.itemAdded(item3));
-// myStore.dispatch(actio.itemAdded(item4));
-// myStore.dispatch(actio.itemAdded(item5));
-// myStore.dispatch(actio.itemAdded(item6));
+
 // myStore.dispatch(actio.itemRemoved(65483));
 
 // import { BrowserRouter } from "react-router-dom";
@@ -106,14 +68,12 @@ import SellerDasboard from "./components/sellers/SellerDashboard";
 import UserAgreement from "./components/resourceStore/UserAgreement";
 import SellerAgreement from "./components/resourceStore/SellerAgreement";
 import StoreFront from "./components/store/sellerFront/StoreFront";
-
+import ProductContext from "./contexts/productContext";
 class App extends Component {
   state = {
     cart: [],
     products: [],
-    sendProducts: [],
-    currentPage: 1,
-    pageSize: 9
+    user: ""
   };
 
   clearState = () => {
@@ -136,39 +96,73 @@ class App extends Component {
       const products = await axios.get("/api/product/");
 
       this.setState({ products: products.data });
-    } catch (err) {
-      // this.populateState();
-    }
+    } catch (err) {}
   }
   render() {
     return (
-      <React.Fragment>
-        {/* <Provider store={myStore}> */}
-        <AppNavBar user={this.state.user} clearState={this.clearState} />
-        <Switch>
-          <Route path="/shop">
-            <ProductPage products={this.state.products} />
-          </Route>
-          <Route path="/signUp" component={SignUpForm}></Route>
-          <Route path="/signIn" component={SignInForm}></Route>
-          <Route path="/contact" component={ContactPage}></Route>
-          <Route path="/checkOut" component={CheckOut}></Route>
-          <Route path="/profilePage" component={ProfilePage}></Route>
-          <Route path="/sellerSignUp" component={SellerSignUp}></Route>
-          <Route path="/sellerSignIn" component={SellerSignInPage}></Route>
-          <Route path="/sellerHomePage" component={SellerHomePage}></Route>
-          <Route path="/sellerDashBoard" component={SellerDasboard}></Route>
-          <Route path="/payStackRDR" component={PayStackPortal}></Route>
-          <Route path="/userAgreement" component={UserAgreement}></Route>
-          <Route path="/sellerAgreement" component={SellerAgreement}></Route>
-          <Route path="/store:sellerName" component={StoreFront}></Route>
-          <Route path="/">
-            <Home products={this.state.products} />
-          </Route>
-        </Switch>
-        {/* </Provider> */}
-        <Footer />
-      </React.Fragment>
+      <ProductContext.Provider
+        value={{ products: this.state.products, user: this.state.user }}
+      >
+        <React.Fragment>
+          {/* <Provider store={myStore}> */}
+          <AppNavBar user={this.state.user} clearState={this.clearState} />
+          <Switch>
+            <Route path="/shop">
+              <ProductPage />
+            </Route>
+            <Route path="/signUp" component={SignUpForm}></Route>
+            <Route path="/signIn" component={SignInForm}></Route>
+            <Route path="/contact" component={ContactPage}></Route>
+            <Route path="/checkOut" component={CheckOut}></Route>
+            <Route
+              path="/profilePage"
+              render={props => {
+                if (this.state.user.status === "seller")
+                  return <Redirect to="/sellerDashBoard/shopdetails" />;
+                return <ProfilePage />;
+              }}
+            />
+
+            {/* <Route path="/profilePage" component={ProfilePage}></Route> */}
+            <Route path="/sellerSignUp" component={SellerSignUp}></Route>
+            <Route path="/sellerSignIn" component={SellerSignInPage}></Route>
+            <Route
+              path="/sellerHomePage"
+              render={props => {
+                if (this.state.user.status !== "seller")
+                  return <Redirect to="/sellerSignIn" />;
+                return <SellerHomePage />;
+              }}
+            />
+            <Route
+              path="/sellerDashBoard"
+              render={props => {
+                if (this.state.user.status !== "seller")
+                  return <Redirect to="/sellerSignIn" />;
+                return <SellerDasboard />;
+              }}
+            />
+
+            <Route
+              path="/payStackRDR"
+              render={props => {
+                if (this.state.user.status !== "user")
+                  return <Redirect to="/checkOut" />;
+                return <PayStackPortal />;
+              }}
+            />
+
+            <Route path="/userAgreement" component={UserAgreement}></Route>
+            <Route path="/sellerAgreement" component={SellerAgreement}></Route>
+            <Route path="/store:sellerName" component={StoreFront}></Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+          {/* </Provider> */}
+          <Footer />
+        </React.Fragment>
+      </ProductContext.Provider>
     );
   }
 }

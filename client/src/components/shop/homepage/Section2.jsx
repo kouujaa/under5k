@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Card, CardText } from "reactstrap";
 import _ from "lodash";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
@@ -25,7 +24,7 @@ class TopCategories extends Component {
     return (
       <React.Fragment>
         <div className="mt-5 mb-5">
-          <h4>Top Sellers</h4>
+          <h4 style={{ color: "#ff006c" }}>Top Sellers</h4>
           <Carousel
             autoPlay={3500}
             animationSpeed={1000}

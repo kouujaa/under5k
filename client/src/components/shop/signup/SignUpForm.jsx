@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, CustomInput, Button } from "reactstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import UseForm from "./../../common/UseForm";
 import Joi from "joi-browser";
 
 class SignUpForm extends Component {
@@ -157,7 +156,7 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { data, errors } = this.state;
+    const { errors } = this.state;
 
     return (
       <div className="signUp">

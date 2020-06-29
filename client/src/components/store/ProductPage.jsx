@@ -9,11 +9,13 @@ import { pages } from "./../../utils/pages";
 import { selectedSortFunc } from "./sort&filters/sorts/sorting";
 import {
   SelectedSizeFilterFunction,
-  SelectedSellerFilterFunction,
   SelectedCategoryFilterFunction
 } from "./sort&filters/filters/filteringcomponenets/filtering";
+import ProductContext from "./../../contexts/productContext";
 
 class ProductPage extends Component {
+  static contextType = ProductContext;
+
   state = {
     selectedSize: "",
     selectedSeller: "",
@@ -72,9 +74,7 @@ class ProductPage extends Component {
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
-  componentDidMount() {
-    // this.populateState();
-  }
+
   handleSizeFilter = size => {
     this.setState({ selectedSize: size, currentPage: 1 });
     this.setState({ currentSize: size });
@@ -89,22 +89,20 @@ class ProductPage extends Component {
   };
 
   handleSort = sort => {
-    console.log(sort);
     this.setState({ selectedSort: sort });
   };
-
+  componentDidMount() {}
   render() {
     const {
       pageSize,
       currentPage,
       selectedSize,
-      selectedSeller,
       selectedCategory,
       currentCategory,
       currentSeller,
       currentSize
     } = this.state;
-    const { products } = this.props;
+    const { products } = this.context;
     let filtered = products;
 
     filtered = SelectedSizeFilterFunction(selectedSize, filtered);
@@ -119,40 +117,44 @@ class ProductPage extends Component {
     const sendDown = pages(filtered, currentPage, pageSize);
 
     return (
-      <React.Fragment>
-        <div className="productPage mt-5 ml-1">
-          <Cart
-            className="mr-3"
-            cart={this.state.cart}
-            inc={this.incrementCart}
-            dec={this.decrementCart}
-            rem={this.removeFromCart}
-          />
+      <ProductContext.Consumer>
+        {productContext => (
+          <React.Fragment>
+            <div className="productPage mt-5 ml-1">
+              <Cart
+                className="mr-3"
+                cart={this.state.cart}
+                inc={this.incrementCart}
+                dec={this.decrementCart}
+                rem={this.removeFromCart}
+              />
 
-          <ProductDisplay
-            products={sendDown}
-            addToCart={this.addToCart}
-            onPageChange={this.handlePageChange}
-            itemsCount={products.length}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            handleSizeSelect={this.handleSizeFilter}
-            handleCategorySelect={this.handleCategoryFilter}
-            handleSellerSelect={this.handleSellerFilter}
-            selectedSize={this.state.selectedSize}
-            handleSort={this.handleSort}
-            currentCategory={currentCategory}
-            currentSeller={currentSeller}
-            currentSize={currentSize}
-          />
-        </div>
-        <Paginate
-          onPageChange={this.handlePageChange}
-          itemsCount={filtered.length}
-          pageSize={pageSize}
-          currentPage={currentPage}
-        />
-      </React.Fragment>
+              <ProductDisplay
+                products={sendDown}
+                addToCart={this.addToCart}
+                onPageChange={this.handlePageChange}
+                itemsCount={products.length}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                handleSizeSelect={this.handleSizeFilter}
+                handleCategorySelect={this.handleCategoryFilter}
+                handleSellerSelect={this.handleSellerFilter}
+                selectedSize={this.state.selectedSize}
+                handleSort={this.handleSort}
+                currentCategory={currentCategory}
+                currentSeller={currentSeller}
+                currentSize={currentSize}
+              />
+            </div>
+            <Paginate
+              onPageChange={this.handlePageChange}
+              itemsCount={filtered.length}
+              pageSize={pageSize}
+              currentPage={currentPage}
+            />
+          </React.Fragment>
+        )}
+      </ProductContext.Consumer>
     );
   }
 }

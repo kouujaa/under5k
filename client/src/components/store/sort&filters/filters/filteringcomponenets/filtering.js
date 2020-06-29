@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 export function SelectedSizeFilterFunction(selectedSize, products) {
   if (selectedSize !== "All") {
     let filter = selectedSize

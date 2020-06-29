@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Table } from "reactstrap";
 import jwtDecoder from "jwt-decode";
+import { ReactComponent as Card } from "./../svgs/credit-card.svg";
 
 // import * as _ from "lodash";
 
@@ -69,7 +70,6 @@ class CheckOut extends Component {
     ));
   };
   render() {
-    console.log(this.props);
     const { phoneNumber, address, firstName, lastName } = this.state.user;
     return (
       <div className="checkOut-page m-5 container">
@@ -93,6 +93,7 @@ class CheckOut extends Component {
             onClick={this.checkout}
           >
             Proceed to payment
+            <Card className="ml-2" />
           </Button>
         </div>
         <div>

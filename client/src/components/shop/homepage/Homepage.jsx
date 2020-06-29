@@ -3,16 +3,23 @@ import Jumbo from "./Jumbo";
 import NewArrivals from "./Section1";
 import TopCategories from "./Section2";
 import TopSellers from "./Section3";
+import ProductContext from "./../../../contexts/productContext";
 
 class Home extends Component {
+  static contextType = ProductContext;
+
   render() {
     return (
-      <React.Fragment>
-        <Jumbo />
-        <NewArrivals products={this.props.products} />
-        <TopCategories products={this.props.products} />
-        <TopSellers products={this.props.products} />
-      </React.Fragment>
+      <ProductContext.Consumer>
+        {productContext => (
+          <React.Fragment>
+            <Jumbo />
+            <NewArrivals products={productContext.products} />
+            <TopCategories products={productContext.products} />
+            <TopSellers products={productContext.products} />
+          </React.Fragment>
+        )}
+      </ProductContext.Consumer>
     );
   }
 }

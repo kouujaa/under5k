@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button } from "reactstrap";
 import { Carousel } from "react-responsive-carousel";
 import { motion } from "framer-motion";
+import { ReactComponent as Bag } from "../svgs/bag-plus.svg";
 
 class Product extends Component {
   render() {
@@ -63,7 +64,7 @@ class Product extends Component {
                 cartHandler(productID, description, size, price, URI);
               }}
             >
-              bag it
+              <Bag /> bag
             </Button>
           </h6>
           <h6>Store: {seller}</h6>

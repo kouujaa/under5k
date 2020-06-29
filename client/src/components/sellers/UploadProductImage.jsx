@@ -76,7 +76,7 @@ class UploadProductImage extends Component {
   };
   axioscall = async () => {
     try {
-      const answer = await axios.post("/api/product/addProduct", {
+      await axios.post("/api/product/addProduct", {
         picInfo: this.props,
         picURL: this.state.picURL,
         userInfo: this.state.userInfo

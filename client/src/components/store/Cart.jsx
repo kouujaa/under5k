@@ -3,6 +3,7 @@ import { Table } from "reactstrap";
 import CartItem from "./CartItem";
 import { Link, withRouter } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ReactComponent as Cart4 } from "../svgs/cart4.svg";
 class Cart extends Component {
   displayall = () => {
     const { cart } = this.props;
@@ -30,8 +31,6 @@ class Cart extends Component {
   // componentDidUpdate() {}
 
   render() {
-    console.log(this.props.cart);
-
     return (
       <motion.div
         className="mb-5"
@@ -67,7 +66,9 @@ class Cart extends Component {
                 state: { cart: this.props.cart }
               }}
             >
-              <button className="btn btn-sm btn-success">Check Out</button>
+              <button className="btn btn-sm btn-success">
+                Check Out <Cart4 className="ml-1" />
+              </button>
             </Link>
           </motion.div>
         ) : null}

@@ -3,13 +3,7 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  CustomInput
+  DropdownItem
 } from "reactstrap";
 
 const CategoryListGroup = ({ categories, handleCategoryFilter }) => {

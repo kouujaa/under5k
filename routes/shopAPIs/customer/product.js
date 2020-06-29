@@ -6,12 +6,11 @@ var provideId = 1000180;
 //find all by shop name
 router.get("/byShop", async (req, res) => {
   console.log(req.body);
-  const { shopName } = req.body;
-  const products = await Product.find({ shopName });
-  res.send(products);
+  // const products = await Product.find({ seller: shopName });
+  // res.send(products);
 });
 
-//find all produ cts
+//find all products
 router.get("/", async (req, res) => {
   const products = await Product.find({});
 
@@ -38,6 +37,18 @@ router.post("/addProduct", async (req, res) => {
     var data = await product.save();
     console.log(data);
     return res.send(data);
+  } catch (err) {
+    console.log(err);
+    return res.status(404).send("internal error");
+  }
+});
+
+//remove products
+router.post("/remove", async (req, res) => {
+  try {
+    const { productID } = req.body;
+    await Product.deleteOne({ productID });
+    return res.send("Delete Succesfull");
   } catch (err) {
     console.log(err);
     return res.status(404).send("internal error");

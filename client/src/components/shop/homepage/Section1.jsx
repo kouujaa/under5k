@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Card, CardText } from "reactstrap";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import _ from "lodash";
+import ProductContext from "./../../../contexts/productContext";
 
 class NewArrivals extends Component {
+  static contextType = ProductContext;
   // getproducts = () => {
   //   const products = _.slice(this.props.products, 0, 6);
   //   const ht = products.map(item => (
@@ -19,31 +20,35 @@ class NewArrivals extends Component {
   // };
 
   render() {
-    const products = _.slice(this.props.products, 0, 6).reverse();
+    const products = _.slice(this.context.products, 0, 6).reverse();
 
     return (
-      <React.Fragment>
-        <div className="mt-5 mb-5">
-          <h4>New Arrivals</h4>
-          <Carousel
-            autoPlay={3500}
-            animationSpeed={1000}
-            infinite
-            slidesPerScroll={1}
-            slidesPerPage={5}
-            offset={9}
-          >
-            {products.map(item => (
-              <img
-                key={item.productCode}
-                className="sec_img"
-                src={item.URI[0]}
-                alt="cat"
-              ></img>
-            ))}
-          </Carousel>
-        </div>
-      </React.Fragment>
+      <ProductContext.Consumer>
+        {productContext => (
+          <React.Fragment>
+            <div className="mt-5 mb-5">
+              <h4 style={{ color: "#ff006c" }}>New Arrivals</h4>
+              <Carousel
+                autoPlay={3500}
+                animationSpeed={1000}
+                infinite
+                slidesPerScroll={1}
+                slidesPerPage={5}
+                offset={9}
+              >
+                {products.map(item => (
+                  <img
+                    key={item.productCode}
+                    className="sec_img"
+                    src={item.URI[0]}
+                    alt="cat"
+                  ></img>
+                ))}
+              </Carousel>
+            </div>
+          </React.Fragment>
+        )}
+      </ProductContext.Consumer>
     );
   }
 }

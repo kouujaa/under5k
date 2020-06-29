@@ -71,7 +71,6 @@ class EditProfile extends Component {
     });
   }
   render() {
-    console.log(this.props);
     const {
       userName,
       firstName,

@@ -31,7 +31,7 @@ class SellerHomePage extends Component {
   // }
   render() {
     const { user } = this.state;
-    console.log(user);
+
     return (
       <div>
         {!user && (
@@ -43,7 +43,7 @@ class SellerHomePage extends Component {
         )}
         {user && (
           <Link to="sellerDashBoard">
-            <div className="container center">
+            <div className="container center mt-5">
               <h5>PROCEED TO SELLER PORTAL</h5>
             </div>
           </Link>

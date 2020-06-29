@@ -1,6 +1,8 @@
 import React from "react";
 import { NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import { ReactComponent as Door } from "../../svgs/door-open.svg";
+import { ReactComponent as Door2 } from "../../svgs/person-plus.svg";
 
 const SignedOut = props => {
   return (
@@ -12,7 +14,7 @@ const SignedOut = props => {
             props.toggle();
           }}
         >
-          LOGIN
+          <Door className="mr-1" /> LOGIN
         </Link>
       </NavItem>
       <NavItem className="left">
@@ -22,7 +24,7 @@ const SignedOut = props => {
             props.toggle();
           }}
         >
-          SIGNUP
+          <Door2 className="mr-1" /> SIGNUP
         </Link>
       </NavItem>
     </React.Fragment>

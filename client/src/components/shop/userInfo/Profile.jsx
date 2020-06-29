@@ -6,7 +6,6 @@ class Profile extends Component {
   state = {};
 
   render() {
-    console.log(this.props);
     const {
       // userName,
       email,

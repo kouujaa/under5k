@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import React from "react";
+import { Form } from "reactstrap";
 import axios from "axios";
 // import { awaitExpression } from "@babel/types";
 import Joi from "joi-browser";
@@ -34,7 +34,7 @@ class SellerSignInPage extends UseForm {
         password
       });
       localStorage.setItem("token", token.data);
-      window.location = "/sellerDashBoard";
+      window.location = "/";
     } catch (err) {
       // this.props.history.push({
       //   pathname: "/sellerSignIn",
@@ -46,7 +46,6 @@ class SellerSignInPage extends UseForm {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="signIn">
         <Form

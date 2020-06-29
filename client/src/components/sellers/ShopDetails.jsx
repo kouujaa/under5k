@@ -8,7 +8,6 @@ class ShopDetails extends Component {
   state = { meta: {} };
 
   async componentDidMount() {
-    console.log(this.props);
     this.setState({ meta: this.props });
     try {
       const products = await axios.get("/api/product/");
@@ -19,7 +18,6 @@ class ShopDetails extends Component {
     }
   }
   render() {
-    console.log(this.state);
     const {
       accountName,
       accountNumber,

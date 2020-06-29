@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { PaystackConsumer } from "react-paystack";
 import { Button, Card, CardBody, CardFooter } from "reactstrap";
+import { ReactComponent as Wallet } from "./../svgs/wallet2.svg";
 
 class PayStackPortal extends Component {
   componentDidMount;
@@ -25,7 +26,7 @@ class PayStackPortal extends Component {
         this.props.history.goBack();
       }
     };
-    console.log(this.props);
+
     const { FirstName, lastName } = this.props.location.state.details;
     return (
       <Card className="container center mt-5 mb-5">
@@ -43,7 +44,7 @@ class PayStackPortal extends Component {
                   className="btn btn-success"
                   onClick={() => initializePayment()}
                 >
-                  PAY
+                  PAY <Wallet />
                 </Button>
               )}
             </PaystackConsumer>
