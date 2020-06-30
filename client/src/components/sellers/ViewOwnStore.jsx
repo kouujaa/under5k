@@ -19,9 +19,19 @@ class ViewOwnStore extends Component {
     );
 
     this.setState(products);
-    await axios.post(`/api/product/remove`, {
-      productID
-    });
+    try {
+      const deletedProduct = await axios.post(`/api/product/remove`, {
+        productID
+      });
+      window.location = "/sellerDashBoard/viewOwnStore";
+    } catch (err) {
+      this.props.history.push({
+        pathname: "/sellerDashBoard/viewOwnStore",
+        search: "",
+        hash: "",
+        state: { message: "invalid login dataentials!" }
+      });
+    }
   };
   handlePageChange = page => {
     this.setState({ currentPage: page });

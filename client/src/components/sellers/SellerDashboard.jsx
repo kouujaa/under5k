@@ -10,29 +10,24 @@ import ViewOwnStore from "./ViewOwnStore";
 class SellerDasboard extends Component {
   state = { user: "", products: "" };
 
-  componentDidMount() {
+  async componentDidMount() {
     var jwt = localStorage.getItem("token");
-    if (jwt) {
-      var user = jwtDecoder(jwt);
-      this.setState({ user });
-      // set state and call for seller info
-      console.log(user);
-    }
-    if (!jwt) {
-    }
+    var user = jwtDecoder(jwt);
+    this.setState({ user });
+    // set state and call for seller info
 
-    this.getData();
-    // this.populateState();
+    // this.getData();
+    try {
+      const products = await axios.post("/api/product/byShop", {
+        shopName: jwtDecoder(localStorage.getItem("token")).shopName
+      });
+      this.setState({ products: products.data });
+    } catch (err) {}
   }
 
   getData = async () => {
-    try {
-      var products = await axios.get("/api/product/byShop", {
-        shopName: this.state.user.shopName
-      });
-      this.setState({ products: products.data });
-      console.log(products.data);
-    } catch (err) {}
+    // this.setState({ products: products.data });
+    // console.log(products.data);
   };
 
   render() {

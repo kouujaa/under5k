@@ -11,7 +11,7 @@ class EditSellerProfile extends Component {
     email: "",
     phoneNumber: 0
   };
-
+ 
   onChangeHandler = input => e => {
     const userInfo = { ...this.state.userInfo };
     userInfo[e.target.name] = e.target.value;

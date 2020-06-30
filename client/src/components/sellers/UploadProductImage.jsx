@@ -76,12 +76,20 @@ class UploadProductImage extends Component {
   };
   axioscall = async () => {
     try {
-      await axios.post("/api/product/addProduct", {
+      const resp = await axios.post("/api/product/addProduct", {
         picInfo: this.props,
         picURL: this.state.picURL,
         userInfo: this.state.userInfo
       });
-    } catch (err) {}
+      window.location = "/sellerDashBoard/viewOwnStore";
+    } catch (err) {
+      this.props.history.push({
+        pathname: "/sellerDashBoard/viewOwnStore",
+        search: "",
+        hash: "",
+        state: { message: "invalid login dataentials!" }
+      });
+    }
   };
   componentDidMount() {
     const { uploadinfo } = this.props;

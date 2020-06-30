@@ -113,6 +113,7 @@ class App extends Component {
             <Route path="/signUp" component={SignUpForm}></Route>
             <Route path="/signIn" component={SignInForm}></Route>
             <Route path="/contact" component={ContactPage}></Route>
+
             <Route path="/checkOut" component={CheckOut}></Route>
             <Route
               path="/profilePage"
@@ -130,7 +131,7 @@ class App extends Component {
               path="/sellerHomePage"
               render={props => {
                 if (this.state.user.status !== "seller")
-                  return <Redirect to="/sellerSignIn" />;
+                  return <Redirect to="/" />;
                 return <SellerHomePage />;
               }}
             />
@@ -138,20 +139,12 @@ class App extends Component {
               path="/sellerDashBoard"
               render={props => {
                 if (this.state.user.status !== "seller")
-                  return <Redirect to="/sellerSignIn" />;
+                  return <Redirect to="/" />;
                 return <SellerDasboard />;
               }}
             />
 
-            <Route
-              path="/payStackRDR"
-              render={props => {
-                if (this.state.user.status !== "user")
-                  return <Redirect to="/checkOut" />;
-                return <PayStackPortal />;
-              }}
-            />
-
+            <Route path="/payStackRDR" component={PayStackPortal}></Route>
             <Route path="/userAgreement" component={UserAgreement}></Route>
             <Route path="/sellerAgreement" component={SellerAgreement}></Route>
             <Route path="/store:sellerName" component={StoreFront}></Route>

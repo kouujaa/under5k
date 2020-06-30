@@ -21,11 +21,13 @@ class CheckOut extends Component {
           details: this.state.user,
           email: this.state.user.email,
           charge: this.getTotal() * 100,
-          config: this.state.config
+          config: this.state.config,
+          cart: this.props.location.state.cart
         }
       });
     } catch (err) {}
   };
+
   componentDidMount() {
     try {
       const jwt = localStorage.getItem("token");
@@ -46,7 +48,7 @@ class CheckOut extends Component {
     let sum = 0;
     const cart = this.props.location.state.cart;
     cart.map(cartItem => (sum = cartItem.price * cartItem.quantity + sum));
-    return sum;
+    return sum + 1000;
   };
 
   showItems = () => {
@@ -86,7 +88,7 @@ class CheckOut extends Component {
             <h5>Address: {address}</h5>
           </div>
           <div className="m-4">
-            <h5>Total Delivery fee: ₦ {this.getTotal()}</h5>
+            <h5>Total + ₦1000 delivery fee: ₦{this.getTotal()}</h5>
           </div>
           <Button
             className="btn btn-sm btn-success container"
@@ -113,7 +115,7 @@ class CheckOut extends Component {
                 <th>TOTAL PRICE</th>
                 <th></th>
                 <th></th>
-                <th>₦ {this.getTotal()}</th>
+                <th>₦ {this.getTotal() - 1000}</th>
               </tr>
             </tfoot>
           </Table>

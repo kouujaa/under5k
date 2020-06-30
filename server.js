@@ -6,6 +6,7 @@ const product = require("./routes/shopAPIs/customer/product");
 const images = require("./routes/shopAPIs/customer/upload");
 const customer = require("./routes/shopAPIs/customer/customer");
 const seller = require("./routes/shopAPIs/seller/seller");
+
 const path = require("path");
 const express = require("express");
 const authRoute = require("./routes/auths/auth");
@@ -20,7 +21,7 @@ const passportSetup = require("./configureauth/passport-setup");
 if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwt private key undefined");
   process.exit(1);
-} 
+}
 //
 //mongodb://localhost/leanorcouture
 mongoose
