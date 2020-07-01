@@ -9,10 +9,14 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const { shopName } = req.body;
-  const seller = await Seller.findOne({ shopName }).select(
-    "shopName email firstName lastName address accountName accountNumber bank phoneNumber dob gender state meta"
-  );
-  res.send(seller);
+  try {
+    const seller = await Seller.findOne({ shopName }).select(
+      "shopName email firstName lastName address accountName accountNumber bank phoneNumber dob gender state meta"
+    );
+    return res.send(seller);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
 });
 
 //SIGN-UP ----REQUIRED PROFILE INFO !!DONE
@@ -89,7 +93,7 @@ router.post("/signUp", async (req, res) => {
     // res.header("x-authentication-token", token).send(`signup successful`);
     return res.send(token);
   } catch (err) {
-    return res.status(500).send(`Seller signup failed: ${err.message}`);
+    return res.status(500).redirect("/serverError");
   }
 });
 
@@ -98,38 +102,44 @@ router.post("/login", async (req, res) => {
   const { shopName, password } = req.body;
 
   //CHECK IF USER EXISTS
-  let seller = await Seller.findOne({ shopName });
-  if (!seller) return res.status(400).send("invalid login credentials");
-  //COMPARE WITH HASH PASSWORD TO SEE IF PASSWORD IS CORRECT
-  const validPassword = await bcrypt.compare(password, seller.password);
-  if (!validPassword) return res.status(400).send("invalid login credentials");
+  try {
+    let seller = await Seller.findOne({ shopName });
+    if (!seller) return res.status(400).send("invalid login credentials");
+    //COMPARE WITH HASH PASSWORD TO SEE IF PASSWORD IS CORRECT
+    const validPassword = await bcrypt.compare(password, seller.password);
+    if (!validPassword)
+      return res.status(400).send("invalid login credentials");
 
-  //RETRIEVE USER INFO EXCEPT PASSWORD
-  const data = await Seller.findOne({ shopName }).select(
-    "shopName email firstName lastName address accountName accountNumber bank phoneNumber dob gender state meta"
-  );
-  const token = jwt.sign(
-    {
-      status: "seller",
-      _id: data._id,
-      shopName: data.shopName,
-      email: data.email,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      address: data.address,
-      accountName: data.accountName,
-      accountNumber: data.accountNumber,
-      bank: data.bank,
-      phoneNumber: data.phoneNumber,
-      dob: data.dob,
-      gender: data.gender,
-      state: data.state,
-      meta: data.meta
-    },
+    //RETRIEVE USER INFO EXCEPT PASSWORD
+    const data = await Seller.findOne({ shopName }).select(
+      "shopName email firstName lastName address accountName accountNumber bank phoneNumber dob gender state meta"
+    );
+    const token = jwt.sign(
+      {
+        status: "seller",
+        _id: data._id,
+        shopName: data.shopName,
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        address: data.address,
+        accountName: data.accountName,
+        accountNumber: data.accountNumber,
+        bank: data.bank,
+        phoneNumber: data.phoneNumber,
+        dob: data.dob,
+        gender: data.gender,
+        state: data.state,
+        meta: data.meta
+      },
 
-    config.get("jwtPrivateKey")
-  );
-  return res.send(token);
+      config.get("jwtPrivateKey")
+    );
+    return res.send(token);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
+
   // res.header("x-authentication-token", token).send(`login successful`);
 });
 // router.post("/", async (req, res) => {});

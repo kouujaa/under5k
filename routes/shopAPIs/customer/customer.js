@@ -17,40 +17,45 @@ const router = express.Router();
 //Login---required user name and password
 router.post("/login", async (req, res) => {
   const { userName, password } = req.body;
+  try {
+    //CHECK IF USER EXISTS
+    let customer = await Customer.findOne({ userName });
+    if (!customer) return res.status(400).send("invalid login credentials");
+    //COMPARE WITH HASH PASSWORD TO SEE IF PASSWORD IS CORRECT
+    const validPassword = await bcrypt.compare(password, customer.password);
+    if (!validPassword)
+      return res.status(400).send("invalid login credentials");
 
-  //CHECK IF USER EXISTS
-  let customer = await Customer.findOne({ userName });
-  if (!customer) return res.status(400).send("invalid login credentials");
-  //COMPARE WITH HASH PASSWORD TO SEE IF PASSWORD IS CORRECT
-  const validPassword = await bcrypt.compare(password, customer.password);
-  if (!validPassword) return res.status(400).send("invalid login credentials");
+    //RETRIEVE USER INFO EXCEPT PASSWORD
+    customer = await Customer.findOne({ userName }).select(
+      "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id state gender dob dateJoined"
+    );
+    const token = jwt.sign(
+      {
+        status: "user",
+        _id: customer._id,
+        userName: customer.userName,
+        email: customer.email,
+        firstName: customer.firstName,
+        lastName: customer.lastName,
+        phoneNumber: customer.phoneNumber,
+        state: customer.state,
+        gender: customer.gender,
+        datejoined: customer.dateJoined,
+        purchasePriceTotal: customer.purchasePriceTotal,
+        meta: customer.meta,
+        cart: customer.cart,
+        dob: customer.dob,
+        address: customer.address
+      },
+      config.get("jwtPrivateKey")
+    );
 
-  //RETRIEVE USER INFO EXCEPT PASSWORD
-  customer = await Customer.findOne({ userName }).select(
-    "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id state gender dob dateJoined"
-  );
-  const token = jwt.sign(
-    {status:"user",
-      _id: customer._id,
-      userName: customer.userName,
-      email: customer.email,
-      firstName: customer.firstName,
-      lastName: customer.lastName,
-      phoneNumber: customer.phoneNumber,
-      state: customer.state,
-      gender: customer.gender,
-      datejoined: customer.dateJoined,
-      purchasePriceTotal: customer.purchasePriceTotal,
-      meta: customer.meta,
-      cart: customer.cart,
-      dob: customer.dob,
-      address: customer.address
-    },
-    config.get("jwtPrivateKey")
-  );
-
-  return res.send(token);
-  // res.header("x-authentication-token", token).send(`login successful`);
+    return res.send(token);
+    // res.header("x-authentication-token", token).send(`login successful`);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
 });
 
 //SIGN-UP ----REQUIRED PROFILE INFO !!DONE
@@ -100,7 +105,8 @@ router.post("/signUp", async (req, res) => {
   try {
     const saveditem = await customer.save();
     const token = jwt.sign(
-      {status:"user",
+      {
+        status: "user",
         _id: saveditem._id,
         userName: saveditem.userName,
         email: saveditem.email,
@@ -119,7 +125,7 @@ router.post("/signUp", async (req, res) => {
     // res.header("x-authentication-token", token).send(`signup successful`);
     return res.send(token);
   } catch (err) {
-    return res.status(500).send(`customer signup failed: ${err.message}`);
+    return res.status(500).redirect("/serverError");
   }
 });
 
@@ -150,7 +156,7 @@ router.post("/updateProfile", authenticate, async (req, res) => {
 
     return res.send("update successfull");
   } catch (err) {
-    return res.status(500).send(`update failed: ${err.message}`);
+    return res.status(500).redirect("/serverError");
   }
 });
 

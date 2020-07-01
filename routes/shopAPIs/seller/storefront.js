@@ -6,8 +6,12 @@ const router = express.Router();
 
 router.get("/storefront/:shopName", async (req, res) => {
   const { shopName } = req.query.shopName;
-  const products = await Product.find({ seller: shopName });
-  res.send(products);
+  try {
+    const products = await Product.find({ seller: shopName });
+    return res.send(products);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
 });
 
 module.exports = router;

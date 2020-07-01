@@ -69,6 +69,9 @@ import UserAgreement from "./components/resourceStore/UserAgreement";
 import SellerAgreement from "./components/resourceStore/SellerAgreement";
 import StoreFront from "./components/store/sellerFront/StoreFront";
 import ProductContext from "./contexts/productContext";
+import page403 from "./components/errorsnauth/Page403";
+import Page404 from "./components/errorsnauth/Page404";
+import Page500 from "./components/errorsnauth/Page500";
 class App extends Component {
   state = {
     cart: [],
@@ -127,19 +130,12 @@ class App extends Component {
             {/* <Route path="/profilePage" component={ProfilePage}></Route> */}
             <Route path="/sellerSignUp" component={SellerSignUp}></Route>
             <Route path="/sellerSignIn" component={SellerSignInPage}></Route>
-            <Route
-              path="/sellerHomePage"
-              render={props => {
-                if (this.state.user.status !== "seller")
-                  return <Redirect to="/" />;
-                return <SellerHomePage />;
-              }}
-            />
+            <Route path="/sellerHomePage" component={SellerHomePage}></Route>
             <Route
               path="/sellerDashBoard"
               render={props => {
                 if (this.state.user.status !== "seller")
-                  return <Redirect to="/" />;
+                  return <Redirect to="/unauthorized" />;
                 return <SellerDasboard />;
               }}
             />
@@ -147,10 +143,23 @@ class App extends Component {
             <Route path="/payStackRDR" component={PayStackPortal}></Route>
             <Route path="/userAgreement" component={UserAgreement}></Route>
             <Route path="/sellerAgreement" component={SellerAgreement}></Route>
-            <Route path="/store:sellerName" component={StoreFront}></Route>
-            <Route path="/">
+
+            <Route path="/unauthorized" component={page403}></Route>
+            <Route path="/serverError" component={Page500}></Route>
+            <Route path="/notFound" component={Page404}></Route>
+            <Route path="/store/:sellerName" component={StoreFront}></Route>
+            <Redirect from="/store" to="/shop" />
+            <Route exact path="/">
               <Home />
             </Route>
+            <Route exact path="/home">
+              <Home />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+
+            <Redirect to="/notFound" />
           </Switch>
           {/* </Provider> */}
           <Footer />

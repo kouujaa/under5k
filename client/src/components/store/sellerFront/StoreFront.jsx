@@ -3,6 +3,7 @@ import axios from "axios";
 // import Options from "./Options";
 import ProductDisplay from "../ProductsDisplay";
 import Cart from "../Cart";
+import { Jumbotron } from "reactstrap";
 import _ from "lodash";
 import Paginate from "../../all/Pagination";
 import { pages } from "../../../utils/pages";
@@ -96,6 +97,7 @@ class StoreFront extends Component {
     this.setState({ products: results.data });
   }
   render() {
+    console.log(this.props.match.params.sellerName);
     const {
       pageSize,
       currentPage,

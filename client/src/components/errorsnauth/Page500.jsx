@@ -1,7 +1,22 @@
 import React from "react";
+import { Button } from "reactstrap";
 
 const Page500 = () => {
-  return <h1 className="container"> OOPS!! OPERATION UNSUCCESSFUL.</h1>;
+  return (
+    <h1
+      className="container"
+      style={{
+        backgroundColor: "#ff006c",
+        color: "black",
+        alignContent: "center",
+        zIndex: "3",
+        minHeight: "100vh",
+        minWidth: "100vw"
+      }}
+    >
+      OOPS!! OPERATION UNSUCCESSFUL.
+    </h1>
+  );
 };
 
 export default Page500;
