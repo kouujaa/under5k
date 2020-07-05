@@ -63,9 +63,11 @@ router.post("/remove", async (req, res) => {
 
 //remove products
 router.post("/removeMany", async (req, res) => {
-  const cart = _.values(req.body.cart);
-  console.log(cart);
-  return res.send("received");
+  var cart = _.values(req.body.cart);
+  cart = cart.map(each => {
+    return each.productID;
+  });
+  return res.send(cart);
   // try {
   //   cart.forEach((item)=>{
 

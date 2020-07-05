@@ -1,3 +1,4 @@
+const myenv = require("dotenv").config();
 const config = require("config");
 const Joi = require("@hapi/joi");
 Joi.objectId = require("joi-objectid")(Joi); //returns a function accepts the Joi class

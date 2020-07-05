@@ -7,6 +7,8 @@ import AppNavBar from "./components/all/mainNavBar/AppNavBar";
 import Footer from "./components/all/footer/Footer";
 import { Route, Switch, Redirect } from "react-router-dom";
 
+// import config from "config";
+
 // import reducer from "./store/reducers/reducer";
 // import { Provider } from "react-redux";
 // import * as actio from "./store/actionCreator/actionCreators";
@@ -101,6 +103,7 @@ class App extends Component {
       this.setState({ products: products.data });
     } catch (err) {}
   }
+  s;
   render() {
     return (
       <ProductContext.Provider
@@ -139,6 +142,14 @@ class App extends Component {
                 return <SellerDasboard />;
               }}
             />
+            {/* <Route
+              path="/payStackRDR"
+              render={...props => {
+                if (this.state.user.status !== "user")
+                  return <Redirect to="/unauthorized" />;
+                return <PayStackPortal />;
+              }}
+            /> */}
 
             <Route path="/payStackRDR" component={PayStackPortal}></Route>
             <Route path="/userAgreement" component={UserAgreement}></Route>

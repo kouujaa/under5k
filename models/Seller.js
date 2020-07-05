@@ -47,6 +47,7 @@ const sellerSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 200
   },
+  storeURL: { type: String, minlength: 15 },
   gender: {
     type: String,
     enum: ["Male", "Female"],

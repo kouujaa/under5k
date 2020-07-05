@@ -9,6 +9,10 @@ variables :root {
   font-weight: bold;
   font-style: normal;
 }
+.sellerjumb {
+  height: 15em;
+  background-repeat: no-repeat;
+}
 
 body {
   /* font-family: "Dancing Script", cursive; */
@@ -231,7 +235,7 @@ div.display-4
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
-
+/*570-731*/
 /*small tablets*/
 @media (min-width: 500px) {
   html {

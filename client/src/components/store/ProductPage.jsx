@@ -9,7 +9,8 @@ import { pages } from "./../../utils/pages";
 import { selectedSortFunc } from "./sort&filters/sorts/sorting";
 import {
   SelectedSizeFilterFunction,
-  SelectedCategoryFilterFunction
+  SelectedCategoryFilterFunction,
+  AllFilterFunction
 } from "./sort&filters/filters/filteringcomponenets/filtering";
 import ProductContext from "./../../contexts/productContext";
 
@@ -17,9 +18,9 @@ class ProductPage extends Component {
   static contextType = ProductContext;
 
   state = {
-    selectedSize: "",
-    selectedSeller: "",
-    selectedCategory: "",
+    selectedSize: "All",
+    selectedSeller: "All",
+    selectedCategory: "All",
     selectedSort: "",
     cart: [],
     pageSize: 6,
@@ -87,17 +88,25 @@ class ProductPage extends Component {
     this.setState({ selectedCategory: category, currentPage: 1 });
     this.setState({ currentCategory: category });
   };
+  handleUpSubmit = (seller, category, size) => {
+    this.setState({
+      selectedCategory: category,
+      selectedSeller: seller,
+      selectedSize: size
+    });
+  };
 
   handleSort = sort => {
     this.setState({ selectedSort: sort });
   };
-  componentDidMount() {}
+
   render() {
     const {
       pageSize,
       currentPage,
       selectedSize,
       selectedCategory,
+      selectedSeller,
       currentCategory,
       currentSeller,
       currentSize
@@ -105,13 +114,14 @@ class ProductPage extends Component {
     const { products } = this.context;
     let filtered = products;
 
-    filtered = SelectedSizeFilterFunction(selectedSize, filtered);
+    filtered = AllFilterFunction(
+      selectedCategory,
+      selectedSeller,
+      selectedSize,
+      filtered
+    );
+    console.log(filtered);
 
-    filtered = SelectedCategoryFilterFunction(selectedCategory, filtered);
-
-    if (selectedSize === "All") {
-      filtered = [...products];
-    }
     filtered = selectedSortFunc(this.state.selectedSort, filtered);
 
     const sendDown = pages(filtered, currentPage, pageSize);
@@ -144,6 +154,7 @@ class ProductPage extends Component {
                 currentCategory={currentCategory}
                 currentSeller={currentSeller}
                 currentSize={currentSize}
+                handleUpSubmit={this.handleUpSubmit}
               />
             </div>
             <Paginate

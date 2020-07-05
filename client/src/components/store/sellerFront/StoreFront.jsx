@@ -8,24 +8,19 @@ import _ from "lodash";
 import Paginate from "../../all/Pagination";
 import { pages } from "../../../utils/pages";
 import { selectedSortFunc } from "../sort&filters/sorts/sorting";
-import {
-  SelectedSizeFilterFunction,
-  SelectedSellerFilterFunction,
-  SelectedCategoryFilterFunction
-} from "../sort&filters/filters/filteringcomponenets/filtering";
+import { StoreFilterFunction } from "../sort&filters/filters/filteringcomponenets/filtering";
+import StoreProductDisplay from "./../StoreProductDisplay";
 
 class StoreFront extends Component {
   state = {
-    selectedSize: "",
-    selectedSeller: "",
-    selectedCategory: "",
+    selectedSize: "All",
+    selectedCategory: "All",
     selectedSort: "",
     cart: [],
     pageSize: 6,
     currentPage: 1,
-    currentSize: "",
-    currentCategory: "",
-    currentSeller: "",
+    currentSize: "ALL",
+    currentCategory: "ALL",
     products: ""
   };
 
@@ -79,10 +74,7 @@ class StoreFront extends Component {
     this.setState({ selectedSize: size, currentPage: 1 });
     this.setState({ currentSize: size });
   };
-  handleSellerFilter = seller => {
-    this.setState({ selectedSeller: seller, currentPage: 1 });
-    this.setState({ currentSeller: seller });
-  };
+
   handleCategoryFilter = category => {
     this.setState({ selectedCategory: category, currentPage: 1 });
     this.setState({ currentCategory: category });
@@ -91,42 +83,53 @@ class StoreFront extends Component {
   handleSort = sort => {
     this.setState({ selectedSort: sort });
   };
+
+  handleUpSubmit = (category, size) => {
+    this.setState({
+      selectedCategory: category,
+      selectedSize: size
+    });
+  };
+
   async componentDidMount() {
-    const seller = "mgui";
-    const results = await axios.get(`/storefront/${seller}`);
-    this.setState({ products: results.data });
+    // const seller = this.props.match.params.sellerName;
+
+    try {
+      const products = await axios.post("/api/product/byShop", {
+        shopName: this.props.match.params.sellerName
+      });
+      this.setState({ products: products.data });
+    } catch (err) {}
   }
+
   render() {
     console.log(this.props.match.params.sellerName);
     const {
       pageSize,
       currentPage,
       selectedSize,
-      selectedSeller,
       selectedCategory,
       currentCategory,
-      currentSeller,
       currentSize
     } = this.state;
 
     const { products } = this.state;
 
-    let filtered = SelectedSizeFilterFunction(selectedSize, products);
+    let filtered = StoreFilterFunction(
+      selectedCategory,
+      selectedSize,
+      products
+    );
 
-    filtered = SelectedCategoryFilterFunction(selectedCategory, products);
-
-    filtered = SelectedSellerFilterFunction(selectedSeller, products);
-
-    if (selectedSize === "All") {
-      filtered = [...products];
-    }
     filtered = selectedSortFunc(this.state.selectedSort, filtered);
 
     const sendDown = pages(filtered, currentPage, pageSize);
 
     return (
       <React.Fragment>
-        <div className="jumbotron">Put seller brand here</div>
+        <div className="jumbotron sellerjumb">
+          {this.props.match.params.sellerName} store
+        </div>
         <div className="StoreFront mt-5 ml-3">
           <Cart
             className="mr-3"
@@ -136,8 +139,7 @@ class StoreFront extends Component {
             rem={this.removeFromCart}
           />
 
-          <ProductDisplay
-            className="container ml-4"
+          <StoreProductDisplay
             products={sendDown}
             addToCart={this.addToCart}
             onPageChange={this.handlePageChange}
@@ -146,12 +148,11 @@ class StoreFront extends Component {
             currentPage={currentPage}
             handleSizeSelect={this.handleSizeFilter}
             handleCategorySelect={this.handleCategoryFilter}
-            handleSellerSelect={this.handleSellerFilter}
             selectedSize={this.state.selectedSize}
             handleSort={this.handleSort}
             currentCategory={currentCategory}
-            currentSeller={currentSeller}
             currentSize={currentSize}
+            handleUpSubmit={this.handleUpSubmit}
           />
         </div>
         <Paginate

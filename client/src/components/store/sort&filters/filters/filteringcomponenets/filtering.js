@@ -21,6 +21,46 @@ export function SelectedSellerFilterFunction(selectedSeller, products) {
   }
 }
 
+export function AllFilterFunction(cat, sell, size, data) {
+  let filter = data;
+
+  if (sell !== "All") {
+    filter = filter.filter(datum => datum.seller === sell);
+  }
+
+  if (cat !== "All") {
+    filter = filter.filter(datum => datum.category === cat);
+  }
+
+  if (size !== "All") {
+    filter = filter.filter(datum => datum.size === size);
+  }
+
+  if (sell === "All" && cat === "All" && size === "All") {
+    return filter;
+  } else {
+    return filter;
+  }
+}
+
+export function StoreFilterFunction(cat, size, data) {
+  let filter = data;
+
+  if (cat !== "All") {
+    filter = filter.filter(datum => datum.category === cat);
+  }
+
+  if (size !== "All") {
+    filter = filter.filter(datum => datum.size === size);
+  }
+
+  if (cat === "All" && size === "All") {
+    return filter;
+  } else {
+    return filter;
+  }
+}
+
 export function SelectedCategoryFilterFunction(selectedCategory, products) {
   if (selectedCategory !== "All") {
     let filter = selectedCategory

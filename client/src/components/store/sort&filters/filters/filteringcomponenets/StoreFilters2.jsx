@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Form, Input, FormGroup, Label, Button, CustomInput } from "reactstrap";
+import { Form, FormGroup, Button, CustomInput } from "reactstrap";
 
-class Filters extends Component {
+class Filters2 extends Component {
   state = {
-    sellers: ["All", "omathrift", "shalom", "juliet"],
     sizes: ["All", "XS", "S", "M", "L", "XL", "One Size"],
     categories: [
       "All",
@@ -33,8 +32,7 @@ class Filters extends Component {
     ],
     filters: {
       category: "All",
-      size: "All",
-      seller: "All"
+      size: "All"
     }
   };
 
@@ -53,28 +51,14 @@ class Filters extends Component {
 
   handleAll = e => {
     e.preventDefault();
-    const { category, size, seller } = this.state.filters;
-    this.props.handleUpSubmit(seller, category, size);
+    const { category, size } = this.state.filters;
+    this.props.handleUpSubmit(category, size);
   };
 
   render() {
     return (
       <div className="sandf mr-3" style={{ backgroundColor: "white" }}>
         <Form inline onSubmit={this.handleAll}>
-          <FormGroup>
-            <CustomInput
-              type="select"
-              id="sellerSelect"
-              name="seller"
-              onChange={this.onChangeHandler}
-            >
-              <option value="">By seller</option>
-              {this.state.sellers.map(seller => (
-                <option>{seller}</option>
-              ))}
-            </CustomInput>
-          </FormGroup>
-
           <FormGroup>
             <CustomInput
               type="select"
@@ -110,4 +94,4 @@ class Filters extends Component {
   }
 }
 
-export default Filters;
+export default Filters2;
