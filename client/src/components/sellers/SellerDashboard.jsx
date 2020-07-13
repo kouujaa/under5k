@@ -6,6 +6,7 @@ import SideOptions from "./SideOptions";
 import jwtDecoder from "jwt-decode";
 import axios from "axios";
 import ViewOwnStore from "./ViewOwnStore";
+import ViewSoldStore from "./ViewSoldStore";
 
 class SellerDasboard extends Component {
   state = { user: "", products: "" };
@@ -50,11 +51,15 @@ class SellerDasboard extends Component {
             <Route path="/sellerDashBoard/uploadProduct">
               <UploadProduct />
             </Route>
-
+            <br />
             <Route path="/sellerDashBoard/shopdetails">
               <ShopDetails user={user} />
             </Route>
             <br />
+            <br />
+            <Route path="/sellerDashBoard/viewSoldStore">
+              <ViewSoldStore products={products} user={user} />
+            </Route>
           </div>
         </div>
       </div>

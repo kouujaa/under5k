@@ -55,6 +55,22 @@ const Footer = props => {
           </h6>
         </div>
       </div>
+      <p class="rights center mt-5" style={{ color: "black" }}>
+        <span>&copy;&nbsp; </span>
+        <span class="copyright-year"></span>
+        <span>&nbsp;</span>
+        <span>Thriftnhub</span>
+        <span>.&nbsp;</span>
+        <span>All Rights Reserved.</span>
+        <span>&nbsp;</span>
+        <NavLink to="/userAgreement" style={{ color: " #ff006c" }}>
+          Privacy Policy
+        </NavLink>
+        . Design&nbsp;by&nbsp;
+        <a href="mailto:kouujaa@gmail.com" style={{ color: " #ff006c" }}>
+          Kouujaa
+        </a>
+      </p>
     </div>
     // </div>
   );

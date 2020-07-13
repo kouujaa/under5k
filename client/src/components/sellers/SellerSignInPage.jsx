@@ -1,6 +1,7 @@
 import React from "react";
 import { Form } from "reactstrap";
 import axios from "axios";
+import { motion } from "framer-motion";
 // import { awaitExpression } from "@babel/types";
 import Joi from "joi-browser";
 import UseForm from "./../common/UseForm";
@@ -47,7 +48,12 @@ class SellerSignInPage extends UseForm {
 
   render() {
     return (
-      <div className="signIn">
+      <motion.div
+        className="signIn"
+        initial={{ x: 300 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 1 }}
+      >
         <Form
           className="container mt-5 siginform"
           onSubmit={this.onSubmitHandler}
@@ -64,7 +70,7 @@ class SellerSignInPage extends UseForm {
         </Form>
 
         <br></br>
-      </div>
+      </motion.div>
     );
   }
 }

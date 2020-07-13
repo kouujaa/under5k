@@ -8,6 +8,11 @@ const productSchema = new mongoose.Schema({
     min: 0,
     unique: true
   },
+  status: {
+    type: String,
+    enum: ["available", "sold", "carted"],
+    default: "available"
+  },
   instock: {
     type: Number,
     default: 1,

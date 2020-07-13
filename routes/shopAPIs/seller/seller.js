@@ -6,14 +6,25 @@ const { Seller, validateSeller } = require("../../../models/Seller");
 const authenticate = require("../../../middleware/authenticate");
 
 const router = express.Router();
-
+//get seller info
 router.get("/", async (req, res) => {
   const { shopName } = req.body;
   try {
     const seller = await Seller.findOne({ shopName }).select(
-      "shopName email firstName lastName address accountName accountNumber bank phoneNumber dob gender state meta"
+      "shopName email firstName banner lastName dailyVisits monthlyVisits dailySoldItems totalSoldItems totalDailySales totalSales address accountName accountNumber bank phoneNumber dob gender state meta"
     );
     return res.send(seller);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
+});
+//get banner URL
+router.post("/banner", async (req, res) => {
+  console.log(req.body);
+  const { shopName } = req.body;
+  try {
+    const banner = await Seller.findOne({ shopName }).select("banner");
+    return res.send(banner);
   } catch (err) {
     return res.status(500).redirect("/serverError");
   }
@@ -85,7 +96,14 @@ router.post("/signUp", async (req, res) => {
         dob: data.dob,
         gender: data.gender,
         state: data.state,
-        meta: data.meta
+        meta: data.meta,
+        banner: data.banner,
+        dailyVisits: data.dailyVisits,
+        monthlyVisits: data.monthlyVisits,
+        dailySoldItems: data.dailySoldItems,
+        totalSoldItems: data.totalSoldItems,
+        totalDailySales: data.totalDailySales,
+        totalSales: data.totalSales
       },
       config.get("jwtPrivateKey")
     );
@@ -112,7 +130,7 @@ router.post("/login", async (req, res) => {
 
     //RETRIEVE USER INFO EXCEPT PASSWORD
     const data = await Seller.findOne({ shopName }).select(
-      "shopName email firstName lastName address accountName accountNumber bank phoneNumber dob gender state meta"
+      "shopName email firstName lastName banner dailyVisits monthlyVisits dailySoldItems totalSoldItems totalDailySales totalSales address accountName accountNumber bank phoneNumber dob gender state meta"
     );
     const token = jwt.sign(
       {
@@ -130,7 +148,14 @@ router.post("/login", async (req, res) => {
         dob: data.dob,
         gender: data.gender,
         state: data.state,
-        meta: data.meta
+        meta: data.meta,
+        banner: data.banner,
+        dailyVisits: data.dailyVisits,
+        monthlyVisits: data.monthlyVisits,
+        dailySoldItems: data.dailySoldItems,
+        totalSoldItems: data.totalSoldItems,
+        totalDailySales: data.totalDailySales,
+        totalSales: data.totalSales
       },
 
       config.get("jwtPrivateKey")

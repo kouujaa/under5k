@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import axios from "axios";
+import { motion } from "framer-motion";
 
 class ContactPage extends Component {
   state = {
-    fullName: "",
+    name: "",
     email: "",
     subject: "",
     message: ""
@@ -15,16 +17,36 @@ class ContactPage extends Component {
     this.setState(userInfo);
   };
 
-  onSubmitHandler = e => {
-    e.preventDefault();
-    // const { fullName, email, subject, message } = this.state;
-    // //send message and clear screen
+  onSubmitHandler = async e => {
+    try {
+      const { name, email, subject, message } = this.state;
+      e.preventDefault();
+      const resp = await axios.post("/api/feedback", {
+        name,
+        email,
+        subject,
+        message
+      });
+
+      if (resp.data === "success") {
+        window.open("/home", "_self");
+      } else {
+        window.open("/contact", "_self");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   render() {
     return (
-      <section className="contact-page container m-5 contact">
-        <div>
+      <motion.section
+        className="contact-page container m-5 contact"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="contact-form">
           <div>
             <h2>Get in touch</h2>
           </div>
@@ -36,8 +58,9 @@ class ContactPage extends Component {
               <Label for="name"> Your Name</Label>
               <Input
                 bsSize="lg"
-                name="fullName"
-                onChange={this.onChangeHandler("fullName")}
+                name="name"
+                required
+                onChange={this.onChangeHandler("name")}
               />
             </FormGroup>
             <FormGroup>
@@ -45,6 +68,8 @@ class ContactPage extends Component {
               <Input
                 bsSize="lg"
                 name="email"
+                type="email"
+                required
                 onChange={this.onChangeHandler("email")}
               />
             </FormGroup>
@@ -53,6 +78,7 @@ class ContactPage extends Component {
               <Input
                 bsSize="lg"
                 name="subject"
+                required
                 onChange={this.onChangeHandler("subject")}
               />
             </FormGroup>
@@ -62,6 +88,7 @@ class ContactPage extends Component {
                 type="textarea"
                 name="message"
                 id="responseMessaget"
+                required
                 onChange={this.onChangeHandler("message")}
               />
             </FormGroup>
@@ -69,14 +96,14 @@ class ContactPage extends Component {
           </Form>
         </div>
 
-        <div className="themap">
+        <div className="themap mt-5">
           <div className="map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31715.647688288926!2d3.5506763879067984!3d6.46377489375523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf7442fc585df%3A0x642eaefe2c2c7ce2!2sAja%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2suk!4v1588787707050!5m2!1sen!2suk"
-              width="600"
+              width="550"
               height="450"
               frameborder="0"
-              style={{ border: 0, width: "400px", height: "250px" }}
+              style={{ border: 0, width: "350px", height: "250px" }}
               allowfullscreen=""
               aria-hidden="false"
               tabindex="0"
@@ -91,7 +118,7 @@ class ContactPage extends Component {
             </ul>
           </div>
         </div>
-      </section>
+      </motion.section>
     );
   }
 }

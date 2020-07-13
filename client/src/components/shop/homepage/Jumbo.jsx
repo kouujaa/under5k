@@ -5,6 +5,8 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import firstpic from "../firstpic.jpg";
 import secondpic from "../2.jpg";
+import thirdpic from "../4.jpg";
+import forthpic from "../5.jpg";
 
 const Jumbo = () => {
   return (
@@ -25,6 +27,18 @@ const Jumbo = () => {
           <div>
             <img alt="clothing item" src={secondpic} />
             <p className="legend">Dame of the week</p>
+          </div>
+          <div>
+            <img alt="clothing item" src={thirdpic} />
+            <Link to="/shop/omathrift" className="legend">
+              OmathrtiftStore
+            </Link>
+          </div>
+          <div>
+            <img alt="clothing item" src={forthpic} />
+            <Link to="/shop/juliet" className="legend">
+              ThriftWithPenny
+            </Link>
           </div>
         </Carousel>
       </motion.div>

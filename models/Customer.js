@@ -9,6 +9,12 @@ const customerSchema = new mongoose.Schema({
     maxlength: 200,
     required: true
   },
+  signBy: {
+    type: String,
+    enum: ["site", "google", "facebook"],
+    default: "site"
+  },
+  status: { type: String, default: "user" },
   lastName: {
     type: String,
     minlength: 2,
@@ -63,20 +69,16 @@ const customerSchema = new mongoose.Schema({
   dateJoined: { type: Date, default: Date.now },
   purchasePriceTotal: {
     type: Number,
-    min: 0,
-    max: 999999999,
     default: 0
   },
-  meta: {
-    purchasedCount: {
-      type: Number,
-      min: 0,
-      max: 99999999,
-      default: 0
-    },
-    likedItems: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
-    savedItems: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }]
+  purchasedCount: {
+    type: Number,
+    min: 0,
+    max: 99999999,
+    default: 0
   },
+  likedItems: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
+  savedItems: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
   cart: [
     {
       item: { type: mongoose.Schema.Types.ObjectId, default: "" },

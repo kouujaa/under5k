@@ -303,6 +303,7 @@ import axios from "axios";
 import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 import { Link } from "react-router-dom";
 import Joi from "joi-browser";
+import { motion } from "framer-motion";
 
 class SellerSignUp extends Component {
   state = {
@@ -478,7 +479,12 @@ class SellerSignUp extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="signUp">
+      <motion.div
+        className="signUp"
+        initial={{ x: 300 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 1 }}
+      >
         <Form
           className="container mt-5 sigupform"
           onSubmit={this.onSubmitHandler}
@@ -734,7 +740,7 @@ class SellerSignUp extends Component {
         </Form>
         <span></span>
         <br></br>
-      </div>
+      </motion.div>
     );
   }
 }

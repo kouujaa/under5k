@@ -5,9 +5,20 @@ import { ReactComponent as Wallet } from "./../svgs/wallet2.svg";
 import axios from "axios";
 
 class PayStackPortal extends Component {
-  handleCart = async cart => {
+  handleCart = async (cart, status) => {
+    //update status of products to sold
     try {
-      const ans = await axios.post("/api/product/removeMany", {
+      const ans = await axios.post("/api/product/updateMany", {
+        cart,
+        status
+      });
+      console.log(ans.data);
+    } catch (err) {
+      console.log(err);
+    }
+    // add items to user purchased list --IIP
+    try {
+      const ans = await axios.post("/api/product/updatePurchase", {
         cart
       });
       console.log(ans.data);
@@ -15,6 +26,11 @@ class PayStackPortal extends Component {
       console.log(err);
     }
   };
+
+  componentDidMount() {
+    //check if cart items are available...
+    //if not redirect back to shop saying an item has been bought by someone else
+  }
 
   render() {
     // const config = {
@@ -31,11 +47,11 @@ class PayStackPortal extends Component {
       publicKey: "pk_test_f3deda0f23ed680ded6e89fe2a51740a7e23979e",
       text: "Paystack Button Implementation",
       onSuccess: () => {
-        this.handleCart(this.props.location.state.cart);
+        this.handleCart(this.props.location.state.cart, "sold");
         this.props.history.replace("/");
       },
       onClose: () => {
-        this.handleCart(this.props.location.state.cart);
+        this.handleCart(this.props.location.state.cart, "available");
         this.props.history.goBack();
       }
     };

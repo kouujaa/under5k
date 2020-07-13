@@ -23,7 +23,7 @@ class StoreProductDisplay extends Component {
   render() {
     return (
       <div>
-        <div className="sandf mb-2">
+        <div className="sandf">
           <StoreFilter2
             products={this.props.products}
             handleUpSubmit={this.props.handleUpSubmit}

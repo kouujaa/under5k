@@ -4,6 +4,7 @@ import NewArrivals from "./Section1";
 import TopCategories from "./Section2";
 import TopSellers from "./Section3";
 import ProductContext from "./../../../contexts/productContext";
+import { motion } from "framer-motion";
 
 class Home extends Component {
   static contextType = ProductContext;
@@ -12,12 +13,16 @@ class Home extends Component {
     return (
       <ProductContext.Consumer>
         {productContext => (
-          <React.Fragment>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 3 }}
+          >
             <Jumbo />
+            <TopSellers products={productContext.products} />
             <NewArrivals products={productContext.products} />
             <TopCategories products={productContext.products} />
-            <TopSellers products={productContext.products} />
-          </React.Fragment>
+          </motion.div>
         )}
       </ProductContext.Consumer>
     );

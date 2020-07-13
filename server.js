@@ -7,7 +7,7 @@ const product = require("./routes/shopAPIs/customer/product");
 const images = require("./routes/shopAPIs/customer/upload");
 const customer = require("./routes/shopAPIs/customer/customer");
 const seller = require("./routes/shopAPIs/seller/seller");
-
+const feedback = require("./routes/shopAPIs/admin/feedback");
 const path = require("path");
 const express = require("express");
 const authRoute = require("./routes/auths/auth");
@@ -18,13 +18,22 @@ const helmet = require("helmet");
 const graphqlHTTP = require("express-graphql");
 const GraphSchema = require("./graphQLSchema/graphQLSchema");
 const passportSetup = require("./configureauth/passport-setup");
+const passport = require("passport");
 
 if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwt private key undefined");
   process.exit(1);
 }
-//
-//mongodb://localhost/leanorcouture
+
+// mongoose
+//   .connect("mongodb://localhost/leanorcouture", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true
+//   })
+//   .then(() => console.log("Connected to MongoDB..."))
+//   .catch(err => console.error("Could not connect to MongoDB..."));
+
 mongoose
   .connect(
     "mongodb+srv://jjhok:jjhok@mydb-9j7ob.mongodb.net/test?authSource=admin&replicaSet=mydb-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
@@ -45,6 +54,8 @@ app.use("/api/product", product);
 app.use("/api/images", images);
 app.use("/api/customers", customer);
 app.use("/api/seller", seller);
+app.use("/api/feedback", feedback);
+app.use(passport.initialize());
 app.use("/auth", authRoute);
 
 app.use(

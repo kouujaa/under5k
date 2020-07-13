@@ -51,8 +51,51 @@ router.post("/login", async (req, res) => {
       config.get("jwtPrivateKey")
     );
 
-    return res.send(token);
-    // res.header("x-authentication-token", token).send(`login successful`);
+    return res
+      .header("x-authentication-token", token)
+      .cookie("token", token)
+      .send("login-succesful");
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
+});
+
+//Google Login---required user name
+router.post("/loginDirect", async (req, res) => {
+  try {
+    const { userName } = req.user;
+    //CHECK IF USER EXISTS
+    let customer = await Customer.findOne({ userName }).select(
+      "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id state gender dob dateJoined"
+    );
+    if (!customer) return res.redirect("/signIn");
+
+    //RETRIEVE USER INFO EXCEPT PASSWORD
+    // customer = await Customer.findOne({ userName }).select(
+    //   "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id state gender dob dateJoined"
+    // );
+    const token = jwt.sign(
+      {
+        status: "user",
+        _id: customer._id,
+        userName: customer.userName,
+        email: customer.email,
+        firstName: customer.firstName,
+        lastName: customer.lastName,
+        phoneNumber: customer.phoneNumber,
+        state: customer.state,
+        gender: customer.gender,
+        datejoined: customer.dateJoined,
+        purchasePriceTotal: customer.purchasePriceTotal,
+        dob: customer.dob,
+        address: customer.address
+      },
+      config.get("jwtPrivateKey")
+    );
+    return res
+      .header("x-authentication-token", token)
+      .cookie("token", token)
+      .send("login-succesful");
   } catch (err) {
     return res.status(500).redirect("/serverError");
   }
@@ -123,7 +166,10 @@ router.post("/signUp", async (req, res) => {
     );
 
     // res.header("x-authentication-token", token).send(`signup successful`);
-    return res.send(token);
+    return res
+      .header("x-authentication-token", token)
+      .cookie("token", token)
+      .redirect("/home");
   } catch (err) {
     return res.status(500).redirect("/serverError");
   }
@@ -160,8 +206,11 @@ router.post("/updateProfile", authenticate, async (req, res) => {
   }
 });
 
+//add product to cart authenticate
+router.post("/addToCart", async (req, res) => {});
+
 //Change customer password authenticate
-router.post("/changePassword", authenticate, async (req, res) => {});
+router.post("/updatePurchase", authenticate, async (req, res) => {});
 
 //View customer meta data	authenticate
 router.get("/metaData", authenticate, async (req, res) => {});

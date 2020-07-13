@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Table } from "reactstrap";
 import jwtDecoder from "jwt-decode";
 import { ReactComponent as Card } from "./../svgs/credit-card.svg";
+import { motion } from "framer-motion";
 
 // import * as _ from "lodash";
 
@@ -60,7 +61,7 @@ class CheckOut extends Component {
         <td>
           <img
             className="mr-3"
-            src={cartItem.URI}
+            src={cartItem.URI[0]}
             alt={cartItem.productID}
             style={{ width: "40px", height: "40px" }}
           ></img>
@@ -71,10 +72,17 @@ class CheckOut extends Component {
       </tr>
     ));
   };
+
   render() {
+    console.log(this.props);
     const { phoneNumber, address, firstName, lastName } = this.state.user;
     return (
-      <div className="checkOut-page m-5 container">
+      <motion.div
+        className="checkOut-page m-5 container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="mb-5">
           <div className="m-4">
             <h5>
@@ -120,7 +128,7 @@ class CheckOut extends Component {
             </tfoot>
           </Table>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

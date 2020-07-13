@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import SellerProduct from "./SellerProduct";
 
-class SellerProductDisplay extends Component {
+class SellerSoldProductDisplay extends Component {
   state = {};
 
   displayall = () => {
     let { products, deleteHandler } = this.props;
-    // products = products.filter(each => each.status === "available"); IIP
+    products = products.filter(each => each.status === "sold");
 
     const prod = products.length ? (
       products.map(product => (
@@ -17,7 +17,7 @@ class SellerProductDisplay extends Component {
         />
       ))
     ) : (
-      <h1>No Item Uploaded Yet</h1>
+      <h1>No Item Sold Yet</h1>
     );
     return prod;
   };
@@ -26,4 +26,4 @@ class SellerProductDisplay extends Component {
   }
 }
 
-export default SellerProductDisplay;
+export default SellerSoldProductDisplay;

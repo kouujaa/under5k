@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { Link, Route } from "react-router-dom";
 import UploadProductImage from "./UploadProductImage";
-
+import { motion } from "framer-motion";
 class UploadProduct extends Component {
   state = {
     itemDescription: "",
@@ -22,7 +22,12 @@ class UploadProduct extends Component {
 
   render() {
     return (
-      <div className="container">
+      <motion.div
+        className="container"
+        initial={{ y: -300 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <h1>Upload Product</h1>
         <hr />
         <div className="container">
@@ -172,7 +177,7 @@ class UploadProduct extends Component {
             </Route>
           </Form>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

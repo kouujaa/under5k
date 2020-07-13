@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import firebase from "./../../firebase";
 import jwtDecoder from "jwt-decode";
+import { motion } from "framer-motion";
 
 import { Form, FormGroup, Label, Button, CustomInput } from "reactstrap";
 
@@ -105,7 +106,12 @@ class UploadProductImage extends Component {
     const { msg, status } = this.state;
 
     return (
-      <div>
+      <motion.div
+        className="container"
+        initial={{ y: -300 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <Form>
           <FormGroup>
             <Label for="uploadPic1">Select image a minimum of 3 images</Label>
@@ -132,7 +138,7 @@ class UploadProductImage extends Component {
             )}
           </FormGroup>
         </Form>
-      </div>
+      </motion.div>
     );
   }
 }

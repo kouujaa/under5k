@@ -20,8 +20,8 @@ class NewArrivals extends Component {
   // };
 
   render() {
-    const products = _.slice(this.context.products, 0, 6).reverse();
-
+    var sorted = _.orderBy(this.context.products, ["dateAdded"], ["asc"]);
+    const products = _.slice(sorted, 0, 12).reverse();
     return (
       <ProductContext.Consumer>
         {productContext => (
@@ -42,7 +42,7 @@ class NewArrivals extends Component {
                     className="sec_img"
                     src={item.URI[0]}
                     alt="cat"
-                  ></img>
+                  />
                 ))}
               </Carousel>
             </div>

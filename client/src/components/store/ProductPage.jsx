@@ -7,12 +7,9 @@ import _ from "lodash";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import { selectedSortFunc } from "./sort&filters/sorts/sorting";
-import {
-  SelectedSizeFilterFunction,
-  SelectedCategoryFilterFunction,
-  AllFilterFunction
-} from "./sort&filters/filters/filteringcomponenets/filtering";
+import { AllFilterFunction } from "./sort&filters/filters/filteringcomponenets/filtering";
 import ProductContext from "./../../contexts/productContext";
+import { motion } from "framer-motion";
 
 class ProductPage extends Component {
   static contextType = ProductContext;
@@ -23,7 +20,7 @@ class ProductPage extends Component {
     selectedCategory: "All",
     selectedSort: "",
     cart: [],
-    pageSize: 6,
+    pageSize: 9,
     currentPage: 1,
     currentSize: "",
     currentCategory: "",
@@ -62,7 +59,7 @@ class ProductPage extends Component {
       description,
       size,
       price,
-      URI: URI[0]
+      URI: URI
     };
     const found = _.find(cart, { productID });
     if (found) {
@@ -123,27 +120,33 @@ class ProductPage extends Component {
     console.log(filtered);
 
     filtered = selectedSortFunc(this.state.selectedSort, filtered);
-
-    const sendDown = pages(filtered, currentPage, pageSize);
-
+    let sendDown = pages(filtered, currentPage, pageSize);
+    sendDown = sendDown.filter(product => product.status === "available");
     return (
       <ProductContext.Consumer>
         {productContext => (
           <React.Fragment>
-            <div className="productPage mt-5 ml-1">
-              <Cart
-                className="mr-3"
-                cart={this.state.cart}
-                inc={this.incrementCart}
-                dec={this.decrementCart}
-                rem={this.removeFromCart}
-              />
+            <motion.div
+              className="productPage mt-5 ml-1"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              {this.state.cart.length ? (
+                <Cart
+                  className="mr-3"
+                  cart={this.state.cart}
+                  inc={this.incrementCart}
+                  dec={this.decrementCart}
+                  rem={this.removeFromCart}
+                />
+              ) : null}
 
               <ProductDisplay
                 products={sendDown}
                 addToCart={this.addToCart}
                 onPageChange={this.handlePageChange}
-                itemsCount={products.length}
+                itemsCount={sendDown.length}
                 pageSize={pageSize}
                 currentPage={currentPage}
                 handleSizeSelect={this.handleSizeFilter}
@@ -155,8 +158,9 @@ class ProductPage extends Component {
                 currentSeller={currentSeller}
                 currentSize={currentSize}
                 handleUpSubmit={this.handleUpSubmit}
+                cart={this.state.cart}
               />
-            </div>
+            </motion.div>
             <Paginate
               onPageChange={this.handlePageChange}
               itemsCount={filtered.length}

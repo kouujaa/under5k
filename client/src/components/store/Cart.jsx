@@ -20,16 +20,6 @@ class Cart extends Component {
     return prod;
   };
 
-  // handleCheckout = () => {
-  //   const { cart } = this.props;
-  //   this.props.history.push({
-  //     pathname: "/checkOut",
-  //     appState: { detail: cart }
-  //   });
-  // };
-  // { quantity: 1, productID }
-  // componentDidUpdate() {}
-
   render() {
     return (
       <motion.div
@@ -54,8 +44,8 @@ class Cart extends Component {
         </Table>
         {this.props.cart.length > 0 ? (
           <motion.div
-            initial={{ x: -300 }}
-            animate={{ x: 0 }}
+            initial={{ y: 3000 }}
+            animate={{ y: 0 }}
             transition={{ duration: 1 }}
           >
             <Link

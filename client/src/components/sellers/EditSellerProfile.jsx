@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 class EditSellerProfile extends Component {
   state = {
@@ -11,7 +12,7 @@ class EditSellerProfile extends Component {
     email: "",
     phoneNumber: 0
   };
- 
+
   onChangeHandler = input => e => {
     const userInfo = { ...this.state.userInfo };
     userInfo[e.target.name] = e.target.value;
@@ -79,7 +80,13 @@ class EditSellerProfile extends Component {
       phoneNumber
     } = this.state;
     return (
-      <div className="signUp">
+      <motion.div
+        style={{ border: "solid" }}
+        className="signUp mt-2"
+        initial={{ y: -300 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <Form
           className="container mt-5 sigupform"
           onSubmit={this.onSubmitHandler}
@@ -204,7 +211,7 @@ class EditSellerProfile extends Component {
         </Form>
         <span></span>
         <br></br>
-      </div>
+      </motion.div>
     );
   }
 }

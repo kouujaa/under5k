@@ -1,6 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import { motion } from "framer-motion";
 
 const Paginate = props => {
   const { itemsCount, pageSize, currentPage, onPageChange } = props;
@@ -10,7 +11,12 @@ const Paginate = props => {
   const pages = _.range(1, pagesCount + 1);
 
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <motion.div
+      style={{ backgroundColor: "white" }}
+      initial={{ y: 300 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 1 }}
+    >
       <Pagination
         style={{ backgroundColor: "white" }}
         aria-label="Page navigation example"
@@ -31,7 +37,7 @@ const Paginate = props => {
           </PaginationItem>
         ))}
       </Pagination>
-    </div>
+    </motion.div>
   );
 };
 

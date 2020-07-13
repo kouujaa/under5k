@@ -57,7 +57,7 @@ class Filters2 extends Component {
 
   render() {
     return (
-      <div className="sandf mr-3" style={{ backgroundColor: "white" }}>
+      <div className="sandf mr-2" style={{ backgroundColor: "white" }}>
         <Form inline onSubmit={this.handleAll}>
           <FormGroup>
             <CustomInput
@@ -86,8 +86,7 @@ class Filters2 extends Component {
               ))}
             </CustomInput>
           </FormGroup>
-
-          <Button>Filter</Button>
+          <Button className="ml-1">Filter</Button>
         </Form>
       </div>
     );

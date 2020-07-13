@@ -3,7 +3,7 @@ import axios from "axios";
 // import Options from "./Options";
 import ProductDisplay from "../ProductsDisplay";
 import Cart from "../Cart";
-import { Jumbotron } from "reactstrap";
+import { Jumbotron, Button } from "reactstrap";
 import _ from "lodash";
 import Paginate from "../../all/Pagination";
 import { pages } from "../../../utils/pages";
@@ -21,7 +21,8 @@ class StoreFront extends Component {
     currentPage: 1,
     currentSize: "ALL",
     currentCategory: "ALL",
-    products: ""
+    products: "",
+    banner: ""
   };
 
   //handler for increasing quantity of given product
@@ -98,12 +99,20 @@ class StoreFront extends Component {
       const products = await axios.post("/api/product/byShop", {
         shopName: this.props.match.params.sellerName
       });
+
       this.setState({ products: products.data });
+    } catch (err) {}
+
+    try {
+      const banner = await axios.post("/api/seller/banner", {
+        shopName: this.props.match.params.sellerName
+      });
+
+      this.setState({ banner: banner.data.banner });
     } catch (err) {}
   }
 
   render() {
-    console.log(this.props.match.params.sellerName);
     const {
       pageSize,
       currentPage,
@@ -126,13 +135,20 @@ class StoreFront extends Component {
     const sendDown = pages(filtered, currentPage, pageSize);
 
     return (
-      <React.Fragment>
-        <div className="jumbotron sellerjumb">
-          {this.props.match.params.sellerName} store
+      <div className="storeFront">
+        <div className="banner">
+          <h1 className="center float-right mt-3 mr-1 bannerText">
+            {this.props.match.params.sellerName.toUpperCase()} STORE
+          </h1>
+          <img
+            className="picbanner"
+            src={this.state.banner}
+            alt="Banner picture"
+          />
         </div>
-        <div className="StoreFront mt-5 ml-3">
+
+        <div className="ml-3">
           <Cart
-            className="mr-3"
             cart={this.state.cart}
             inc={this.incrementCart}
             dec={this.decrementCart}
@@ -155,13 +171,15 @@ class StoreFront extends Component {
             handleUpSubmit={this.handleUpSubmit}
           />
         </div>
-        <Paginate
-          onPageChange={this.handlePageChange}
-          itemsCount={filtered.length}
-          pageSize={pageSize}
-          currentPage={currentPage}
-        />
-      </React.Fragment>
+        <div>
+          <Paginate
+            onPageChange={this.handlePageChange}
+            itemsCount={filtered.length}
+            pageSize={pageSize}
+            currentPage={currentPage}
+          />
+        </div>
+      </div>
     );
   }
 }

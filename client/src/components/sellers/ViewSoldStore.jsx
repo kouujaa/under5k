@@ -3,8 +3,9 @@ import SellerProductDisplay from "./SellerProductDisplay";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import axios from "axios";
+import SellerSoldProductDisplay from "./SellerSoldProductDisplay";
 
-class ViewOwnStore extends Component {
+class ViewSoldStore extends Component {
   state = {
     pageSize: 9,
     currentPage: 1,
@@ -23,10 +24,10 @@ class ViewOwnStore extends Component {
       const deletedProduct = await axios.post(`/api/product/remove`, {
         productID
       });
-      window.location = "/sellerDashBoard/viewOwnStore";
+      window.location = "/sellerDashBoard/viewSoldStore";
     } catch (err) {
       this.props.history.push({
-        pathname: "/sellerDashBoard/viewOwnStore",
+        pathname: "/sellerDashBoard/viewSoldStore",
         search: "",
         hash: "",
         state: { message: "invalid login dataentials!" }
@@ -43,15 +44,15 @@ class ViewOwnStore extends Component {
 
   render() {
     const { pageSize, currentPage, products } = this.state;
-    let sendDown = pages(products, currentPage, pageSize);
+    const sendDown = pages(products, currentPage, pageSize);
 
-    sendDown = sendDown.filter(product => product.status === "available");
     return (
       <div>
-        <SellerProductDisplay
+        <SellerSoldProductDisplay
           products={sendDown}
           deleteHandler={this.deleteHandler}
         />
+
         <Paginate
           onPageChange={this.handlePageChange}
           itemsCount={products.length}
@@ -63,4 +64,4 @@ class ViewOwnStore extends Component {
   }
 }
 
-export default ViewOwnStore;
+export default ViewSoldStore;

@@ -81,4 +81,38 @@ router.post("/removeMany", async (req, res) => {
   // }
 });
 
+//bought status change
+router.post("/updateMany", async (req, res) => {
+  var cart = _.values(req.body.cart);
+  cart = cart.map(each => {
+    return each.productID;
+  });
+
+  try {
+    cart.forEach(async productID => {
+      await Product.updateOne(
+        { productID },
+        {
+          $set: { status: req.body.status }
+        }
+      );
+    });
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
+  console.log(cart, req.body.status);
+  return res.send(cart);
+  // try {
+  //   cart.forEach((item)=>{
+
+  //   await Product.deleteOne({ productID:item.productID });
+  //   return res.send("Delete Succesfull");
+  //   })
+
+  // } catch (err) {
+  //   console.log(err);
+  //   return res.status(404).send("internal error");
+  // }
+});
+
 module.exports = router;

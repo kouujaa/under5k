@@ -21,6 +21,8 @@ class ProductDisplay extends Component {
   };
 
   render() {
+    let show = "";
+    show = this.props.cart ? "allProducts mt-5 ml-5" : "allProducts mt-5";
     return (
       <div>
         <div className="sandf mb-2">
@@ -36,7 +38,7 @@ class ProductDisplay extends Component {
           <Sorts handleSort={this.props.handleSort} />
         </div>
 
-        <div className="allProducts mt-5">{this.displayall()}</div>
+        <div className={show}>{this.displayall()}</div>
         <div className="container"></div>
       </div>
     );

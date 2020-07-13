@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 import { Link, Route } from "react-router-dom";
 import EditProfile from "./EditProfile";
+import { motion } from "framer-motion";
+
 class Profile extends Component {
   state = {};
 
@@ -21,11 +23,16 @@ class Profile extends Component {
     } = this.props.profileInfo;
 
     return (
-      <div className="container mt-5">
+      <motion.div
+        className="container mt-5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div>
           <Card>
             <CardHeader>
-              <h1> Customer Profile Page</h1>
+              <h1>Profile</h1>
             </CardHeader>
             <CardBody>
               <h4>
@@ -66,7 +73,7 @@ class Profile extends Component {
             <EditProfile info={this.props.profileInfo} />
           </Route>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

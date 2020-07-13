@@ -65,13 +65,14 @@ import ProfilePage from "./components/shop/userInfo/ProfilePage";
 import SellerSignUp from "./components/sellers/SellerSignUpPage";
 import SellerSignInPage from "./components/sellers/SellerSignInPage";
 import SellerHomePage from "./components/sellers/SellerHomePage";
+import { withCookies, Cookies } from "react-cookie";
 import PayStackPortal from "./components/store/PayStackPortal";
 import SellerDasboard from "./components/sellers/SellerDashboard";
 import UserAgreement from "./components/resourceStore/UserAgreement";
 import SellerAgreement from "./components/resourceStore/SellerAgreement";
 import StoreFront from "./components/store/sellerFront/StoreFront";
 import ProductContext from "./contexts/productContext";
-import page403 from "./components/errorsnauth/Page403";
+import Page403 from "./components/errorsnauth/Page403";
 import Page404 from "./components/errorsnauth/Page404";
 import Page500 from "./components/errorsnauth/Page500";
 class App extends Component {
@@ -82,12 +83,18 @@ class App extends Component {
   };
 
   clearState = () => {
-    localStorage.clear();
+    const { cookies } = this.props;
+
+    cookies.remove("token", { path: "/" });
+
     window.location = "/";
   };
   componentDidMount() {
     try {
-      const jwt = localStorage.getItem("token");
+      const { cookies } = this.props;
+
+      const jwt = cookies.get("token");
+
       const user = jwtDecoder(jwt);
       // console.log(user);
       this.setState({ user });
@@ -105,6 +112,8 @@ class App extends Component {
   }
   s;
   render() {
+    const { cookies } = this.props;
+    console.log(cookies);
     return (
       <ProductContext.Provider
         value={{ products: this.state.products, user: this.state.user }}
@@ -113,33 +122,74 @@ class App extends Component {
           {/* <Provider store={myStore}> */}
           <AppNavBar user={this.state.user} clearState={this.clearState} />
           <Switch>
-            <Route path="/shop">
-              <ProductPage />
-            </Route>
-            <Route path="/signUp" component={SignUpForm}></Route>
-            <Route path="/signIn" component={SignInForm}></Route>
-            <Route path="/contact" component={ContactPage}></Route>
+            <Route
+              path="/shop"
+              render={props => (
+                <ProductPage cookies={this.props.cookies} {...props} />
+              )}
+            />
 
-            <Route path="/checkOut" component={CheckOut}></Route>
+            <Route
+              path="/signUp"
+              render={props => (
+                <SignUpForm cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/signIn"
+              render={props => (
+                <SignInForm cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/contact"
+              render={props => (
+                <ContactPage cookies={this.props.cookies} {...props} />
+              )}
+            />
+
+            <Route
+              path="/checkOut"
+              render={props => (
+                <CheckOut cookies={this.props.cookies} {...props} />
+              )}
+            />
             <Route
               path="/profilePage"
               render={props => {
                 if (this.state.user.status === "seller")
                   return <Redirect to="/sellerDashBoard/shopdetails" />;
-                return <ProfilePage />;
+                return <ProfilePage cookies={this.props.cookies} {...props} />;
               }}
             />
 
             {/* <Route path="/profilePage" component={ProfilePage}></Route> */}
-            <Route path="/sellerSignUp" component={SellerSignUp}></Route>
-            <Route path="/sellerSignIn" component={SellerSignInPage}></Route>
-            <Route path="/sellerHomePage" component={SellerHomePage}></Route>
+            <Route
+              path="/sellerSignUp"
+              render={props => (
+                <SellerSignUp cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/sellerSignIn"
+              render={props => (
+                <SellerSignInPage cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/sellerHomePage"
+              render={props => (
+                <SellerHomePage cookies={this.props.cookies} {...props} />
+              )}
+            />
             <Route
               path="/sellerDashBoard"
               render={props => {
                 if (this.state.user.status !== "seller")
                   return <Redirect to="/unauthorized" />;
-                return <SellerDasboard />;
+                return (
+                  <SellerDasboard cookies={this.props.cookies} {...props} />
+                );
               }}
             />
             {/* <Route
@@ -151,24 +201,62 @@ class App extends Component {
               }}
             /> */}
 
-            <Route path="/payStackRDR" component={PayStackPortal}></Route>
-            <Route path="/userAgreement" component={UserAgreement}></Route>
-            <Route path="/sellerAgreement" component={SellerAgreement}></Route>
+            <Route
+              path="/payStackRDR"
+              render={props => (
+                <PayStackPortal cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/userAgreement"
+              render={props => (
+                <UserAgreement cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/sellerAgreement"
+              render={props => (
+                <SellerAgreement cookies={this.props.cookies} {...props} />
+              )}
+            />
 
-            <Route path="/unauthorized" component={page403}></Route>
-            <Route path="/serverError" component={Page500}></Route>
-            <Route path="/notFound" component={Page404}></Route>
-            <Route path="/store/:sellerName" component={StoreFront}></Route>
+            <Route
+              path="/unauthorized"
+              render={props => (
+                <Page403 cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/serverError"
+              render={props => (
+                <Page500 cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/notFound"
+              render={props => (
+                <Page404 cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/store/:sellerName"
+              render={props => (
+                <StoreFront cookies={this.props.cookies} {...props} />
+              )}
+            />
             <Redirect from="/store" to="/shop" />
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
+
+            <Route
+              exact
+              path="/"
+              render={props => <Home cookies={this.props.cookies} {...props} />}
+            />
+
+            <Route
+              exact
+              path="/home"
+              render={props => <Home cookies={this.props.cookies} {...props} />}
+            />
 
             <Redirect to="/notFound" />
           </Switch>
@@ -180,4 +268,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withCookies(App);

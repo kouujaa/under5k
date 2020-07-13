@@ -3,6 +3,9 @@ import { Form, FormGroup, Label, Input, CustomInput, Button } from "reactstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Joi from "joi-browser";
+import GoogleSignIn from "./GoogleSignIn";
+import { ReactComponent as Google } from "../../svgs/google_logo.svg";
+import { ReactComponent as Gmail } from "../../svgs/gmail.svg";
 
 class SignUpForm extends Component {
   state = {
@@ -143,7 +146,7 @@ class SignUpForm extends Component {
         gender,
         state
       });
-      localStorage.setItem("token", token.data);
+
       window.location = "/";
     } catch (err) {
       this.props.history.push({
@@ -155,222 +158,234 @@ class SignUpForm extends Component {
     }
   }
 
+  onGoogleSign = async e => {
+    try {
+      console.log(this.props);
+      await axios.get("/auth/google");
+
+      // window.location = "/";
+    } catch (err) {
+      this.props.history.push({
+        pathname: "/signIn",
+        search: "",
+        hash: "",
+        state: { message: "invalid login dataentials!" }
+      });
+    }
+  };
+
   render() {
     const { errors } = this.state;
 
     return (
-      <div className="signUp">
-        <div className="container">
-          <Link className="btn btn-danger" to="/google">
-            Sign Up With Google
-          </Link>
-          <hr />
-          <Link className="btn btn-primary" to="/google">
-            Sign Up With Facebook
-          </Link>
+      <div className="signUp mt-3">
+        <div className="container sigupform">
+          <GoogleSignIn />
+
+          <Form
+            className="container mt-5 sigupform"
+            onSubmit={this.onSubmitHandler}
+          >
+            <h3>Sign Up</h3>
+            <br></br>
+            <FormGroup>
+              <Label for="exampleEmail">UserName</Label>
+              <Input
+                bsSize="lg"
+                onChange={this.onChangeHandler}
+                name="userName"
+                required
+                onFocus
+              />
+              {errors["userName"] && (
+                <div className="alert alert-danger">{errors["userName"]}</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label for="Password">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="Password"
+                required
+                onChange={this.onChangeHandler}
+              />
+              {errors["password"] && (
+                <div className="alert alert-danger">{errors["password"]}</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label for="firstName">First Name</Label>
+              <Input
+                bsSize="lg"
+                onChange={this.onChangeHandler}
+                name="firstName"
+                required
+              />
+              {errors["firstName"] && (
+                <div className="alert alert-danger">{errors["firstName"]}</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label for="lastName">Last Name</Label>
+              <Input
+                bsSize="lg"
+                onChange={this.onChangeHandler}
+                name="lastName"
+                required
+              />
+              {errors["lastName"] && (
+                <div className="alert alert-danger">{errors["lastName"]}</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label for="address">Address</Label>
+              <Input
+                bsSize="lg"
+                onChange={this.onChangeHandler}
+                name="address"
+                required
+              />
+              {errors["address"] && (
+                <div className="alert alert-danger">{errors["address"]}</div>
+              )}
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="Email">Email</Label>
+              <Input
+                type="email"
+                name="email"
+                id="Email"
+                required
+                onChange={this.onChangeHandler}
+              />
+              {errors["email"] && (
+                <div className="alert alert-danger">{errors["email"]}</div>
+              )}
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="phoneNumberr">Phone Number</Label>
+              <Input
+                type="number"
+                name="phoneNumber"
+                id="phoneNumberr"
+                required
+                onChange={this.onChangeHandlerber}
+              />
+              {errors["phoneNumber"] && (
+                <div className="alert alert-danger">
+                  {errors["phoneNumber"]}
+                </div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label for="dob">Birthday</Label>
+              <Input
+                type="date"
+                name="dob"
+                id="dob"
+                required
+                onChange={this.onChangeHandler}
+              />
+              {errors["dob"] && (
+                <div className="alert alert-danger">{errors["dob"]}</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label for="sexSelect">Gender</Label>
+              <Input
+                type="select"
+                name="gender"
+                id="sexSelect"
+                required
+                onChange={this.onChangeHandler}
+              >
+                <option>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </Input>
+              {errors["gender"] && (
+                <div className="alert alert-danger">{errors["gender"]}</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label for="StateSelect">State</Label>
+              <Input
+                type="select"
+                name="state"
+                id="StateSelect"
+                required
+                onChange={this.onChangeHandler}
+              >
+                <option>Abia</option>
+                <option>Adamawa</option>
+                <option>Akwa Ibom</option>
+                <option>Anambra</option>
+                <option>Bauchi</option>
+                <option>Bayelsa</option>
+                <option>Benue</option>
+                <option>Borno</option>
+                <option>CrossRIver</option>
+                <option>Delta</option>
+                <option>Ebonyi</option>
+                <option>Edo</option>
+                <option>Ekiti</option>
+                <option>Enugu</option>
+                <option>Gombe</option>
+                <option>Imo</option>
+                <option>Jigawa</option>
+                <option>Kaduna</option>
+                <option>Kano</option>
+                <option>Katsina</option>
+                <option>Kebbi</option>
+                <option>Kogi</option>
+                <option>Kwara</option>
+                <option>Lagos</option>
+                <option>Nasarawa</option>
+                <option>Niger</option>
+                <option>Ogun</option>
+                <option>Ondo</option>
+                <option>Osun</option>
+                <option>Oyo</option>
+                <option>Plateau</option>
+                <option>River</option>
+                <option>Sokoto</option>
+                <option>Taraba</option>
+                <option>Yobe</option>
+                <option>Zamfara</option>
+                <option>FCT</option>
+              </Input>
+              {errors["state"] && (
+                <div className="alert alert-danger">{errors["state"]}</div>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleCheckbox">Switches</Label>
+              <div>
+                <CustomInput
+                  type="switch"
+                  id="notifications"
+                  name="notifications"
+                  label="Turn on noification"
+                  required
+                  onChange={this.onChangeHandlertions}
+                />
+                <CustomInput
+                  type="switch"
+                  id="exampleCustomSwitch2"
+                  name="agreement"
+                  required
+                  label="agree to customer agreement"
+                  onChange={this.onChangeHandlert}
+                />
+                <Link to="/userAgreement">user Agreement</Link>
+              </div>
+            </FormGroup>
+            {this.renderButton("SUBMIT")}
+          </Form>
         </div>
-
-        <Form
-          className="container mt-5 sigupform"
-          onSubmit={this.onSubmitHandler}
-        >
-          <h3>Sign Up</h3>
-          <br></br>
-          <FormGroup>
-            <Label for="exampleEmail">UserName</Label>
-            <Input
-              bsSize="lg"
-              onChange={this.onChangeHandler}
-              name="userName"
-              required
-              onFocus
-            />
-            {errors["userName"] && (
-              <div className="alert alert-danger">{errors["userName"]}</div>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <Label for="Password">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="Password"
-              required
-              onChange={this.onChangeHandler}
-            />
-            {errors["password"] && (
-              <div className="alert alert-danger">{errors["password"]}</div>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <Label for="firstName">First Name</Label>
-            <Input
-              bsSize="lg"
-              onChange={this.onChangeHandler}
-              name="firstName"
-              required
-            />
-            {errors["firstName"] && (
-              <div className="alert alert-danger">{errors["firstName"]}</div>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <Label for="lastName">Last Name</Label>
-            <Input
-              bsSize="lg"
-              onChange={this.onChangeHandler}
-              name="lastName"
-              required
-            />
-            {errors["lastName"] && (
-              <div className="alert alert-danger">{errors["lastName"]}</div>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <Label for="address">Address</Label>
-            <Input
-              bsSize="lg"
-              onChange={this.onChangeHandler}
-              name="address"
-              required
-            />
-            {errors["address"] && (
-              <div className="alert alert-danger">{errors["address"]}</div>
-            )}
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="Email">Email</Label>
-            <Input
-              type="email"
-              name="email"
-              id="Email"
-              required
-              onChange={this.onChangeHandler}
-            />
-            {errors["email"] && (
-              <div className="alert alert-danger">{errors["email"]}</div>
-            )}
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="phoneNumberr">Phone Number</Label>
-            <Input
-              type="number"
-              name="phoneNumber"
-              id="phoneNumberr"
-              required
-              onChange={this.onChangeHandlerber}
-            />
-            {errors["phoneNumber"] && (
-              <div className="alert alert-danger">{errors["phoneNumber"]}</div>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <Label for="dob">Birthday</Label>
-            <Input
-              type="date"
-              name="dob"
-              id="dob"
-              required
-              onChange={this.onChangeHandler}
-            />
-            {errors["dob"] && (
-              <div className="alert alert-danger">{errors["dob"]}</div>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <Label for="sexSelect">Gender</Label>
-            <Input
-              type="select"
-              name="gender"
-              id="sexSelect"
-              required
-              onChange={this.onChangeHandler}
-            >
-              <option>Select Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-            </Input>
-            {errors["gender"] && (
-              <div className="alert alert-danger">{errors["gender"]}</div>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <Label for="StateSelect">State</Label>
-            <Input
-              type="select"
-              name="state"
-              id="StateSelect"
-              required
-              onChange={this.onChangeHandler}
-            >
-              <option>Abia</option>
-              <option>Adamawa</option>
-              <option>Akwa Ibom</option>
-              <option>Anambra</option>
-              <option>Bauchi</option>
-              <option>Bayelsa</option>
-              <option>Benue</option>
-              <option>Borno</option>
-              <option>CrossRIver</option>
-              <option>Delta</option>
-              <option>Ebonyi</option>
-              <option>Edo</option>
-              <option>Ekiti</option>
-              <option>Enugu</option>
-              <option>Gombe</option>
-              <option>Imo</option>
-              <option>Jigawa</option>
-              <option>Kaduna</option>
-              <option>Kano</option>
-              <option>Katsina</option>
-              <option>Kebbi</option>
-              <option>Kogi</option>
-              <option>Kwara</option>
-              <option>Lagos</option>
-              <option>Nasarawa</option>
-              <option>Niger</option>
-              <option>Ogun</option>
-              <option>Ondo</option>
-              <option>Osun</option>
-              <option>Oyo</option>
-              <option>Plateau</option>
-              <option>River</option>
-              <option>Sokoto</option>
-              <option>Taraba</option>
-              <option>Yobe</option>
-              <option>Zamfara</option>
-              <option>FCT</option>
-            </Input>
-            {errors["state"] && (
-              <div className="alert alert-danger">{errors["state"]}</div>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleCheckbox">Switches</Label>
-            <div>
-              <CustomInput
-                type="switch"
-                id="notifications"
-                name="notifications"
-                label="Turn on noification"
-                required
-                onChange={this.onChangeHandlertions}
-              />
-              <CustomInput
-                type="switch"
-                id="exampleCustomSwitch2"
-                name="agreement"
-                required
-                label="agree to customer agreement"
-                onChange={this.onChangeHandlert}
-              />
-              <Link to="/userAgreement">user Agreement</Link>
-            </div>
-          </FormGroup>
-          {this.renderButton("SUBMIT")}
-        </Form>
         <span></span>
         <br></br>
       </div>

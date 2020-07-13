@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 import { Link, Route } from "react-router-dom";
+import { motion } from "framer-motion";
 import EditSellerProfile from "./EditSellerProfile";
 import axios from "axios";
 
@@ -30,11 +31,22 @@ class ShopDetails extends Component {
       lastName,
       phoneNumber,
       shopName,
-      state
+      state,
+      dailyVisits,
+      monthlyVisits,
+      dailySoldItems,
+      totalSoldItems,
+      totalDailySales,
+      totalSales
     } = this.props.user;
 
     return (
-      <div className="container mt-5">
+      <motion.div
+        className="container mt-5"
+        initial={{ y: -300 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <div>
           <Card>
             <CardHeader>
@@ -67,25 +79,28 @@ class ShopDetails extends Component {
               <h4>
                 <span>gender: {gender}</span>
               </h4>
-
               <h4>
                 <span>Bank Name:{bank}</span>
               </h4>
-
               <h4>
                 <span>Account Name:{accountName}</span>
               </h4>
-
               <h4>
                 <span>Account Number:{accountNumber} </span>
               </h4>
-
-              {/* <h4>
-                <span>Monthly Visits:{monthlyVisit} </span>
+              <h4>
+                <span>Monthly Visits:{monthlyVisits} </span>
               </h4>
               <h4>
-                <span>Total Monthly Sales:{totalMonthlySale}</span>
-              </h4> */}
+                <span>Total Sales:{totalSales}</span>
+              </h4>
+              <h4>
+                <span>Daily Visits:{dailyVisits} </span>
+              </h4>
+              <h4>
+                <span>Total Items Sold:{totalSoldItems}</span>
+              </h4>
+              ,
             </CardBody>
           </Card>
           <Link
@@ -100,7 +115,7 @@ class ShopDetails extends Component {
             <EditSellerProfile />
           </Route>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }
