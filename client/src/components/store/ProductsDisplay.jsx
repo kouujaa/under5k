@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Product from "./Product";
 import Filters from "./sort&filters/filters/filteringcomponenets/Filters";
 import Sorts from "./sort&filters/sorts/Sorts";
-import Filters2 from "./sort&filters/filters/filteringcomponenets/Filters";
 
 class ProductDisplay extends Component {
   displayall = () => {
@@ -46,16 +45,3 @@ class ProductDisplay extends Component {
 }
 
 export default ProductDisplay;
-
-{
-  /* <Filters
-  products={this.props.products}
-  handleSizeFilter={this.props.handleSizeSelect}
-  handleCategoryFilter={this.props.handleCategorySelect}
-  handleSellerFilter={this.props.handleSellerSelect}
-  selectedSize={this.props.selectedSize}
-  currentCategory={this.props.currentCategory}
-  currentSeller={this.props.currentSeller}
-  currentSize={this.props.currentSize}
-/>; */
-}

@@ -20,7 +20,7 @@ class ViewOwnStore extends Component {
 
     this.setState(products);
     try {
-      const deletedProduct = await axios.post(`/api/product/remove`, {
+      await axios.post(`/api/product/remove`, {
         productID
       });
       window.location = "/sellerDashBoard/viewOwnStore";

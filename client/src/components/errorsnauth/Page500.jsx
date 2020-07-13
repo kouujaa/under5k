@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "reactstrap";
 
 const Page500 = () => {
   return (

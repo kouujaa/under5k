@@ -117,7 +117,6 @@ class ProductPage extends Component {
       selectedSize,
       filtered
     );
-    console.log(filtered);
 
     filtered = selectedSortFunc(this.state.selectedSort, filtered);
     let sendDown = pages(filtered, currentPage, pageSize);

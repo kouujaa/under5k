@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "reactstrap";
 
 const Page404 = () => {
   return (
@@ -25,7 +24,6 @@ const Page404 = () => {
           If you think something is broken, report a problem.
         </h6>
         <div className="mt-4">
-          {" "}
           <span className="btn btn-success">
             <a href="/">Go to homepage</a>
           </span>

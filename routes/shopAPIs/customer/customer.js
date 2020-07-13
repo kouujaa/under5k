@@ -7,12 +7,6 @@ const { Customer, validateCustomer } = require("../../../models/Customer");
 const authenticate = require("../../../middleware/authenticate");
 
 const router = express.Router();
-// //testing code for all
-// router.get("/", authenticate, async (req, res) => {
-//   const customer = await Customer.find();
-//   if (!customer) return res.status(400).send("User does not exist");
-//   res.send(customer);
-// });
 
 //Login---required user name and password
 router.post("/login", async (req, res) => {

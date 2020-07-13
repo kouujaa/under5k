@@ -12,7 +12,7 @@ class PayStackPortal extends Component {
         cart,
         status
       });
-      console.log(ans.data);
+   
     } catch (err) {
       console.log(err);
     }
@@ -21,7 +21,7 @@ class PayStackPortal extends Component {
       const ans = await axios.post("/api/product/updatePurchase", {
         cart
       });
-      console.log(ans.data);
+
     } catch (err) {
       console.log(err);
     }

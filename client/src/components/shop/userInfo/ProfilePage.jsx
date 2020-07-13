@@ -9,7 +9,8 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     try {
-      const jwt = localStorage.getItem("token");
+      const { cookies } = this.props;
+      const jwt = cookies.get("token");
       const userInfo = jwtDecoder(jwt);
       this.setState({ userInfo });
     } catch (error) {}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input, FormGroup, Label, Button, CustomInput } from "reactstrap";
+import { Form, FormGroup, Button, CustomInput } from "reactstrap";
 
 class Filters extends Component {
   state = {

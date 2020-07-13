@@ -31,7 +31,8 @@ class CheckOut extends Component {
 
   componentDidMount() {
     try {
-      const jwt = localStorage.getItem("token");
+      const { cookies } = this.props;
+      const jwt = cookies.get("token");
       const user = jwtDecoder(jwt);
 
       this.setState({ user });
@@ -74,7 +75,6 @@ class CheckOut extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { phoneNumber, address, firstName, lastName } = this.state.user;
     return (
       <motion.div

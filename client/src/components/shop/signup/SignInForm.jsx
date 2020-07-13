@@ -4,12 +4,8 @@ import axios from "axios";
 import Joi from "joi-browser";
 import UseForm from "./../../common/UseForm";
 
-import { ReactComponent as Google } from "../../svgs/google_logo.svg";
-
-import { ReactComponent as Gmail } from "../../svgs/gmail.svg";
-
 // import { awaitExpression } from "@babel/types";
-import { order } from "./../../../store/actions/actions";
+// import { order } from "./../../../store/actions/actions";
 import GoogleSignIn from "./GoogleSignIn";
 
 class SignInForm extends UseForm {
@@ -36,7 +32,7 @@ class SignInForm extends UseForm {
   async getInfo() {
     const { userName, password } = this.state.data;
     try {
-      const token = await axios.post("/api/customers/login", {
+      await axios.post("/api/customers/login", {
         userName,
         password
       });
@@ -52,13 +48,8 @@ class SignInForm extends UseForm {
     }
   }
 
-  // onGoogleSign = e => {
-  //   window.open("http://localhost:3001/auth/google", "_self");
-  // };
-
   onGoogleSign = async e => {
     try {
-      console.log(this.props);
       await axios.get("http://localhost:3001/auth/google");
 
       window.location = "/";
@@ -79,18 +70,10 @@ class SignInForm extends UseForm {
   // };
 
   render() {
-    const { cookies } = this.props;
-    console.log(cookies.get("token"));
     return (
       <div className="signIn">
         <div className="container mt-5 siginform">
-          <div className="container center">
-            {/* <div className="btn btn-danger ml-3" onClick={this.onFacebookSign}>
-              Facebook <Face height="1.8em" width="1.8em" />
-              (Instagram
-              <Insta height="1.8em" width="1.8em" />)
-            </div> */}
-          </div>
+          <div className="container center"></div>
           <Form className="container siginform" onSubmit={this.onSubmitHandler}>
             <h3>Sign In</h3>
             <br></br>

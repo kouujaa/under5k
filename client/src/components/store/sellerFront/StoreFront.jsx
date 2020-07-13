@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 // import Options from "./Options";
-import ProductDisplay from "../ProductsDisplay";
 import Cart from "../Cart";
-import { Jumbotron, Button } from "reactstrap";
 import _ from "lodash";
 import Paginate from "../../all/Pagination";
 import { pages } from "../../../utils/pages";
@@ -143,7 +141,7 @@ class StoreFront extends Component {
           <img
             className="picbanner"
             src={this.state.banner}
-            alt="Banner picture"
+            alt="Bannerpicture"
           />
         </div>
 

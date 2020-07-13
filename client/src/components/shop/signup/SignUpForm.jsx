@@ -4,8 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Joi from "joi-browser";
 import GoogleSignIn from "./GoogleSignIn";
-import { ReactComponent as Google } from "../../svgs/google_logo.svg";
-import { ReactComponent as Gmail } from "../../svgs/gmail.svg";
 
 class SignUpForm extends Component {
   state = {
@@ -98,16 +96,6 @@ class SignUpForm extends Component {
     data[input.name] = input.value;
     this.setState({ data, errors });
   };
-  // onChangeHandler = input => e => {
-  //   const userInfo = { ...this.state.userInfo };
-  //   userInfo[e.target.name] = e.target.value;
-  //   this.setState(userInfo);
-  // };
-
-  // onSubmitHandler = e => {
-  //   e.preventDefault();
-  //   this.getInfo();
-  // };
 
   doSubmit = () => {
     this.getInfo();
@@ -134,7 +122,7 @@ class SignUpForm extends Component {
         state
       } = this.state.data;
 
-      const token = await axios.post("/api/customers/signUp", {
+      await axios.post("/api/customers/signUp", {
         userName,
         password,
         firstName,
@@ -160,7 +148,6 @@ class SignUpForm extends Component {
 
   onGoogleSign = async e => {
     try {
-      console.log(this.props);
       await axios.get("/auth/google");
 
       // window.location = "/";
@@ -393,36 +380,3 @@ class SignUpForm extends Component {
   }
 }
 export default SignUpForm;
-
-// schema = {
-//   userName: Joi.string()
-//     .required()
-//     .label("Username"),
-//   password: Joi.string()
-//     .required()
-//     .label("Password"),
-//   firstName: Joi.string()
-//     .required()
-//     .label("First Name"),
-//   lastName: Joi.string()
-//     .required()
-//     .label("Last Name"),
-//   address: Joi.string()
-//     .required()
-//     .label("Address"),
-//   email: Joi.string()
-//     .required()
-//     .label("Email Address"),
-//   phoneNumber: Joi.number()
-//     .required()
-//     .label("Phone Number"),
-//   dob: Joi.string()
-//     .required()
-//     .label("Birthday"),
-//   gender: Joi.string()
-//     .required()
-//     .label("Gender"),
-//   state: Joi.string()
-//     .required()
-//     .label("State")
-// };

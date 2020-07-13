@@ -34,9 +34,7 @@ class ShopDetails extends Component {
       state,
       dailyVisits,
       monthlyVisits,
-      dailySoldItems,
       totalSoldItems,
-      totalDailySales,
       totalSales
     } = this.props.user;
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SellerProductDisplay from "./SellerProductDisplay";
+
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import axios from "axios";
@@ -21,7 +21,7 @@ class ViewSoldStore extends Component {
 
     this.setState(products);
     try {
-      const deletedProduct = await axios.post(`/api/product/remove`, {
+      await axios.post(`/api/product/remove`, {
         productID
       });
       window.location = "/sellerDashBoard/viewSoldStore";

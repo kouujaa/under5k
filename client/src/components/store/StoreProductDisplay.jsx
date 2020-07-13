@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Product from "./Product";
 import Sorts from "./sort&filters/sorts/Sorts";
-import Filters2 from "./sort&filters/filters/filteringcomponenets/Filters";
 import StoreFilter2 from "../store/sort&filters/filters/filteringcomponenets/StoreFilters2";
 
 class StoreProductDisplay extends Component {

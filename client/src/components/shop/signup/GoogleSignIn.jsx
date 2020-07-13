@@ -29,22 +29,11 @@ class GoogleSignIn extends Component {
     window.open("http://localhost:3001/auth/google", "_self");
   };
 
-  // onGoogleSign = async e => {
-  //   try {
-  //     console.log(this.props);
-  //     const token = await axios.get("http://localhost:3001/auth/google");
-  //     localStorage.setItem("token", token.data);
-
-  //     window.location = "/";
-  //   } catch (err) {
-  //     console.log("err is: ", err.message);
-  //   }
-  // };
   componentDidMount = () => {};
 
   render() {
     return (
-      <div className="signIn btn btn-white container center">
+      <div className="btn btn-white container center">
         <div className="" onClick={this.onGoogleSign}>
           <div href="http://localhost:3001/auth/google">
             <Gmail height="1.8em" width="1.8em" className="mr-4" /> Continue

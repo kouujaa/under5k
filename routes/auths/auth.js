@@ -29,7 +29,6 @@ router.get(
   "/google/redirect",
   passport.authenticate("google"),
   async (req, res) => {
-    console.log(req.user);
     const { userName } = req.user;
     try {
       //CHECK IF USER EXISTS
