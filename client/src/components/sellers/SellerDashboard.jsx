@@ -7,17 +7,20 @@ import jwtDecoder from "jwt-decode";
 import axios from "axios";
 import ViewOwnStore from "./ViewOwnStore";
 import ViewSoldStore from "./ViewSoldStore";
+import { withCookies, Cookies } from "react-cookie";
 
 class SellerDasboard extends Component {
   state = { user: "", products: "" };
 
   async componentDidMount() {
-    var jwt = localStorage.getItem("token");
+    const { cookies } = this.props;
+    var jwt = cookies.get("token");
     var user = jwtDecoder(jwt);
     this.setState({ user });
     // set state and call for seller info
 
-    // this.getData();
+    // this.getData(); const { cookies } = this.props;
+
     try {
       const products = await axios.post("/api/product/byShop", {
         shopName: jwtDecoder(localStorage.getItem("token")).shopName
@@ -67,4 +70,4 @@ class SellerDasboard extends Component {
   }
 }
 
-export default SellerDasboard;
+export default withCookies(SellerDasboard);

@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader } from "reactstrap";
 import { Link, Route } from "react-router-dom";
 import EditProfile from "./EditProfile";
 import { motion } from "framer-motion";
+import ViewReceipts from "./ViewReceipts";
 
 class Profile extends Component {
   state = {};
@@ -44,26 +45,37 @@ class Profile extends Component {
                 <span>Email: {email}</span>
               </h4>
               <h4>
-                <span>Address: {address} </span>
+                <span>Address: {address ? address : "not provided"} </span>
               </h4>
               <h4>
-                <span>dob: {dob}</span>
+                <span>dob: {dob ? dob : "not provided"}</span>
               </h4>
               <h4>
-                <span>Phone number: 0{phoneNumber}</span>
+                <span>
+                  Phone number: {phoneNumber ? address : "not provided"}
+                </span>
               </h4>
               <h4>
-                <span>state: {state}</span>
+                <span>state: {state ? state : "not provided"}</span>
               </h4>
               <h4>
-                <span>gender: {gender}</span>
+                <span>gender: {gender ? gender : "not provided"}</span>
               </h4>
 
               <h4>
                 <span>Total purchase: {purchasePriceTotal}</span>
               </h4>
+              <Link to="/profilePage/receipts" className="btn">
+                view orders
+              </Link>
+              <Card>
+                <Route path="/profilePage/receipts">
+                  <ViewReceipts email={email} />
+                </Route>
+              </Card>
             </CardBody>
           </Card>
+
           <Link to="/profilePage/updateProfile" className="btn">
             Edit Profile
           </Link>

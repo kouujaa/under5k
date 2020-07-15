@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 // import { awaitExpression } from "@babel/types";
 import Joi from "joi-browser";
 import UseForm from "./../common/UseForm";
+import { withCookies, Cookies } from "react-cookie";
 
 class SellerSignInPage extends UseForm {
   state = {
@@ -34,7 +35,10 @@ class SellerSignInPage extends UseForm {
         shopName,
         password
       });
-      localStorage.setItem("token", token.data);
+      const { cookies } = this.props;
+      cookies.set("token", token.data, { path: "/" });
+
+      // localStorage.setItem("token", token.data);
       window.location = "/";
     } catch (err) {
       // this.props.history.push({
@@ -75,4 +79,4 @@ class SellerSignInPage extends UseForm {
   }
 }
 
-export default SellerSignInPage;
+export default withCookies(SellerSignInPage);

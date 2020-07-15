@@ -6,5 +6,6 @@
   "facebookClientSecret": "",
   "GCLOUD_PROJECT_ID": "",
   "GCLOUD_APPLICATION_CREDENTIALS": "",
-  "GCLOUD_STORAGE_BUCKET_URL": ""
+  "GCLOUD_STORAGE_BUCKET_URL": "",
+  "PAYPUBLICKEY": ""
 }

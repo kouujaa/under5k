@@ -8,6 +8,7 @@ const images = require("./routes/shopAPIs/customer/upload");
 const customer = require("./routes/shopAPIs/customer/customer");
 const seller = require("./routes/shopAPIs/seller/seller");
 const feedback = require("./routes/shopAPIs/admin/feedback");
+const receipt = require("./routes/shopAPIs/admin/receipt");
 const path = require("path");
 const express = require("express");
 const authRoute = require("./routes/auths/auth");
@@ -55,6 +56,7 @@ app.use("/api/images", images);
 app.use("/api/customers", customer);
 app.use("/api/seller", seller);
 app.use("/api/feedback", feedback);
+app.use("/api/admin", receipt);
 app.use(passport.initialize());
 app.use("/auth", authRoute);
 

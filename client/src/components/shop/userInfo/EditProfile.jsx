@@ -8,7 +8,6 @@ class EditProfile extends Component {
     firstName: "",
     lastName: "",
     address: "",
-    email: "",
     phoneNumber: 0
   };
 
@@ -17,6 +16,7 @@ class EditProfile extends Component {
     userInfo[e.target.name] = e.target.value;
     this.setState(userInfo);
   };
+
   async getInfo() {
     try {
       const {
@@ -24,26 +24,17 @@ class EditProfile extends Component {
         firstName,
         lastName,
         address,
-        email,
         phoneNumber
       } = this.state;
 
       await axios.post("/api/customers/updateProfile", {
-        userName,
-        firstName,
-        lastName,
-        address,
-        email,
-        phoneNumber
+        details: { userName, firstName, lastName, address, phoneNumber },
+        email: this.props.info.email
       });
       window.location = "/";
     } catch (err) {
-      this.props.history.push({
-        pathname: "/updateProfile",
-        search: "",
-        hash: "",
-        state: { message: "Update Failed" }
-      });
+      console.log(err.message);
+      window.location = "/profilePage";
     }
   }
 
@@ -66,19 +57,11 @@ class EditProfile extends Component {
       firstName,
       lastName,
       address,
-      email,
       phoneNumber
     });
   }
   render() {
-    const {
-      userName,
-      firstName,
-      lastName,
-      address,
-      email,
-      phoneNumber
-    } = this.state;
+    const { userName, firstName, lastName, address, phoneNumber } = this.state;
     return (
       <div className="signUp">
         <Form
@@ -129,18 +112,6 @@ class EditProfile extends Component {
           </FormGroup>
 
           <FormGroup>
-            <Label for="Email">Email</Label>
-            <Input
-              value={email}
-              type="email"
-              name="email"
-              id="Email"
-              required
-              onChange={this.onChangeHandler("email")}
-            />
-          </FormGroup>
-
-          <FormGroup>
             <Label for="phoneNumberr">Phone Number</Label>
             <Input
               value={phoneNumber}
@@ -160,6 +131,7 @@ class EditProfile extends Component {
               required
               onChange={this.onChangeHandler("state")}
             >
+              <option>Select State</option>
               <option>Abia</option>
               <option>Adamawa</option>
               <option>Akwa Ibom</option>

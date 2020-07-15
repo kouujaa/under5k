@@ -53,7 +53,7 @@ const AppNavBar = ({ user, clearState }) => {
               />
             )}
             <NavItem className="left">
-              <NavLink to="/sellerHomePage" onClick={toggleNavbar}>
+              <NavLink to="/sellerDashBoard" onClick={toggleNavbar}>
                 <Box className="mr-1" /> SELLER
               </NavLink>
             </NavItem>
@@ -63,5 +63,5 @@ const AppNavBar = ({ user, clearState }) => {
     </motion.div>
   );
 };
-
+ 
 export default AppNavBar;

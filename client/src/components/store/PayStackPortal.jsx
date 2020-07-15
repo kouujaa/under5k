@@ -12,7 +12,17 @@ class PayStackPortal extends Component {
         cart,
         status
       });
-   
+    } catch (err) {
+      console.log(err);
+    }
+    //send receipt to admin
+    try {
+      const ans = await axios.post("/api/admin/receipt", {
+        refNumber: this.props.location.state.config.reference,
+        email: this.props.location.state.config.email,
+        charge: this.props.location.state.config.amount,
+        itemIDS: this.props.location.state.cart
+      });
     } catch (err) {
       console.log(err);
     }
@@ -21,7 +31,6 @@ class PayStackPortal extends Component {
       const ans = await axios.post("/api/product/updatePurchase", {
         cart
       });
-
     } catch (err) {
       console.log(err);
     }
@@ -33,25 +42,18 @@ class PayStackPortal extends Component {
   }
 
   render() {
-    // const config = {
-    //   reference: new Date().getTime(),
-    //   email: this.props.location.state.config.email,
-    //   amount: this.props.location.state.config.amount,
-    //   publicKey: "pk_test_f3deda0f23ed680ded6e89fe2a51740a7e23979e"
-    // };
-
     const componentProps = {
-      reference: new Date().getTime(),
+      reference: this.props.location.state.config.reference,
       email: this.props.location.state.config.email,
       amount: this.props.location.state.config.amount,
-      publicKey: "pk_test_f3deda0f23ed680ded6e89fe2a51740a7e23979e",
+      publicKey: this.props.location.state.config.publicKey,
       text: "Paystack Button Implementation",
       onSuccess: () => {
         this.handleCart(this.props.location.state.cart, "sold");
         this.props.history.replace("/");
       },
       onClose: () => {
-        this.handleCart(this.props.location.state.cart, "available");
+        // this.handleCart(this.props.location.state.cart, "available");
         this.props.history.goBack();
       }
     };

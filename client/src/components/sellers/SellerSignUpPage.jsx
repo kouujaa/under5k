@@ -304,6 +304,7 @@ import { Form, FormGroup, Label, Input, Button, CustomInput } from "reactstrap";
 import { Link } from "react-router-dom";
 import Joi from "joi-browser";
 import { motion } from "framer-motion";
+import { withCookies, Cookies } from "react-cookie";
 
 class SellerSignUp extends Component {
   state = {
@@ -458,7 +459,9 @@ class SellerSignUp extends Component {
         gender,
         state
       });
-      localStorage.setItem("token", token.data);
+      const { cookies } = this.props;
+      cookies.set("token", token.data, { path: "/" });
+
       window.location = "/";
     } catch (err) {
       this.props.history.push({
@@ -745,4 +748,4 @@ class SellerSignUp extends Component {
   }
 }
 
-export default SellerSignUp;
+export default withCookies(SellerSignUp);

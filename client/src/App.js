@@ -38,7 +38,7 @@ class App extends Component {
 
     cookies.remove("token", { path: "/" });
 
-    window.location = "/";
+    window.location = "/home";
   };
   componentDidMount() {
     try {
@@ -136,7 +136,7 @@ class App extends Component {
               path="/sellerDashBoard"
               render={props => {
                 if (this.state.user.status !== "seller")
-                  return <Redirect to="/unauthorized" />;
+                  return <Redirect to="/sellerSignIn" />;
                 return (
                   <SellerDasboard cookies={this.props.cookies} {...props} />
                 );

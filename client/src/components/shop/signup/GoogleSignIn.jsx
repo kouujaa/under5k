@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { ReactComponent as Google } from "../../svgs/google_logo.svg";
 import { ReactComponent as Gmail } from "../../svgs/gmail.svg";
+import { withCookies, Cookies } from "react-cookie";
 
 class GoogleSignIn extends Component {
   state = {
@@ -13,7 +14,9 @@ class GoogleSignIn extends Component {
   async getInfo() {
     try {
       const token = await axios.get("/auth/google");
-      localStorage.setItem("token", token.data);
+      const { cookies } = this.props;
+      cookies.set("token", token.data, { path: "/" });
+      // localStorage.setItem("token", token.data);
       window.location = "/";
     } catch (err) {
       this.props.history.push({
@@ -33,12 +36,15 @@ class GoogleSignIn extends Component {
 
   render() {
     return (
-      <div className="btn btn-white container center">
-        <div className="" onClick={this.onGoogleSign}>
-          <div href="http://localhost:3001/auth/google">
-            <Gmail height="1.8em" width="1.8em" className="mr-4" /> Continue
+      <div
+        className="btn btn-white container center mt-3"
+        style={{ width: "23em" }}
+      >
+        <div className="container center" onClick={this.onGoogleSign}>
+          <div>
+            <Gmail height="1.8em" width="1.8em" className="mr-1" /> Continue
             with Google
-            <Google height="1.8em" width="1.8em" className="ml-4" />
+            <Google height="1.8em" width="1.8em" className="ml-1" />
           </div>
         </div>
       </div>
@@ -46,4 +52,4 @@ class GoogleSignIn extends Component {
   }
 }
 
-export default GoogleSignIn;
+export default withCookies(GoogleSignIn);

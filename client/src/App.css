@@ -65,7 +65,8 @@ body {
 }
 
 .sandf {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 .sellerdash {
   display: grid;
@@ -284,6 +285,10 @@ div.display-4
   html {
     min-height: 100%;
   }
+  .sandf {
+    display: grid;
+    grid-template-columns: 3.6fr 1fr;
+  }
   .prodCard {
     width: 14em;
     height: 19em;
@@ -374,6 +379,10 @@ div.display-4
 @media (min-width: 920px) {
   html {
     min-height: 100%;
+  }
+  .sandf {
+    display: grid;
+    grid-template-columns: 3.6fr 1fr;
   }
   .contact-page {
     display: grid;
@@ -479,6 +488,10 @@ div.display-4
   .prodCard {
     width: 18em;
     height: 21em;
+  }
+  .sandf {
+    display: grid;
+    grid-template-columns: 3.6fr 1fr;
   }
   div.productcar > div.carousel-slider {
     width: 2em;

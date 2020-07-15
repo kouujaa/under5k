@@ -59,7 +59,10 @@ class Filters extends Component {
 
   render() {
     return (
-      <div className="sandf mr-3" style={{ backgroundColor: "white" }}>
+      <div
+        className="sandf mr-3 mb-2"
+        style={{ backgroundColor: "white", border: "dotted", padding: "3px" }}
+      >
         <Form inline onSubmit={this.handleAll}>
           <FormGroup>
             <CustomInput
@@ -68,7 +71,7 @@ class Filters extends Component {
               name="seller"
               onChange={this.onChangeHandler}
             >
-              <option value="">By seller</option>
+              <option value="">Shops</option>
               {this.state.sellers.map(seller => (
                 <option>{seller}</option>
               ))}
@@ -82,7 +85,7 @@ class Filters extends Component {
               name="size"
               onChange={this.onChangeHandler}
             >
-              <option value="">By size</option>
+              <option value="">Size</option>
               {this.state.sizes.map(size => (
                 <option>{size}</option>
               ))}
@@ -96,14 +99,14 @@ class Filters extends Component {
               name="category"
               onChange={this.onChangeHandler}
             >
-              <option value="">By category</option>
+              <option value="">Categories</option>
               {this.state.categories.map(category => (
                 <option>{category}</option>
               ))}
             </CustomInput>
           </FormGroup>
 
-          <Button>Filter</Button>
+          <Button>Show filter</Button>
         </Form>
       </div>
     );

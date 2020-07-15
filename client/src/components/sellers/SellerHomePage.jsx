@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SellerSignInPage from "./SellerSignInPage";
 import jwtDecoder from "jwt-decode";
+import { withCookies, Cookies } from "react-cookie";
 
 class SellerHomePage extends Component {
   state = { user: "" };
 
   componentDidMount() {
     try {
-      const jwt = localStorage.getItem("token");
+      const { cookies } = this.props;
+      const jwt = cookies.get("token");
       if (jwt) {
         const user = jwtDecoder(jwt);
         // console.log(user);
@@ -53,4 +55,4 @@ class SellerHomePage extends Component {
   }
 }
 
-export default SellerHomePage;
+export default withCookies(SellerHomePage);

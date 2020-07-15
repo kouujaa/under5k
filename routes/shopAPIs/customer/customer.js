@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const jwt = require("jsonwebtoken");
 const { Customer, validateCustomer } = require("../../../models/Customer");
+const { Receipt, validateReceipt } = require("../../../models/Receipt");
 const authenticate = require("../../../middleware/authenticate");
 
 const router = express.Router();
@@ -177,25 +178,35 @@ router.get("/info", authenticate, async (req, res) => {
   res.send(customer);
 });
 
+// FIND AND RETURN SINGULAR CUSTOMER DETAILS
+router.post("/receipts", async (req, res) => {
+  const { email } = req.body;
+  const receipts = await Receipt.find({ email });
+  if (!receipts) return res.status(400).send("no purchase history available ");
+  // _.filter(receipts, []);
+  res.send(receipts);
+});
+
 //Update profile info	 authenticate
-router.post("/updateProfile", authenticate, async (req, res) => {
+router.post("/updateProfile", async (req, res) => {
   const {
     userName,
     firstName,
     lastName,
     address,
-    email,
     phoneNumber
-  } = req.body;
+  } = req.body.details;
+  const { email } = req.body;
 
   try {
-    const saveditem = await Customer.findOneAndUpdate(
-      { email: email },
-      { $set: { userName, firstName, lastName, address, email, phoneNumber } }
+    await Customer.findOneAndUpdate(
+      { email },
+      { $set: { userName, firstName, lastName, address, phoneNumber } }
     );
 
     return res.send("update successfull");
   } catch (err) {
+    console.log(err.message);
     return res.status(500).redirect("/serverError");
   }
 });

@@ -108,8 +108,10 @@ router.post("/signUp", async (req, res) => {
       config.get("jwtPrivateKey")
     );
 
-    // res.header("x-authentication-token", token).send(`signup successful`);
-    return res.send(token);
+    return res
+      .header("x-authentication-token", token)
+      .cookie("token", token)
+      .send("signup-succesful");
   } catch (err) {
     return res.status(500).redirect("/serverError");
   }
@@ -160,7 +162,10 @@ router.post("/login", async (req, res) => {
 
       config.get("jwtPrivateKey")
     );
-    return res.send(token);
+    return res
+      .header("x-authentication-token", token)
+      .cookie("token", token, { path: "/" })
+      .send(token);
   } catch (err) {
     return res.status(500).redirect("/serverError");
   }

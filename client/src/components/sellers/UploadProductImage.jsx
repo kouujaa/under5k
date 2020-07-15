@@ -3,6 +3,7 @@ import axios from "axios";
 import firebase from "./../../firebase";
 import jwtDecoder from "jwt-decode";
 import { motion } from "framer-motion";
+import { withCookies, Cookies } from "react-cookie";
 
 import { Form, FormGroup, Label, Button, CustomInput } from "reactstrap";
 
@@ -96,7 +97,8 @@ class UploadProductImage extends Component {
     const { uploadinfo } = this.props;
     this.setState({ picInfo: uploadinfo });
     try {
-      const jwt = localStorage.getItem("token");
+      const { cookies } = this.props;
+      const jwt = cookies.get("token");
       const userInfo = jwtDecoder(jwt);
       this.setState({ userInfo });
     } catch (error) {}
@@ -143,4 +145,4 @@ class UploadProductImage extends Component {
   }
 }
 
-export default UploadProductImage;
+export default withCookies(UploadProductImage);
