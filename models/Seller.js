@@ -10,6 +10,7 @@ const sellerSchema = new mongoose.Schema({
     maxlength: 500,
     unique: true
   },
+  banner: { type: String, default: "" },
   status: { type: String, default: "seller" },
   accountNumber: {
     type: Number,

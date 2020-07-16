@@ -25,7 +25,7 @@ class ViewSoldStore extends Component {
       await axios.post(`/api/product/remove`, {
         productID
       });
-      window.location = "/sellerDashBoard/viewSoldStore";
+      window.location = "/";
     } catch (err) {
       this.props.history.push({
         pathname: "/sellerDashBoard/viewSoldStore",

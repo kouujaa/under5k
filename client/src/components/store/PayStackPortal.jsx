@@ -32,8 +32,18 @@ class PayStackPortal extends Component {
         cart
       });
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
+    // try {
+    //   const prod = await axios.post("/api/seller/updateMeta", {
+    //     cart
+    //   });
+
+    //   console.log(prod.data);
+    // } catch (err) {
+    //   console.log(err.message);
+
+    // }
     window.location = "/";
   };
   handleFailure = async () => {};
@@ -87,3 +97,17 @@ class PayStackPortal extends Component {
 }
 
 export default PayStackPortal;
+
+// async metacall() {
+//   try {
+//     const { shopName } = this.props.user;
+//     const prod = await axios.post("/api/seller/updateMeta", {
+//       shopName
+//     });
+
+//     console.log(prod.data);
+//   } catch (err) {
+//     console.log(err.message);
+//     // this.populateState();
+//   }
+// }

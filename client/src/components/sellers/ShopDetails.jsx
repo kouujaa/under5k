@@ -18,6 +18,7 @@ class ShopDetails extends Component {
       // this.populateState();
     }
   }
+
   render() {
     const {
       accountName,
@@ -32,7 +33,8 @@ class ShopDetails extends Component {
       phoneNumber,
       shopName,
       state,
-      monthlyVisits,
+      storeURL,
+      totalVisits,
       totalSoldItems,
       totalSales
     } = this.props.user;
@@ -50,6 +52,9 @@ class ShopDetails extends Component {
               <h1> Seller Profile Page</h1>
             </CardHeader>
             <CardBody>
+              <h4>
+                <span>Shop Website: {storeURL}</span>
+              </h4>
               <h4>
                 <span>Shop Name: {shopName}</span>
               </h4>
@@ -86,7 +91,7 @@ class ShopDetails extends Component {
                 <span>Account Number: {accountNumber} </span>
               </h4>
               <h4>
-                <span>Shop Visits: {monthlyVisits} </span>
+                <span>Shop Visits: {totalVisits} </span>
               </h4>
               <h4>
                 <span>Total Sales: ₦{totalSales}</span>
@@ -94,7 +99,6 @@ class ShopDetails extends Component {
               <h4>
                 <span>Items Sold: {totalSoldItems}</span>
               </h4>
-              ,
             </CardBody>
           </Card>
           <Link

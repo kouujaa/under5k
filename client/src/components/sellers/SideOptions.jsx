@@ -16,9 +16,29 @@ const SideOptions = () => {
         <Link
           style={{ color: "#ff006c" }}
           className="container"
+          to="/sellerDashBoard/shopdetails"
+        >
+          Store Info
+        </Link>
+      </Card>
+      <hr />
+      <Card>
+        <Link
+          style={{ color: "#ff006c" }}
+          className="container"
           to="/sellerDashBoard/viewOwnStore"
         >
-          View Available Items
+          Available Items
+        </Link>
+      </Card>
+      <hr />
+      <Card>
+        <Link
+          style={{ color: "#ff006c" }}
+          className="container"
+          to="/sellerDashBoard/viewSoldStore"
+        >
+          Sold Items
         </Link>
       </Card>
       <hr />
@@ -29,26 +49,6 @@ const SideOptions = () => {
           to="/sellerDashBoard/uploadProduct"
         >
           <Upload /> Upload Item
-        </Link>
-      </Card>
-      <hr />
-      <Card>
-        <Link
-          style={{ color: "#ff006c" }}
-          className="container"
-          to="/sellerDashBoard/shopdetails"
-        >
-          Shop And Profile Info
-        </Link>
-      </Card>
-      <hr />
-      <Card>
-        <Link
-          style={{ color: "#ff006c" }}
-          className="container"
-          to="/sellerDashBoard/viewSoldStore"
-        >
-          View Sold Items
         </Link>
       </Card>
       <hr />

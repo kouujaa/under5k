@@ -1,6 +1,6 @@
 import React from "react";
 
-const Page403 = () => {
+const Page403User = () => {
   return (
     <div
       className="container"
@@ -17,16 +17,16 @@ const Page403 = () => {
       <h3>
         access not authorized
         <br />
-        staff and sellers only.
+        Buying Customers only.
       </h3>
       <h6>
-        Log in as seller or Log out of of your customer account
+        Log in as Customer or Log out of your sellers account
         <br />
-        proceed to seller login.
+        proceed to Customer login.
       </h6>
-      <a href="/sellerSignIn">Proceed to Seller Login</a>
+      <a href="/signIn">Proceed to Customer Login</a>
     </div>
   );
 };
 
-export default Page403;
+export default Page403User;

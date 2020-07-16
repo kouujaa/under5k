@@ -45,7 +45,7 @@ class CheckOut extends Component {
           publicKey: "pk_test_f3deda0f23ed680ded6e89fe2a51740a7e23979e"
         }
       });
-    } catch (err) {}
+    } catch (err) {console.log(err.message)}
   }
   getTotal = () => {
     let sum = 0;

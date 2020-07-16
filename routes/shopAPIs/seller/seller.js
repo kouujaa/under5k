@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   const { shopName } = req.body;
   try {
     const seller = await Seller.findOne({ shopName }).select(
-      "shopName email firstName banner lastName dailyVisits monthlyVisits dailySoldItems totalSoldItems totalDailySales totalSales address accountName accountNumber bank phoneNumber dob gender state meta"
+      "shopName storeURL email firstName totalVisits totalSales totalSoldItems lastName banner address accountName accountNumber bank phoneNumber dob gender state "
     );
     return res.send(seller);
   } catch (err) {
@@ -63,6 +63,8 @@ router.post("/signUp", async (req, res) => {
   //save to database
 
   try {
+    const storeURL = "www.thriftnhub/store/" + req.body.shopName;
+
     const seller = new Seller({
       shopName: req.body.shopName,
       password: req.body.password,
@@ -76,7 +78,8 @@ router.post("/signUp", async (req, res) => {
       state: req.body.state,
       accountName: req.body.accountName,
       accountNumber: req.body.accountNumber,
-      bank: req.body.bank
+      bank: req.body.bank,
+      storeURL
     });
 
     const data = await seller.save();
@@ -98,12 +101,9 @@ router.post("/signUp", async (req, res) => {
         state: data.state,
         meta: data.meta,
         banner: data.banner,
-        dailyVisits: data.dailyVisits,
-        monthlyVisits: data.monthlyVisits,
-        dailySoldItems: data.dailySoldItems,
-        totalSoldItems: data.totalSoldItems,
-        totalDailySales: data.totalDailySales,
-        totalSales: data.totalSales
+        totalVisits: data.totalVisits,
+        totalSales: data.totalSales,
+        totalSoldItems: data.totalSoldItems
       },
       config.get("jwtPrivateKey")
     );
@@ -132,8 +132,9 @@ router.post("/login", async (req, res) => {
 
     //RETRIEVE USER INFO EXCEPT PASSWORD
     const data = await Seller.findOne({ shopName }).select(
-      "shopName email firstName lastName banner dailyVisits monthlyVisits dailySoldItems totalSoldItems totalDailySales totalSales address accountName accountNumber bank phoneNumber dob gender state meta"
+      "shopName storeURL email firstName totalVisits totalSales totalSoldItems lastName banner address accountName accountNumber bank phoneNumber dob gender state"
     );
+
     const token = jwt.sign(
       {
         status: "seller",
@@ -152,12 +153,10 @@ router.post("/login", async (req, res) => {
         state: data.state,
         meta: data.meta,
         banner: data.banner,
-        dailyVisits: data.dailyVisits,
-        monthlyVisits: data.monthlyVisits,
-        dailySoldItems: data.dailySoldItems,
+        totalVisits: data.totalVisits,
+        totalSales: data.totalSales,
         totalSoldItems: data.totalSoldItems,
-        totalDailySales: data.totalDailySales,
-        totalSales: data.totalSales
+        storeURL: data.storeURL
       },
 
       config.get("jwtPrivateKey")
@@ -172,6 +171,19 @@ router.post("/login", async (req, res) => {
 
   // res.header("x-authentication-token", token).send(`login successful`);
 });
-// router.post("/", async (req, res) => {});
+
+//update metadat on sale
+router.post("/updateMeta", async (req, res) => {
+  // const {totalVisits,totalSoldItems,totalSales} = req.body.payload
+  console.log(req.body);
+  res.send("testing");
+  // const { shopName } = req.body;
+  // try {
+  //   const banner = await Seller.findOne({ shopName }).select("banner");
+  //   return res.send(banner);
+  // } catch (err) {
+  //   return res.status(500).redirect("/serverError");
+  // }
+});
 
 module.exports = router;

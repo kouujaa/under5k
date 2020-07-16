@@ -26,6 +26,7 @@ import ProductContext from "./contexts/productContext";
 import Page403 from "./components/errorsnauth/Page403";
 import Page404 from "./components/errorsnauth/Page404";
 import Page500 from "./components/errorsnauth/Page500";
+import Page403User from "./components/errorsnauth/Page403User";
 class App extends Component {
   state = {
     cart: [],
@@ -142,12 +143,24 @@ class App extends Component {
                 );
               }}
             />
+
             <Route
+              path="/payStackRDR"
+              render={props => {
+                if (this.state.user.status === "seller")
+                  return <Redirect to="/unauthorized2" />;
+                return (
+                  <PayStackPortal cookies={this.props.cookies} {...props} />
+                );
+              }}
+            />
+
+            {/* <Route
               path="/payStackRDR"
               render={props => (
                 <PayStackPortal cookies={this.props.cookies} {...props} />
               )}
-            />
+            /> */}
             <Route
               path="/userAgreement"
               render={props => (
@@ -165,6 +178,12 @@ class App extends Component {
               path="/unauthorized"
               render={props => (
                 <Page403 cookies={this.props.cookies} {...props} />
+              )}
+            />
+            <Route
+              path="/unauthorized2"
+              render={props => (
+                <Page403User cookies={this.props.cookies} {...props} />
               )}
             />
             <Route
