@@ -6,7 +6,7 @@ class SellerSoldProductDisplay extends Component {
 
   displayall = () => {
     let { products, deleteHandler } = this.props;
-    products = products.filter(each => each.status === "sold");
+    // products = products.filter(each => each.status === "sold");
 
     const prod = products.length ? (
       products.map(product => (

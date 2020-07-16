@@ -5,7 +5,7 @@ import { ReactComponent as Wallet } from "./../svgs/wallet2.svg";
 import axios from "axios";
 
 class PayStackPortal extends Component {
-  handleCart = async (cart, status) => {
+  handleSuccess = async (cart, status) => {
     //update status of products to sold
     try {
       const ans = await axios.post("/api/product/updateMany", {
@@ -34,8 +34,9 @@ class PayStackPortal extends Component {
     } catch (err) {
       console.log(err);
     }
+    window.location = "/";
   };
-
+  handleFailure = async () => {};
   componentDidMount() {
     //check if cart items are available...
     //if not redirect back to shop saying an item has been bought by someone else
@@ -49,11 +50,10 @@ class PayStackPortal extends Component {
       publicKey: this.props.location.state.config.publicKey,
       text: "Paystack Button Implementation",
       onSuccess: () => {
-        this.handleCart(this.props.location.state.cart, "sold");
-        this.props.history.replace("/");
+        this.handleSuccess(this.props.location.state.cart, "sold");
       },
       onClose: () => {
-        // this.handleCart(this.props.location.state.cart, "available");
+        this.handleFailure();
         this.props.history.goBack();
       }
     };

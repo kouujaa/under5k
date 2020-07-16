@@ -7,7 +7,37 @@ router.post("/byShop", async (req, res) => {
   const { shopName } = req.body;
   console.log(shopName);
   try {
-    const products = await Product.find({ seller: shopName });
+    const products = await Product.find({
+      seller: shopName
+    });
+    return res.send(products);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
+});
+
+router.post("/byShop/available", async (req, res) => {
+  const { shopName } = req.body;
+  console.log(shopName);
+  try {
+    const products = await Product.find({
+      seller: shopName,
+      status: "available"
+    });
+    return res.send(products);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
+});
+
+router.post("/byShop/sold", async (req, res) => {
+  const { shopName } = req.body;
+  console.log(shopName);
+  try {
+    const products = await Product.find({
+      seller: shopName,
+      status: "sold"
+    });
     return res.send(products);
   } catch (err) {
     return res.status(500).redirect("/serverError");
@@ -18,6 +48,28 @@ router.post("/byShop", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find({});
+
+    return res.send(products);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
+});
+
+//find all available products
+router.get("/available", async (req, res) => {
+  try {
+    const products = await Product.find({ status: "available" });
+
+    return res.send(products);
+  } catch (err) {
+    return res.status(500).redirect("/serverError");
+  }
+});
+
+//find all sold products
+router.get("/sold", async (req, res) => {
+  try {
+    const products = await Product.find({ status: "sold" });
 
     return res.send(products);
   } catch (err) {

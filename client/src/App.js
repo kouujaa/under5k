@@ -56,12 +56,12 @@ class App extends Component {
 
   async populateState() {
     try {
-      const products = await axios.get("/api/product/");
+      const products = await axios.get("/api/product/available");
 
       this.setState({ products: products.data });
     } catch (err) {}
   }
-  s;
+
   render() {
     const { cookies } = this.props;
     return (

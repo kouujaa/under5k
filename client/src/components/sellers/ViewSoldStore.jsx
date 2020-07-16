@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-
+import jwtDecoder from "jwt-decode";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import axios from "axios";
 import SellerSoldProductDisplay from "./SellerSoldProductDisplay";
+import { withCookies, Cookies } from "react-cookie";
 
 class ViewSoldStore extends Component {
   state = {
@@ -39,7 +40,15 @@ class ViewSoldStore extends Component {
   };
 
   async componentDidMount() {
-    this.setState({ products: this.props.products });
+    try {
+      const { cookies } = this.props;
+      const products = await axios.post("/api/product/byShop/sold", {
+        shopName: jwtDecoder(cookies.get("token")).shopName
+      });
+      this.setState({ products: products.data });
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 
   render() {
@@ -64,4 +73,4 @@ class ViewSoldStore extends Component {
   }
 }
 
-export default ViewSoldStore;
+export default withCookies(ViewSoldStore);

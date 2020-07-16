@@ -42,7 +42,7 @@ class ViewOwnStore extends Component {
   async componentDidMount() {
     try {
       const { cookies } = this.props;
-      const products = await axios.post("/api/product/byShop", {
+      const products = await axios.post("/api/product/byShop/available", {
         shopName: jwtDecoder(cookies.get("token")).shopName
       });
       this.setState({ products: products.data });
