@@ -167,7 +167,9 @@ class SignUpForm extends Component {
     return (
       <div className="signUp mt-3">
         <div className="container sigupform">
-          <GoogleSignIn />
+          <div className="container center">
+            <GoogleSignIn />
+          </div>
 
           <Form
             className="container mt-5 sigupform"

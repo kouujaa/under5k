@@ -13,9 +13,6 @@ router.post("/imagekeys", authenticate, async (req, res) => {
 //get paystack keys
 router.get("/stackKeys", authenticate, async (req, res) => {});
 
-//get google passport keys
-router.get("/cardKeys", authenticate, async (req, res) => {});
-
 // //get facebook passport keys
 // router.post("/addToCart", async (req, res) => {});
 module.exports = router;

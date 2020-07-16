@@ -33,7 +33,7 @@ router.get(
     try {
       //CHECK IF USER EXISTS
       let customer = await Customer.findOne({ userName }).select(
-        "purchasePriceTotal firstName lastName phoneNumber userName email _id gender dateJoined"
+        "purchasePriceTotal firstName lastName phoneNumber savedItems userName email _id gender dateJoined googleID purchasedCount likedItems"
       );
       if (!customer) return res.redirect("/signIn");
 
@@ -53,21 +53,21 @@ router.get(
           gender: customer.gender,
           datejoined: customer.dateJoined,
           purchasePriceTotal: customer.purchasePriceTotal,
-          purchasedCount: 0,
-          likedItems: [],
-          savedItems: [],
+          purchasedCount: customer.purchasedCount,
+          likedItems: customer.likedItems,
+          savedItems: customer.savedItems,
           signBy: "google",
-          googleID: "106361245312134885896"
+          googleID: customer.googleID
         },
         config.get("jwtPrivateKey")
       );
       return res
         .header("x-authentication-token", token)
         .cookie("token", token)
-        .redirect("http://localhost:3000/home");
+        .redirect("/home");
     } catch (err) {
       console.log("from google/redirect", err);
-      return res.status(500).redirect("http://localhost:3000/signIn");
+      return res.status(500).redirect("/signIn");
     }
 
     // res.redirect("http://localhost:3000/");

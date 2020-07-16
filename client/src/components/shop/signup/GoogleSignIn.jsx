@@ -10,26 +10,10 @@ class GoogleSignIn extends Component {
     data: { userName: "" }
   };
 
-  //async axios call
-  async getInfo() {
-    try {
-      const token = await axios.get("/auth/google");
-      const { cookies } = this.props;
-      cookies.set("token", token.data, { path: "/" });
-      // localStorage.setItem("token", token.data);
-      window.location = "/";
-    } catch (err) {
-      this.props.history.push({
-        pathname: "/signIn",
-        search: "",
-        hash: "",
-        state: { message: "invalid login dataentials!" }
-      });
-    }
-  }
-
   onGoogleSign = e => {
-    window.open("http://localhost:3001/auth/google", "_self");
+    window.open("http://www.thriftnhub.com/auth/google", "_self");
+    // window.open("/auth/google", "_self");
+    // window.open("http://localhost:3001/auth/google", "_self");
   };
 
   componentDidMount = () => {};
@@ -42,7 +26,7 @@ class GoogleSignIn extends Component {
       >
         <div className="container center" onClick={this.onGoogleSign}>
           <div>
-            <Gmail height="1.8em" width="1.8em" className="mr-1" /> Continue
+            <Gmail height="1.8em" width="1.8em" className="mr-1" /> Quick Shop
             with Google
             <Google height="1.8em" width="1.8em" className="ml-1" />
           </div>

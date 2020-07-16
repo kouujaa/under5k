@@ -2,10 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
 const FacebookStrategy = require("passport-facebook");
 const config = require("config");
-const mongoose = require("mongoose");
 const { Customer } = require("../models/Customer");
-const axios = require("axios");
-const jwt = require("jsonwebtoken");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -25,9 +22,8 @@ passport.use(
   new GoogleStrategy(
     {
       callbackURL: "/auth/google/redirect",
-      clientID:
-        "234630472514-b6k7f26sh7f3f4l791o82djrhqgqbp7f.apps.googleusercontent.com",
-      clientSecret: "p52TP9_jkxcwyE0MRySDs8vV"
+      clientID: config.get("googleClientID"),
+      clientSecret: config.get("googleClientSecret")
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -48,7 +44,7 @@ passport.use(
             googleID: profile.id
           });
 
-          const newuser = await saveduser.save();
+          const user = await saveduser.save();
           // console.log("saved is:", newUser);
           done(null, user);
         }

@@ -32,7 +32,6 @@ class ShopDetails extends Component {
       phoneNumber,
       shopName,
       state,
-      dailyVisits,
       monthlyVisits,
       totalSoldItems,
       totalSales
@@ -66,10 +65,10 @@ class ShopDetails extends Component {
                 <span>Address: {address}</span>
               </h4>
               <h4>
-                <span>dob:{dob}</span>
+                <span>dob: {dob}</span>
               </h4>
               <h4>
-                <span>Phone number:0{phoneNumber} </span>
+                <span>Phone number: 0{phoneNumber} </span>
               </h4>
               <h4>
                 <span>state: {state}</span>
@@ -78,25 +77,22 @@ class ShopDetails extends Component {
                 <span>gender: {gender}</span>
               </h4>
               <h4>
-                <span>Bank Name:{bank}</span>
+                <span>Bank Name: {bank}</span>
               </h4>
               <h4>
-                <span>Account Name:{accountName}</span>
+                <span>Account Name: {accountName}</span>
               </h4>
               <h4>
-                <span>Account Number:{accountNumber} </span>
+                <span>Account Number: {accountNumber} </span>
               </h4>
               <h4>
-                <span>Monthly Visits:{monthlyVisits} </span>
+                <span>Shop Visits: {monthlyVisits} </span>
               </h4>
               <h4>
-                <span>Total Sales:{totalSales}</span>
+                <span>Total Sales: ₦{totalSales}</span>
               </h4>
               <h4>
-                <span>Daily Visits:{dailyVisits} </span>
-              </h4>
-              <h4>
-                <span>Total Items Sold:{totalSoldItems}</span>
+                <span>Items Sold: {totalSoldItems}</span>
               </h4>
               ,
             </CardBody>

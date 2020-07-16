@@ -736,10 +736,12 @@ class SellerSignUp extends Component {
               />
             </div>
           </FormGroup>
-          {this.renderButton("SUBMIT")}
-          <Link className="ml-3" to="/sellerAgreement">
-            seller Agreement
-          </Link>
+          <div>
+            {this.renderButton("SUBMIT")}
+            <Link className="ml-3 mt-2" to="/sellerAgreement">
+              seller Agreement
+            </Link>
+          </div>
         </Form>
         <span></span>
         <br></br>

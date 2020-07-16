@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Joi from "joi-browser";
 import UseForm from "./../common/UseForm";
 import { withCookies, Cookies } from "react-cookie";
+import { Link, NavLink } from "react-router-dom";
 
 class SellerSignInPage extends UseForm {
   state = {
@@ -52,29 +53,34 @@ class SellerSignInPage extends UseForm {
 
   render() {
     return (
-      <motion.div
-        className="signIn"
-        initial={{ x: 300 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <Form
-          className="container mt-5 siginform"
-          onSubmit={this.onSubmitHandler}
+      <div>
+        <motion.div
+          className="signIn"
+          initial={{ x: 300 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1 }}
         >
-          <h3>Sign In Your Shop</h3>
-          <br></br>
-
-          {this.renderInput("shopName", "Shop Name", "text")}
-          {this.renderInput("password", "Password", "password")}
-          {/* {this.props.location.state ? (
+          <Form
+            className="container mt-5 siginform"
+            onSubmit={this.onSubmitHandler}
+          >
+            <h3>Sign In Your Shop</h3>
+            <br></br>
+            {this.renderInput("shopName", "Shop Name", "text")}
+            {this.renderInput("password", "Password", "password")}
+            {/* {this.props.location.state ? (
             <p className="text-danger">{this.props.location.state.message}</p>
           ) : null} */}
-          {this.renderButton("SIGN IN")}
-        </Form>
+            {this.renderButton("SIGN IN")}
+            <div className="mt-2">
+              or
+              <NavLink to="/sellerSignUp"> SignUp</NavLink>
+            </div>
+          </Form>
 
-        <br></br>
-      </motion.div>
+          <br></br>
+        </motion.div>
+      </div>
     );
   }
 }

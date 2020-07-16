@@ -48,20 +48,6 @@ class SignInForm extends UseForm {
     }
   }
 
-  onGoogleSign = async e => {
-    try {
-      await axios.get("http://localhost:3001/auth/google");
-
-      window.location = "/";
-    } catch (err) {
-      this.props.history.push({
-        pathname: "/signIn",
-        search: "",
-        hash: "",
-        state: { message: "invalid login dataentials!" }
-      });
-    }
-  };
   // onFacebookSign = e => {
   //   window.open("http://localhost:3001/auth/facebook", "_self");
   // };
@@ -87,7 +73,9 @@ class SignInForm extends UseForm {
             ) : null}
             {this.renderButton("SIGN IN")}
           </Form>
-          <GoogleSignIn />
+          <div className="container center">
+            <GoogleSignIn />
+          </div>
         </div>
       </div>
     );

@@ -89,7 +89,7 @@ class UploadProductImage extends Component {
         pathname: "/sellerDashBoard/viewOwnStore",
         search: "",
         hash: "",
-        state: { message: "invalid login dataentials!" }
+        state: { message: "operation failed" }
       });
     }
   };

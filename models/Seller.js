@@ -146,12 +146,13 @@ const sellerSchema = new mongoose.Schema({
   ],
   rating: { type: Number, default: 0 },
   address: { type: String, required: true, unique: true },
-  dailyVisits: { type: Number, default: 0 },
+  totalVisits: { type: Number, default: 0 },
+  totalSales: { type: Number, default: 0 },
+  totalSoldItems: { type: Number, default: 0 },
+
   monthlyVisits: { type: Number, default: 0 },
   dailySoldItems: { type: Number, default: 0 },
-  totalSoldItems: { type: Number, default: 0 },
-  totalDailySales: { type: Number, default: 0 },
-  totalSales: { type: Number, default: 0 }
+  totalDailySales: { type: Number, default: 0 }
 });
 
 sellerSchema.plugin(uniqueValidator);
