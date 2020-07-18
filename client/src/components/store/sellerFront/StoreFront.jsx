@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import Options from "./Options";
+import jwtDecoder from "jwt-decode";
 import Cart from "../Cart";
 import _ from "lodash";
 import Paginate from "../../all/Pagination";
+import { withCookies } from "react-cookie";
 import { pages } from "../../../utils/pages";
 import { selectedSortFunc } from "../sort&filters/sorts/sorting";
 import { StoreFilterFunction } from "../sort&filters/filters/filteringcomponenets/filtering";
@@ -92,22 +93,40 @@ class StoreFront extends Component {
 
   async componentDidMount() {
     // const seller = this.props.match.params.sellerName;
-
+    //get products from this seller
     try {
       const products = await axios.post("/api/product/byShop", {
         shopName: this.props.match.params.sellerName
       });
 
       this.setState({ products: products.data });
-    } catch (err) {}
-
+    } catch (err) {
+      console.log("from get products from this seller", err);
+    }
+    //get banner for store front
     try {
       const banner = await axios.post("/api/seller/banner", {
         shopName: this.props.match.params.sellerName
       });
 
       this.setState({ banner: banner.data.banner });
-    } catch (err) {}
+    } catch (err) {
+      console.log("from get banner for store front", err);
+    }
+    //update visitors
+
+    try {
+      const { cookies } = this.props;
+      const jwt = cookies.get("token");
+      const user = jwtDecoder(jwt);
+
+      await axios.post("/api/seller/updateVisit", {
+        shopName: this.props.match.params.sellerName,
+        status: user.status
+      });
+    } catch (err) {
+      console.log("from update visitors", err);
+    }
   }
 
   render() {
@@ -182,4 +201,4 @@ class StoreFront extends Component {
   }
 }
 
-export default StoreFront;
+export default withCookies(StoreFront);

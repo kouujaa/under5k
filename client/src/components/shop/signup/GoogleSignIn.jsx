@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
+
 import { ReactComponent as Google } from "../../svgs/google_logo.svg";
 import { ReactComponent as Gmail } from "../../svgs/gmail.svg";
-import { withCookies, Cookies } from "react-cookie";
+import { withCookies } from "react-cookie";
 
 class GoogleSignIn extends Component {
   state = {

@@ -6,14 +6,6 @@ import { ReactComponent as CartD } from "../svgs/dash.svg";
 class CartItem extends Component {
   state = {};
 
-  //displaycart Items
-
-  //   <tr>
-  //   <th scope="row">1</th>
-  //   <td>cloth</td>
-  //   <td>M</td>
-  //   <td>3000</td>
-  // </tr>
   render() {
     let { quantity, productID, description, size, price } = this.props.item;
     price = price * quantity;

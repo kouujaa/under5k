@@ -51,7 +51,7 @@ class ProductPage extends Component {
     this.setState({ cart });
   };
   //add item to cart
-  addToCart = (productID, description, size, price, URI) => {
+  addToCart = (productID, description, size, price, URI, seller) => {
     const cart = [...this.state.cart];
     const addProduct = {
       quantity: 1,
@@ -59,7 +59,8 @@ class ProductPage extends Component {
       description,
       size,
       price,
-      URI: URI
+      URI: URI,
+      seller
     };
     const found = _.find(cart, { productID });
     if (found) {
@@ -72,7 +73,7 @@ class ProductPage extends Component {
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
-
+  //
   handleSizeFilter = size => {
     this.setState({ selectedSize: size, currentPage: 1 });
     this.setState({ currentSize: size });

@@ -91,4 +91,3 @@ class Profile extends Component {
 }
 
 export default Profile;
-// <Link to="/updateProfile"></Link>

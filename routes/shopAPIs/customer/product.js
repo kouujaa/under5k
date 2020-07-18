@@ -5,20 +5,19 @@ const _ = require("lodash");
 
 router.post("/byShop", async (req, res) => {
   const { shopName } = req.body;
-  console.log(shopName);
   try {
     const products = await Product.find({
       seller: shopName
     });
     return res.send(products);
   } catch (err) {
+    console.log("from by shop product API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
 
 router.post("/byShop/available", async (req, res) => {
   const { shopName } = req.body;
-  console.log(shopName);
   try {
     const products = await Product.find({
       seller: shopName,
@@ -26,13 +25,14 @@ router.post("/byShop/available", async (req, res) => {
     });
     return res.send(products);
   } catch (err) {
+    console.log("from by available product API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
 
 router.post("/byShop/sold", async (req, res) => {
   const { shopName } = req.body;
-  console.log(shopName);
+
   try {
     const products = await Product.find({
       seller: shopName,
@@ -40,6 +40,7 @@ router.post("/byShop/sold", async (req, res) => {
     });
     return res.send(products);
   } catch (err) {
+    console.log("from sold product API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -51,6 +52,7 @@ router.get("/", async (req, res) => {
 
     return res.send(products);
   } catch (err) {
+    console.log("from get product API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -62,6 +64,7 @@ router.get("/available", async (req, res) => {
 
     return res.send(products);
   } catch (err) {
+    console.log("from by available product API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -73,6 +76,7 @@ router.get("/sold", async (req, res) => {
 
     return res.send(products);
   } catch (err) {
+    console.log("from sold product API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -95,9 +99,10 @@ router.post("/addProduct", async (req, res) => {
     });
 
     var data = await product.save();
-    console.log(data);
+
     return res.send(data);
   } catch (err) {
+    console.log("from add product product API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -109,6 +114,7 @@ router.post("/remove", async (req, res) => {
     await Product.deleteOne({ productID });
     return res.send("Delete Succesfull");
   } catch (err) {
+    console.log("from remove product API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -120,17 +126,6 @@ router.post("/removeMany", async (req, res) => {
     return each.productID;
   });
   return res.send(cart);
-  // try {
-  //   cart.forEach((item)=>{
-
-  //   await Product.deleteOne({ productID:item.productID });
-  //   return res.send("Delete Succesfull");
-  //   })
-
-  // } catch (err) {
-  //   console.log(err);
-  //   return res.status(404).send("internal error");
-  // }
 });
 
 //bought status change
@@ -150,21 +145,11 @@ router.post("/updateMany", async (req, res) => {
       );
     });
   } catch (err) {
+    console.log("from updatemany product API", err.message);
     return res.status(500).redirect("/serverError");
   }
-  console.log(cart, req.body.status);
+
   return res.send(cart);
-  // try {
-  //   cart.forEach((item)=>{
-
-  //   await Product.deleteOne({ productID:item.productID });
-  //   return res.send("Delete Succesfull");
-  //   })
-
-  // } catch (err) {
-  //   console.log(err);
-  //   return res.status(404).send("internal error");
-  // }
 });
 
 module.exports = router;

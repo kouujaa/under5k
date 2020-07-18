@@ -38,13 +38,6 @@ class Filters extends Component {
     }
   };
 
-  //   onChangeHandler = e => {
-  //     const filters = { ...this.state.filters };
-  //     filters[e.target.name] = e.target.value;
-  //     this.setState(filters);
-  //     console.log(this.state);
-  //   };
-
   onChangeHandler = ({ currentTarget: input }) => {
     const filters = { ...this.state.filters };
     filters[input.name] = input.value;

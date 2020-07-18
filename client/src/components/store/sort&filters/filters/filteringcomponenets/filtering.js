@@ -93,23 +93,3 @@ export function FilterControl(selected, products) {
 
   return filter;
 }
-
-// export function selectedFilterFunc(filters, filtered) {
-//   if (filters === "size") {
-//     let sortedfilter = _.orderBy(filtered, ["price"], ["asc"]);
-//     filtered = sortedfilter;
-//     return filtered;
-//   }
-//   if (filters === "seller") {
-//     let sortedfilter = _.orderBy(filtered, ["dateAdded"], ["asc"]);
-//     filtered = sortedfilter;
-//     return filtered;
-//   }
-//   if (filters === "category") {
-//     let sortedfilter = _.orderBy(filtered, ["price"], ["desc"]);
-//     filtered = sortedfilter;
-//     return filtered;
-//   } else {
-//     return filtered;
-//   }
-// }

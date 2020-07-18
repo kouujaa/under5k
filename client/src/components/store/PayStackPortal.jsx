@@ -2,50 +2,60 @@ import React, { Component } from "react";
 import { PaystackConsumer } from "react-paystack";
 import { Button, Card, CardBody, CardFooter } from "reactstrap";
 import { ReactComponent as Wallet } from "./../svgs/wallet2.svg";
+import { withCookies } from "react-cookie";
+import jwtDecoder from "jwt-decode";
 import axios from "axios";
 
 class PayStackPortal extends Component {
   handleSuccess = async (cart, status) => {
     //update status of products to sold
     try {
-      const ans = await axios.post("/api/product/updateMany", {
+      await axios.post("/api/product/updateMany", {
         cart,
         status
       });
     } catch (err) {
-      console.log(err);
+      console.log("from update status of products to sold", err);
     }
+
     //send receipt to admin
     try {
-      const ans = await axios.post("/api/admin/receipt", {
+      await axios.post("/api/admin/receipt", {
         refNumber: this.props.location.state.config.reference,
         email: this.props.location.state.config.email,
         charge: this.props.location.state.config.amount,
         itemIDS: this.props.location.state.cart
       });
     } catch (err) {
-      console.log(err);
+      console.log("from send receipt to admin", err);
     }
+
     // add items to user purchased list --IIP
     try {
-      const ans = await axios.post("/api/product/updatePurchase", {
+      const { cookies } = this.props;
+      var jwt = cookies.get("token");
+      var user = jwtDecoder(jwt);
+      await axios.post("/api/customers/updatePurchase", {
+        cart,
+        user,
+        charge: this.props.location.state.config.amount / 100
+      });
+    } catch (err) {
+      console.log("add items to user purchased list --IIP", err.message);
+    }
+
+    //update sellers sold items
+    try {
+      await axios.post("/api/seller/updatePurchase", {
         cart
       });
     } catch (err) {
-      console.log(err.message);
+      console.log("from update sellers sold items", err.message);
     }
-    // try {
-    //   const prod = await axios.post("/api/seller/updateMeta", {
-    //     cart
-    //   });
-
-    //   console.log(prod.data);
-    // } catch (err) {
-    //   console.log(err.message);
-
-    // }
     window.location = "/";
   };
+
+  //handle failure in payment
   handleFailure = async () => {};
   componentDidMount() {
     //check if cart items are available...
@@ -96,18 +106,4 @@ class PayStackPortal extends Component {
   }
 }
 
-export default PayStackPortal;
-
-// async metacall() {
-//   try {
-//     const { shopName } = this.props.user;
-//     const prod = await axios.post("/api/seller/updateMeta", {
-//       shopName
-//     });
-
-//     console.log(prod.data);
-//   } catch (err) {
-//     console.log(err.message);
-//     // this.populateState();
-//   }
-// }
+export default withCookies(PayStackPortal);

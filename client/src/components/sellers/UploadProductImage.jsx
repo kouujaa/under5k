@@ -3,7 +3,7 @@ import axios from "axios";
 import firebase from "./../../firebase";
 import jwtDecoder from "jwt-decode";
 import { motion } from "framer-motion";
-import { withCookies, Cookies } from "react-cookie";
+import { withCookies } from "react-cookie";
 
 import { Form, FormGroup, Label, Button, CustomInput } from "reactstrap";
 

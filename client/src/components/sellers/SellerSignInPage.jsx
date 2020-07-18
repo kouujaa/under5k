@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 // import { awaitExpression } from "@babel/types";
 import Joi from "joi-browser";
 import UseForm from "./../common/UseForm";
-import { withCookies, Cookies } from "react-cookie";
-import { Link, NavLink } from "react-router-dom";
+import { withCookies } from "react-cookie";
+import { NavLink } from "react-router-dom";
 
 class SellerSignInPage extends UseForm {
   state = {
@@ -68,9 +68,6 @@ class SellerSignInPage extends UseForm {
             <br></br>
             {this.renderInput("shopName", "Shop Name", "text")}
             {this.renderInput("password", "Password", "password")}
-            {/* {this.props.location.state ? (
-            <p className="text-danger">{this.props.location.state.message}</p>
-          ) : null} */}
             {this.renderButton("SIGN IN")}
             <div className="mt-2">
               or

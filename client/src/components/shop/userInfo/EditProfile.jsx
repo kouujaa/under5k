@@ -43,14 +43,7 @@ class EditProfile extends Component {
     this.getInfo();
   };
   componentDidMount() {
-    const {
-      userName,
-      firstName,
-      lastName,
-      address,
-      email,
-      phoneNumber
-    } = this.props;
+    const { userName, firstName, lastName, address, phoneNumber } = this.props;
 
     this.setState({
       userName,

@@ -4,7 +4,7 @@ import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import axios from "axios";
 import SellerSoldProductDisplay from "./SellerSoldProductDisplay";
-import { withCookies, Cookies } from "react-cookie";
+import { withCookies } from "react-cookie";
 
 class ViewSoldStore extends Component {
   state = {
@@ -27,6 +27,7 @@ class ViewSoldStore extends Component {
       });
       window.location = "/";
     } catch (err) {
+      console.log(err.message);
       this.props.history.push({
         pathname: "/sellerDashBoard/viewSoldStore",
         search: "",

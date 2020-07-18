@@ -61,7 +61,7 @@ class Product extends Component {
             <Button
               className="btn btn-danger btn-sm right "
               onClick={() => {
-                cartHandler(productID, description, size, price, URI);
+                cartHandler(productID, description, size, price, URI, seller);
               }}
             >
               <Bag /> bag
@@ -76,19 +76,3 @@ class Product extends Component {
 }
 
 export default Product;
-
-/* <React.Fragment>
-  <motion.div
-    className="display-4 lead jumbotxt"
-    initial={{ x: 300 }}
-    animate={{ x: 0 }}
-    transition={{ duration: 1 }}
-  >
-    <Carousel showStatus={false} infiniteLoop autoPlay showThumbs={false}>
-      <div>
-      <img className="prodCardImg" src={URI} alt={productID}></img> </div>
-      <div>
-      <img className="prodCardImg" src={URI} alt={productID}></img></div>
-    </Carousel>
-  </motion.div>
-</React.Fragment>; */

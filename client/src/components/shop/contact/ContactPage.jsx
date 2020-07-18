@@ -34,7 +34,7 @@ class ContactPage extends Component {
         window.open("/contact", "_self");
       }
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
   };
 

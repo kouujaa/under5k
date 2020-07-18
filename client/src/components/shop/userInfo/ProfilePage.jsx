@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import jwtDecoder from "jwt-decode";
 import Profile from "./Profile";
+import { withCookies } from "react-cookie";
 
 class ProfilePage extends Component {
   state = { userInfo: {} };
@@ -13,7 +14,9 @@ class ProfilePage extends Component {
       const jwt = cookies.get("token");
       const userInfo = jwtDecoder(jwt);
       this.setState({ userInfo });
-    } catch (error) {}
+    } catch (err) {
+      console.log("from profile page comp", err.message);
+    }
   }
 
   render() {
@@ -22,4 +25,4 @@ class ProfilePage extends Component {
   }
 }
 
-export default ProfilePage;
+export default withCookies(ProfilePage);

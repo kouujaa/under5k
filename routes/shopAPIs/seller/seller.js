@@ -1,9 +1,11 @@
 const config = require("config");
 const express = require("express");
 const bcrypt = require("bcrypt");
+const _ = require("lodash");
 const jwt = require("jsonwebtoken");
 const { Seller, validateSeller } = require("../../../models/Seller");
-const authenticate = require("../../../middleware/authenticate");
+const { Product } = require("../../../models/Product");
+// const authenticate = require("../../../middleware/authenticate");
 
 const router = express.Router();
 //get seller info
@@ -15,17 +17,18 @@ router.get("/", async (req, res) => {
     );
     return res.send(seller);
   } catch (err) {
+    console.log(err.message);
     return res.status(500).redirect("/serverError");
   }
 });
 //get banner URL
 router.post("/banner", async (req, res) => {
-  console.log(req.body);
   const { shopName } = req.body;
   try {
     const banner = await Seller.findOne({ shopName }).select("banner");
     return res.send(banner);
   } catch (err) {
+    console.log(err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -34,9 +37,10 @@ router.post("/banner", async (req, res) => {
 router.post("/signUp", async (req, res) => {
   //Validate req.body input
   try {
-    const value = await validateSeller.validateAsync(req.body);
-  } catch (error) {
-    return res.status(400).send(error.details[0].message);
+    await validateSeller.validateAsync(req.body);
+  } catch (err) {
+    console.log("fromsignup seller API", err.message);
+    return res.status(400).send(err.details[0].message);
   }
 
   //extract variables for checks
@@ -113,6 +117,7 @@ router.post("/signUp", async (req, res) => {
       .cookie("token", token)
       .send("signup-succesful");
   } catch (err) {
+    console.log("fromsignup seller API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -166,24 +171,79 @@ router.post("/login", async (req, res) => {
       .cookie("token", token, { path: "/" })
       .send(token);
   } catch (err) {
+    console.log("from signin seller API", err.message);
     return res.status(500).redirect("/serverError");
   }
 
   // res.header("x-authentication-token", token).send(`login successful`);
 });
 
-//update metadat on sale
-router.post("/updateMeta", async (req, res) => {
-  // const {totalVisits,totalSoldItems,totalSales} = req.body.payload
-  console.log(req.body);
-  res.send("testing");
-  // const { shopName } = req.body;
-  // try {
-  //   const banner = await Seller.findOne({ shopName }).select("banner");
-  //   return res.send(banner);
-  // } catch (err) {
-  //   return res.status(500).redirect("/serverError");
-  // }
+//update sellers details from succesfull payment
+router.post("/updatePurchase", async (req, res) => {
+  var cart = _.values(req.body.cart);
+  cart = cart.map(each => {
+    return each.productID;
+  });
+  //for each ID call DB get price and seller
+  try {
+    cart.forEach(async productID => {
+      //get the product price and seller
+      const sellerAPrice = await Product.find({ productID }).select(
+        "price seller"
+      );
+      //go to seller update the price and items sold now
+      await Seller.updateOne(
+        { shopName: sellerAPrice[0].seller },
+        {
+          $inc: { totalSoldItems: 1, totalSales: sellerAPrice[0].price }
+        }
+      );
+    });
+
+    res.send("done");
+  } catch (err) {
+    console.log("from getting product price and totoal", err.message);
+    return res.status(500).redirect("/serverError");
+  }
+
+  //call db update seller sold amount and items
+  try {
+    cart.forEach(async productID => {
+      await Seller.updateOne(
+        { productID },
+        {
+          $set: { status: req.body.status }
+        }
+      );
+    });
+  } catch (err) {
+    console.log(
+      "from call db update seller sold amount and items",
+      err.message
+    );
+    return res.status(500).redirect("/serverError");
+  }
+});
+
+//seller shop visit
+router.post("/updateVisit", async (req, res) => {
+  const { status } = req.body;
+  if (status === "user") {
+    try {
+      const { shopName } = req.body;
+      await Seller.updateOne(
+        { shopName },
+        {
+          $inc: { totalVisits: 1 }
+        }
+      );
+
+      return res.send("done");
+    } catch (err) {
+      console.log("from update visit seller API", err.message);
+      return res.status(500).redirect("/serverError");
+    }
+  } else returnres.send("");
 });
 
 module.exports = router;

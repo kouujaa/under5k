@@ -9,15 +9,14 @@ class ViewReceipts extends Component {
   // async getInfo() {}
 
   async componentDidMount() {
-    console.log(this.props.email);
     try {
       const receipts = await axios.post("/api/customers/receipts", {
         email: this.props.email
       });
-      console.log(receipts.data);
+
       this.setState({ receipts: receipts.data });
     } catch (err) {
-      console.log(err.message);
+      console.log("from view receipts comp", err.message);
       return;
     }
   }

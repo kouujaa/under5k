@@ -4,7 +4,7 @@ import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import jwtDecoder from "jwt-decode";
 import axios from "axios";
-import { withCookies, Cookies } from "react-cookie";
+import { withCookies } from "react-cookie";
 
 class ViewOwnStore extends Component {
   state = {

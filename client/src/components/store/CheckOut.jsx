@@ -3,9 +3,6 @@ import { Button, Table } from "reactstrap";
 import jwtDecoder from "jwt-decode";
 import { ReactComponent as Card } from "./../svgs/credit-card.svg";
 import { motion } from "framer-motion";
-import axios from "axios";
-
-// import * as _ from "lodash";
 
 class CheckOut extends Component {
   state = {
@@ -45,7 +42,9 @@ class CheckOut extends Component {
           publicKey: "pk_test_f3deda0f23ed680ded6e89fe2a51740a7e23979e"
         }
       });
-    } catch (err) {console.log(err.message)}
+    } catch (err) {
+      console.log("from CheckOu comp", err.message);
+    }
   }
   getTotal = () => {
     let sum = 0;

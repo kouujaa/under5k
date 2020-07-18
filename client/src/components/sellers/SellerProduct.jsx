@@ -46,7 +46,7 @@ class SellerProduct extends Component {
             })}
           </Carousel>
         </motion.div>
-        {/* </CardBody> */}
+
         <div className="prodCardFooter mt-3">
           <h6>{description}</h6>
           <h6>₦{price}</h6>
@@ -62,7 +62,6 @@ class SellerProduct extends Component {
             </Button>
           </h6>
         </div>
-        {/* </Card> */}
       </motion.div>
     );
   }

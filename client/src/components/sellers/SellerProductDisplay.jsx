@@ -6,7 +6,6 @@ class SellerProductDisplay extends Component {
 
   displayall = () => {
     let { products, deleteHandler } = this.props;
-    // products = products.filter(each => each.status === "available"); IIP
 
     const prod = products.length ? (
       products.map(product => (

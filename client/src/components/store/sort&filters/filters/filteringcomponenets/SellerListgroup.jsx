@@ -39,20 +39,3 @@ const SellerListGroup = ({ handleSellerFilter, sellers }) => {
 };
 
 export default SellerListGroup;
-
-/* <div>
-<h1>Sellers</h1>
-<ListGroup>
-  {sellers.map(seller => (
-    <DropdownItem
-      className="btn"
-      onClick={() => {
-        handleSellerFilter(seller);
-      }}
-      key={seller}
-    >
-      {seller}
-    </DropdownItem>
-  ))}
-</ListGroup>
-</div> */

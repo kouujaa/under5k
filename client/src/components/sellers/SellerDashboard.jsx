@@ -7,7 +7,7 @@ import jwtDecoder from "jwt-decode";
 import axios from "axios";
 import ViewOwnStore from "./ViewOwnStore";
 import ViewSoldStore from "./ViewSoldStore";
-import { withCookies, Cookies } from "react-cookie";
+import { withCookies } from "react-cookie";
 
 class SellerDasboard extends Component {
   state = { user: "", products: "" };
@@ -17,9 +17,6 @@ class SellerDasboard extends Component {
     var jwt = cookies.get("token");
     var user = jwtDecoder(jwt);
     this.setState({ user });
-    // set state and call for seller info
-
-    // this.getData(); const { cookies } = this.props;
 
     try {
       const products = await axios.post("/api/product/byShop", {
@@ -29,10 +26,7 @@ class SellerDasboard extends Component {
     } catch (err) {}
   }
 
-  getData = async () => {
-    // this.setState({ products: products.data });
-    // console.log(products.data);
-  };
+  getData = async () => {};
 
   render() {
     const { user, products } = this.state;

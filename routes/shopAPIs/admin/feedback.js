@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
       message
     });
 
-    var data = await feedback.save();
+    await feedback.save();
     return res.redirect("/");
   } catch (err) {
     return res.status(500).redirect("/contact");

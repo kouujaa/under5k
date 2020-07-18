@@ -27,25 +27,23 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        const user = await Customer.findOne({ googleID: profile.id });
+        const user = await Customer.findOne({ email: profile._json.email });
         if (user) {
-          // console.log(profile);
-          // console.log("user is:", user);
+          console.log("user is:", user);
           done(null, user);
         } else {
-          // console.log(profile);
-
           const saveduser = new Customer({
             firstName: profile._json.given_name,
             lastName: profile._json.family_name,
             userName: profile.displayName,
             email: profile._json.email,
             signBy: "google",
-            googleID: profile.id
+            googleID: profile.id,
+            gender: profile.gender
           });
 
           const user = await saveduser.save();
-          // console.log("saved is:", newUser);
+          console.log("saved is:", newUser);
           done(null, user);
         }
       } catch (err) {

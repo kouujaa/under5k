@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const jwt = require("jsonwebtoken");
 const { Customer, validateCustomer } = require("../../../models/Customer");
-const { Receipt, validateReceipt } = require("../../../models/Receipt");
+const { Receipt } = require("../../../models/Receipt");
 const authenticate = require("../../../middleware/authenticate");
 
 const router = express.Router();
@@ -51,6 +51,7 @@ router.post("/login", async (req, res) => {
       .cookie("token", token)
       .send("login-succesful");
   } catch (err) {
+    console.log("from user login", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -92,6 +93,7 @@ router.post("/loginDirect", async (req, res) => {
       .cookie("token", token)
       .send("login-succesful");
   } catch (err) {
+    console.log("from user login password retrieval", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -101,8 +103,9 @@ router.post("/signUp", async (req, res) => {
   //Validate req.body input
   try {
     const value = await validateCustomer.validateAsync(req.body);
-  } catch (error) {
-    return res.status(400).send(error.details[0].message);
+  } catch (err) {
+    console.log("from user signup validation", err.message);
+    return res.status(400).send(err.details[0].message);
   }
 
   //extract variables for checks
@@ -166,6 +169,7 @@ router.post("/signUp", async (req, res) => {
       .cookie("token", token)
       .redirect("/home");
   } catch (err) {
+    console.log("from user signup", err.message);
     return res.status(500).redirect("/serverError");
   }
 });
@@ -187,7 +191,7 @@ router.post("/receipts", async (req, res) => {
   res.send(receipts);
 });
 
-//Update profile info	 authenticate
+//Update profile info
 router.post("/updateProfile", async (req, res) => {
   const {
     userName,
@@ -215,7 +219,21 @@ router.post("/updateProfile", async (req, res) => {
 router.post("/addToCart", async (req, res) => {});
 
 //Change customer password authenticate
-router.post("/updatePurchase", authenticate, async (req, res) => {});
+router.post("/updatePurchase", async (req, res) => {
+  try {
+    const { cart, user, charge } = req.body;
+    const resp = await Customer.updateOne(
+      { email: user.email },
+      {
+        $inc: { purchasedCount: cart.length, purchasePriceTotal: charge }
+      }
+    );
+    return res.redirect("/home");
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).redirect("/serverError");
+  }
+});
 
 //View customer meta data	authenticate
 router.get("/metaData", authenticate, async (req, res) => {});
