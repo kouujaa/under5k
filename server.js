@@ -4,7 +4,7 @@ const Joi = require("@hapi/joi");
 Joi.objectId = require("joi-objectid")(Joi); //returns a function accepts the Joi class
 const mongoose = require("mongoose");
 const product = require("./routes/shopAPIs/customer/product");
-// const images = require("./routes/shopAPIs/customer/upload");
+const images = require("./routes/shopAPIs/customer/upload");
 const customer = require("./routes/shopAPIs/customer/customer");
 const seller = require("./routes/shopAPIs/seller/seller");
 const feedback = require("./routes/shopAPIs/admin/feedback");
@@ -19,7 +19,7 @@ const helmet = require("helmet");
 const graphqlHTTP = require("express-graphql");
 const GraphSchema = require("./graphQLSchema/graphQLSchema");
 const passport = require("passport");
-// const passportSetup = require("./configureauth/passport-setup");
+const passportSetup = require("./configureauth/passport-setup");
 
 if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwt private key undefined");
