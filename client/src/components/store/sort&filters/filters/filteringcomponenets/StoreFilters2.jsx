@@ -3,7 +3,21 @@ import { Form, FormGroup, Button, CustomInput } from "reactstrap";
 
 class Filters2 extends Component {
   state = {
-    sizes: ["All", "XS", "S", "M", "L", "XL", "One Size"],
+    sizes: [
+      "All",
+      "6",
+      "8",
+      "10",
+      "12",
+      "14",
+      "16",
+      "18",
+      "20",
+      "22",
+      "24",
+      "26",
+      "One Size"
+    ],
     categories: [
       "All",
       "Blouses",

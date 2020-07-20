@@ -122,7 +122,7 @@ class SignUpForm extends Component {
         state
       } = this.state.data;
 
-      await axios.post("/api/customers/signUp", {
+      var seeif = await axios.post("/api/customers/signUp", {
         userName,
         password,
         firstName,
@@ -137,11 +137,15 @@ class SignUpForm extends Component {
 
       window.location = "/";
     } catch (err) {
+      if (err.response) {
+        console.log(err.response.data.err);
+        this.setState({ errors: err.response.data.err + "!!!. Try another" });
+      }
       this.props.history.push({
         pathname: "/signUp",
         search: "",
         hash: "",
-        state: { message: "invalid login credentials!" }
+        state: { message: err.response.data.err + "!!!. Try another" }
       });
     }
   }
@@ -156,7 +160,7 @@ class SignUpForm extends Component {
         pathname: "/signIn",
         search: "",
         hash: "",
-        state: { message: "invalid login dataentials!" }
+        state: { message: "invalid login credentials!" }
       });
     }
   };
@@ -308,6 +312,7 @@ class SignUpForm extends Component {
                 required
                 onChange={this.onChangeHandler}
               >
+                <option>Select State</option>
                 <option>Abia</option>
                 <option>Adamawa</option>
                 <option>Akwa Ibom</option>
@@ -372,6 +377,9 @@ class SignUpForm extends Component {
                 <Link to="/userAgreement">user Agreement</Link>
               </div>
             </FormGroup>
+            {this.props.location.state ? (
+              <p className="text-danger">{this.props.location.state.message}</p>
+            ) : null}
             {this.renderButton("SUBMIT")}
           </Form>
         </div>

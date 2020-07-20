@@ -16,12 +16,12 @@ router.post("/byShop", async (req, res) => {
   }
 });
 
-router.post("/byShop/available", async (req, res) => {
-  const { shopName } = req.body;
+router.post("/byShop/by", async (req, res) => {
+  const { shopName, by } = req.body;
   try {
     const products = await Product.find({
       seller: shopName,
-      status: "available"
+      status: by
     });
     return res.send(products);
   } catch (err) {
@@ -30,20 +30,20 @@ router.post("/byShop/available", async (req, res) => {
   }
 });
 
-router.post("/byShop/sold", async (req, res) => {
-  const { shopName } = req.body;
+// router.post("/byShop/sold", async (req, res) => {
+//   const { shopName } = req.body;
 
-  try {
-    const products = await Product.find({
-      seller: shopName,
-      status: "sold"
-    });
-    return res.send(products);
-  } catch (err) {
-    console.log("from sold product API", err.message);
-    return res.status(500).redirect("/serverError");
-  }
-});
+//   try {
+//     const products = await Product.find({
+//       seller: shopName,
+//       status: "sold"
+//     });
+//     return res.send(products);
+//   } catch (err) {
+//     console.log("from sold product API", err.message);
+//     return res.status(500).redirect("/serverError");
+//   }
+// });
 
 //find all products
 router.get("/", async (req, res) => {
@@ -88,7 +88,6 @@ router.post("/addProduct", async (req, res) => {
 
     const product = new Product({
       productID: Date.now(),
-      instock: parseInt(picInfo.uploadinfo.numberInStock),
       price: parseInt(picInfo.uploadinfo.price),
       colors: picInfo.uploadinfo.colors,
       size: picInfo.uploadinfo.sizes,

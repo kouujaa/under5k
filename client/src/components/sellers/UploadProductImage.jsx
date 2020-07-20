@@ -24,6 +24,7 @@ class UploadProductImage extends Component {
 
     this.setState({ selectedFile: e.target.files });
   };
+
   doTheWork = async file => {
     try {
       let storageRef = firebase
@@ -76,6 +77,7 @@ class UploadProductImage extends Component {
       this.doTheWork(this.state.selectedFile[i]);
     }
   };
+
   axioscall = async () => {
     try {
       await axios.post("/api/product/addProduct", {

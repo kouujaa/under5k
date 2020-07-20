@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import jwtDecoder from "jwt-decode";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { withCookies } from "react-cookie";
 import axios from "axios";
 
 class EditProfile extends Component {
@@ -24,11 +26,12 @@ class EditProfile extends Component {
         firstName,
         lastName,
         address,
-        phoneNumber
+        phoneNumber,
+        state
       } = this.state;
 
       await axios.post("/api/customers/updateProfile", {
-        details: { userName, firstName, lastName, address, phoneNumber },
+        details: { userName, firstName, lastName, address, phoneNumber, state },
         email: this.props.info.email
       });
       window.location = "/";
@@ -43,6 +46,8 @@ class EditProfile extends Component {
     this.getInfo();
   };
   componentDidMount() {
+
+
     const { userName, firstName, lastName, address, phoneNumber } = this.props;
 
     this.setState({
@@ -116,7 +121,7 @@ class EditProfile extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="StateSelect">Location</Label>
+            <Label for="stateSelect">Location</Label>
             <Input
               type="select"
               name="state"
@@ -174,4 +179,4 @@ class EditProfile extends Component {
     );
   }
 }
-export default EditProfile;
+export default withCookies(EditProfile);

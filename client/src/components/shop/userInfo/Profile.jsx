@@ -22,7 +22,7 @@ class Profile extends Component {
       address
       // meta
     } = this.props.profileInfo;
-
+    console.log(this.props);
     return (
       <motion.div
         className="container mt-5"
@@ -48,11 +48,12 @@ class Profile extends Component {
                 <span>Address: {address ? address : "not provided"} </span>
               </h4>
               <h4>
-                <span>dob: {dob ? dob : "not provided"}</span>
+                <span>Birthday: {dob ? dob : "not provided"}</span>
               </h4>
               <h4>
                 <span>
-                  Phone number: {phoneNumber ? address : "not provided"}
+                  Phone number:{" "}
+                  {phoneNumber ? "0" + phoneNumber : "not provided"}
                 </span>
               </h4>
               <h4>

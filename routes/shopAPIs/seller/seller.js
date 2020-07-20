@@ -48,15 +48,17 @@ router.post("/signUp", async (req, res) => {
 
   //check if email already in use
   let found = await Seller.findOne({ email });
-  if (found) return res.status(400).send("email already taken");
+  if (found) return res.status(400).send({ err: "email already registered" });
 
   //check if shopName already in use
   found = await Seller.findOne({ shopName });
-  if (found) return res.status(400).send("user name taken");
+  if (found)
+    return res.status(400).send({ err: "shop name already registered" });
 
   // check if phone number already in use
   found = await Seller.findOne({ phoneNumber });
-  if (found) return res.status(400).send("phone number already in use");
+  if (found)
+    return res.status(400).send({ err: "phone number already registered" });
 
   //hash password
   let { password } = req.body;
@@ -70,6 +72,7 @@ router.post("/signUp", async (req, res) => {
     const storeURL = "www.thriftnhub/store/" + req.body.shopName;
 
     const seller = new Seller({
+      website: req.body.website,
       shopName: req.body.shopName,
       password: req.body.password,
       firstName: req.body.firstName,
@@ -104,6 +107,7 @@ router.post("/signUp", async (req, res) => {
         gender: data.gender,
         state: data.state,
         meta: data.meta,
+        website: data.website,
         banner: data.banner,
         totalVisits: data.totalVisits,
         totalSales: data.totalSales,
@@ -157,6 +161,7 @@ router.post("/login", async (req, res) => {
         gender: data.gender,
         state: data.state,
         meta: data.meta,
+        website: req.body.website,
         banner: data.banner,
         totalVisits: data.totalVisits,
         totalSales: data.totalSales,
@@ -244,6 +249,28 @@ router.post("/updateVisit", async (req, res) => {
       return res.status(500).redirect("/serverError");
     }
   } else returnres.send("");
+});
+
+//get sellers list
+router.get("/sellersList", async (req, res) => {
+  try {
+    const sellers = await Seller.find().select("shopName");
+    return res.send(sellers);
+  } catch (err) {
+    console.log("from get sellers list seller API", err.message);
+    return res.status(500).redirect("/serverError");
+  }
+});
+
+//get sellers list,url description
+router.get("/sellersLUD", async (req, res) => {
+  try {
+    const sellers = await Seller.find().select("shopName banner description");
+    return res.send(sellers);
+  } catch (err) {
+    console.log("from get sellers list seller API", err.message);
+    return res.status(500).redirect("/serverError");
+  }
 });
 
 module.exports = router;

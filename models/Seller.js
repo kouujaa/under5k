@@ -10,6 +10,7 @@ const sellerSchema = new mongoose.Schema({
     maxlength: 500,
     unique: true
   },
+  description: { type: String },
   banner: { type: String, default: "" },
   status: { type: String, default: "seller" },
   accountNumber: {
@@ -19,6 +20,7 @@ const sellerSchema = new mongoose.Schema({
     maxlength: 16,
     unique: true
   },
+  website: { type: String },
   bank: {
     type: String,
     enum: [

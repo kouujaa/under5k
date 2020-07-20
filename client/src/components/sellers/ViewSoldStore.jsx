@@ -43,8 +43,9 @@ class ViewSoldStore extends Component {
   async componentDidMount() {
     try {
       const { cookies } = this.props;
-      const products = await axios.post("/api/product/byShop/sold", {
-        shopName: jwtDecoder(cookies.get("token")).shopName
+      const products = await axios.post("/api/product/byShop/by", {
+        shopName: jwtDecoder(cookies.get("token")).shopName,
+        by: "sold"
       });
       this.setState({ products: products.data });
     } catch (err) {

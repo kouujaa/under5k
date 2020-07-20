@@ -49,17 +49,19 @@ const productSchema = new mongoose.Schema({
   size: {
     type: String,
     enum: [
-      "XXS",
-      "XS",
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "XXXL",
-      "4XL",
-      "OneSize",
-      "All"
+      "All",
+      "6",
+      "8",
+      "10",
+      "12",
+      "14",
+      "16",
+      "18",
+      "20",
+      "22",
+      "24",
+      "26",
+      "One Size"
     ]
   },
   description: { type: String, required: true },

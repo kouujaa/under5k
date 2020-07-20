@@ -120,7 +120,7 @@ const validateCustomer = Joi.object({
   facebookID: Joi.string()
     .min(15)
     .max(500),
-  phoneNumber: Joi.number().min(8),
+  phoneNumber: Joi.number(),
   gender: Joi.string()
     .min(3)
     .max(10),

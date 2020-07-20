@@ -28,35 +28,29 @@ router.get(
   "/google/redirect",
   passport.authenticate("google"),
   async (req, res) => {
-    const { userName } = req.user;
+    const { email } = req.user;
     try {
       //CHECK IF USER EXISTS
-      let customer = await Customer.findOne({ userName }).select(
-        "purchasePriceTotal firstName lastName phoneNumber savedItems userName email _id gender dateJoined googleID purchasedCount likedItems"
+      let customer = await Customer.findOne({ email }).select(
+        "purchasePriceTotal status firstName dob address lastName phoneNumber state userName email gender dateJoined purchasedCount "
       );
       if (!customer) return res.redirect("/signIn");
 
-      //RETRIEVE USER INFO EXCEPT PASSWORD
-      // customer = await Customer.findOne({ userName }).select(
-      //   "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id state gender dob dateJoined"
-      // );
       const token = jwt.sign(
         {
-          status: "user",
-          _id: customer._id,
+          status: customer.status,
           userName: customer.userName,
           email: customer.email,
           firstName: customer.firstName,
           lastName: customer.lastName,
+          state: customer.state,
+          address: customer.address,
           phoneNumber: customer.phoneNumber,
           gender: customer.gender,
           datejoined: customer.dateJoined,
           purchasePriceTotal: customer.purchasePriceTotal,
           purchasedCount: customer.purchasedCount,
-          likedItems: customer.likedItems,
-          savedItems: customer.savedItems,
-          signBy: "google",
-          googleID: customer.googleID
+          signBy: "google"
         },
         config.get("jwtPrivateKey")
       );

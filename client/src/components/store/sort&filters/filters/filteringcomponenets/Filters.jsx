@@ -1,10 +1,25 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Button, CustomInput } from "reactstrap";
+import axios from "axios";
 
 class Filters extends Component {
   state = {
-    sellers: ["All", "omathrift", "shalom", "juliet"],
-    sizes: ["All", "XS", "S", "M", "L", "XL", "One Size"],
+    sellers: [],
+    sizes: [
+      "All",
+      "6",
+      "8",
+      "10",
+      "12",
+      "14",
+      "16",
+      "18",
+      "20",
+      "22",
+      "24",
+      "26",
+      "One Size"
+    ],
     categories: [
       "All",
       "Blouses",
@@ -50,6 +65,11 @@ class Filters extends Component {
     this.props.handleUpSubmit(seller, category, size);
   };
 
+  async componentDidMount() {
+    const sellers = await axios.get("/api/seller/sellersList");
+
+    this.setState({ sellers: sellers.data });
+  }
   render() {
     return (
       <div
@@ -66,7 +86,7 @@ class Filters extends Component {
             >
               <option value="">Shops</option>
               {this.state.sellers.map(seller => (
-                <option>{seller}</option>
+                <option>{seller.shopName}</option>
               ))}
             </CustomInput>
           </FormGroup>

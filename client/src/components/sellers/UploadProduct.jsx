@@ -8,7 +8,6 @@ class UploadProduct extends Component {
     itemDescription: "",
     sizes: "",
     colors: [],
-    numberInStock: 1,
     price: 0,
     material: "",
     category: ""
@@ -52,11 +51,18 @@ class UploadProduct extends Component {
                 onChange={this.onChangeHandler("sizes")}
               >
                 <option>Select size</option>
-                <option>XS</option>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
+                <option>6</option>
+                <option>8</option>
+                <option>10</option>
+                <option>12</option>
+                <option>14</option>
+                <option>16</option>
+                <option>18</option>
+                <option>20</option>
+                <option>22</option>
+                <option>24</option>
+                <option>26</option>
+                <option>One Size</option>
               </Input>
             </FormGroup>
             <FormGroup>
@@ -85,16 +91,6 @@ class UploadProduct extends Component {
                 <option>Yellow</option>
                 <option>Multi-Color</option>
               </Input>
-            </FormGroup>
-            <FormGroup>
-              <Label for="numberInStock">Number Of Item In stock</Label>
-              <Input
-                type="number"
-                name="numberInStock"
-                bsSize="lg"
-                required
-                onChange={this.onChangeHandler("numberInStock")}
-              ></Input>
             </FormGroup>
             <FormGroup>
               <Label for="price">Price</Label>

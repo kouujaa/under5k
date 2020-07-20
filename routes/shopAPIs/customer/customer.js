@@ -72,8 +72,7 @@ router.post("/loginDirect", async (req, res) => {
     // );
     const token = jwt.sign(
       {
-        status: "user",
-        _id: customer._id,
+        status: customer.status,
         userName: customer.userName,
         email: customer.email,
         firstName: customer.firstName,
@@ -113,15 +112,17 @@ router.post("/signUp", async (req, res) => {
 
   //check if email already in use
   let found = await Customer.findOne({ email });
-  if (found) return res.status(400).send("email already taken");
+  if (found) return res.status(400).send({ err: "email already registered" });
 
   //check if username already in use
   found = await Customer.findOne({ userName });
-  if (found) return res.status(400).send("user name taken");
+  if (found)
+    return res.status(400).send({ err: "user name already registered" });
 
   // check if phone number already in use
   found = await Customer.findOne({ phoneNumber });
-  if (found) return res.status(400).send("phone number already in use");
+  if (found)
+    return res.status(400).send({ err: "phone number already registered" });
 
   //hash password
   let { password } = req.body;
@@ -176,19 +177,33 @@ router.post("/signUp", async (req, res) => {
 
 // FIND AND RETURN SINGULAR CUSTOMER DETAILS
 router.get("/info", authenticate, async (req, res) => {
-  const customer = await Customer.findOne({ userName: username });
-  if (!customer) return res.status(400).send("User does not exist");
-  _.filter(customer, []);
-  res.send(customer);
+  try {
+    const { email } = req.body;
+    const customer = await Customer.findOne({ email }).select(
+      "meta purchasePriceTotal firstName lastName address phoneNumber userName email cart _id state gender dob dateJoined"
+    );
+    if (!customer) return res.status(400).send("User does not exist");
+
+    return res.send(customer);
+  } catch (err) {
+    console.log("from get info customer API", err.message);
+    return res.status(500).redirect("/serverError");
+  }
 });
 
 // FIND AND RETURN SINGULAR CUSTOMER DETAILS
 router.post("/receipts", async (req, res) => {
-  const { email } = req.body;
-  const receipts = await Receipt.find({ email });
-  if (!receipts) return res.status(400).send("no purchase history available ");
-  // _.filter(receipts, []);
-  res.send(receipts);
+  try {
+    const { email } = req.body;
+    const receipts = await Receipt.find({ email });
+    if (!receipts)
+      return res.status(400).send("no purchase history available ");
+    // _.filter(receipts, []);
+    return res.send(receipts);
+  } catch (err) {
+    console.log("from receipts customer API", err.message);
+    return res.status(500).redirect("/serverError");
+  }
 });
 
 //Update profile info
@@ -198,19 +213,20 @@ router.post("/updateProfile", async (req, res) => {
     firstName,
     lastName,
     address,
-    phoneNumber
+    phoneNumber,
+    state
   } = req.body.details;
   const { email } = req.body;
 
   try {
-    await Customer.findOneAndUpdate(
+    await Customer.updateOne(
       { email },
-      { $set: { userName, firstName, lastName, address, phoneNumber } }
+      { $set: { userName, firstName, lastName, address, phoneNumber, state } }
     );
 
     return res.send("update successfull");
   } catch (err) {
-    console.log(err.message);
+    console.log("from updateProfile cutomer API", err.message);
     return res.status(500).redirect("/serverError");
   }
 });

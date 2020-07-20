@@ -4,34 +4,18 @@ import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import ProductContext from "./../../../contexts/productContext";
 
-class TopCategories extends Component {
+class NewArrivals extends Component {
   static contextType = ProductContext;
-  state = {
-    topper: ["juliet", "omathrift", "shalom"]
-  };
-  // getproducts = () => {
-  //   const products = _.slice(this.props.products, 0, 6);
-  //   const ht = products.map(product => (
-  //     <div key={product.productCode}>
-  //       <CardText>{product.category}</CardText>
-  //       <Card>
-  //         <img src={product.URI[0]} alt="imagine"></img>
-  //       </Card>
-  //     </div>
-  //   ));
-
-  //   return ht;
-  // };
 
   render() {
-    const products = _.slice(this.context.products, 0, 6);
-
+    var sorted = _.orderBy(this.context.products, ["dateAdded"], ["asc"]);
+    const products = _.slice(sorted, 0, 12).reverse();
     return (
       <ProductContext.Consumer>
         {productContext => (
           <React.Fragment>
             <div className="mt-5 mb-5">
-              <h4 style={{ color: "#ff006c" }}>Top Sellers</h4>
+              <h4 style={{ color: "#ff006c" }}>New Arrivals</h4>
               <Carousel
                 autoPlay={3500}
                 animationSpeed={1000}
@@ -57,4 +41,4 @@ class TopCategories extends Component {
   }
 }
 
-export default TopCategories;
+export default NewArrivals;

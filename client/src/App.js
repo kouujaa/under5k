@@ -135,7 +135,7 @@ class App extends Component {
             <Route
               path="/payStackRDR"
               render={props => {
-                if (this.state.user.status === "seller")
+                if (this.state.user.status !== "user")
                   return <Redirect to="/unauthorized2" />;
                 return <PayStackPortal cookies={cookies} {...props} />;
               }}

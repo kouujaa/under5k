@@ -43,7 +43,7 @@ passport.use(
           });
 
           const user = await saveduser.save();
-          console.log("saved is:", newUser);
+          console.log("saved is:", user);
           done(null, user);
         }
       } catch (err) {
