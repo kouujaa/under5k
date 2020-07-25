@@ -26,6 +26,22 @@ class CheckOut extends Component {
       });
     } catch (err) {}
   };
+  stockpile = () => {
+    try {
+      this.props.history.push({
+        pathname: "/stockpileStackRDR",
+        search: "",
+        hash: "",
+        state: {
+          details: this.state.user,
+          email: this.state.user.email,
+          charge: this.getTotal() * 100,
+          config: this.state.config,
+          cart: this.props.location.state.cart
+        }
+      });
+    } catch (err) {}
+  };
 
   componentDidMount() {
     try {
@@ -98,13 +114,22 @@ class CheckOut extends Component {
           <div className="m-4">
             <h5>Total + ₦1000 delivery fee: ₦{this.getTotal()}</h5>
           </div>
-          <Button
-            className="btn btn-sm btn-success container"
-            onClick={this.checkout}
-          >
-            Proceed to payment
-            <Card className="ml-2" />
-          </Button>
+          <div>
+            <Button
+              className="btn btn-sm btn-success container"
+              onClick={this.checkout}
+            >
+              Payment for Delivery
+              <Card className="ml-2" />
+            </Button>
+            <Button
+              className="btn btn-sm btn-success container"
+              onClick={this.stockpile}
+            >
+              Payment for stockpile
+              <Card className="ml-2" />
+            </Button>
+          </div>
         </div>
         <div>
           ORDER SUMMARY

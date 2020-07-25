@@ -110,11 +110,6 @@ class SellerSignUp extends Component {
     this.setState({ data, errors });
   };
 
-  // onChangeHandler = input => e => {
-  //   const userInfo = { ...this.state.userInfo };
-  //   userInfo[e.target.name] = e.target.value;
-  //   this.setState(userInfo);
-  // };
   doSubmit = () => {
     this.getInfo();
   };
@@ -162,7 +157,6 @@ class SellerSignUp extends Component {
       });
       const { cookies } = this.props;
       cookies.set("token", token.data, { path: "/" });
-
       window.location = "/";
     } catch (err) {
       if (err.response) {
@@ -170,7 +164,7 @@ class SellerSignUp extends Component {
         this.setState({ errors: err.response.data.err + "!!!. Try another" });
       }
       this.props.history.push({
-        pathname: "/",
+        pathname: "/sellerSignUp",
         search: "",
         hash: "",
         state: { message: err.response.data.err + "!!!. Try another" }

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Joi from "joi-browser";
 import GoogleSignIn from "./GoogleSignIn";
+import { withCookies } from "react-cookie";
 
 class SignUpForm extends Component {
   state = {
@@ -135,6 +136,9 @@ class SignUpForm extends Component {
         state
       });
 
+      const { cookies } = this.props;
+
+      cookies.set("token", seeif.data, { path: "/" });
       window.location = "/";
     } catch (err) {
       if (err.response) {
@@ -389,4 +393,4 @@ class SignUpForm extends Component {
     );
   }
 }
-export default SignUpForm;
+export default withCookies(SignUpForm);

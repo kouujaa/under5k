@@ -42,16 +42,17 @@ class SellerSignInPage extends UseForm {
       // localStorage.setItem("token", token.data);
       window.location = "/";
     } catch (err) {
-      // this.props.history.push({
-      //   pathname: "/sellerSignIn",
-      //   search: "",
-      //   hash: "",
-      //   state: { message: "invalid login dataentials!" }
-      // });
+      this.props.history.push({
+        pathname: "/sellerSignIn",
+        search: "",
+        hash: "",
+        state: { message: "invalid login dataentials!" }
+      });
     }
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <motion.div
@@ -68,6 +69,9 @@ class SellerSignInPage extends UseForm {
             <br></br>
             {this.renderInput("shopName", "Shop Name", "text")}
             {this.renderInput("password", "Password", "password")}
+            {this.props.location.state ? (
+              <p className="text-danger">{this.props.location.state.message}</p>
+            ) : null}
             {this.renderButton("SIGN IN")}
             <div className="mt-2">
               or

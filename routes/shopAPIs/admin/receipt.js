@@ -5,11 +5,12 @@ const router = express.Router();
 //receive message
 router.post("/receipt", async (req, res) => {
   try {
-    const { refNumber, email, charge, itemIDS } = req.body;
+    const { refNumber, email, charge, itemIDS, status } = req.body;
 
     const itemID = itemIDS.map(item => item.productID);
 
     const receipt = new Receipt({
+      status,
       refNumber,
       email,
       charge: charge / 100,

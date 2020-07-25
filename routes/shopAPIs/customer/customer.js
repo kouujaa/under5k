@@ -101,7 +101,7 @@ router.post("/loginDirect", async (req, res) => {
 router.post("/signUp", async (req, res) => {
   //Validate req.body input
   try {
-    const value = await validateCustomer.validateAsync(req.body);
+    await validateCustomer.validateAsync(req.body);
   } catch (err) {
     console.log("from user signup validation", err.message);
     return res.status(400).send(err.details[0].message);
@@ -148,7 +148,7 @@ router.post("/signUp", async (req, res) => {
     const saveditem = await customer.save();
     const token = jwt.sign(
       {
-        status: "user",
+        status: saveditem.status,
         _id: saveditem._id,
         userName: saveditem.userName,
         email: saveditem.email,
@@ -157,9 +157,12 @@ router.post("/signUp", async (req, res) => {
         phoneNumber: saveditem.phoneNumber,
         state: saveditem.state,
         gender: saveditem.gender,
-        datejoined: saveditem.datejoined,
+        datejoined: saveditem.dateJoined,
         purchasePriceTotal: saveditem.purchasePriceTotal,
-        meta: saveditem.meta
+        meta: saveditem.meta,
+        cart: saveditem.cart,
+        dob: saveditem.dob,
+        address: saveditem.address
       },
       config.get("jwtPrivateKey")
     );
@@ -168,7 +171,7 @@ router.post("/signUp", async (req, res) => {
     return res
       .header("x-authentication-token", token)
       .cookie("token", token)
-      .redirect("/home");
+      .send(token);
   } catch (err) {
     console.log("from user signup", err.message);
     return res.status(500).redirect("/serverError");

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import _ from "lodash";
-import Carousel from "@brainhubeu/react-carousel";
-import "@brainhubeu/react-carousel/lib/style.css";
+// import Carousel from "@brainhubeu/react-carousel";
+// import "@brainhubeu/react-carousel/lib/style.css";
 import ProductContext from "./../../../contexts/productContext";
 
 class NewArrivals extends Component {
@@ -9,30 +10,29 @@ class NewArrivals extends Component {
 
   render() {
     var sorted = _.orderBy(this.context.products, ["dateAdded"], ["asc"]);
-    const products = _.slice(sorted, 0, 12).reverse();
+    const products = _.slice(sorted, 0, 8).reverse();
+    console.log(products);
     return (
       <ProductContext.Consumer>
         {productContext => (
           <React.Fragment>
             <div className="mt-5 mb-5">
               <h4 style={{ color: "#ff006c" }}>New Arrivals</h4>
-              <Carousel
-                autoPlay={3500}
-                animationSpeed={1000}
-                infinite
-                slidesPerScroll={1}
-                slidesPerPage={5}
-                offset={9}
-              >
-                {products.map(item => (
-                  <img
-                    key={item.productCode}
-                    className="sec_img"
-                    src={item.URI[0]}
-                    alt="cat"
-                  />
-                ))}
-              </Carousel>
+
+              {products.map(item => (
+                <React.Fragment>
+                  <NavLink to={"/store/" + item.seller}>
+                    <img
+                      width="120em"
+                      height="170em"
+                      key={item.productID}
+                      className="sec_img ml-2 mb-2"
+                      src={item.URI[0]}
+                      alt="cat"
+                    />
+                  </NavLink>
+                </React.Fragment>
+              ))}
             </div>
           </React.Fragment>
         )}

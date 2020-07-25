@@ -21,7 +21,7 @@ const AppNavBar = ({ user, clearState }) => {
       animate={{ y: 0 }}
       transition={{ duration: 1, type: "spring", stiffness: 500 }}
     >
-      <Navbar color="dark" dark expand="sm" className="navbrands">
+      <Navbar color="dark" dark expand="md" className="navbrands">
         <NavLink className="navbrands" id="top" to="/">
           THIRFTNHUB
         </NavLink>
@@ -63,5 +63,5 @@ const AppNavBar = ({ user, clearState }) => {
     </motion.div>
   );
 };
- 
+
 export default AppNavBar;

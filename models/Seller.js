@@ -20,7 +20,7 @@ const sellerSchema = new mongoose.Schema({
     maxlength: 16,
     unique: true
   },
-  website: { type: String },
+  website: { type: String, default: "www.thriftnhub.com/store/" },
   bank: {
     type: String,
     enum: [
@@ -137,9 +137,7 @@ const sellerSchema = new mongoose.Schema({
   },
   phoneNumber: {
     type: Number,
-    required: true,
-    minlength: 2,
-    maxlength: 16
+    required: true
   },
   products: [
     {
@@ -205,7 +203,8 @@ const validateSeller = Joi.object({
   address: Joi.string()
     .min(3)
     .max(500)
-    .required()
+    .required(),
+  website: Joi.string()
 });
 
 exports.sellerSchema = sellerSchema;

@@ -127,14 +127,14 @@ class ProductPage extends Component {
         {productContext => (
           <React.Fragment>
             <motion.div
-              className="productPage mt-5 ml-1"
+              className="productPage mt-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
               {this.state.cart.length ? (
                 <Cart
-                  className="mr-3"
+                  className="mr-2"
                   cart={this.state.cart}
                   inc={this.incrementCart}
                   dec={this.decrementCart}

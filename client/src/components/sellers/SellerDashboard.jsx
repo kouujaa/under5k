@@ -19,8 +19,10 @@ class SellerDasboard extends Component {
     this.setState({ user });
 
     try {
+      const { cookies } = this.props;
+      // cookies.get("token")
       const products = await axios.post("/api/product/byShop", {
-        shopName: jwtDecoder(localStorage.getItem("token")).shopName
+        shopName: jwtDecoder(cookies.get("token")).shopName
       });
       this.setState({ products: products.data });
     } catch (err) {}

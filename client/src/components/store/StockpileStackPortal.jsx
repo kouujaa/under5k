@@ -6,13 +6,14 @@ import { withCookies } from "react-cookie";
 import jwtDecoder from "jwt-decode";
 import axios from "axios";
 
-class PayStackPortal extends Component {
+class StockpileStackPortal extends Component {
   handleSuccess = async (cart, status) => {
     //update status of products to sold
     try {
-      await axios.post("/api/product/updateMany", {
+      await axios.post("/api/product/stockpile", {
         cart,
-        status
+        status,
+        email: this.props.location.state.config.email
       });
     } catch (err) {
       console.log("from update status of products to sold", err);
@@ -21,7 +22,7 @@ class PayStackPortal extends Component {
     //send receipt to admin
     try {
       await axios.post("/api/admin/receipt", {
-        status: "sold",
+        status: "stockpiled",
         refNumber: this.props.location.state.config.reference,
         email: this.props.location.state.config.email,
         charge: this.props.location.state.config.amount,
@@ -71,7 +72,7 @@ class PayStackPortal extends Component {
       publicKey: this.props.location.state.config.publicKey,
       text: "Paystack Button Implementation",
       onSuccess: () => {
-        this.handleSuccess(this.props.location.state.cart, "sold");
+        this.handleSuccess(this.props.location.state.cart, "stockpiled");
       },
       onClose: () => {
         this.handleFailure();
@@ -107,4 +108,4 @@ class PayStackPortal extends Component {
   }
 }
 
-export default withCookies(PayStackPortal);
+export default withCookies(StockpileStackPortal);

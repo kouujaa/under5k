@@ -62,9 +62,7 @@ const customerSchema = new mongoose.Schema({
     maxlength: 500
   },
   phoneNumber: {
-    type: Number,
-    min: 2,
-    max: 999999999999
+    type: Number
   },
   dateJoined: { type: Date, default: Date.now },
   purchasePriceTotal: {
@@ -73,7 +71,7 @@ const customerSchema = new mongoose.Schema({
   },
   purchasedCount: {
     type: Number,
-    min: 0,
+    min: 000000,
     max: 99999999,
     default: 0
   },

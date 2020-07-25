@@ -67,6 +67,7 @@ class App extends Component {
 
   render() {
     const { cookies } = this.props;
+
     const { message } = this.state;
     return (
       <ProductContext.Provider
@@ -75,7 +76,9 @@ class App extends Component {
         <React.Fragment>
           {/* <Provider store={myStore}> */}
           <AppNavBar user={this.state.user} clearState={this.clearState} />
-          {message ? <modal>{message}</modal> : null}
+          {/* {message ? <modal>{message}</modal> : null} */}
+
+          {/* <div className="container center"> */}
           <Switch>
             <Route
               path="/shop"
@@ -125,12 +128,16 @@ class App extends Component {
             />
             <Route
               path="/sellerDashBoard"
+              render={props => <SellerDasboard cookies={cookies} {...props} />}
+            />
+            {/* <Route
+              path="/sellerDashBoard"
               render={props => {
-                if (this.state.user.status !== "seller")
+                if (user.status !== "seller")
                   return <Redirect to="/sellerSignIn" />;
                 return <SellerDasboard cookies={cookies} {...props} />;
               }}
-            />
+            /> */}
 
             <Route
               path="/payStackRDR"
@@ -192,6 +199,7 @@ class App extends Component {
 
             <Redirect to="/notFound" />
           </Switch>
+          {/* </div> */}
           {/* </Provider> */}
           <Footer />
         </React.Fragment>

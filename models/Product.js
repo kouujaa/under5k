@@ -10,15 +10,10 @@ const productSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["available", "sold", "carted"],
+    enum: ["available", "sold", "carted", "stockpiled"],
     default: "available"
   },
-  instock: {
-    type: Number,
-    default: 1,
-    min: 0,
-    max: 40
-  },
+  piledBy: { type: String, default: "" },
   price: {
     type: Number,
     required: true,
@@ -152,9 +147,9 @@ const validateProduct = Joi.object({
     .min(1)
     .max(200000)
     .required(),
-  colors: Joi.array(),
-  fitting: Joi.array(),
-  producTitle: Joi.string()
+  color: Joi.array(),
+  size: Joi.array(),
+  description: Joi.string()
     .min(0)
     .max(400)
     .required(),

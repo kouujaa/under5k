@@ -38,7 +38,7 @@ class UploadProductImage extends Component {
         async snapshot => {
           var progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          var msg = `Upload is ${progress}% done`;
+          var msg = `Upload is ${Math.floor(progress)}% done`;
           this.setState({ msg: msg });
 
           try {
@@ -97,6 +97,7 @@ class UploadProductImage extends Component {
   };
   componentDidMount() {
     const { uploadinfo } = this.props;
+
     this.setState({ picInfo: uploadinfo });
     try {
       const { cookies } = this.props;
@@ -108,7 +109,7 @@ class UploadProductImage extends Component {
 
   render() {
     const { msg, status } = this.state;
-
+    const { selectedFile } = this.state;
     return (
       <motion.div
         className="container"
@@ -128,8 +129,11 @@ class UploadProductImage extends Component {
               multiple
               required
             />
-
-            <Button onClick={this.fileUploadHandler}>Upload Image</Button>
+            {selectedFile.length ? (
+              <Button className="mt-3" onClick={this.fileUploadHandler}>
+                Upload Image
+              </Button>
+            ) : null}
 
             {msg && <p className="mt-3">{msg}</p>}
             {status && (

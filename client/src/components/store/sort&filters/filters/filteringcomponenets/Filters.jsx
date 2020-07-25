@@ -84,7 +84,7 @@ class Filters extends Component {
               name="seller"
               onChange={this.onChangeHandler}
             >
-              <option value="">Shops</option>
+              <option>all shops</option>
               {this.state.sellers.map(seller => (
                 <option>{seller.shopName}</option>
               ))}

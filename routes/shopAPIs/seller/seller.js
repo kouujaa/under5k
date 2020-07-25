@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   const { shopName } = req.body;
   try {
     const seller = await Seller.findOne({ shopName }).select(
-      "shopName storeURL email firstName totalVisits totalSales totalSoldItems lastName banner address accountName accountNumber bank phoneNumber dob gender state "
+      "shopName storeURL website email firstName totalVisits totalSales totalSoldItems lastName banner address accountName accountNumber bank phoneNumber dob gender state "
     );
     return res.send(seller);
   } catch (err) {
@@ -69,7 +69,7 @@ router.post("/signUp", async (req, res) => {
   //save to database
 
   try {
-    const storeURL = "www.thriftnhub/store/" + req.body.shopName;
+    // const storeURL = "www.thriftnhub/store/" + req.body.shopName;
 
     const seller = new Seller({
       website: req.body.website,
@@ -86,7 +86,7 @@ router.post("/signUp", async (req, res) => {
       accountName: req.body.accountName,
       accountNumber: req.body.accountNumber,
       bank: req.body.bank,
-      storeURL
+      storeURL: req.body.website
     });
 
     const data = await seller.save();
@@ -105,6 +105,7 @@ router.post("/signUp", async (req, res) => {
         phoneNumber: data.phoneNumber,
         dob: data.dob,
         gender: data.gender,
+        storeURL: data.storeURL,
         state: data.state,
         meta: data.meta,
         website: data.website,
@@ -119,7 +120,7 @@ router.post("/signUp", async (req, res) => {
     return res
       .header("x-authentication-token", token)
       .cookie("token", token)
-      .send("signup-succesful");
+      .send(token);
   } catch (err) {
     console.log("fromsignup seller API", err.message);
     return res.status(500).redirect("/serverError");
@@ -254,7 +255,8 @@ router.post("/updateVisit", async (req, res) => {
 //get sellers list
 router.get("/sellersList", async (req, res) => {
   try {
-    const sellers = await Seller.find().select("shopName");
+    const sellers = await Seller.find().select("shopName totalSales banner");
+
     return res.send(sellers);
   } catch (err) {
     console.log("from get sellers list seller API", err.message);

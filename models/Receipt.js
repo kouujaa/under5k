@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 var uniqueValidator = require("mongoose-unique-validator");
 
 const receiptSchema = new mongoose.Schema({
+  status: { type: String, enum: ["sold", "stockpiled"] },
   refNumber: String,
   email: String,
   charge: Number,

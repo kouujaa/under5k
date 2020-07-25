@@ -89,12 +89,13 @@ router.post("/addProduct", async (req, res) => {
     const product = new Product({
       productID: Date.now(),
       price: parseInt(picInfo.uploadinfo.price),
-      colors: picInfo.uploadinfo.colors,
+      color: picInfo.uploadinfo.colors,
       size: picInfo.uploadinfo.sizes,
       description: picInfo.uploadinfo.itemDescription,
       category: picInfo.uploadinfo.category,
       URI: picURL,
-      seller: userInfo.shopName
+      seller: userInfo.shopName,
+      material: picInfo.uploadinfo.material
     });
 
     var data = await product.save();
@@ -140,6 +141,30 @@ router.post("/updateMany", async (req, res) => {
         { productID },
         {
           $set: { status: req.body.status }
+        }
+      );
+    });
+  } catch (err) {
+    console.log("from updatemany product API", err.message);
+    return res.status(500).redirect("/serverError");
+  }
+
+  return res.send(cart);
+});
+
+//bought status change and stockpile
+router.post("/stockpile", async (req, res) => {
+  var cart = _.values(req.body.cart);
+  cart = cart.map(each => {
+    return each.productID;
+  });
+
+  try {
+    cart.forEach(async productID => {
+      await Product.updateOne(
+        { productID },
+        {
+          $set: { status: req.body.status, piledBy: req.body.email }
         }
       );
     });
