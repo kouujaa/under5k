@@ -27,7 +27,7 @@ class TopSellers extends Component {
 
   render() {
     const { toppers } = this.state;
-    console.log(toppers);
+  
     return (
       <React.Fragment>
         <div className="mt-5 mb-5">

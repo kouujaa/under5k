@@ -7,15 +7,14 @@ class CartItem extends Component {
   state = {};
 
   render() {
-    let { quantity, productID, description, size, price } = this.props.item;
+    let { quantity, productID, description, price } = this.props.item;
     price = price * quantity;
     return (
       <tr>
-        <th scope="row">{quantity}</th>
+        {/* <th scope="row">{quantity}</th> */}
         <td>{description}</td>
-        <td>{size}</td>
         <td>{price}</td>
-        <td>
+        {/* <td>
           <span
             onClick={() => {
               this.props.inc(productID, price);
@@ -35,6 +34,7 @@ class CartItem extends Component {
             <CartD />
           </span>
         </td>
+         */}
         <td>
           <span
             onClick={() => {

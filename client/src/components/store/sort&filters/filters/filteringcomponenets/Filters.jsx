@@ -73,7 +73,7 @@ class Filters extends Component {
   render() {
     return (
       <div
-        className="sandf mr-3 mb-2"
+        className="filters mr-3 mb-2"
         style={{ backgroundColor: "white", border: "dotted", padding: "3px" }}
       >
         <Form inline onSubmit={this.handleAll}>
@@ -86,7 +86,7 @@ class Filters extends Component {
             >
               <option>all shops</option>
               {this.state.sellers.map(seller => (
-                <option>{seller.shopName}</option>
+                <option key={seller.shopName}>{seller.shopName}</option>
               ))}
             </CustomInput>
           </FormGroup>
@@ -100,7 +100,7 @@ class Filters extends Component {
             >
               <option value="">Size</option>
               {this.state.sizes.map(size => (
-                <option>{size}</option>
+                <option key={size}>{size}</option>
               ))}
             </CustomInput>
           </FormGroup>
@@ -114,7 +114,7 @@ class Filters extends Component {
             >
               <option value="">Categories</option>
               {this.state.categories.map(category => (
-                <option>{category}</option>
+                <option key={category}>{category}</option>
               ))}
             </CustomInput>
           </FormGroup>

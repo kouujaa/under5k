@@ -55,6 +55,7 @@ class PayStackPortal extends Component {
     }
     window.location = "/";
   };
+ 
 
   //handle failure in payment
   handleFailure = async () => {};
@@ -64,11 +65,12 @@ class PayStackPortal extends Component {
   }
 
   render() {
+
     const componentProps = {
       reference: this.props.location.state.config.reference,
       email: this.props.location.state.config.email,
       amount: this.props.location.state.config.amount,
-      publicKey: this.props.location.state.config.publicKey,
+      publicKey: this.props.location.state.llaves,
       text: "Paystack Button Implementation",
       onSuccess: () => {
         this.handleSuccess(this.props.location.state.cart, "sold");
@@ -78,6 +80,7 @@ class PayStackPortal extends Component {
         this.props.history.goBack();
       }
     };
+    console.log(componentProps)
 
     const { FirstName, lastName } = this.props.location.state.details;
     return (

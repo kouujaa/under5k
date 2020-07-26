@@ -3,6 +3,7 @@ import { Button, Table } from "reactstrap";
 import jwtDecoder from "jwt-decode";
 import { ReactComponent as Card } from "./../svgs/credit-card.svg";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 class CheckOut extends Component {
   state = {
@@ -10,8 +11,9 @@ class CheckOut extends Component {
     config: {}
   };
 
-  checkout = () => {
+  checkout = async () => {
     try {
+      const load = await axios.get("/api/llaves/ppstackLlaves");
       this.props.history.push({
         pathname: "/payStackRDR",
         search: "",
@@ -21,7 +23,8 @@ class CheckOut extends Component {
           email: this.state.user.email,
           charge: this.getTotal() * 100,
           config: this.state.config,
-          cart: this.props.location.state.cart
+          cart: this.props.location.state.cart,
+          llaves: load.data.uno
         }
       });
     } catch (err) {}

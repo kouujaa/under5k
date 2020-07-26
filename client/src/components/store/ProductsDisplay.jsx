@@ -21,7 +21,7 @@ class ProductDisplay extends Component {
 
   render() {
     let show = "";
-    show = this.props.cart ? "allProducts mt-5" : "allProducts mt-5";
+    show = this.props.cart ? "allProducts mt-5 ml-2" : "allProducts mt-5";
     return (
       <div>
         <div className="sandf mb-2">

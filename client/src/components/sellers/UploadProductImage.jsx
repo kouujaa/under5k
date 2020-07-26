@@ -131,7 +131,7 @@ class UploadProductImage extends Component {
             />
             {selectedFile.length ? (
               <Button className="mt-3" onClick={this.fileUploadHandler}>
-                Upload Image
+                Upload Images
               </Button>
             ) : null}
 
@@ -140,7 +140,7 @@ class UploadProductImage extends Component {
               <div>
                 <span className="success">upload complete</span>
                 <Button className="btn-success" onClick={this.axioscall}>
-                  Click To Continue
+                  Save to shop
                 </Button>
               </div>
             )}

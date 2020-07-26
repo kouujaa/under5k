@@ -28,6 +28,7 @@ import Page403 from "./components/errorsnauth/Page403";
 import Page404 from "./components/errorsnauth/Page404";
 import Page500 from "./components/errorsnauth/Page500";
 import Page403User from "./components/errorsnauth/Page403User";
+import SingleProductView from "./components/store/SingleProductView";
 class App extends Component {
   state = {
     cart: [],
@@ -170,6 +171,10 @@ class App extends Component {
             <Route
               path="/unauthorized2"
               render={props => <Page403User cookies={cookies} {...props} />}
+            />
+            <Route
+              path="/productView"
+              render={props => <SingleProductView {...props} />}
             />
             <Route
               path="/serverError"

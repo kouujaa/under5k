@@ -55,9 +55,9 @@ const Footer = props => {
           </h6>
         </div>
       </div>
-      <p class="rights center mt-5" style={{ color: "black" }}>
+      <p className="rights center mt-5" style={{ color: "black" }}>
         <span>&copy;&nbsp; </span>
-        <span class="copyright-year"></span>
+        <span className="copyright-year"></span>
         <span>&nbsp;</span>
         <span>Thriftnhub</span>
         <span>.&nbsp;</span>

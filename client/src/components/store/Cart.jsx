@@ -31,12 +31,11 @@ class Cart extends Component {
         <Table>
           <thead className="container mr-3">
             <tr>
-              <th>Qty</th>
+              {/* <th>Qty</th> */}
               <th>item</th>
-              <th>Size</th>
               <th>Price</th>
-              <th>+</th>
-              <th>-</th>
+              {/* <th>+</th>
+              <th>-</th> */}
               <th>out</th>
             </tr>
           </thead>

@@ -22,6 +22,7 @@ variables :root {
   height: 90vh;
   width: 100%;
 }
+
 .bannerText {
   position: relative;
 }
@@ -44,7 +45,7 @@ body {
   /* font-family: "Dancing Script", cursive; */
   font-family: "Gotu", sans-serif;
   width: 100vw !important;
-  min-width: 466px !important;
+  min-width: 375px !important;
 
   /* overflow: scroll;
    overflow-x: hidden; */
@@ -79,7 +80,8 @@ body {
   border: 0;
   margin: 0;
 }
-.navb {
+
+pic .navb {
   background-color: #343a40 !important;
   background-color: #343a40 !important;
   position: sticky;
@@ -152,11 +154,21 @@ textarea {
   width: 100vw;
   display: inline-flex;
 }
+.productPage {
+  width: 100vw !important ;
+  /* display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-auto-columns: minmax(150px, 250px);
+  gap: 30px; */
+}
 .allProducts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.7em;
-  max-width: 100vw;
+  gap: 0.3em;
+  max-width: 100vw !important;
+}
+.prdiv {
+  width: 13em !important;
 }
 #root > div.container.center > div.productPage.mt-5 > div .UPS {
   justify-self: center;
@@ -199,7 +211,7 @@ p.rights a {
   justify-content: center;
   overflow: hidden;
 }
-.jumb {
+/* .jumb {
   background-image: url("./components/shop/2.jpg");
   background-size: cover;
   background-position: top center;
@@ -208,7 +220,7 @@ p.rights a {
   text-align: center;
   height: 500px;
   color: white;
-}
+} */
 .bg-dark {
   background-color: #343a40 !important;
 }
@@ -243,6 +255,19 @@ nav {
   width: 18em;
   height: 21em;
 }
+.singleCar {
+  width: 25em;
+  height: 28em;
+}
+.image {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.singleCardImg {
+  width: 30em;
+  height: 29em;
+}
 
 div.productcar > div.carousel-slider {
   width: 2em;
@@ -251,12 +276,12 @@ div.productcar > div.carousel-slider {
 
 .prodCardFooter {
   background-color: white;
-  width: 14em;
+  width: 13em;
   height: 8.1em;
 }
 .prodCardImg {
   width: 11.6em;
-  height: 4em;
+  height: 5em;
 }
 .BrainhubCarouselItem {
   width: 15em;
@@ -287,6 +312,28 @@ div.display-4
   html {
     min-height: 100%;
   }
+  .jumboPic {
+    height: 20em;
+  }
+  .jumbotxt {
+    color: white;
+    font-size: 40px;
+    height: 20em;
+  }
+  .prdiv {
+    width: 18em !important;
+  }
+  #root
+    > div:nth-child(2)
+    > div.display-4.lead.jumbotxt
+    > div
+    > div
+    > div
+    > ul
+    > li
+    > div {
+    height: 20em;
+  }
   .sandf {
     display: grid;
     grid-template-columns: 3.6fr 1fr;
@@ -305,7 +352,7 @@ div.display-4
   }
   .prodCardImg {
     width: 11.6em;
-    height: 3em;
+    height: 5em;
   }
   .sec1 {
     display: grid;
@@ -415,7 +462,7 @@ div.display-4
   }
   .prodCardImg {
     width: 11.6em;
-    height: 2.5em;
+    height: 5em;
   }
 
   .productPage {
@@ -510,7 +557,7 @@ div.display-4
   }
   .prodCardImg {
     width: 15em;
-    height: 3em;
+    height: 5em;
   }
   li.BrainhubCarouselItem > img.sec_img {
     width: 15em;

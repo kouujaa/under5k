@@ -19,23 +19,23 @@ const Jumbo = () => {
       >
         <Carousel showStatus={false} infiniteLoop autoPlay showThumbs={false}>
           <div>
-            <img alt="clothing item" src={firstpic} />
+            <img alt="clothing item" src={firstpic} className="jumboPic" />
             <Link to="/shop" className="legend">
               TOP SELLER!!!
             </Link>
           </div>
           <div>
-            <img alt="clothing item" src={secondpic} />
+            <img alt="clothing item" src={secondpic} className="jumboPic" />
             <p className="legend">Dame of the week</p>
           </div>
           <div>
-            <img alt="clothing item" src={thirdpic} />
+            <img alt="clothing item" src={thirdpic} className="jumboPic" />
             <Link to="/shop/omathrift" className="legend">
               OmathrtiftStore
             </Link>
           </div>
           <div>
-            <img alt="clothing item" src={forthpic} />
+            <img alt="clothing item" src={forthpic} className="jumboPic" />
             <Link to="/shop/juliet" className="legend">
               ThriftWithPenny
             </Link>

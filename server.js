@@ -9,6 +9,7 @@ const customer = require("./routes/shopAPIs/customer/customer");
 const seller = require("./routes/shopAPIs/seller/seller");
 const feedback = require("./routes/shopAPIs/admin/feedback");
 const receipt = require("./routes/shopAPIs/admin/receipt");
+const llaves = require("./routes/llaves/llaves");
 const path = require("path");
 const express = require("express");
 const authRoute = require("./routes/auths/auth");
@@ -57,6 +58,7 @@ app.use("/api/customers", customer);
 app.use("/api/seller", seller);
 app.use("/api/feedback", feedback);
 app.use("/api/admin", receipt);
+app.use("/api/llaves", llaves);
 app.use(passport.initialize());
 app.use("/auth", authRoute);
 
