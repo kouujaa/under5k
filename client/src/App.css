@@ -185,7 +185,27 @@ textarea {
 p.rights {
   color: rgba(255, 255, 255, 0.5);
 }
+.thumb {
+  height: 2.9em;
+  width: 3em !important;
+}
+.thumb > img {
+  height: 2.9em;
+  width: 3em !important;
+}
+.prodDetails {
+  padding: 0;
+  margin: 0;
 
+  background-color: #f7f7f7;
+}
+#root > div:nth-child(2) > div:nth-child(4) > a > img {
+  width: 10em !important;
+  height: 15em !important;
+}
+.jumboPic {
+  height: 9em;
+}
 p.rights a {
   color: rgba(255, 255, 255, 0.5);
 }
@@ -256,13 +276,14 @@ nav {
   height: 21em;
 }
 .singleCar {
-  width: 25em;
+  width: 24em;
   height: 28em;
 }
 .image {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  gap: 4em;
 }
 .singleCardImg {
   width: 30em;
@@ -314,6 +335,23 @@ div.display-4
   }
   .jumboPic {
     height: 20em;
+  }
+
+  .singleCar {
+    width: 20em;
+    height: 20em !important;
+  }
+  .image {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0.01em;
+    padding: 0 !important;
+    padding-bottom: 7em !important;
+  }
+  .singleCardImg {
+    width: 30em;
+    height: 29em;
   }
   .jumbotxt {
     color: white;
@@ -433,6 +471,23 @@ div.display-4
     display: grid;
     grid-template-columns: 3.6fr 1fr;
   }
+  .singleCar {
+    width: 33em;
+    height: 25em !important;
+  }
+  .singleCardImg {
+    width: 35em;
+    height: 29em;
+  }
+  .image {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0.01em;
+    padding: 0 !important;
+    padding-bottom: 7em !important;
+  }
+
   .contact-page {
     display: grid;
     grid-template-columns: 2fr 1fr;

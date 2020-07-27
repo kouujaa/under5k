@@ -10,23 +10,21 @@ class NewArrivals extends Component {
 
   render() {
     var sorted = _.orderBy(this.context.products, ["dateAdded"], ["asc"]);
-    const products = _.slice(sorted, 0, 9).reverse();
+    const products = _.slice(sorted, 0, 6).reverse();
 
     return (
       <ProductContext.Consumer>
         {productContext => (
           <React.Fragment>
-            <div className="mt-5 mb-5">
+            <div className="mt-5 mb-5 ml-2">
               <h4 style={{ color: "#ff006c" }}>New Arrivals</h4>
 
               {products.map(item => (
                 <React.Fragment>
                   <NavLink to={"/store/" + item.seller}>
                     <img
-                      width="120em"
-                      height="170em"
                       key={item.productID}
-                      className="sec_img ml-2 mb-2"
+                      className="sec1Img sec_img ml-2 mb-2"
                       src={item.URI[0]}
                       alt="cat"
                     />

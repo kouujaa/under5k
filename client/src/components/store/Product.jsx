@@ -23,7 +23,10 @@ class Product extends Component {
       size,
       description,
       URI,
-      seller
+      seller,
+      color,
+      category,
+      material
     } = this.props.item;
 
     const { cartHandler } = this.props;
@@ -61,7 +64,10 @@ class Product extends Component {
                       size,
                       description,
                       URI,
-                      seller
+                      seller,
+                      color,
+                      category,
+                      material
                     }
                   }}
                 >

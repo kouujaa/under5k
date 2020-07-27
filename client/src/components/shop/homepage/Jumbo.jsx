@@ -17,7 +17,14 @@ const Jumbo = () => {
         animate={{ x: 0 }}
         transition={{ duration: 1 }}
       >
-        <Carousel showStatus={false} infiniteLoop autoPlay showThumbs={false}>
+        <Carousel
+          showStatus={false}
+          infiniteLoop
+          autoPlay
+          showArrows={false}
+          showThumbs={false}
+          showIndicators={false}
+        >
           <div>
             <img alt="clothing item" src={firstpic} className="jumboPic" />
             <Link to="/shop" className="legend">

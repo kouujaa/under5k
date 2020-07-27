@@ -9,17 +9,21 @@ const SingleProductView = props => {
     size,
     description,
     URI,
-    seller
+    seller,
+    color,
+    category,
+    material
   } = props.location.state;
   return (
-    <div className="mt-5 image ml-3 mb-5">
-      <div>
+    <div className="mt-5 image ml-2 mb-5">
+      <div className="container">
         <Carousel
           className="singleCar"
           showStatus={false}
           infiniteLoop
           autoPlay
-          showThumbs={false}
+          showArrows={false}
+          showThumbs={true}
           showIndicators={false}
         >
           {URI.map(url => {
@@ -35,12 +39,19 @@ const SingleProductView = props => {
           })}
         </Carousel>
       </div>
-      <div className="mt-5">
-        <p>description:{description}</p>
-        <p>price: {price}</p>
-        <p>size:{size}</p>
-        <p>seller:{seller}</p>
-        <p>product ID:{productID}</p>
+      <div className="mt-5 prodDetails container">
+        <h2>
+          {description} - {color.toLowerCase()}
+        </h2>
+        <h5>Seller: {seller}</h5>
+
+        <h3>
+          <b>₦{price}</b>
+        </h3>
+        <h5>Size: {size}</h5>
+        <h6>Material: {material}</h6>
+        <h6>Category: {category}</h6>
+        <h6>Product ID:{productID}</h6>
       </div>
     </div>
   );
