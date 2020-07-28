@@ -258,7 +258,9 @@ router.post("/updatePurchase", async (req, res) => {
 router.get("/metaData", authenticate, async (req, res) => {});
 
 //add product to cart authenticate
-router.post("/addToCart", async (req, res) => {});
+router.post("/addToCart", async (req, res) => {
+  const { email, item, action } = req.body;
+});
 
 //Check out from cart authenticate
 router.get("/checkout", authenticate, async (req, res) => {

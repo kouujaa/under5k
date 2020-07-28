@@ -39,7 +39,7 @@ variables :root {
   width: 90%;
 }
 .contact-page {
-  width: 80% !important;
+  width: 100vw !important;
 }
 body {
   /* font-family: "Dancing Script", cursive; */
@@ -81,11 +81,12 @@ body {
   margin: 0;
 }
 
-pic .navb {
+.navb {
   background-color: #343a40 !important;
   background-color: #343a40 !important;
-  position: sticky;
+  position: sticky !important;
   top: 0;
+  
   z-index: 7;
   width: 100% !important;
 }
@@ -200,7 +201,7 @@ p.rights {
   background-color: #f7f7f7;
 }
 #root > div:nth-child(2) > div:nth-child(4) > a > img {
-  width: 10em !important;
+  width: 13.3em !important;
   height: 15em !important;
 }
 .jumboPic {
@@ -223,7 +224,6 @@ p.rights a {
   grid-template-columns: repeat(3, 1fr);
 }
 .sec1 > div {
-  margin: 3px;
   background-size: cover;
   background-position: top center;
   height: 11rem;

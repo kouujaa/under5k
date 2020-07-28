@@ -16,7 +16,7 @@ class NewArrivals extends Component {
       <ProductContext.Consumer>
         {productContext => (
           <React.Fragment>
-            <div className="mt-5 mb-5 ml-2 center">
+            <div className="mt-5 mb-5 center">
               <h4 style={{ color: "#ff006c" }}>New Arrivals</h4>
 
               {products.map(item => (
@@ -39,7 +39,7 @@ class NewArrivals extends Component {
                   >
                     <img
                       key={item.productID}
-                      className="sec1Img sec_img ml-2 mb-2"
+                      className="sec1Img sec_img mb-2"
                       src={item.URI[0]}
                       alt="cat"
                     />

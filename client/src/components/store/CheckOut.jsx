@@ -97,24 +97,24 @@ class CheckOut extends Component {
     const { phoneNumber, address, firstName, lastName } = this.state.user;
     return (
       <motion.div
-        className="checkOut-page m-5 container"
+        className="checkOut-page m-1 mt-5 container"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
         <div className="mb-5">
-          <div className="m-4">
+          <div className="mt-3">
             <h5>
               Name: {lastName} {firstName}
             </h5>
           </div>
-          <div className="m-4">
+          <div className="mt-3">
             <h5>Phone Number: 0{phoneNumber}</h5>
           </div>
-          <div className="m-4">
+          <div className="mt-3">
             <h5>Address: {address}</h5>
           </div>
-          <div className="m-4">
+          <div className="mt-3">
             <h5>Total + ₦1000 delivery fee: ₦{this.getTotal()}</h5>
           </div>
           <div>

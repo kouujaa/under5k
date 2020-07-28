@@ -41,7 +41,7 @@ class ContactPage extends Component {
   render() {
     return (
       <motion.section
-        className="contact-page container m-5 contact"
+        className="contact-page container mt-5 contact"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -100,10 +100,10 @@ class ContactPage extends Component {
           <div className="map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31715.647688288926!2d3.5506763879067984!3d6.46377489375523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf7442fc585df%3A0x642eaefe2c2c7ce2!2sAja%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2suk!4v1588787707050!5m2!1sen!2suk"
-              width="550"
-              height="450"
+              width="300"
+              height="300"
               frameborder="0"
-              style={{ border: 0, width: "350px", height: "250px" }}
+              style={{ border: 0, width: "300px", height: "250px" }}
               allowfullscreen=""
               aria-hidden="false"
               tabindex="0"

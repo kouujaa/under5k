@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import ProductDisplay from "./ProductsDisplay";
 import Cart from "./Cart";
 import _ from "lodash";
+import axios from "axios";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import { selectedSortFunc } from "./sort&filters/sorts/sorting";
@@ -51,7 +52,7 @@ class ProductPage extends Component {
     this.setState({ cart });
   };
   //add item to cart
-  addToCart = (productID, description, size, price, URI, seller) => {
+  addToCart = (productID, description, size, price, URI, seller, user) => {
     const cart = [...this.state.cart];
     const addProduct = {
       quantity: 1,
