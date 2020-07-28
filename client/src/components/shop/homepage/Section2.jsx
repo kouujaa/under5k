@@ -16,9 +16,6 @@ class NewArrivals extends Component {
       <ProductContext.Consumer>
         {productContext => (
           <React.Fragment>
-            <React.Fragment style={{ color: "#ff006c" }}>
-              New Arrivals
-            </React.Fragment>
             <div className="mt-5 mb-5 ml-2 center">
               <h4 style={{ color: "#ff006c" }}>New Arrivals</h4>
 

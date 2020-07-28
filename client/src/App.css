@@ -204,7 +204,7 @@ p.rights {
   height: 15em !important;
 }
 .jumboPic {
-  height: 9em;
+  height: 10em !important;
 }
 p.rights a {
   color: rgba(255, 255, 255, 0.5);

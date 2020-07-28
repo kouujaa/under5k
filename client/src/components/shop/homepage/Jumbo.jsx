@@ -12,7 +12,7 @@ const Jumbo = () => {
   return (
     <React.Fragment>
       <motion.div
-        className="display-4 lead jumbotxt"
+        className="display-4 lead jumbotxt container"
         initial={{ x: 300 }}
         animate={{ x: 0 }}
         transition={{ duration: 1 }}
