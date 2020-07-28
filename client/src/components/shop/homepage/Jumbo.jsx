@@ -23,7 +23,7 @@ const Jumbo = () => {
           autoPlay
           showArrows={false}
           showThumbs={false}
-          showIndicators={false}
+          showIndicators={true}
         >
           <div>
             <img alt="clothing item" src={firstpic} className="jumboPic" />

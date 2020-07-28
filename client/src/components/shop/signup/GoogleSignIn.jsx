@@ -21,13 +21,13 @@ class GoogleSignIn extends Component {
   render() {
     return (
       <div
-        className="btn btn-white container center mt-3"
-        style={{ width: "23em" }}
+        className="btn btn-white container center mt-3 googlebar"
+        
       >
         <div className="container center" onClick={this.onGoogleSign}>
           <div>
-            <Gmail height="1.8em" width="1.8em" className="mr-1" /> Quick Shop
-            with Google
+            <Gmail height="1.8em" width="1.8em" className="mr-1" />
+            Continue with Google
             <Google height="1.8em" width="1.8em" className="ml-1" />
           </div>
         </div>

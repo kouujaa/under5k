@@ -1,8 +1,8 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
+import { Link } from "react-router-dom";
 
 const SingleProductView = props => {
-  console.log(props);
   const {
     productID,
     price,
@@ -20,9 +20,7 @@ const SingleProductView = props => {
         <Carousel
           className="singleCar"
           showStatus={false}
-          infiniteLoop
-          autoPlay
-          showArrows={false}
+          showArrows={true}
           showThumbs={true}
           showIndicators={false}
         >
@@ -43,7 +41,12 @@ const SingleProductView = props => {
         <h2>
           {description} - {color.toLowerCase()}
         </h2>
-        <h5>Seller: {seller}</h5>
+
+        <h5>
+          <Link style={{ color: "#ff006c" }} to={"/store/" + seller}>
+            {seller} store
+          </Link>
+        </h5>
 
         <h3>
           <b>₦{price}</b>

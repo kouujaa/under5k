@@ -12,7 +12,7 @@ const AppNavBar = ({ user, clearState }) => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
-
+  console.log(user);
   return (
     <motion.div
       className="navb"
@@ -52,11 +52,13 @@ const AppNavBar = ({ user, clearState }) => {
                 signOut={clearState}
               />
             )}
-            <NavItem className="left">
-              <NavLink to="/sellerDashBoard" onClick={toggleNavbar}>
-                <Box className="mr-1" /> SELLER
-              </NavLink>
-            </NavItem>
+            {user.status === "user" ? null : (
+              <NavItem className="left">
+                <NavLink to="/sellerDashBoard" onClick={toggleNavbar}>
+                  <Box className="mr-1" /> SELLER
+                </NavLink>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Navbar>

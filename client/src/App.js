@@ -127,18 +127,18 @@ class App extends Component {
               path="/sellerHomePage"
               render={props => <SellerHomePage cookies={cookies} {...props} />}
             />
-            <Route
-              path="/sellerDashBoard"
-              render={props => <SellerDasboard cookies={cookies} {...props} />}
-            />
             {/* <Route
               path="/sellerDashBoard"
+              render={props => <SellerDasboard cookies={cookies} {...props} />}
+            /> */}
+            <Route
+              path="/sellerDashBoard"
               render={props => {
-                if (user.status !== "seller")
+                if (this.state.user.status !== "seller")
                   return <Redirect to="/sellerSignIn" />;
                 return <SellerDasboard cookies={cookies} {...props} />;
               }}
-            /> */}
+            />
 
             <Route
               path="/payStackRDR"

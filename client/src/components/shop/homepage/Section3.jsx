@@ -27,10 +27,10 @@ class TopSellers extends Component {
 
   render() {
     const { toppers } = this.state;
-  
+
     return (
       <React.Fragment>
-        <div className="mt-5 mb-5">
+        <div className="mt-5 mb-5 center">
           <h4 style={{ color: "#ff006c" }}>Top Sellers</h4>
 
           {toppers
