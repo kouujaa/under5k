@@ -18,6 +18,7 @@ const Jumbo = () => {
         transition={{ duration: 1 }}
       >
         <Carousel
+          className="jumboCar"
           showStatus={false}
           infiniteLoop
           autoPlay

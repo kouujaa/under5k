@@ -3,6 +3,7 @@ import React from "react";
 const Page404 = () => {
   return (
     <div
+      className="container center"
       style={{
         backgroundColor: "#ff006c",
         color: "black",
@@ -12,23 +13,31 @@ const Page404 = () => {
         minWidth: "100vw"
       }}
     >
-      <div className="container">
-        <h1>404</h1>
-        <h3>
+      <div>
+        <br></br>
+        <br></br>
+        <h1>
           Oops, the page you're <br />
           looking for does not exist.
-        </h3>
-        <h6>
+        </h1>
+        <h4>
           You may want to head back to the homepage.
           <br />
           If you think something is broken, report a problem.
-        </h6>
+        </h4>
         <div className="mt-4">
-          <span className="btn btn-success">
-            <a href="/">Go to homepage</a>
+          <span className="btn btn-info">
+            <a style={{ textDecoration: "none", color: "black" }} href="/">
+              Go to homepage
+            </a>
           </span>
-          <span className="btn btn-success ml-4">
-            <a href="/contact">Report a problem</a>
+          <span className="btn btn-info ml-4">
+            <a
+              style={{ textDecoration: "none", color: "black" }}
+              href="/contact"
+            >
+              Report a problem
+            </a>
           </span>
         </div>
       </div>

@@ -59,6 +59,7 @@ class ContactPage extends Component {
               <Input
                 bsSize="lg"
                 name="name"
+                autoFocus
                 required
                 onChange={this.onChangeHandler("name")}
               />

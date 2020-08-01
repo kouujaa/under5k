@@ -3,7 +3,7 @@ import React from "react";
 const Page403User = () => {
   return (
     <div
-      className="container"
+      className="container center"
       style={{
         backgroundColor: "#ff006c",
         color: "black",
@@ -13,18 +13,21 @@ const Page403User = () => {
         minWidth: "100vw"
       }}
     >
-      <h1>403 FORBIDDEN</h1>
-      <h3>
-        access not authorized
-        <br />
-        Buying Customers only.
-      </h3>
+      <br></br>
+      <br />
+      <h1>NOT AUTHORIZED</h1>
+      <h1 className="mt-5">Signed In Customers Only!!!.</h1>
       <h6>
         Log in as Customer or Log out of your sellers account
         <br />
         proceed to Customer login.
       </h6>
-      <a href="/signIn">Proceed to Customer Login</a>
+
+      <span className="btn btn-info ml-4">
+        <a style={{ textDecoration: "none", color: "black" }} href="/signIn">
+          Proceed to Customer Login
+        </a>
+      </span>
     </div>
   );
 };

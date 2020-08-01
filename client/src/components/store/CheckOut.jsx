@@ -58,7 +58,7 @@ class CheckOut extends Component {
           reference: new Date().getTime(),
           email: user.email,
           amount: this.getTotal() * 100,
-          publicKey: "pk_test_f3deda0f23ed680ded6e89fe2a51740a7e23979e"
+          publicKey: ""
         }
       });
     } catch (err) {
@@ -69,7 +69,7 @@ class CheckOut extends Component {
     let sum = 0;
     const cart = this.props.location.state.cart;
     cart.map(cartItem => (sum = cartItem.price * cartItem.quantity + sum));
-    return sum + 1000;
+    return sum + 1500;
   };
 
   showItems = () => {
@@ -115,7 +115,7 @@ class CheckOut extends Component {
             <h5>Address: {address}</h5>
           </div>
           <div className="mt-3">
-            <h5>Total + ₦1000 delivery fee: ₦{this.getTotal()}</h5>
+            <h5>Total + ₦1500 delivery fee: ₦{this.getTotal()}</h5>
           </div>
           <div>
             <Button
@@ -125,13 +125,13 @@ class CheckOut extends Component {
               Payment for Delivery
               <Card className="ml-2" />
             </Button>
-            <Button
+            {/* <Button
               className="btn btn-sm btn-success container"
               onClick={this.stockpile}
             >
               Payment for stockpile
               <Card className="ml-2" />
-            </Button>
+            </Button> */}
           </div>
         </div>
         <div>
@@ -151,7 +151,7 @@ class CheckOut extends Component {
                 <th>TOTAL PRICE</th>
                 <th></th>
                 <th></th>
-                <th>₦ {this.getTotal() - 1000}</th>
+                <th>₦ {this.getTotal() - 1500}</th>
               </tr>
             </tfoot>
           </Table>

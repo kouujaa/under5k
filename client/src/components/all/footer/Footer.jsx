@@ -38,7 +38,7 @@ const Footer = props => {
           <h6>CONTACT</h6>
           <h6>
             <MailB className="mr-1" />
-            <NavLink style={{ color: "#ff006c" }} to="/contact">
+            <NavLink style={{ color: "#ff006c" }} to="/contact" href="#navb">
               Send Direct Message
             </NavLink>
           </h6>
