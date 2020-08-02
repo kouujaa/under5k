@@ -313,7 +313,7 @@ div.display-4
 
   div.jumboCar > div.carousel-slider {
     width: 2em;
-    height: 19em;
+    height: 8.6em;
   }
   .navb {
     background-color: #343a40 !important;
@@ -470,7 +470,7 @@ div.display-4
 
   div.jumboCar > div.carousel-slider {
     width: 2em;
-    height: 35em;
+    height: 8.6em;
   }
   .navb {
     background-color: #343a40 !important;
@@ -641,7 +641,10 @@ div.display-4
     width: 15em;
     height: 14em;
   }
-
+  div.jumboCar > div.carousel-slider {
+    width: 2em;
+    height: 8em;
+  }
   .checkOut-page {
     display: grid;
     grid-template-columns: 4fr 4fr;
