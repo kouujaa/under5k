@@ -11,6 +11,7 @@ import { selectedSortFunc } from "./sort&filters/sorts/sorting";
 import { AllFilterFunction } from "./sort&filters/filters/filteringcomponenets/filtering";
 import ProductContext from "./../../contexts/productContext";
 import { motion } from "framer-motion";
+import Filters from "./sort&filters/filters/filteringcomponenets/Filters";
 
 class ProductPage extends Component {
   static contextType = ProductContext;
@@ -100,6 +101,7 @@ class ProductPage extends Component {
   };
 
   render() {
+    console.log(this.props);
     const {
       pageSize,
       currentPage,
@@ -135,7 +137,7 @@ class ProductPage extends Component {
             >
               {this.state.cart.length ? (
                 <Cart
-                  className="mr-2"
+                  className="pd1 mr-2"
                   cart={this.state.cart}
                   inc={this.incrementCart}
                   dec={this.decrementCart}
@@ -143,24 +145,40 @@ class ProductPage extends Component {
                 />
               ) : null}
 
-              <ProductDisplay
-                products={sendDown}
-                addToCart={this.addToCart}
-                onPageChange={this.handlePageChange}
-                itemsCount={sendDown.length}
-                pageSize={pageSize}
-                currentPage={currentPage}
-                handleSizeSelect={this.handleSizeFilter}
-                handleCategorySelect={this.handleCategoryFilter}
-                handleSellerSelect={this.handleSellerFilter}
-                selectedSize={this.state.selectedSize}
-                handleSort={this.handleSort}
-                currentCategory={currentCategory}
-                currentSeller={currentSeller}
-                currentSize={currentSize}
-                handleUpSubmit={this.handleUpSubmit}
+              {/* <Cart
                 cart={this.state.cart}
-              />
+                inc={this.incrementCart}
+                dec={this.decrementCart}
+                rem={this.removeFromCart}
+              /> */}
+              <div className="pd2">
+                <Filters
+                  products={sendDown}
+                  handleUpSubmit={this.handleUpSubmit}
+                  selectedSize={this.state.selectedSize}
+                  currentCategory={currentCategory}
+                  currentSeller={currentSeller}
+                  currentSize={currentSize}
+                />
+                <ProductDisplay
+                  products={sendDown}
+                  addToCart={this.addToCart}
+                  onPageChange={this.handlePageChange}
+                  itemsCount={sendDown.length}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  handleSizeSelect={this.handleSizeFilter}
+                  handleCategorySelect={this.handleCategoryFilter}
+                  handleSellerSelect={this.handleSellerFilter}
+                  selectedSize={this.state.selectedSize}
+                  handleSort={this.handleSort}
+                  currentCategory={currentCategory}
+                  currentSeller={currentSeller}
+                  currentSize={currentSize}
+                  handleUpSubmit={this.handleUpSubmit}
+                  cart={this.state.cart}
+                />
+              </div>
             </motion.div>
             <Paginate
               onPageChange={this.handlePageChange}

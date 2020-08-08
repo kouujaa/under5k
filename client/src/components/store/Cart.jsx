@@ -23,7 +23,7 @@ class Cart extends Component {
   render() {
     return (
       <motion.div
-        className="mb-5"
+        className="mb-5 cart"
         initial={{ y: -300 }}
         animate={{ y: 0 }}
         transition={{ duration: 1 }}

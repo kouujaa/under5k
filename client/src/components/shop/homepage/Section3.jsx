@@ -39,8 +39,9 @@ class TopSellers extends Component {
                   <img
                     width="120em"
                     height="170em"
+                    style={{ borderRadius: "4px" }}
                     key={item.shopName}
-                    className="sec_img"
+                    className="sec_img m-2"
                     src={item.banner}
                     alt="cat"
                   />

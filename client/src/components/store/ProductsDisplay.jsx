@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Product from "./Product";
-import Filters from "./sort&filters/filters/filteringcomponenets/Filters";
 import Sorts from "./sort&filters/sorts/Sorts";
 
 class ProductDisplay extends Component {
@@ -20,25 +19,16 @@ class ProductDisplay extends Component {
   };
 
   render() {
+    console.log(this.props);
     let show = "";
-    show = this.props.cart ? "allProducts mt-5 ml-2" : "allProducts mt-5";
+    show = this.props.cart ? "allProducts mt-3 ml-2" : "allProducts mt-5";
     return (
       <div>
-        <div className="sandf mb-2">
-          <Filters
-            products={this.props.products}
-            handleUpSubmit={this.props.handleUpSubmit}
-            selectedSize={this.props.selectedSize}
-            currentCategory={this.props.currentCategory}
-            currentSeller={this.props.currentSeller}
-            currentSize={this.props.currentSize}
-          />
-
+        <div className="sandf">
           <Sorts handleSort={this.props.handleSort} />
         </div>
 
         <div className={show}>{this.displayall()}</div>
-        <div className="container"></div>
       </div>
     );
   }

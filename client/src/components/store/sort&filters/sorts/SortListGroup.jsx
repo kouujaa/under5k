@@ -13,43 +13,45 @@ const SortListGroup = ({ handleSort }) => {
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
   return (
-    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle
-        style={{ backgroundColor: "white", color: "black" }}
-        caret
-      >
-        Sort By
-      </DropdownToggle>
-      <DropdownMenu>
-        <DropdownItem
-          className="btn"
-          onClick={() => {
-            handleSort("priceLowToHigh");
-          }}
-          key={"priceLowToHigh"}
+    <React.Fragment>
+      <Dropdown isOpen={dropdownOpen} toggle={toggle} className="float-right">
+        <DropdownToggle
+          style={{ backgroundColor: "white", color: "black" }}
+          caret
         >
-          Price: low to high
-        </DropdownItem>
-        <DropdownItem
-          className="btn"
-          onClick={() => {
-            handleSort("priceHighToLow");
-          }}
-          key={"priceHighToLow"}
-        >
-          Price: high to low
-        </DropdownItem>
-        <DropdownItem
-          className="btn"
-          onClick={() => {
-            handleSort("NewArrivals");
-          }}
-          key={"NewArrivals"}
-        >
-          New arrivals
-        </DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
+          Sort By
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem
+            className="btn"
+            onClick={() => {
+              handleSort("priceLowToHigh");
+            }}
+            key={"priceLowToHigh"}
+          >
+            Price: low to high
+          </DropdownItem>
+          <DropdownItem
+            className="btn"
+            onClick={() => {
+              handleSort("priceHighToLow");
+            }}
+            key={"priceHighToLow"}
+          >
+            Price: high to low
+          </DropdownItem>
+          <DropdownItem
+            className="btn"
+            onClick={() => {
+              handleSort("NewArrivals");
+            }}
+            key={"NewArrivals"}
+          >
+            New arrivals
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+    </React.Fragment>
   );
 };
 

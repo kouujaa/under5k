@@ -259,7 +259,8 @@ router.get("/metaData", authenticate, async (req, res) => {});
 
 //add product to cart authenticate
 router.post("/addToCart", async (req, res) => {
-  const { email, item, action } = req.body;
+  // const { email, item, action } = req.body;
+  console.log(req.body);
 });
 
 //Check out from cart authenticate

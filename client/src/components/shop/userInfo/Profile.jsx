@@ -33,7 +33,7 @@ class Profile extends Component {
         <div>
           <Card>
             <CardHeader>
-              <h1>Profile</h1>
+              <h1>Account Overview</h1>
             </CardHeader>
             <CardBody>
               <h4>
@@ -67,7 +67,7 @@ class Profile extends Component {
                 <span>Total purchase: {purchasePriceTotal}</span>
               </h4>
               <Link to="/profilePage/receipts" className="btn">
-                view orders
+                View Orders
               </Link>
               <Card>
                 <Route path="/profilePage/receipts">

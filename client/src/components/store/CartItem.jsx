@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ReactComponent as Trash } from "../svgs/trash.svg";
-import { ReactComponent as CartP } from "../svgs/plus.svg";
-import { ReactComponent as CartD } from "../svgs/dash.svg";
+// import { ReactComponent as CartP } from "../svgs/plus.svg";
+// import { ReactComponent as CartD } from "../svgs/dash.svg";
 
 class CartItem extends Component {
   state = {};

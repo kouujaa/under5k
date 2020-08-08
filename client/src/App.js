@@ -13,6 +13,7 @@ import SignInForm from "./components/shop/signup/SignInForm";
 import ContactPage from "./components/shop/contact/ContactPage";
 import ProductPage from "./components/store/ProductPage";
 import CheckOut from "./components/store/CheckOut";
+import _ from "lodash";
 import ProfilePage from "./components/shop/userInfo/ProfilePage";
 import SellerSignUp from "./components/sellers/SellerSignUpPage";
 import SellerSignInPage from "./components/sellers/SellerSignInPage";
@@ -29,6 +30,7 @@ import Page404 from "./components/errorsnauth/Page404";
 import Page500 from "./components/errorsnauth/Page500";
 import Page403User from "./components/errorsnauth/Page403User";
 import SingleProductView from "./components/store/SingleProductView";
+import Cart from "./components/store/Cart";
 class App extends Component {
   state = {
     cart: [],
@@ -44,6 +46,33 @@ class App extends Component {
 
     window.location = "/home";
   };
+
+  //CART TRAIL
+
+  removeFromCart = id => {
+    const cart = this.state.cart.filter(item => item.productID !== id);
+    this.setState({ cart });
+  };
+  //add item to cart
+  addToCart = (productID, description, size, price, URI, seller, user) => {
+    const cart = [...this.state.cart];
+    const addProduct = {
+      quantity: 1,
+      productID,
+      description,
+      size,
+      price,
+      URI: URI,
+      seller
+    };
+    const found = _.find(cart, { productID });
+    if (found) {
+      return;
+    }
+    cart.push(addProduct);
+    this.setState({ cart });
+  };
+  //TRAIL CART END
   componentDidMount() {
     try {
       const { cookies } = this.props;
@@ -68,6 +97,10 @@ class App extends Component {
 
   render() {
     const { cookies } = this.props;
+    const cartFunctions = {
+      addToCart: this.addToCart,
+      removeFromCart: this.removeFromCart
+    };
 
     const { message } = this.state;
     return (
@@ -76,15 +109,34 @@ class App extends Component {
       >
         <React.Fragment>
           {/* <Provider store={myStore}> */}
-          <AppNavBar user={this.state.user} clearState={this.clearState} />
+          <AppNavBar
+            user={this.state.user}
+            clearState={this.clearState}
+            shopCart={this.state.cart}
+          />
           {/* {message ? <modal>{message}</modal> : null} */}
 
           {/* <div className="container center"> */}
           <Switch>
             <Route
               path="/shop"
-              render={props => <ProductPage cookies={cookies} {...props} />}
+              render={props => {
+                if (this.state.user.status === "seller")
+                  return <Redirect to="/signIn" />;
+                return (
+                  <ProductPage
+                    cookies={cookies}
+                    {...props}
+                    cartFunctions={cartFunctions}
+                  />
+                );
+              }}
             />
+
+            {/* <Route
+              path="/shop"
+              render={props => <ProductPage cookies={cookies} {...props} />}
+            /> */}
 
             <Route
               path="/signUp"
@@ -164,6 +216,11 @@ class App extends Component {
               path="/userAgreement"
               render={props => <UserAgreement cookies={cookies} {...props} />}
             />
+
+            {/* <Route
+              path="/cart"
+              render={props => <Cart cookies={cookies} {...props} />}
+            /> */}
             <Route
               path="/sellerAgreement"
               render={props => <SellerAgreement cookies={cookies} {...props} />}
@@ -179,7 +236,9 @@ class App extends Component {
             />
             <Route
               path="/productView"
-              render={props => <SingleProductView {...props} />}
+              render={props => (
+                <SingleProductView {...props} cartFunctions={cartFunctions} />
+              )}
             />
             <Route
               path="/serverError"
@@ -191,7 +250,13 @@ class App extends Component {
             />
             <Route
               path="/store/:sellerName"
-              render={props => <StoreFront cookies={cookies} {...props} />}
+              render={props => (
+                <StoreFront
+                  cookies={cookies}
+                  {...props}
+                  cartFunctions={cartFunctions}
+                />
+              )}
             />
             <Redirect from="/store" to="/shop" />
 

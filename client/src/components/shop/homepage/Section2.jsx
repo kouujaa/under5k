@@ -39,7 +39,8 @@ class NewArrivals extends Component {
                   >
                     <img
                       key={item.productID}
-                      className="sec1Img sec_img mb-2"
+                      style={{ borderRadius: "4px" }}
+                      className="sec1Img sec_img m-2"
                       src={item.URI[0]}
                       alt="cat"
                     />

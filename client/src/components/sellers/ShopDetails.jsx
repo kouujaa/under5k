@@ -49,7 +49,7 @@ class ShopDetails extends Component {
         <div>
           <Card>
             <CardHeader>
-              <h1> Seller Profile Page</h1>
+              <h1> Shop Overview</h1>
             </CardHeader>
             <CardBody>
               <h4>

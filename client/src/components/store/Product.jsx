@@ -23,7 +23,6 @@ class Product extends Component {
       const { cookies } = this.props;
       var jwt = cookies.get("token");
       var user = jwtDecoder(jwt);
-      console.log(user);
     } catch (err) {
       console.log("invalid token");
     }
