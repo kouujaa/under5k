@@ -137,7 +137,7 @@ class ProductPage extends Component {
             >
               {this.state.cart.length ? (
                 <Cart
-                  className="pd1 mr-2"
+                  className="mr-2"
                   cart={this.state.cart}
                   inc={this.incrementCart}
                   dec={this.decrementCart}
