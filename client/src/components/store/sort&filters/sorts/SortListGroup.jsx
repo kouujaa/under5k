@@ -26,7 +26,12 @@ const SortListGroup = ({ handleSort }) => {
 
   return (
     <React.Fragment>
-      <Form inline style={{zIndex:"1"}} onSubmit={handleAll} className="float-right">
+      <Form
+        inline
+        style={{ zIndex: "1" }}
+        onSubmit={handleAll}
+        className="float-right"
+      >
         <FormGroup>
           <CustomInput
             style={{ width: "6em", padding: "3px", borderStyle: "none" }}
@@ -42,6 +47,9 @@ const SortListGroup = ({ handleSort }) => {
               onClick={() => {
                 handleSort("priceLowToHigh");
               }}
+              onSelect={() => {
+                handleSort("priceLowToHigh");
+              }}
             >
               Price: low to high
             </option>
@@ -51,6 +59,9 @@ const SortListGroup = ({ handleSort }) => {
               onClick={() => {
                 handleSort("priceHighToLow");
               }}
+              onSelect={() => {
+                handleSort("priceHighToLow");
+              }}
             >
               Price: high to low
             </option>
@@ -58,6 +69,9 @@ const SortListGroup = ({ handleSort }) => {
             <option
               key={"NewArrivals"}
               onClick={() => {
+                handleSort("NewArrivals");
+              }}
+              onSelect={() => {
                 handleSort("NewArrivals");
               }}
             >

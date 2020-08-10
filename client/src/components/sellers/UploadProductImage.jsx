@@ -88,7 +88,7 @@ class UploadProductImage extends Component {
       window.location = "/sellerDashBoard/viewOwnStore";
     } catch (err) {
       this.props.history.push({
-        pathname: "/sellerDashBoard/viewOwnStore",
+        pathname: "/profilePage",
         search: "",
         hash: "",
         state: { message: "operation failed" }
