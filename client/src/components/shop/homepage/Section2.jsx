@@ -9,7 +9,7 @@ class NewArrivals extends Component {
   static contextType = ProductContext;
 
   render() {
-    var sorted = _.orderBy(this.context.products, ["dateAdded"], ["asc"]);
+    var sorted = _.orderBy(this.context.products, ["dateAdded"], ["desc"]);
     const products = _.slice(sorted, 0, 8).reverse();
 
     return (
@@ -20,7 +20,7 @@ class NewArrivals extends Component {
               <h4 style={{ color: "#ff006c" }}>New Arrivals</h4>
 
               {products.map(item => (
-                <React.Fragment>
+                <React.Fragment key={item.productID}>
                   <NavLink
                     to={{
                       pathname: "/productView",

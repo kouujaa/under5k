@@ -165,12 +165,21 @@ class StoreFront extends Component {
         </div>
 
         <div className="ml-3">
-          <Cart
+          {this.state.cart.length ? (
+            <Cart
+              className="mr-2"
+              cart={this.state.cart}
+              inc={this.incrementCart}
+              dec={this.decrementCart}
+              rem={this.removeFromCart}
+            />
+          ) : null}
+          {/* <Cart
             cart={this.state.cart}
             inc={this.incrementCart}
             dec={this.decrementCart}
             rem={this.removeFromCart}
-          />
+          /> */}
 
           <StoreProductDisplay
             products={sendDown}
@@ -188,7 +197,7 @@ class StoreFront extends Component {
             handleUpSubmit={this.handleUpSubmit}
           />
         </div>
-        <div>
+        <div style={{ height: "2em" }}>
           <Paginate
             onPageChange={this.handlePageChange}
             itemsCount={filtered.length}

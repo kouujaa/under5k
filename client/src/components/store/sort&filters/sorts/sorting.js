@@ -7,7 +7,7 @@ export function selectedSortFunc(ssort, filtered) {
     return filtered;
   }
   if (ssort === "NewArrivals") {
-    let sortedfilter = _.orderBy(filtered, ["dateAdded"], ["asc"]);
+    let sortedfilter = _.orderBy(filtered, ["dateAdded"], ["desc"]);
     filtered = sortedfilter;
     return filtered;
   }

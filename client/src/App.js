@@ -125,6 +125,7 @@ class App extends Component {
                   return <Redirect to="/signIn" />;
                 return (
                   <ProductPage
+                    shopCart={this.state.cart}
                     cookies={cookies}
                     {...props}
                     cartFunctions={cartFunctions}
@@ -140,26 +141,55 @@ class App extends Component {
 
             <Route
               path="/signUp"
-              render={props => <SignUpForm cookies={cookies} {...props} />}
+              render={props => (
+                <SignUpForm
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
             <Route
               path="/signIn"
-              render={props => <SignInForm cookies={cookies} {...props} />}
+              render={props => (
+                <SignInForm
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
             <Route
               path="/contact"
-              render={props => <ContactPage cookies={cookies} {...props} />}
+              render={props => (
+                <ContactPage
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
 
             <Route
               path="/checkOut"
-              render={props => <CheckOut cookies={cookies} {...props} />}
+              render={props => (
+                <CheckOut
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
             <Route
               path="/profilePage"
               render={props => {
                 if (this.state.user.status === "seller")
-                  return <Redirect to="/sellerDashBoard/shopdetails" />;
+                  return (
+                    <Redirect
+                      to="/sellerDashBoard/shopdetails"
+                      shopCart={this.state.cart}
+                    />
+                  );
                 return <ProfilePage cookies={cookies} {...props} />;
               }}
             />
@@ -167,12 +197,22 @@ class App extends Component {
             {/* <Route path="/profilePage" component={ProfilePage}></Route> */}
             <Route
               path="/sellerSignUp"
-              render={props => <SellerSignUp cookies={cookies} {...props} />}
+              render={props => (
+                <SellerSignUp
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
             <Route
               path="/sellerSignIn"
               render={props => (
-                <SellerSignInPage cookies={cookies} {...props} />
+                <SellerSignInPage
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
               )}
             />
             <Route
@@ -180,7 +220,13 @@ class App extends Component {
               render={props => {
                 if (this.state.user.status !== "seller")
                   return <Redirect to="/sellerSignIn" />;
-                return <SellerHomePage cookies={cookies} {...props} />;
+                return (
+                  <SellerHomePage
+                    cookies={cookies}
+                    {...props}
+                    shopCart={this.state.cart}
+                  />
+                );
               }}
             />
 
@@ -193,7 +239,13 @@ class App extends Component {
               render={props => {
                 if (this.state.user.status !== "seller")
                   return <Redirect to="/sellerSignIn" />;
-                return <SellerDasboard cookies={cookies} {...props} />;
+                return (
+                  <SellerDasboard
+                    cookies={cookies}
+                    {...props}
+                    shopCart={this.state.cart}
+                  />
+                );
               }}
             />
 
@@ -202,7 +254,13 @@ class App extends Component {
               render={props => {
                 if (this.state.user.status !== "user")
                   return <Redirect to="/unauthorized2" />;
-                return <PayStackPortal cookies={cookies} {...props} />;
+                return (
+                  <PayStackPortal
+                    cookies={cookies}
+                    {...props}
+                    shopCart={this.state.cart}
+                  />
+                );
               }}
             />
 
@@ -214,7 +272,13 @@ class App extends Component {
             /> */}
             <Route
               path="/userAgreement"
-              render={props => <UserAgreement cookies={cookies} {...props} />}
+              render={props => (
+                <UserAgreement
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
 
             {/* <Route
@@ -223,35 +287,70 @@ class App extends Component {
             /> */}
             <Route
               path="/sellerAgreement"
-              render={props => <SellerAgreement cookies={cookies} {...props} />}
+              render={props => (
+                <SellerAgreement
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
 
             <Route
               path="/unauthorized"
-              render={props => <Page403 cookies={cookies} {...props} />}
+              render={props => (
+                <Page403
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
             <Route
               path="/unauthorized2"
-              render={props => <Page403User cookies={cookies} {...props} />}
+              render={props => (
+                <Page403User
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
             <Route
               path="/productView"
               render={props => (
-                <SingleProductView {...props} cartFunctions={cartFunctions} />
+                <SingleProductView
+                  {...props}
+                  cartFunctions={cartFunctions}
+                  shopCart={this.state.cart}
+                />
               )}
             />
             <Route
               path="/serverError"
-              render={props => <Page500 cookies={cookies} {...props} />}
+              render={props => (
+                <Page500
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
             <Route
               path="/notFound"
-              render={props => <Page404 cookies={cookies} {...props} />}
+              render={props => (
+                <Page404
+                  cookies={cookies}
+                  {...props}
+                  shopCart={this.state.cart}
+                />
+              )}
             />
             <Route
               path="/store/:sellerName"
               render={props => (
                 <StoreFront
+                  shopCart={this.state.cart}
                   cookies={cookies}
                   {...props}
                   cartFunctions={cartFunctions}
@@ -263,13 +362,17 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={props => <Home cookies={cookies} {...props} />}
+              render={props => (
+                <Home cookies={cookies} {...props} shopCart={this.state.cart} />
+              )}
             />
 
             <Route
               exact
               path="/home"
-              render={props => <Home cookies={cookies} {...props} />}
+              render={props => (
+                <Home cookies={cookies} {...props} shopCart={this.state.cart} />
+              )}
             />
 
             <Redirect to="/notFound" />

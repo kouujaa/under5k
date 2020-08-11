@@ -16,11 +16,12 @@ variables :root {
   margin: 0;
   padding: 0;
   border: 0;
-  height: 90vh;
+  height: 80vh;
   width: 100%;
 }
 
 .bannerText {
+  font-family: "Amita", cursive;
   position: relative !important;
 }
 .storeFront {
@@ -65,6 +66,11 @@ body {
 }
 
 .sandf {
+  display: grid;
+  justify-content: right;
+  margin-right: 0em;
+}
+.sandf2 {
   display: grid;
   justify-content: right;
   margin-right: 0em;
@@ -332,7 +338,6 @@ div.display-4
   }
   .navb {
     background-color: #343a40 !important;
-    background-color: #343a40 !important;
     position: relative !important;
     top: 0;
 
@@ -468,7 +473,7 @@ div.display-4
     > li.slide
     > div
     > img.jumboPic {
-    height: 15em !important;
+    height: 14em !important;
   }
   .sec1 > div {
     margin: 3px;
@@ -496,10 +501,6 @@ div.display-4
     min-height: 100%;
   }
 
-  div.jumboCar > div.carousel-slider {
-    width: 2em;
-    height: 8.6em;
-  }
   .navb {
     background-color: #343a40 !important;
     background-color: #343a40 !important;
@@ -627,6 +628,20 @@ div.display-4
     justify-items: center;
     align-items: center;
   }
+  div.jumboCar > div.carousel-slider {
+    width: 2em;
+    height: 11em;
+  }
+  div.display-4
+    > div.carousel-root
+    > div.carousel-slider
+    > div.slider-wrapper
+    > ul.slider
+    > li.slide
+    > div
+    > img.jumboPic {
+    height: 18em !important;
+  }
 }
 
 /*desktop*/
@@ -708,7 +723,16 @@ div.display-4
   .sigupform {
     grid-column: 2/5;
   }
-
+  div.display-4
+    > div.carousel-root
+    > div.carousel-slider
+    > div.slider-wrapper
+    > ul.slider
+    > li.slide
+    > div
+    > img.jumboPic {
+    height: 18em !important;
+  }
   .footerdiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

@@ -10,6 +10,7 @@ class Home extends Component {
   static contextType = ProductContext;
 
   render() {
+    console.log(this.props);
     return (
       <ProductContext.Consumer>
         {productContext => (

@@ -19,7 +19,7 @@ class TopSellers extends Component {
   //load sellers
   async componentDidMount() {
     const sellers = await axios.get("/api/seller/sellersList");
-    console.log(sellers.data);
+
     var sorted = _.orderBy(sellers.data, ["totalSales"], ["desc"]);
     const toppers = _.slice(sorted, 0, 6).reverse();
     this.setState({ toppers });
@@ -35,7 +35,11 @@ class TopSellers extends Component {
 
           {toppers
             ? toppers.map(item => (
-                <NavLink to={"/store/" + item.shopName} className="ml-3">
+                <NavLink
+                  to={"/store/" + item.shopName}
+                  className="ml-3"
+                  key={item.productID}
+                >
                   <img
                     width="120em"
                     height="170em"

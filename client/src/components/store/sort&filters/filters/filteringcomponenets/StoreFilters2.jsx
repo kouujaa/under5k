@@ -64,16 +64,21 @@ class Filters2 extends Component {
 
   render() {
     return (
-      <div className="sandf mr-2" style={{ backgroundColor: "white" }}>
+      <div className="filters ml-1 mr-1" style={{}}>
         <Form inline onSubmit={this.handleAll}>
           <FormGroup>
             <CustomInput
+              style={{
+                width: "4.3em",
+                padding: "3px",
+                borderStyle: "none"
+              }}
               type="select"
               id="sizeSelect"
               name="size"
               onChange={this.onChangeHandler}
             >
-              <option value="">By size</option>
+              <option value="">Size</option>
               {this.state.sizes.map(size => (
                 <option>{size}</option>
               ))}
@@ -82,18 +87,24 @@ class Filters2 extends Component {
 
           <FormGroup>
             <CustomInput
+              style={{
+                width: "4.3em",
+                padding: "3px",
+                borderStyle: "none"
+              }}
               type="select"
               id="categorySelect"
               name="category"
               onChange={this.onChangeHandler}
             >
-              <option value="">By category</option>
+              <option value="">Type</option>
               {this.state.categories.map(category => (
                 <option>{category}</option>
               ))}
             </CustomInput>
           </FormGroup>
-          <Button className="ml-1">Filter</Button>
+          <Button className="applyButton">Apply</Button>
+          {/* <Button className="ml-1">Filter</Button> */}
         </Form>
       </div>
     );

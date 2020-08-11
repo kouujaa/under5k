@@ -22,7 +22,7 @@ class StoreProductDisplay extends Component {
   render() {
     return (
       <div>
-        <div className="sandf">
+        <div className="sandf2">
           <StoreFilter2
             products={this.props.products}
             handleUpSubmit={this.props.handleUpSubmit}
@@ -34,7 +34,7 @@ class StoreProductDisplay extends Component {
           <Sorts handleSort={this.props.handleSort} />
         </div>
 
-        <div className="allProducts mt-5">{this.displayall()}</div>
+        <div className="allProducts mt-3">{this.displayall()}</div>
         <div className="container"></div>
       </div>
     );

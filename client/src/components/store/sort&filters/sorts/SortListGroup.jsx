@@ -10,16 +10,14 @@ import {
   DropdownItem
 } from "reactstrap";
 
-const onChangeHandler = ({ currentTarget: input }) => {
-  // const filters = { ...this.state.filters };
-  // filters[input.name] = input.value;
-  // this.setState({ filters });
-};
 const handleAll = e => {
   e.preventDefault();
 };
 
 const SortListGroup = ({ handleSort }) => {
+  const onChangeHandler = ({ currentTarget: input }) => {
+    handleSort(input.value);
+  };
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -28,13 +26,18 @@ const SortListGroup = ({ handleSort }) => {
     <React.Fragment>
       <Form
         inline
-        style={{ zIndex: "1" }}
+        style={{ zIndex: "1", backgroundColor: "rgba(154,205,50, 0.7)" }}
         onSubmit={handleAll}
         className="float-right"
       >
         <FormGroup>
           <CustomInput
-            style={{ width: "6em", padding: "3px", borderStyle: "none" }}
+            style={{
+              width: "6em",
+              padding: "3px",
+              borderStyle: "none",
+              backgroundColor: "rgba(154,205,50, 0.7)"
+            }}
             type="select"
             id="sortSelect"
             name="sort"
@@ -43,11 +46,8 @@ const SortListGroup = ({ handleSort }) => {
             <option value="">Sort By</option>
 
             <option
-              key={"priceLowToHigh"}
-              onClick={() => {
-                handleSort("priceLowToHigh");
-              }}
-              onSelect={() => {
+              value="priceLowToHigh"
+              onChange={() => {
                 handleSort("priceLowToHigh");
               }}
             >
@@ -55,11 +55,8 @@ const SortListGroup = ({ handleSort }) => {
             </option>
 
             <option
-              key={"priceHighToLow"}
-              onClick={() => {
-                handleSort("priceHighToLow");
-              }}
-              onSelect={() => {
+              value="priceHighToLow"
+              onChange={() => {
                 handleSort("priceHighToLow");
               }}
             >
@@ -67,11 +64,8 @@ const SortListGroup = ({ handleSort }) => {
             </option>
 
             <option
-              key={"NewArrivals"}
-              onClick={() => {
-                handleSort("NewArrivals");
-              }}
-              onSelect={() => {
+              value="NewArrivals"
+              onChange={() => {
                 handleSort("NewArrivals");
               }}
             >
