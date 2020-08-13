@@ -99,9 +99,12 @@ class ProductPage extends Component {
   handleSort = sort => {
     this.setState({ selectedSort: sort });
   };
-
+  componentDidMount() {
+    this.setState({ cart: this.props.shopCart });
+  }
   render() {
     console.log(this.props);
+    const { cartFunctions } = this.props;
     const {
       pageSize,
       currentPage,

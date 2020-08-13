@@ -10,7 +10,7 @@ export function SelectedSizeFilterFunction(selectedSize, products) {
 }
 
 export function SelectedSellerFilterFunction(selectedSeller, products) {
-  if (selectedSeller !== "all shops") {
+  if (selectedSeller !== "All Shops") {
     let filter = selectedSeller
       ? products.filter(product => product.seller === selectedSeller)
       : products;

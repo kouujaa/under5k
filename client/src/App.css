@@ -9,7 +9,14 @@ variables :root {
   font-weight: bold;
   font-style: normal;
 }
-
+.legend {
+  font-size: 0.6em !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: #ff006c !important;
+  font-weight: 900 !important;
+  text-shadow: #1316db !important;
+  opacity: 1 !important;
+}
 .picbanner {
   position: absolute;
   z-index: -2;
@@ -20,23 +27,37 @@ variables :root {
   width: 100%;
 }
 
-.bannerText {
-  font-family: "Amita", cursive;
-  position: relative !important;
-}
-.storeFront {
+.storefront: {
   margin: 0;
   padding: 0;
   border: 0;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-rows: [bannerStart]1fr [storeStart]2fr [paginate]1fr[ending];
+}
+.banner {
+  height: 40em !important;
+  width: 100vw;
+  grid-row: bannerStart/storeStart;
 }
 
+.storeContent {
+  display: grid;
+  grid-row: storeStart/paginate;
+  grid-auto-columns: 1fr;
+}
+.storePagination {
+  grid-row: paginate/ending;
+}
+.bannerText {
+  font-family: "Amita", cursive;
+  position: relative !important;
+}
 .contact-form {
   width: 90%;
 }
 .contact-page {
+  min-width: 346px;
   width: 100vw !important;
 }
 body {
@@ -66,11 +87,13 @@ body {
 }
 
 .sandf {
+  min-width: 362px !important;
   display: grid;
   justify-content: right;
   margin-right: 0em;
 }
 .sandf2 {
+  min-width: 362px !important;
   display: grid;
   justify-content: right;
   margin-right: 0em;
@@ -163,8 +186,10 @@ textarea {
 }
 .allProducts {
   display: grid;
+  place-items: center;
   grid-template-columns: 1fr 1fr;
   gap: 0.3em;
+  min-width: 362px !important;
   max-width: 100vw !important;
 }
 .prdiv {
@@ -272,6 +297,7 @@ nav {
   justify-content: right;
   justify-items: right;
 }
+
 .singleCar {
   width: 24em;
   height: 28em;
@@ -425,6 +451,15 @@ div.display-4
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  .picbanner {
+    position: absolute;
+    z-index: -2;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100vh;
+    width: 100%;
+  }
   .allProducts {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -573,6 +608,15 @@ div.display-4
   .pd2 {
     grid-column: cmiddle/cend;
   }
+  .picbanner {
+    position: absolute;
+    z-index: -2;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100vh;
+    width: 100%;
+  }
   .signUp {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -657,6 +701,18 @@ div.display-4
 
     z-index: 7;
     width: 100% !important;
+  }
+  .banner {
+    height: 40em !important;
+  }
+  .picbanner {
+    position: absolute;
+    z-index: -2;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100vh;
+    width: 100%;
   }
   .prodCard {
     width: 18em;

@@ -6,7 +6,9 @@ import _ from "lodash";
 import Paginate from "../../all/Pagination";
 import { withCookies } from "react-cookie";
 import { pages } from "../../../utils/pages";
+import { motion } from "framer-motion";
 import { selectedSortFunc } from "../sort&filters/sorts/sorting";
+import StoreFilter2 from "../../store/sort&filters/filters/filteringcomponenets/StoreFilters2";
 import { StoreFilterFunction } from "../sort&filters/filters/filteringcomponenets/filtering";
 import StoreProductDisplay from "./../StoreProductDisplay";
 
@@ -164,7 +166,12 @@ class StoreFront extends Component {
           />
         </div>
 
-        <div className="ml-3">
+        <motion.div
+          className="productPage mt-5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           {this.state.cart.length ? (
             <Cart
               className="mr-2"
@@ -174,37 +181,45 @@ class StoreFront extends Component {
               rem={this.removeFromCart}
             />
           ) : null}
-          {/* <Cart
+          <div className="pd2">
+            <StoreFilter2
+              products={sendDown}
+              handleUpSubmit={this.handleUpSubmit}
+              selectedSize={this.state.selectedSize}
+              currentCategory={currentCategory}
+              currentSize={currentSize}
+            />
+            {/* <Cart
             cart={this.state.cart}
             inc={this.incrementCart}
             dec={this.decrementCart}
             rem={this.removeFromCart}
           /> */}
 
-          <StoreProductDisplay
-            products={sendDown}
-            addToCart={this.addToCart}
-            onPageChange={this.handlePageChange}
-            itemsCount={products.length}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            handleSizeSelect={this.handleSizeFilter}
-            handleCategorySelect={this.handleCategoryFilter}
-            selectedSize={this.state.selectedSize}
-            handleSort={this.handleSort}
-            currentCategory={currentCategory}
-            currentSize={currentSize}
-            handleUpSubmit={this.handleUpSubmit}
-          />
-        </div>
-        <div style={{ height: "2em" }}>
-          <Paginate
-            onPageChange={this.handlePageChange}
-            itemsCount={filtered.length}
-            pageSize={pageSize}
-            currentPage={currentPage}
-          />
-        </div>
+            <StoreProductDisplay
+              products={sendDown}
+              addToCart={this.addToCart}
+              onPageChange={this.handlePageChange}
+              itemsCount={products.length}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              handleSizeSelect={this.handleSizeFilter}
+              handleCategorySelect={this.handleCategoryFilter}
+              selectedSize={this.state.selectedSize}
+              handleSort={this.handleSort}
+              currentCategory={currentCategory}
+              currentSize={currentSize}
+              handleUpSubmit={this.handleUpSubmit}
+            />
+          </div>
+        </motion.div>
+
+        <Paginate
+          onPageChange={this.handlePageChange}
+          itemsCount={filtered.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+        />
       </div>
     );
   }

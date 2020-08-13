@@ -66,6 +66,7 @@ class Product extends Component {
             {URI.map(url => {
               return (
                 <Link
+                  key={productID}
                   to={{
                     pathname: "/productView",
                     state: {

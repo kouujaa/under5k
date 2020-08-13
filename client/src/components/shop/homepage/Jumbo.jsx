@@ -20,32 +20,35 @@ const Jumbo = () => {
         <Carousel
           className="jumboCar"
           showStatus={false}
+          infiniteLoop
+          autoPlay
           showArrows={false}
           showThumbs={false}
-          showIndicators={false}
+          showIndicators={true}
         >
           <div>
             <img alt="clothing item" src={firstpic} className="jumboPic" />
+            <h1 className="legend">ONLINE THRIFT HUB </h1>
             {/* <Link to="/shop" className="legend">
               TOP SELLER!!!
             </Link> */}
           </div>
-          {/* <div>
+          <div>
             <img alt="clothing item" src={secondpic} className="jumboPic" />
-            <p className="legend">Dame of the week</p>
+            {/* <p className="legend">Dame of the week</p> */}
           </div>
           <div>
             <img alt="clothing item" src={thirdpic} className="jumboPic" />
-            <Link to="/shop/omathrift" className="legend">
+            {/* <Link to="/shop/omathrift" className="legend">
               OmathrtiftStore
-            </Link>
+            </Link> */}
           </div>
           <div>
             <img alt="clothing item" src={forthpic} className="jumboPic" />
-            <Link to="/shop/juliet" className="legend">
+            {/* <Link to="/shop/juliet" className="legend">
               ThriftWithPenny
-            </Link>
-          </div> */}
+            </Link> */}
+          </div>
         </Carousel>
       </motion.div>
     </React.Fragment>

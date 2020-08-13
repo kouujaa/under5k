@@ -114,7 +114,7 @@ class ContactPage extends Component {
           <div className="contact-text">
             <ul>
               <li>eden garden ajah, Lagos, Nigeria</li>
-              <li>+2347068481078</li>
+              <li>+2348059616031</li>
               <li>Thriftnhub@gmail.com</li>
             </ul>
           </div>

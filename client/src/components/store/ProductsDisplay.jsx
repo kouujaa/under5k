@@ -19,7 +19,6 @@ class ProductDisplay extends Component {
   };
 
   render() {
-    console.log(this.props);
     let show = "";
     show = this.props.cart ? "allProducts mt-3 ml-2" : "allProducts mt-5";
     return (

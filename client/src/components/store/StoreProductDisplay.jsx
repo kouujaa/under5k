@@ -23,19 +23,10 @@ class StoreProductDisplay extends Component {
     return (
       <div>
         <div className="sandf2">
-          <StoreFilter2
-            products={this.props.products}
-            handleUpSubmit={this.props.handleUpSubmit}
-            selectedSize={this.props.selectedSize}
-            currentCategory={this.props.currentCategory}
-            currentSize={this.props.currentSize}
-          />
-
           <Sorts handleSort={this.props.handleSort} />
         </div>
 
         <div className="allProducts mt-3">{this.displayall()}</div>
-        <div className="container"></div>
       </div>
     );
   }

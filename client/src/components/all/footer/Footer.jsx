@@ -48,7 +48,7 @@ const Footer = props => {
 
           <h6>
             <Call />
-            <span> 08023410662</span>
+            <span> 08059616031</span>
           </h6>
           <h6>
             <Maps /> <span>eden garden ajah, Lagos, Nigeria</span>
@@ -59,7 +59,7 @@ const Footer = props => {
         <span>&copy;&nbsp; </span>
         <span className="copyright-year"></span>
         <span>&nbsp;</span>
-        <span>Thriftnhub</span>
+        <span>Thrift'N'hub</span>
         <span>.&nbsp;</span>
         <span>All Rights Reserved.</span>
         <span>&nbsp;</span>

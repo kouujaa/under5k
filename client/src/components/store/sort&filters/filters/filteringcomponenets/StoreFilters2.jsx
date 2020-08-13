@@ -64,15 +64,11 @@ class Filters2 extends Component {
 
   render() {
     return (
-      <div className="filters ml-1 mr-1" style={{}}>
+      <div className="filters ml-1 mr-1">
         <Form inline onSubmit={this.handleAll}>
           <FormGroup>
             <CustomInput
-              style={{
-                width: "4.3em",
-                padding: "3px",
-                borderStyle: "none"
-              }}
+              style={{ width: "3.8em", padding: "3px", borderStyle: "none" }}
               type="select"
               id="sizeSelect"
               name="size"
@@ -80,18 +76,14 @@ class Filters2 extends Component {
             >
               <option value="">Size</option>
               {this.state.sizes.map(size => (
-                <option>{size}</option>
+                <option key={size}>{size}</option>
               ))}
             </CustomInput>
           </FormGroup>
 
           <FormGroup>
             <CustomInput
-              style={{
-                width: "4.3em",
-                padding: "3px",
-                borderStyle: "none"
-              }}
+              style={{ width: "4.3em", padding: "3px", borderStyle: "none" }}
               type="select"
               id="categorySelect"
               name="category"
@@ -103,8 +95,8 @@ class Filters2 extends Component {
               ))}
             </CustomInput>
           </FormGroup>
+
           <Button className="applyButton">Apply</Button>
-          {/* <Button className="ml-1">Filter</Button> */}
         </Form>
       </div>
     );

@@ -76,13 +76,14 @@ class Filters extends Component {
         <Form inline onSubmit={this.handleAll}>
           <FormGroup inline>
             <CustomInput
-              style={{ width: "4.8em", padding: "3px", borderStyle: "none" }}
+              style={{ width: "6.4em", padding: "3px", borderStyle: "none" }}
               type="select"
               id="sellerSelect"
               name="seller"
               onChange={this.onChangeHandler}
             >
-              <option>Shops</option>
+              <option selected>Shops</option>
+              <option>All</option>
               {this.state.sellers.map(seller => (
                 <option key={seller.shopName}>{seller.shopName}</option>
               ))}
@@ -91,7 +92,7 @@ class Filters extends Component {
 
           <FormGroup>
             <CustomInput
-              style={{ width: "4.3em", padding: "3px", borderStyle: "none" }}
+              style={{ width: "3.8em", padding: "3px", borderStyle: "none" }}
               type="select"
               id="sizeSelect"
               name="size"

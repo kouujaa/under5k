@@ -176,6 +176,7 @@ class App extends Component {
                 <CheckOut
                   cookies={cookies}
                   {...props}
+                  cartFunctions={cartFunctions}
                   shopCart={this.state.cart}
                 />
               )}

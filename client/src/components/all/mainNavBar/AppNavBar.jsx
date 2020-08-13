@@ -12,7 +12,7 @@ const AppNavBar = ({ user, clearState }) => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
-  console.log(user);
+
   return (
     <motion.div
       className="navb"
