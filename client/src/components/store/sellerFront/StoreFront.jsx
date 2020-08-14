@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import jwtDecoder from "jwt-decode";
-import Cart from "../Cart";
 import _ from "lodash";
 import Paginate from "../../all/Pagination";
 import { withCookies } from "react-cookie";
@@ -11,8 +10,11 @@ import { selectedSortFunc } from "../sort&filters/sorts/sorting";
 import StoreFilter2 from "../../store/sort&filters/filters/filteringcomponenets/StoreFilters2";
 import { StoreFilterFunction } from "../sort&filters/filters/filteringcomponenets/filtering";
 import StoreProductDisplay from "./../StoreProductDisplay";
+import ProductContext from "./../../../contexts/productContext";
 
 class StoreFront extends Component {
+  static contextType = ProductContext;
+
   state = {
     selectedSize: "All",
     selectedCategory: "All",
@@ -154,25 +156,27 @@ class StoreFront extends Component {
     const sendDown = pages(filtered, currentPage, pageSize);
 
     return (
-      <div className="storeFront">
-        <div className="banner">
-          <h1 className="center float-right mt-3 mr-1 bannerText">
-            {this.props.match.params.sellerName.toUpperCase()} STORE
-          </h1>
-          <img
-            className="picbanner"
-            src={this.state.banner}
-            alt="Bannerpicture"
-          />
-        </div>
+      <ProductContext.Consumer>
+        {productContext => (
+          <div className="storeFront">
+            <div className="banner">
+              <h1 className="center float-right mt-3 mr-1 bannerText">
+                {this.props.match.params.sellerName.toUpperCase()} STORE
+              </h1>
+              <img
+                className="picbanner"
+                src={this.state.banner}
+                alt="Bannerpicture"
+              />
+            </div>
 
-        <motion.div
-          className="productPage mt-5"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          {this.state.cart.length ? (
+            <motion.div
+              className="productPage mt-5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              {/* {this.state.cart.length ? (
             <Cart
               className="mr-2"
               cart={this.state.cart}
@@ -180,47 +184,43 @@ class StoreFront extends Component {
               dec={this.decrementCart}
               rem={this.removeFromCart}
             />
-          ) : null}
-          <div className="pd2">
-            <StoreFilter2
-              products={sendDown}
-              handleUpSubmit={this.handleUpSubmit}
-              selectedSize={this.state.selectedSize}
-              currentCategory={currentCategory}
-              currentSize={currentSize}
-            />
-            {/* <Cart
-            cart={this.state.cart}
-            inc={this.incrementCart}
-            dec={this.decrementCart}
-            rem={this.removeFromCart}
-          /> */}
+          ) : null} USE FOR ADSENSE */}
+              <div className="pd2">
+                <StoreFilter2
+                  products={sendDown}
+                  handleUpSubmit={this.handleUpSubmit}
+                  selectedSize={this.state.selectedSize}
+                  currentCategory={currentCategory}
+                  currentSize={currentSize}
+                />
 
-            <StoreProductDisplay
-              products={sendDown}
-              addToCart={this.addToCart}
+                <StoreProductDisplay
+                  products={sendDown}
+                  addToCart={productContext.cartFunctions.addToCart}
+                  onPageChange={this.handlePageChange}
+                  itemsCount={products.length}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  handleSizeSelect={this.handleSizeFilter}
+                  handleCategorySelect={this.handleCategoryFilter}
+                  selectedSize={this.state.selectedSize}
+                  handleSort={this.handleSort}
+                  currentCategory={currentCategory}
+                  currentSize={currentSize}
+                  handleUpSubmit={this.handleUpSubmit}
+                />
+              </div>
+            </motion.div>
+
+            <Paginate
               onPageChange={this.handlePageChange}
-              itemsCount={products.length}
+              itemsCount={filtered.length}
               pageSize={pageSize}
               currentPage={currentPage}
-              handleSizeSelect={this.handleSizeFilter}
-              handleCategorySelect={this.handleCategoryFilter}
-              selectedSize={this.state.selectedSize}
-              handleSort={this.handleSort}
-              currentCategory={currentCategory}
-              currentSize={currentSize}
-              handleUpSubmit={this.handleUpSubmit}
             />
           </div>
-        </motion.div>
-
-        <Paginate
-          onPageChange={this.handlePageChange}
-          itemsCount={filtered.length}
-          pageSize={pageSize}
-          currentPage={currentPage}
-        />
-      </div>
+        )}
+      </ProductContext.Consumer>
     );
   }
 }

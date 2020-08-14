@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+// import secondpic from "../2.jpg";
+// import forthpic from "../5.jpg";
 import firstpic from "../firstpic.jpg";
-import secondpic from "../2.jpg";
 import thirdpic from "../4.jpg";
-import forthpic from "../5.jpg";
 
 const Jumbo = () => {
   return (
@@ -34,21 +34,22 @@ const Jumbo = () => {
             </Link> */}
           </div>
           <div>
-            <img alt="clothing item" src={secondpic} className="jumboPic" />
-            {/* <p className="legend">Dame of the week</p> */}
-          </div>
-          <div>
             <img alt="clothing item" src={thirdpic} className="jumboPic" />
             {/* <Link to="/shop/omathrift" className="legend">
               OmathrtiftStore
             </Link> */}
           </div>
-          <div>
+          {/*  <div>
+            <img alt="clothing item" src={secondpic} className="jumboPic" />
+            <p className="legend">Dame of the week</p> 
+          </div>*/}
+
+          {/*  <div>
             <img alt="clothing item" src={forthpic} className="jumboPic" />
-            {/* <Link to="/shop/juliet" className="legend">
+            <Link to="/shop/juliet" className="legend">
               ThriftWithPenny
-            </Link> */}
-          </div>
+            </Link>
+          </div> */}
         </Carousel>
       </motion.div>
     </React.Fragment>

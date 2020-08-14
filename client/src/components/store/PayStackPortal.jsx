@@ -55,7 +55,6 @@ class PayStackPortal extends Component {
     }
     window.location = "/";
   };
- 
 
   //handle failure in payment
   handleFailure = async () => {};
@@ -65,7 +64,6 @@ class PayStackPortal extends Component {
   }
 
   render() {
-
     const componentProps = {
       reference: this.props.location.state.config.reference,
       email: this.props.location.state.config.email,
@@ -80,7 +78,7 @@ class PayStackPortal extends Component {
         this.props.history.goBack();
       }
     };
-    console.log(componentProps)
+    // console.log(componentProps)
 
     const { FirstName, lastName } = this.props.location.state.details;
     return (

@@ -2,9 +2,7 @@ import React, { Component } from "react";
 // import axios from "axios";
 // import Options from "./Options";
 import ProductDisplay from "./ProductsDisplay";
-import Cart from "./Cart";
 import _ from "lodash";
-import axios from "axios";
 import Paginate from "./../all/Pagination";
 import { pages } from "./../../utils/pages";
 import { selectedSortFunc } from "./sort&filters/sorts/sorting";
@@ -103,8 +101,6 @@ class ProductPage extends Component {
     this.setState({ cart: this.props.shopCart });
   }
   render() {
-    console.log(this.props);
-    const { cartFunctions } = this.props;
     const {
       pageSize,
       currentPage,
@@ -138,22 +134,18 @@ class ProductPage extends Component {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              {this.state.cart.length ? (
+              {/* {this.state.cart.length ? (
                 <Cart
                   className="mr-2"
-                  cart={this.state.cart}
+                  // cart={this.state.cart}
+                  cart={productContext.cart}
                   inc={this.incrementCart}
                   dec={this.decrementCart}
-                  rem={this.removeFromCart}
+                  // rem={this.removeFromCart}
+                  rem={productContext.cartFunctions.removeFromCart}
                 />
-              ) : null}
+              ) : null} USE FOR ADSENSE*/}
 
-              {/* <Cart
-                cart={this.state.cart}
-                inc={this.incrementCart}
-                dec={this.decrementCart}
-                rem={this.removeFromCart}
-              /> */}
               <div className="pd2">
                 <Filters
                   products={sendDown}
@@ -165,7 +157,8 @@ class ProductPage extends Component {
                 />
                 <ProductDisplay
                   products={sendDown}
-                  addToCart={this.addToCart}
+                  // addToCart={this.addToCart}
+                  addToCart={productContext.cartFunctions.addToCart}
                   onPageChange={this.handlePageChange}
                   itemsCount={sendDown.length}
                   pageSize={pageSize}

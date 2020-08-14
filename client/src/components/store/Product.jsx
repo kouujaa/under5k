@@ -5,11 +5,9 @@ import { motion } from "framer-motion";
 import { ReactComponent as Bag } from "../svgs/bag-plus.svg";
 import { Link } from "react-router-dom";
 import { withCookies } from "react-cookie";
-import jwtDecoder from "jwt-decode";
 
 class Product extends Component {
   goToProduct() {
-    console.log("show product");
     // this.props.history.push({
     //   pathname: "/product",
     //   search: "",
@@ -19,14 +17,6 @@ class Product extends Component {
   }
 
   render() {
-    try {
-      const { cookies } = this.props;
-      var jwt = cookies.get("token");
-      var user = jwtDecoder(jwt);
-    } catch (err) {
-      console.log("invalid token");
-    }
-
     const {
       productID,
       price,
@@ -79,6 +69,7 @@ class Product extends Component {
                       color,
                       category,
                       material
+                      // cartHandler
                     }
                   }}
                 >

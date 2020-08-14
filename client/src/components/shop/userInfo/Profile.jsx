@@ -22,7 +22,7 @@ class Profile extends Component {
       address
       // meta
     } = this.props.profileInfo;
-    console.log(this.props);
+
     return (
       <motion.div
         className="container mt-5"

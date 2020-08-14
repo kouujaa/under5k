@@ -2,10 +2,11 @@ import React from "react";
 import { NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import { ReactComponent as Profile } from "../../svgs/person-circle.svg";
-import { ReactComponent as Cart } from "../../svgs/cart3.svg";
 import { ReactComponent as Out } from "../../svgs/door-open.svg";
 
 const SignedIn = ({ signOut, user, toggle }) => {
+  // const ourContext = useContext(ProductContext);
+  // console.log(ourContext.cart.length);
   return (
     <React.Fragment>
       <NavItem className="left">
@@ -31,7 +32,7 @@ const SignedIn = ({ signOut, user, toggle }) => {
           {user.firstName.charAt(0).toUpperCase()}
         </Link>
       </NavItem>
-      <NavItem className="left">
+      {/* <NavItem className="left">
         <Link
           to="/cart"
           onClick={() => {
@@ -39,41 +40,11 @@ const SignedIn = ({ signOut, user, toggle }) => {
           }}
         >
           <Cart />
-          <span></span> CART
+          <span>{ourContext.cart.length}</span> CART
         </Link>
-      </NavItem>
+      </NavItem> */}
     </React.Fragment>
   );
 };
-// class SignedIn extends Component {
-
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <NavItem className="left">
-//           <Link
-//             onClick={() => {
-//               this.toggle();
-//               this.signOut();
-//             }}
-//             to=""
-//           >
-//              SIGN OUT
-//           </Link>
-//         </NavItem>
-//         <NavItem className="left">
-//           <Link
-//             to="/profilePage"
-//             onClick={() => {
-//               this.toggle();
-//             }}
-//           >
-//             PROFILE
-//           </Link>
-//         </NavItem>
-//       </React.Fragment>
-//     );
-//   }
-// }
 
 export default SignedIn;

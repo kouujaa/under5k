@@ -4,7 +4,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwtDecoder from "jwt-decode";
 import AppNavBar from "./components/all/mainNavBar/AppNavBar";
-import { Modal } from "reactstrap";
+// import { Modal } from "reactstrap";
 import Footer from "./components/all/footer/Footer";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./components/shop/homepage/Homepage";
@@ -30,7 +30,7 @@ import Page404 from "./components/errorsnauth/Page404";
 import Page500 from "./components/errorsnauth/Page500";
 import Page403User from "./components/errorsnauth/Page403User";
 import SingleProductView from "./components/store/SingleProductView";
-import Cart from "./components/store/Cart";
+import ShowCart from "./components/store/ShowCart";
 class App extends Component {
   state = {
     cart: [],
@@ -101,11 +101,18 @@ class App extends Component {
       addToCart: this.addToCart,
       removeFromCart: this.removeFromCart
     };
-
-    const { message } = this.state;
+    // const { message } = this.state;
     return (
       <ProductContext.Provider
-        value={{ products: this.state.products, user: this.state.user }}
+        value={{
+          products: this.state.products,
+          user: this.state.user,
+          cart: this.state.cart,
+          cartFunctions: {
+            addToCart: this.addToCart,
+            removeFromCart: this.removeFromCart
+          }
+        }}
       >
         <React.Fragment>
           {/* <Provider store={myStore}> */}
@@ -238,8 +245,8 @@ class App extends Component {
             <Route
               path="/sellerDashBoard"
               render={props => {
-                if (this.state.user.status !== "seller")
-                  return <Redirect to="/sellerSignIn" />;
+                // if (this.state.user.status !== "seller")
+                //   return <Redirect to="/" />;
                 return (
                   <SellerDasboard
                     cookies={cookies}
@@ -282,10 +289,10 @@ class App extends Component {
               )}
             />
 
-            {/* <Route
-              path="/cart"
-              render={props => <Cart cookies={cookies} {...props} />}
-            /> */}
+            <Route
+              path="/showCart"
+              render={props => <ShowCart cookies={cookies} {...props} />}
+            />
             <Route
               path="/sellerAgreement"
               render={props => (

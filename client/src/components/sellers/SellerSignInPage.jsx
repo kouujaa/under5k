@@ -52,7 +52,6 @@ class SellerSignInPage extends UseForm {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <motion.div
