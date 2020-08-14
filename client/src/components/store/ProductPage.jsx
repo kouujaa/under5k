@@ -20,7 +20,7 @@ class ProductPage extends Component {
     selectedCategory: "All",
     selectedSort: "",
     cart: [],
-    pageSize: 9,
+    pageSize: 12,
     currentPage: 1,
     currentSize: "",
     currentCategory: "",

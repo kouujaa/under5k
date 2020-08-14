@@ -65,7 +65,7 @@ class SingleProductView extends Component {
               <h6>Category: {category}</h6>
               <h6>Product ID:{productID}</h6>
               <Button
-                className="btn btn-danger btn-sm left"
+                className="singleB btn btn-danger btn-sm left"
                 onClick={() => {
                   productContext.cartFunctions.addToCart(
                     productID,

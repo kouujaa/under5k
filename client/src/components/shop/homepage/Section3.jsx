@@ -20,7 +20,7 @@ class TopSellers extends Component {
   async componentDidMount() {
     const sellers = await axios.get("/api/seller/sellersList");
 
-    var sorted = _.orderBy(sellers.data, ["totalSales"], ["desc"]);
+    var sorted = _.orderBy(sellers.data, ["totalSales"], ["asc"]);
     const toppers = _.slice(sorted, 0, 6).reverse();
     this.setState({ toppers });
   }

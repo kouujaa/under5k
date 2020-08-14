@@ -20,7 +20,7 @@ class StoreFront extends Component {
     selectedCategory: "All",
     selectedSort: "",
     cart: [],
-    pageSize: 6,
+    pageSize: 12,
     currentPage: 1,
     currentSize: "ALL",
     currentCategory: "ALL",
