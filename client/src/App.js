@@ -213,7 +213,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route
+            {/* <Route
               path="/sellerSignIn"
               render={props => (
                 <SellerSignInPage
@@ -222,6 +222,20 @@ class App extends Component {
                   shopCart={this.state.cart}
                 />
               )}
+            /> */}
+            <Route
+              path="/sellerSignIn"
+              render={props => {
+                if (this.state.user.status === "seller")
+                  return <Redirect to="/sellerDashBoard" />;
+                return (
+                  <SellerSignInPage
+                    cookies={cookies}
+                    {...props}
+                    shopCart={this.state.cart}
+                  />
+                );
+              }}
             />
             <Route
               path="/sellerHomePage"

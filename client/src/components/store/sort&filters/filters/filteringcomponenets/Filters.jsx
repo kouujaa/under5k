@@ -73,13 +73,14 @@ class Filters extends Component {
   render() {
     return (
       <div className="filters ml-1 mr-1">
-        <Form inline onSubmit={this.handleAll}>
+        <Form inline onSubmit={this.handleAll} className="trunc">
           <FormGroup inline>
             <CustomInput
               style={{ width: "6.4em", padding: "3px", borderStyle: "none" }}
               type="select"
               id="sellerSelect"
               name="seller"
+              className="trunc"
               onChange={this.onChangeHandler}
             >
               <option selected>Shops</option>
@@ -96,6 +97,7 @@ class Filters extends Component {
               type="select"
               id="sizeSelect"
               name="size"
+              className="trunc"
               onChange={this.onChangeHandler}
             >
               <option value="">Size</option>
@@ -111,6 +113,7 @@ class Filters extends Component {
               type="select"
               id="categorySelect"
               name="category"
+              className="trunc"
               onChange={this.onChangeHandler}
             >
               <option value="">Type</option>

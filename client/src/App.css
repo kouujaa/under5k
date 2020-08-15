@@ -9,6 +9,15 @@ variables :root {
   font-weight: bold;
   font-style: normal;
 }
+.trunc {
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+}
+
+.custom-file-label {
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+}
 .turnRed {
   font-size: 0.9em !important;
   color: #ff006c;

@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import Product from "./Product";
 import Sorts from "./sort&filters/sorts/Sorts";
+import { motion } from "framer-motion";
 
 class StoreProductDisplay extends Component {
   displayall = () => {
     const { products, addToCart } = this.props;
     if (products.length === 0) {
       return (
-        <h1 className="float-right right">
+        <motion.h1
+          className="float-right right"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 4 }}
+        >
           Out of stock for this filter. try another
-        </h1>
+        </motion.h1>
       );
     }
     const prod = products.map(product => (

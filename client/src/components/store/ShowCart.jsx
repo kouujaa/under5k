@@ -11,7 +11,7 @@ const ShowCart = props => {
 
   const displayall = () => {
     const { cart } = ourContext;
-
+    if (cart.length === 0) return <h1>Cart Empty</h1>;
     const prod = cart.map(cartItem => (
       <CartItem
         key={cartItem.productID}

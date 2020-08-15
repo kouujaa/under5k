@@ -24,7 +24,7 @@ const SellerListGroup = ({ handleSellerFilter, sellers }) => {
         <DropdownItem header>Select Shop</DropdownItem>
         {sellers.map(seller => (
           <DropdownItem
-            className="btn"
+            className="btn trunc"
             onClick={() => {
               handleSellerFilter(seller);
             }}

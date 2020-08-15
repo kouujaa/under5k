@@ -122,7 +122,6 @@ class UploadProductImage extends Component {
             <Label for="uploadPic1">Select image a minimum of 3 images</Label>
             <CustomInput
               type="file"
-              id="uploadPic1"
               name="uploadPic1"
               label="Select Image"
               onChange={this.fileSelectHandler}
