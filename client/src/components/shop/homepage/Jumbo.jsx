@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 // import { Link } from "react-router-dom";
-// import secondpic from "../2.jpg";
-// import forthpic from "../5.jpg";
-import firstpic from "../firstpic.jpg";
-import thirdpic from "../4.jpg";
+// import secondpic from "../2.jpeg";
+// import forthpic from "../5.jpeg";
+import firstpic from "../firstpic.jpeg";
+import thirdpic from "../4.jpeg";
 
 const Jumbo = () => {
   return (

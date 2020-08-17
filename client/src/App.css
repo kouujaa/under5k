@@ -377,8 +377,16 @@ div.display-4
 
   div.jumboCar > div.carousel-slider {
     width: 2em;
-    height: 8.6em;
+    height: 8.6em !important;
   }
+  /* .legend {
+    font-size: 0.6em !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: #ff006c !important;
+    font-weight: 900 !important;
+    text-shadow: #1316db !important;
+    opacity: 1 !important;
+  } */
   .navb {
     background-color: #343a40 !important;
     position: relative !important;
@@ -426,7 +434,7 @@ div.display-4
   .jumbotxt {
     color: white;
     font-size: 40px;
-    height: 8em;
+    height: 9em !important;
   }
   .prdiv {
     width: 18em !important;
@@ -693,7 +701,7 @@ div.display-4
   }
   div.jumboCar > div.carousel-slider {
     width: 2em;
-    height: 11em;
+    height: 8em !important;
   }
   div.display-4
     > div.carousel-root
@@ -754,7 +762,7 @@ div.display-4
   }
   div.productcar > div.carousel-slider {
     width: 2em;
-    height: 5em;
+    height: 8em !important;
   }
 
   .prodCardBody {
@@ -775,7 +783,7 @@ div.display-4
   }
   div.jumboCar > div.carousel-slider {
     width: 2em;
-    height: 8em;
+    height: 8em !important;
   }
   .checkOut-page {
     display: grid;
