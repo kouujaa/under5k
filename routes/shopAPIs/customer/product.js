@@ -176,4 +176,22 @@ router.post("/stockpile", async (req, res) => {
   return res.send(cart);
 });
 
+
+//add to stockpile
+router.post("/deleteStockpile", async (req, res) => {
+  // const { email, item, action } = req.body;
+  console.log(req.body);
+});
+
+//add product to stockpile
+router.post("/addStockpile", async (req, res) => {
+  // const { email, item, action } = req.body;
+  console.log(req.body);
+});
+
+//get stockpile by user
+router.get("/stockpile", async (req, res) => {
+  const {email} = req.body;
+  
+});
 module.exports = router;

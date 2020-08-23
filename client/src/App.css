@@ -82,8 +82,7 @@ body {
   width: 100vw !important;
   min-width: 375px !important;
 
-  /* overflow: scroll;
-   overflow-x: hidden; */
+
   background: white;
   background-color: white !important;
 }

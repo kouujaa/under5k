@@ -11,7 +11,7 @@ class GoogleSignIn extends Component {
   };
 
   onGoogleSign = e => {
-    window.open("http://www.thriftnhub.com/auth/google", "_self");
+    window.open("https://www.thriftnhub.com/auth/google", "_self");
     // window.open("/auth/google", "_self");
     // window.open("http://localhost:3001/auth/google", "_self");
   };
@@ -20,10 +20,7 @@ class GoogleSignIn extends Component {
 
   render() {
     return (
-      <div
-        className="btn btn-white container center mt-3 googlebar"
-        
-      >
+      <div className="btn btn-white container center mt-3 googlebar">
         <div className="container center" onClick={this.onGoogleSign}>
           <div>
             <Gmail height="1.8em" width="1.8em" className="mr-1" />
