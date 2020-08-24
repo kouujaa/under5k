@@ -15,13 +15,11 @@ router.get(
       "profile",
       "email",
       "https://www.googleapis.com/auth/user.phonenumbers.read",
-      "https://www.googleapis.com/auth/admin.directory.user.readonly",
-      "https://www.googleapis.com/auth/user.addresses.read",
-      "https://www.googleapis.com/auth/profile.agerange.read"
+      "https://www.googleapis.com/auth/user.addresses.read"
     ]
   })
 );
-
+// "https://www.googleapis.com/auth/admin.directory.user.readonly",// try again later
 //google redirect
 
 router.get(
