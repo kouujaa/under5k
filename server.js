@@ -12,8 +12,12 @@ const receipt = require("./routes/shopAPIs/admin/receipt");
 const llaves = require("./routes/llaves/llaves");
 const path = require("path");
 const express = require("express");
+const http = require("http");
+const enforce = require("express-sslify");
+
 const authRoute = require("./routes/auths/auth");
 const app = express();
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");

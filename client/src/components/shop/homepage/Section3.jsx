@@ -31,7 +31,7 @@ class TopSellers extends Component {
     return (
       <React.Fragment>
         <div className="mt-5 mb-5 center">
-          <h4 style={{ color: "#ff006c" }}>Top Sellers</h4>
+          <h4 style={{ color: "#ff006c" }}>Top Shops</h4>
 
           {toppers
             ? toppers.map(item => (
