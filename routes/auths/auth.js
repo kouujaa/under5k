@@ -14,12 +14,12 @@ router.get(
       "openid",
       "profile",
       "email",
-      "https://www.googleapis.com/auth/user.phonenumbers.read",
-      "https://www.googleapis.com/auth/user.addresses.read"
+      "https://www.googleapis.com/auth/user.phonenumbers.read"
     ]
   })
 );
 // "https://www.googleapis.com/auth/admin.directory.user.readonly",// try again later
+//      "https://www.googleapis.com/auth/user.addresses.read"
 //google redirect
 
 router.get(
