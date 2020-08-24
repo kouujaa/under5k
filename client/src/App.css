@@ -10,12 +10,12 @@ variables :root {
   font-style: normal;
 }
 .trunc {
-  text-overflow: ellipsis !important;
+  text-overflow: clip !important;
   overflow: hidden !important;
 }
 
 .custom-file-label {
-  text-overflow: ellipsis !important;
+  text-overflow: clip !important;
   overflow: hidden !important;
 }
 .turnRed {

@@ -25,7 +25,7 @@ const Footer = props => {
             <a
               className="ml-3"
               style={{ color: "#ff006c" }}
-              href="https://web.facebook.com/thriftnhub"
+              href="web.facebook.com/thriftnhubpage"
             >
               <Face height="1.8em" width="1.8em" />
             </a>

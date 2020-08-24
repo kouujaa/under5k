@@ -27,7 +27,7 @@ const AppNavBar = ({ user, clearState }) => {
     >
       <Navbar color="dark" dark expand="md" className="navbrands">
         <NavLink className="navbrands" id="top" to="/">
-          THIRFT'N'HUB
+          THRIFT'N'HUB
         </NavLink>
         {/* <motion.div
         className="display-4 lead jumbotxt"
