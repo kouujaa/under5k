@@ -41,14 +41,11 @@ if (!config.get("jwtPrivateKey")) {
 //   .catch(err => console.error("Could not connect to MongoDB..."));
 
 mongoose
-  .connect(
-    "mongodb+srv://jjhok:jjhok@mydb-9j7ob.mongodb.net/test?authSource=admin&replicaSet=mydb-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true
-    }
-  )
+  .connect(config.get("DATABASEURL"), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  })
   .then(() => console.log("Connected to MongoDB..."))
   .catch(err => console.error("Could not connect to MongoDB..."));
 
