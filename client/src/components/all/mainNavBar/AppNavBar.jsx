@@ -64,7 +64,7 @@ const AppNavBar = ({ user, clearState }) => {
                 signOut={clearState}
               />
             )}
-            {user.status !== "" ? null : (
+            {user.status === "user" ? null : (
               <NavItem className="left">
                 <NavLink to="/sellerSignIn" onClick={toggleNavbar}>
                   <Box className="mr-1" /> SELLER
