@@ -46,11 +46,11 @@ class SellerSignInPage extends UseForm {
         pathname: "/sellerSignIn",
         search: "",
         hash: "",
-        state: { message: "invalid login dataentials!" }
+        state: { message: "Invalid Login Credentials!" }
       });
     }
   }
- 
+
   render() {
     return (
       <div>

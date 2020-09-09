@@ -128,6 +128,7 @@ const sellerSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 1000
   },
+  dateJoined: { type: Date, default: Date.now },
   shopName: {
     type: String,
     required: true,

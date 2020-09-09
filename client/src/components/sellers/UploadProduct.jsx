@@ -50,17 +50,27 @@ class UploadProduct extends Component {
                 required
                 onChange={this.onChangeHandler("sizes")}
               >
-                <option>Select size</option>
+                <option>Select Size</option>
                 <option>6</option>
+                <option>6-8</option>
                 <option>8</option>
+                <option>8-10</option>
                 <option>10</option>
+                <option>10-12</option>
                 <option>12</option>
+                <option>12-14</option>
                 <option>14</option>
+                <option>14-16</option>
                 <option>16</option>
+                <option>16-18</option>
                 <option>18</option>
+                <option>18-20</option>
                 <option>20</option>
+                <option>20-22</option>
                 <option>22</option>
+                <option>22-24</option>
                 <option>24</option>
+                <option>24-26</option>
                 <option>26</option>
                 <option>One Size</option>
               </Input>
@@ -90,6 +100,7 @@ class UploadProduct extends Component {
                 <option>White</option>
                 <option>Yellow</option>
                 <option>Multi-Color</option>
+                <option>Others</option>
               </Input>
             </FormGroup>
             <FormGroup>
@@ -112,18 +123,29 @@ class UploadProduct extends Component {
                 onChange={this.onChangeHandler("material")}
               >
                 <option>Select Material</option>
+                <option>Chiffon</option>
+                <option>Chinos</option>
                 <option>Cotton</option>
+                <option>Denim</option>
                 <option>Faux Fur</option>
                 <option>Fur</option>
+                <option>Khaki</option>
+                <option>Lace</option>
+                <option>Latex</option>
                 <option>Leather</option>
                 <option>Linen</option>
+                <option>Lycra</option>
+                <option>Mesh</option>
                 <option>Nylon</option>
                 <option>Polyester</option>
                 <option>Rayon</option>
+                <option>Satin</option>
                 <option>Silk</option>
                 <option>Spandex</option>
                 <option>Synthetic Leather</option>
+                <option>Velvet</option>
                 <option>Wool</option>
+                <option>Others</option>
               </Input>
             </FormGroup>
             <FormGroup>
@@ -137,8 +159,8 @@ class UploadProduct extends Component {
               >
                 <option>Select Category</option>
                 <option>Blouses</option>
+                <option>Bodycon</option>
                 <option>Bodysuits</option>
-                <option>Bottoms</option>
                 <option>Capris</option>
                 <option>Coats</option>
                 <option>Dresses</option>
@@ -146,6 +168,7 @@ class UploadProduct extends Component {
                 <option>Jackets</option>
                 <option>Jeans</option>
                 <option>Jeggings</option>
+                <option>Joggers</option>
                 <option>Jumpsuits</option>
                 <option>Lingerie</option>
                 <option>Pants</option>
@@ -153,6 +176,7 @@ class UploadProduct extends Component {
                 <option>Rompers</option>
                 <option>Sets</option>
                 <option>Shirts</option>
+                <option>Shorts</option>
                 <option>Skirts</option>
                 <option>Suits</option>
                 <option>Sweaters</option>
@@ -160,11 +184,13 @@ class UploadProduct extends Component {
                 <option>Swimsuit</option>
                 <option>Tees</option>
                 <option>Tops</option>
+                <option>Trousers</option>
+                <option>Others</option>
               </Input>
             </FormGroup>
             <span className="btn mt-4 mb-4">
               <Link to="/sellerDashBoard/uploadProduct/uploadProductImage">
-                proceed to image upload
+                Proceed to image upload
               </Link>
             </span>
 

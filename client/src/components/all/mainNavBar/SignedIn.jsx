@@ -32,17 +32,13 @@ const SignedIn = ({ signOut, user, toggle }) => {
           {user.firstName.charAt(0).toUpperCase()}
         </Link>
       </NavItem>
-      {/* <NavItem className="left">
-        <Link
-          to="/cart"
-          onClick={() => {
-            toggle();
-          }}
-        >
-          <Cart />
-          <span>{ourContext.cart.length}</span> CART
-        </Link>
-      </NavItem> */}
+      {/* {user.status === "seller" ? null : (
+              <NavItem className="left">
+                <NavLink to="/sellerSignIn" onClick={toggleNavbar}>
+                  <Box className="mr-1" /> SELLER
+                </NavLink>
+              </NavItem>
+            )} */}
     </React.Fragment>
   );
 };

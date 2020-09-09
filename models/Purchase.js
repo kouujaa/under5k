@@ -20,6 +20,7 @@ new mongoose.Schema({
     }),
     required: true
   },
+  dateMade: { type: Date, default: Date.now },
   products: {
     type: new mongoose.Schema({
       title: {

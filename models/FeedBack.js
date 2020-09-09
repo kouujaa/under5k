@@ -27,6 +27,7 @@ const validateProduct = Joi.object({
       .max(50)
       .required()
   },
+  dateSent: { type: Date, default: Date.now },
   message: {
     name: Joi.string().required()
   }
