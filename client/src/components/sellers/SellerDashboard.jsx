@@ -36,7 +36,7 @@ class SellerDasboard extends Component {
     return (
       <div className="sellerdash">
         <h2 className="left container">
-          <span>{user.shopName} </span> dasdboard
+          <span>{user.shopName} </span> Dashboard
         </h2>
         <div className="productPage">
           <div>

@@ -43,7 +43,7 @@ const Footer = props => {
             </NavLink>
           </h6>
           <h6>
-            <Mail /> <span>thriftnhub@gmail.com</span>
+            <Mail /> <span>Thriftnhub@gmail.com</span>
           </h6>
 
           <h6>
@@ -51,7 +51,7 @@ const Footer = props => {
             <span> 08059616031</span>
           </h6>
           <h6>
-            <Maps /> <span>eden garden ajah, Lagos, Nigeria</span>
+            <Maps /> <span>Rockstone Ville Ajah, Lagos, Nigeria</span>
           </h6>
         </div>
       </div>

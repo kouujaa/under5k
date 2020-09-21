@@ -10,7 +10,7 @@ class NewArrivals extends Component {
 
   render() {
     var sorted = _.orderBy(this.context.products, ["dateAdded"], ["desc"]);
-    const products = _.slice(sorted, 0, 8).reverse();
+    const products = _.slice(sorted, 0, 8);
 
     return (
       <ProductContext.Consumer>
